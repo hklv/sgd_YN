@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="ACCOUNT" type="W">
+    <comments><![CDATA[ACCOUNT]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>0027004002</modifier>
+    <modifyDate>2012-03-08 15:59:53</modifyDate>
+    <extension/>
+  </message>
+</zsmart>

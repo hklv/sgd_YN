@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="TRANSF CHRG RMTACNT" message="MML" seq="57" id="df980602-ab8b-4527-ae39-c959f5612a2e">
+    <comments><![CDATA[TRANSF CHRG RMTACNT]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-05-12 14:05:55</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>TRANSF CHRG RMTACNT</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="0" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="77e394d2-2e8c-4a0e-be29-5c9710977147"/>
+      <field seq="1" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="0c8bd352-c08a-4039-b58d-922d26b594cf"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="SACCNT" part="Business" id="8a4466bf-f3b5-4379-9b7f-b33cdc558aba"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="SPWD" part="Business" id="883d7a34-ceed-4c60-820b-1a7001972ccf"/>
+      <field seq="4" direction="both" fieldType="N" dataType="S" requred="false" name="FEE" part="Business" id="73462341-514b-43f5-af48-dfc91d8e919e"/>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="true" name="DACCNT" part="Business" id="d55483ed-2fff-44ca-abc3-1f9111707f00"/>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="0d2d6e64-d9f2-40c7-8df6-2255cb48a8c5"/>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="63e84afd-145e-4230-b8a6-3db380ed7b9d"/>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="BEFOROPER" part="Business" id="23d9c128-9896-49fa-8337-169b6b3134b4"/>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="AFTEROPER" part="Business" id="522bb7ce-7586-4661-a4e2-add43580103b"/>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="false" name="OPERFEE" part="Business" id="5888fba0-0853-46bb-a6f0-f27f2d2f051e"/>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="false" name="OPERTYPE" part="Business" id="60b2dcd3-76ce-4130-b9a2-4e538fd07253"/>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="MINAMOUNT" part="Business" id="2804555a-0b3a-4d00-95a0-46adc7a5aebd"/>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="MAXAMOUNT" part="Business" id="ef548c87-861e-4877-af01-cdc31bc8d5d3"/>
+    </fields>
+    <bindings>
+      <binding service="MML_TransfChrgRmtacnt{PN}VIETICS" site="S" id="45fce3e1-21ed-43d1-b4f0-ddd9c1a45666">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-05-14 14:10:01</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.ID = $req.ID</request>
+            <request>$s.SACCNT = $req.SACCNT</request>
+            <request>$s.SPWD = $req.SPWD</request>
+            <request>$s.FEE = $req.FEE</request>
+            <request>$s.DACCNT = $req.DACCNT</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.BEFOROPER = $s.BEFOROPER</response>
+            <response>$resp.AFTEROPER = $s.AFTEROPER</response>
+            <response>$resp.FEE = $s.FEE</response>
+            <response>$resp.OPERFEE = $s.OPERFEE</response>
+            <response>$resp.OPERTYPE = $s.OPERTYPE</response>
+            <response>$resp.MINAMOUNT = $s.MINAMOUNT</response>
+            <response>$resp.MAXAMOUNT = $s.MAXAMOUNT</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="MmlTransfChrgRmtacnt" site="C" id="7c0a0020-12f6-4f59-8268-93972d9f3674">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-05-12 14:16:51</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.ID = $s.ID</request>
+            <request>$req.SACCNT = $s.SACCNT</request>
+            <request>$req.SPWD = $s.SPWD</request>
+            <request>$req.FEE = $s.FEE</request>
+            <request>$req.DACCNT = $s.DACCNT</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.RETN = $resp.RETN</response>
+            <response>$s.DESC = $resp.DESC</response>
+            <response>$s.BEFOROPER = $resp.BEFOROPER</response>
+            <response>$s.AFTEROPER = $resp.AFTEROPER</response>
+            <response>$s.FEE = $resp.FEE</response>
+            <response>$s.OPERFEE = $resp.OPERFEE</response>
+            <response>$s.OPERTYPE = $resp.OPERTYPE</response>
+            <response>$s.MINAMOUNT = $resp.MINAMOUNT</response>
+            <response>$s.MAXAMOUNT = $resp.MAXAMOUNT</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DEBIT ACNT" message="MML" seq="85" id="8286749e-68f9-42e3-98d3-1273988253cd">
+    <comments><![CDATA[借贷]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zhang.xiaofei</modifier>
+    <modifyDate>2012-10-16 10:06:57</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DEBIT ACNT</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="BL-S-ACT-00068" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="BL-S-ACT-00068" value="1010" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="85a77b4e-5f17-4507-9867-7d778e39402b"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="7fad7f69-3994-45d1-97ad-ddbff068f20a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="cdfbbc60-459d-4a7e-9411-97601301ce55">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="false" name="FEE" part="Business" id="0bf67d4b-85cd-4c80-a7f9-5c4cfaeb4560">
+        <extension>
+          <align>L</align>
+          <max>999999999999</max>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="CHECKPWD" part="Business" id="bbd8f5ae-4c02-42bf-9138-e5de42a7f699">
+        <extension>
+          <length>1</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="false" name="PWD" part="Business" id="eae1a01b-d4ac-4e61-931e-1b66ae4bae13">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="785fba6b-de74-4c4a-aec3-5f0de831609e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="0d9c5f0d-5c31-480b-9aca-2186042fbc20">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="BEFOROPER" part="Business" id="fdbf8ce6-a36a-4f1b-ad69-81657c7f8a9b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="false" name="FEE" part="Business" id="6673e880-41fd-4b59-b480-724ce000627f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="false" name="AFTEROPER" part="Business" id="50bc8ca4-f813-4803-ba2d-7692e8f5d490">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="ADDBLOCKS" part="Business" id="15ad7414-c7ab-4e6a-bc10-08dfd90bc178">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="ADDDAYS" part="Business" id="2824fe35-1c91-4f2f-91e7-3dd6f6142da0">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="14" direction="resp" fieldType="N" dataType="S" requred="false" name="EXPDATE" part="Business" id="1fbe8dd4-2d67-496a-ae91-2bcf21db829a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlDebitAcnt" site="S" id="c16177ef-e746-4083-8eb5-1450a90e10a2">
+        <state>A</state>
+        <version>1</version>
+        <modifier>zhang.xiaofei</modifier>
+        <modifyDate>2012-10-16 10:41:20</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.DN )</request>
+            <request>$s.CHECKPWD = $req.CHECKPWD</request>
+            <request>$s.PASSWORD = $req.PWD</request>
+            <request>$s.CONTACT_CHANNEL_ID = "UipAdapterUser_ChannelType"</request>
+            <request>$s.CHARGE = $req.FEE</request>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.PARTNER_SN = $req.ID</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.BEFOROPER = $s.DEBIT_RESULT.BAL_OLD.REAL_BAL</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ADDBLOCKS = $s.DEBIT_RESULT.ADDBLOCKS</response>
+            <response>$resp.FEE = $s.DEBIT_RESULT.CHARGE</response>
+            <response>$resp.AFTEROPER = $s.DEBIT_RESULT.BAL.REAL_BAL</response>
+            <response>$resp.ADDDAYS = $s.DEBIT_RESULT.ADDDAYS</response>
+            <response>$resp.EXPDATE = $s.DEBIT_RESULT.BAL.EXP_DATE</response>
+            <response>$req.COMMAND = $req.COMMAND</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

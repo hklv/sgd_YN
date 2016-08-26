@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CHARGE IVR ACNT" message="MML" seq="5" id="8cf8b330-4273-4bfa-8db4-ced35c2e3b1f">
+    <comments><![CDATA[COMMENTSCOMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-07-25 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>CHARGE IVR ACNT</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="" value="1020" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="d56fb24b-636e-4079-9b27-347c43e580d3"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="false" name="ID" part="Business" id="db50a69b-3a9c-4a0c-920d-9cf1795f239a"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="DN" part="Business" id="f637ebbe-6419-4a28-bdc5-7e60b388ac8e"/>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="false" name="VOUCHERSEQ" part="Business" id="4a8f604f-4030-4aac-afbb-14263320d873"/>
+      <field seq="5" direction="req" fieldType="N" dataType="I" requred="true" name="CREDIT" part="Business" id="13dbf3ca-e6f1-4bc0-a60c-f22d8d5d6f3f">
+        <extension>
+          <min>0</min>
+          <max>999999999</max>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="false" name="ADDDAY" part="Business" id="754fe45e-2afe-4130-a5a9-40a987bad500"/>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="false" name="ECHO" part="Business" id="42531910-d84d-49e0-983a-bf38ada0f7cc"/>
+      <field seq="8" direction="req" fieldType="N" dataType="S" requred="false" name="SID" part="Business" id="14f259fd-8baf-49f5-bc5b-53a441018e8f"/>
+      <field seq="9" direction="req" fieldType="N" dataType="S" requred="false" name="SNODE" part="Business" id="7699f583-3273-412c-824e-910d20b254e4"/>
+      <field seq="10" direction="req" fieldType="N" dataType="T" requred="false" name="SDATETIME" part="Business" id="63071a2a-ab2f-4bb0-808e-d399472f6780"/>
+      <field seq="11" direction="req" fieldType="N" dataType="I" requred="false" name="CHANNEL" part="Business" id="b3c7af25-6645-4e28-9c0a-321830443ca7"/>
+      <field seq="12" direction="req" fieldType="N" dataType="I" requred="false" name="MSGLANG" part="Business" id="31c2597c-dd96-43e5-8d55-85450d72f563"/>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="RETN" part="Business" id="f04c7107-0370-4568-ba22-69b8c8af7426"/>
+      <field seq="14" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="f6a268a3-9743-4fcb-ab0d-0b97dd5ea603"/>
+      <field seq="15" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="ffab7a50-d797-40c3-b37a-c9236b529136"/>
+      <field seq="16" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="6985933e-1ec0-411b-97a4-910950be47d7"/>
+      <field seq="17" direction="req" fieldType="N" dataType="T" requred="false" name="tttd" part="Business" id="52edb937-b270-4120-9284-99be93314ec4">
+        <extension>
+          <align>L</align>
+          <format>yyyyMMddHHmmss</format>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlChargeIvrAcnt" site="S" id="e7dd26e6-12c0-430a-ac68-1aad84522218">
+        <state>A</state>
+        <version>1</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.PARTNER_SN = $req.ID</request>
+            <request>$s.MSISDN, $s.DN_TYPE, $s.BAL_CODE = decomposeDN( $req.DN )</request>
+            <request>$s.SCRATCH_CARD_PWD = $req.VOUCHERSEQ</request>
+            <request>$s.CHARGE = $req.CREDIT</request>
+            <request>$s.PROLONG_DAYS = $req.ADDDAY</request>
+            <request>$s.IS_NEED_ATTR_RESULT = $req.ECHO</request>
+            <request>$s.SID = $req.SID</request>
+            <request>$s.SNODE = $req.SNODE</request>
+            <request>$s.DATE_TIME_NOW = $req.SDATETIME</request>
+            <request>$s.CONTACT_CHANNEL_ID = $req.CHANNEL</request>
+            <request>$s.MSGLANG = $req.MSGLANG</request>
+            <request>$s.PARTY_TYPE = "E"</request>
+            <request>$s.PAYMENT_METHOD_ID = "1"</request>
+            <request>$s.IS_CLEAR_BLACK_LIST = "TRUE"</request>
+            <request>$s.PAYMENT_METHOD = "1"</request>
+            <response>$resp.ATTR = concact( "AMOUNT", "CVSTOP" )</response>
+            <response>$resp.RESULT = concact( $s.RECHARGE_RESULT.NEW_BAL.REAL_BAL, $s.RECHARGE_RESULT.NEW_BAL.EXP_DATE )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

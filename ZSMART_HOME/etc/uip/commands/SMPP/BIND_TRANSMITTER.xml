@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="BIND_TRANSMITTER" message="SMPP" seq="25" id="4ce5437d-e9ce-4a18-9c70-1f9b2260c2f6">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00000002</requestKey>
+        <responseKey>0X80000002</responseKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="M" requred="false" name="system_id" part="Body" id="86a503c3-064e-49b9-afcf-b7c35558d299">
+        <extension>
+          <max>16</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="false" name="password" part="Body" id="a26e396f-7647-4e80-b126-a8f4e8f5706d">
+        <extension>
+          <max>9</max>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="M" requred="false" name="system_type" part="Body" id="991417fa-a4bf-4445-b2cb-f0225d879182">
+        <extension>
+          <max>13</max>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="I" requred="false" name="interface_version" part="Body" id="7632cc4a-9697-4da2-9a16-51ae7a3aa0a0">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="false" name="ton" part="Body" id="b662ba9a-99e8-4f60-9d2c-10008f8c9425">
+        <extension>
+          <length>1</length>
+          <decodingValue>0</decodingValue>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="false" name="npi" part="Body" id="8d471ea1-17e3-4ac2-9f71-0432a35e245b">
+        <extension>
+          <length>1</length>
+          <decodingValue>0</decodingValue>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="false" name="address_range" part="Body" id="0c234aa6-442e-40bf-a1cf-07fa40a24ed8">
+        <extension>
+          <length>41</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RemotingLinkCheck" message="Remoting" seq="1" id="4d4d7fb2-724b-4b90-88ac-8fb00a351a96">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

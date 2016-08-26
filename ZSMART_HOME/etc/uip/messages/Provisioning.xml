@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="Provisioning" type="W">
+    <comments><![CDATA[Provisioning]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2013-01-10 14:28:17</modifyDate>
+    <extension/>
+  </message>
+</zsmart>

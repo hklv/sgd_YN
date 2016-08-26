@@ -1,0 +1,169 @@
+<html>
+	<head>
+		<title></title>
+		<script src="../core/Prototype.js"></script>
+		<script src="FormValidator.js"></script>
+		
+        <link rel="stylesheet" href="../style/en_US/Cvbs.css"/> 
+
+        <link rel="stylesheet" href="../widgets/popedit/style/en_US/ZTEsoftPopEdit.css"/>       	
+       	<script language="javascript" src="../widgets/popedit/ZTEsoftPopEdit.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>姓名<span class="mark">*</span></td>
+				<td><input type="text" id="name"/></td>
+			</tr>
+			<tr>
+				<td>年龄<span class="mark">*</span></td>
+				<td><input type="text" id="age"/></td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td><input type="radio" name="gender"/>女<input type="radio" name="gender"/>男</td>
+			</tr>
+			<tr>
+				<td>爱好<span class="mark">*</span></td>
+				<td>
+					<select id="hobby">
+						<option></option>
+						<option value="1">足球</option>
+						<option value="2">篮球</option>
+						<option value="3">排球</option>
+						<option value="0">其他</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>IP地址<span class="mark">*</span></td>
+				<td><input type="text" id="ip"/></td>
+			</tr>
+			<tr>
+				<td>手机号码<span class="mark">*</span></td>
+				<td><input type="text" id="mobile"/></td>
+			</tr>
+			<tr>
+				<td>测试popedit<span class="mark">*</span></td>
+				<td id="testpop"></td>
+			</tr>
+			<tr>
+				<td>说明</td>
+				<td><textarea id="comment"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button onclick="onOk1()">校验失败带tip</button>
+					<button onclick="onOk2()">校验失败抛出异常</button>
+					<button onclick="onOk3()">提交失败无提示，只有结果</button>
+				</td>
+			</tr>
+		</table>
+		<script>
+		var myPop = new ZTEsoftPopEdit($("testpop"));
+		myPop.setOpenUrl("../widgets/popedit/TestDataTable.htm");
+
+		var validator = new FormValidator();
+		var data = {
+			validateFailType: "tip",
+			configs: [
+				{element: $("name"), rules: [
+					{type: "empty", warning: "姓名不准为空（测试一下这里写了很多很多字，你会不会换行，会不会，会不会，说啊）"},
+					{type: "maxLength", value: 8, warning: "姓名不准超过4个字"},
+					{type: "minLength", value: 4, warning: "姓名不准少于2个字"}
+				]},
+				{element: $("age"), rules: [
+					{type: "empty", warning: "年龄不准为空"},
+					{type: "integer", warning: "年龄必须为整数"}
+				]},
+				{element: $("hobby"), rules: [
+					{type: "empty", warning: "爱好不准为空"}
+				]},
+				{element: $("ip"), rules: [
+					{type: "ipv4", warning: "不合法的IPV4地址"}
+				]},
+				{element: $("mobile"), rules: [
+					{type: "regexp", warning: "不是标准的手机号码格式", regexp: /^((\(\d{2,3}\))|(\d{3}\-))?((13\d{9})|(15[389]\d{8}))$/}
+				]},
+				{element: myPop, rules: [
+					{type: "empty", warning: "不可以不选择pop"}
+				]},
+				{element: $("comment"), rules: [
+					{type: "maxLength", value: 8, warning: "说明不准超过20个字"}
+				]}
+			]
+		};
+
+		function onOk1()
+		{
+			data.validateFailType = "tip";
+			validator.loadByData(data);
+
+			if (!validator.validate())
+			{
+				alert("不通过");
+				return;
+			}
+			else
+			{
+				alert("假装提交数据");
+			}
+		}
+
+		function onOk2()
+		{
+			data.validateFailType = "exception";
+			validator.loadByData(data);
+
+			try
+			{
+				validator.validate();
+			}
+			catch (ex)
+			{
+				alert(ex.description);
+			}
+		}
+
+		function onOk3()
+		{
+			data.validateFailType = "none";
+			validator.loadByData(data);
+
+			alert(validator.validate());
+		}
+		//validator.addConfig({element:$("name"), rules:[{type:"empty", warning:"姓名不准为空"}]});
+
+		function showModal(URLParam, objectParam, styleParam)
+		{
+				if(window.navigator.userAgent.indexOf("MSIE 7")>=1)
+				{
+					var styleParamNew=styleParam;
+					var heightBeginIndex=styleParam.toUpperCase().indexOf('DIALOGHEIGHT:');
+					if(heightBeginIndex>-1)//exist param for height
+					{
+						var heightEndIndex=styleParam.indexOf('px;',heightBeginIndex);
+						if (heightEndIndex==-1)
+							heightEndIndex=styleParam.indexOf(';',heightBeginIndex);
+						var heightNew=parseInt(styleParam.substring(heightBeginIndex+13,heightEndIndex))-40;
+						styleParamNew=styleParam.substring(0,heightBeginIndex)+'dialogHeight:'+heightNew+styleParam.substring(heightEndIndex,styleParam.length);
+					}	
+					var ret =  window.showModalDialog(URLParam, objectParam, styleParamNew);
+					return ret;	
+				}
+				
+				if(window.navigator.userAgent.indexOf("MSIE 6")>=1)
+				{
+					var ret =  window.showModalDialog(URLParam, objectParam, styleParam);
+					return ret;
+				}
+				else
+				{
+					var ret =  window.showModalDialog(URLParam, objectParam, styleParam);	
+					return ret;
+				}
+
+		}
+		</script>
+	</body>
+</html>

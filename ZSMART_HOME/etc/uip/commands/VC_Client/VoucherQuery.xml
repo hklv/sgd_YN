@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+    <command name="VoucherQuery" message="VC_Client" seq="39" id="b227d22f-62cc-46e8-82bb-3b7c42bbb340">
+        <comments><![CDATA[VoucherQuery]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-02-24 00:00:00</modifyDate>
+        <extension>
+            <commandKey>
+                <requestKey>0x000b</requestKey>
+            </commandKey>
+        </extension>
+        <fields>
+            <field seq="2" direction="both" fieldType="N" dataType="M" requred="true" name="0x05" part="Body"
+                   id="510f2120-e696-4a28-9590-91103d2ed1e8">
+                <extension>
+                    <max>20</max>
+                </extension>
+            </field>
+            <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="0x06" part="Body"
+                   id="579b9870-fb52-4312-a9fd-ea253e57980b">
+                <extension>
+                    <max>16</max>
+                </extension>
+            </field>
+            <field seq="4" direction="req" fieldType="N" dataType="M" requred="true" name="0x07" part="Body"
+                   id="0219fe97-7135-4209-a976-52762d9ab1c3">
+                <extension>
+                    <max>20</max>
+                </extension>
+            </field>
+            <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="0x08" part="Body"
+                   id="cbd2dfba-ae2a-4800-bd7c-f4e9c5f519a0">
+                <extension>
+                    <max>20</max>
+                </extension>
+            </field>
+            <field seq="6" direction="req" fieldType="N" dataType="I" requred="true" name="0x09" part="Body"
+                   id="ac01cc85-702c-4853-8d4e-4d462fb5128d">
+                <extension>
+                    <length>4</length>
+                    <encodingValue>0</encodingValue>
+                </extension>
+            </field>
+            <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="0x0d" part="Body"
+                   id="779cd1d5-0681-4750-9d4a-d023b0907558">
+                <extension>
+                    <length>2</length>
+                    <encodingValue>2</encodingValue>
+                </extension>
+            </field>
+            <field seq="8" direction="resp" fieldType="N" dataType="M" requred="true" name="0x0e" part="Body"
+                   id="18061105-4a9e-47e9-bbb6-8247b586a419">
+                <extension>
+                    <max>20</max>
+                </extension>
+            </field>
+            <field seq="9" direction="resp" fieldType="N" dataType="I" requred="true" name="0x10" part="Body"
+                   id="7c70cd87-95f9-4ad4-9599-5c162dfd0c40">
+                <extension>
+                    <length>4</length>
+                </extension>
+            </field>
+            <field seq="10" direction="resp" fieldType="N" dataType="I" requred="true" name="0x11" part="Body"
+                   id="d2ebc399-2989-43e1-90c8-77ae6b4945b1">
+                <extension>
+                    <length>4</length>
+                </extension>
+            </field>
+            <field seq="11" direction="resp" fieldType="N" dataType="M" requred="true" name="0x12" part="Body"
+                   id="6f796cab-87fe-41c5-8aa8-bc2eb5ed2070">
+                <extension>
+                    <max>200</max>
+                </extension>
+            </field>
+            <field seq="12" direction="resp" fieldType="N" dataType="I" requred="true" name="0x04" part="Body"
+                   id="076be178-8f6e-4a75-a677-1fd60fa4e460">
+                <extension>
+                    <length>2</length>
+                </extension>
+            </field>
+            <field seq="13" direction="resp" fieldType="N" dataType="M" requred="true" name="0x08" part="Body"
+                   id="b4bd8553-5b2e-402c-b386-6d931d54d1bd">
+                <extension>
+                    <max>20</max>
+                </extension>
+            </field>
+            <field seq="14" direction="resp" fieldType="N" dataType="I" requred="true" name="0x15" part="Body"
+                   id="b4bd8553-5b2e-402c-b386-6d025d54d1bd">
+                <extension>
+                    <length>4</length>
+                </extension>
+            </field>
+        </fields>
+        <bindings>
+            <binding service="VoucherQuery" site="C" id="9adf690e-d5b2-4d79-9ed4-8a7074b9b695">
+                <state>A</state>
+                <version>1.0</version>
+                <modifier>admin</modifier>
+                <modifyDate>2012-05-04 00:00:00</modifyDate>
+                <serviceFlow/>
+                <script>
+                    <invoke>
+                        <request>$req.0x05 = $s.SESSION_ID</request>
+                        <request>$req.0x06 = $s.SUBSCRIBER_ID</request>
+                        <request>$req.0x07 = $s.VOUCHER_CARD_PASS</request>
+                        <request>$req.0x08 = $s.VOUCHER_CARD</request>
+                        <request>$req.0x09 = $s.CHARGE_MONEY</request>
+                        <request>$req.0x0d = $s.CHARGE_TYPE</request>
+                    </invoke>
+                    <exception/>
+                    <finally>
+                        <response>$s.SESSION_ID = $resp.0x05</response>
+                        <response>$s.VC_SESSION_ID = $resp.0x0e</response>
+                        <response>$s.FACE_VALUE = $resp.0x10</response>
+                        <response>$s.VALID_DAYS = $resp.0x11</response>
+                        <response>$s.MULTI_FACE_VALUE = $resp.0x12</response>
+                        <response>$s.RETN_CODE = $resp.0x04</response>
+                        <response>$s.VOUCHER_CARD = $resp.0x08</response>
+                        <response>$s.CARD_TYPE = $resp.0x15</response>
+                    </finally>
+                </script>
+            </binding>
+            <binding service="VcSimulator" site="S" id="44a6d8af-8b18-4fed-b656-d8eb9a371a90">
+                <state>A</state>
+                <version>1.0</version>
+                <modifier>zen</modifier>
+                <modifyDate>2012-02-29 00:00:00</modifyDate>
+                <serviceFlow/>
+                <script>
+                    <invoke>
+                        <request>$s.SESSION_ID = $req.0x05</request>
+                        <request>$s.SUBSCRIBER_ID = $req.0x06</request>
+                        <request>$s.VOUCHER_CARD_PASS = $req.0x07</request>
+                        <request>$s.VOUCHER_CARD = $req.0x08</request>
+                        <request>$s.CHARGE_MONEY = $req.0x09</request>
+                        <request>$s.CHARGE_TYPE = $req.0x0d</request>
+                    </invoke>
+                    <exception/>
+                    <finally>
+                        <response>$resp.0x05 = $s.SESSION_ID</response>
+                        <response>$resp.0x0e = "1"</response>
+                        <response>$resp.0x10 = "2"</response>
+                        <response>$resp.0x11 = "3"</response>
+                        <response>$resp.0x12 = "4"</response>
+                        <response>$resp.0x04 = "5"</response>
+                        <response>$resp.0x08 = "6"</response>
+                        <response>$resp.0x15 = "7"</response>
+                    </finally>
+                </script>
+            </binding>
+        </bindings>
+    </command>
+</zsmart>

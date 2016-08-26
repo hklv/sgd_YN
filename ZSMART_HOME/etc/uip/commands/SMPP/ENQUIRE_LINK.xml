@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ENQUIRE_LINK" message="SMPP" seq="26" id="4fc9b3ac-af19-4ecf-ad78-5b7906d9c6e0">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00000015</requestKey>
+        <responseKey>0X80000015</responseKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

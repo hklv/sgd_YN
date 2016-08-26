@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="UnBind" message="USSD" seq="42" id="afafd1d5-698a-40a8-b94c-7d7abefbb673">
+    <comments><![CDATA[UnBind]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-03-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000066</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

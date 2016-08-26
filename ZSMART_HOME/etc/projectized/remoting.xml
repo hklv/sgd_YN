@@ -1,0 +1,368 @@
+<remoting>
+	<servers>
+		<adapter name="license-acceptor" parent="RemotingBusiServer" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9660</port>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="jobserver-acceptor" parent="RemotingBusiServer" state="0">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9661</port>
+			</params>
+		</adapter>
+
+		<adapter name="cvbs-acceptor" parent="RemotingBusiServer" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9662</port>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="uip-acceptor" parent="Remoting" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>19980</port>
+			</params>
+		</adapter>
+	</servers>
+
+	<clients>
+		<adapter name="license-connector" parent="RemotingBusiConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9660</port>
+				<!-- 请求超时间隔，单位毫秒，缺省15000毫秒 -->
+				<!-- Request timeout interval, the unit is milliseconds and default is 15000 milliseconds -->
+				<connectorTimeout>60000</connectorTimeout>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="jobserver-connector" parent="RemotingBusiConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9661</port>
+			</params>
+		</adapter>
+
+		<adapter name="cvbs-connector" parent="RemotingBusiConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9662</port>
+			</params>
+		</adapter>
+
+		<adapter name="bp1-connector" parent="RemotingBusiConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>19999</port>
+				<!-- 请求超时间隔，单位毫秒，缺省15000毫秒 -->
+				<!-- Request timeout interval, the unit is millisecond and default is 15000 milliseconds -->
+				<connectorTimeout>60000</connectorTimeout>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="cvbs-pcrf-connector" parent="RemotingBusiConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>10.45.7.88</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9662</port>
+			</params>
+		</adapter>
+
+		<adapter name="uip-connector" parent="RemotingUipConnector" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>19980</port>
+			</params>
+		</adapter>
+
+		<adapter name="smpp-connector" parent="SmppBusiConnector" state="1">
+			<params>
+				<!-- smsc 服务端地址 -->
+				<!-- smsc server IP address -->
+				<ip>127.0.0.1</ip>
+				<!-- smsc 服务端端口 -->
+				<!-- smsc server port -->
+				<port>9140</port>
+				<!-- 客户端系统类型 -->
+				<!-- The client system type -->
+				<system_type>uip</system_type>
+				<!-- smpp 协议版本 -->
+				<!-- smpp protocol version -->
+				<interface_version>33</interface_version>
+				<!-- 缺省短信发送号码 -->
+				<!-- The default text messaging number -->
+				<source_address>0000</source_address>
+				<!-- smsc 登录用户名 -->
+				<!-- smsc server login username -->
+				<system_id>admin</system_id>
+				<!-- smsc 登录密码 -->
+				<!-- smsc server login password -->
+				<password>admin</password>
+				<!-- 语言对应短信data_coding编码映射关系lang_code=data_coding -->
+				<!-- The relationship of language encoding mapping the text message -->
+				<lang_code_mapping>2=1|8=8</lang_code_mapping>
+				<!-- 默认短消息编码方式，0：默认方式,1:ASCII方式,3：iso-8859-1,8：ucs2编码,适用于中文环境,支持汉字 -->
+				<!-- The default short message encoding type, 0:default, 1:ASCII, 3:iso-8859-1, 8:ucs2(support Chinese characters) -->
+				<data_coding>1</data_coding>
+				<!-- 短消息最大字符长度 -->
+				<!-- The maximum character length of short message -->
+				<max_sm_length>140</max_sm_length>
+				<!--心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳 -->
+				<!-- heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat -->
+				<heartBeatMode>2</heartBeatMode>
+				<!--客户端心跳间隔 -->
+				<!-- The client heartbeat interval -->
+				<HBInterval>4000</HBInterval>
+				<!-- 请求超时间隔，单位毫秒，缺省15000毫秒 -->
+				<!-- Request timeout interval, the unit is millisecond and default is 15000 milliseconds -->
+				<connectorTimeout>20000</connectorTimeout>
+				<!-- 消息日志级别，FULL；详细消息日志 SIMPLE：简单消息日志 OFF：不记录消息日志 -->
+				<!-- message log level, FULL:detail message log SIMPLE:simple message log OFF:no message log -->
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="zxos-connector" parent="WinTcpBusiClient" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>10.45.7.124</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>6098</port>
+				<![CDATA[@displayText:senderPno#@obtainType:1#@zh:发送者进程号#@en:The process id of sender]]>
+				<senderPno>158</senderPno>
+				<![CDATA[@displayText:senderUnit#@obtainType:1#@zh:发送者单元号#@en:The unit id of sender]]>
+				<senderUnit>135</senderUnit>
+				<![CDATA[@displayText:senderModule#@obtainType:1#@zh:发送者节点号，要求大于128，小于255 ，senderModule 跟  senderPostOffice 一般配置成一样#@en:The module id of sender,should be greater than 128 and less than 255,generally the same configured as senderModule and senderPostOffice. ]]>
+				<senderModule>168</senderModule>
+				<![CDATA[@displayText:senderPostOffice#@obtainType:1#@zh:发送者局号    ，要求大于128，小于255 ，senderModule 跟  senderPostOffice 一般配置成一样#@en:The postalcode of sender,should be greater than 128 and less than 255,generally the same configured as senderModule and senderPostOffice. ]]>
+				<senderPostOffice>168</senderPostOffice>
+				<![CDATA[@displayText:reciverPno#@obtainType:1#@zh: 接收者进程号映射列表。格式：进程1:事件1,事件2;进程2:事件2 , 进程之间用分号隔开，事件之间用逗号隔开。注意是半角字符#@en:The PID mapping list of receiver.like as, process 1:event 1:process 2:event 2.separated by a semicolon between processes and a comma between events. Note:use half angle characters.]]>
+				<reciverPno>1:1|123:58001|140:58011|485:58025|106:58003|108:58007,58015,58017,58019,58023|141:58012|142:58013|143:58014|160:58031
+				</reciverPno>
+				<![CDATA[@displayText:receiverUnit#@obtainType:1#@zh:接收者单元号#@en:The unit id of receiver]]>
+				<receiverUnit>0</receiverUnit>
+				<![CDATA[@displayText:receiverModule#@obtainType:1#@zh:接收者节点号，需要参考 zxos 配置#@en:The module id of receiver,need to refer zxos's configuration]]>
+				<receiverModule>136</receiverModule>
+				<![CDATA[@displayText:receiverPostOffice#@obtainType:1#@zh:接收者局号 ，需要参考 zxos 配置#@en:The postalcode of receiver,need to refer zxos's configuration]]>
+				<receiverPostOffice>176</receiverPostOffice>
+				<![CDATA[@displayText:heartBeatMode#@obtainType:2#@selectOptions:1,0,2#@zh:心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳#@en:heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat ]]>
+				<heartBeatMode>1</heartBeatMode>
+				<![CDATA[@displayText:HBInterval#@obtainType:1#@zh:客户端心跳间隔#@en:The client heartbeat interval.]]>
+				<HBInterval>3000</HBInterval>
+				<![CDATA[@displayText:request timeout#@obtainType:1#@zh:请求超时间隔，单位毫秒，缺省15000毫秒#@en:Request timeout interval, the unit is millisecond and the default is 15000 milliseconds.]]>
+				<connectorTimeout>25000</connectorTimeout>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="bmc-connector" parent="WinTcpBusiClient" state="1">
+			<params>
+				<ip>10.45.7.92</ip>
+				<port>6098</port>
+				<senderPno>157</senderPno>
+				<senderUnit>135</senderUnit>
+				<senderModule>150</senderModule>
+				<senderPostOffice>150</senderPostOffice>
+				<reciverPno>1:1|123:58001|140:58011|106:58003|108:58007,58015,58017,58019,58023|141:58012|142:58013|143:58014|160:58031
+				</reciverPno>
+				<receiverUnit>0</receiverUnit>
+				<receiverModule>136</receiverModule>
+				<receiverPostOffice>176</receiverPostOffice>
+				<!--心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳 -->
+				<!-- heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat -->
+				<heartBeatMode>1</heartBeatMode>
+				<!--客户端心跳间隔 -->
+				<!-- The client heartbeat interval -->
+				<HBInterval>3000</HBInterval>
+				<!-- 消息日志级别，FULL；详细消息日志 SIMPLE：简单消息日志 OFF：不记录消息日志 -->
+				<!-- message log level, FULL:detail message log SIMPLE:simple message log OFF:no message log -->
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="zxosCollect-connector" parent="WinTcpCollectClient" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>10.45.7.5</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>6008</port>
+				<![CDATA[@displayText:heartBeatMode#@obtainType:2#@selectOptions:1,0,2#@zh:心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳#@en:heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat ]]>
+				<heartBeatMode>1</heartBeatMode>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+
+				<senderPno>143</senderPno>
+				<senderModule>140</senderModule>
+				<senderPostOffice>170</senderPostOffice>
+			</params>
+		</adapter>
+
+		<adapter name="billingHostZxos-connector" parent="WinTcpBusiClient" state="1">
+			<params>
+				<name>BillingHost-01</name>
+				<ip>10.45.7.88</ip>
+				<port>5026</port>
+				<sendTryTimes>1</sendTryTimes>
+				<!-- callTimeOut>300000</callTimeOut-->
+				<sendQueueMaxSize>100</sendQueueMaxSize>
+				<msgRevMaxSize>100</msgRevMaxSize>
+				<headerLength>29</headerLength>
+				<senderPno>131</senderPno>
+				<senderUnit>131</senderUnit>
+				<senderModule>134</senderModule>
+				<senderPostOffice>136</senderPostOffice>
+				<reciverPno>220:65003,65005,65007,65009,65015,65017</reciverPno>
+				<receiverUnit>0</receiverUnit>
+				<receiverModule>136</receiverModule>
+				<receiverPostOffice>178</receiverPostOffice>
+				<!--心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳 -->
+				<!-- heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat -->
+				<heartBeatMode>1</heartBeatMode>
+				<!--客户端心跳间隔 -->
+				<!-- The client heartbeat interval -->
+				<HBInterval>3000</HBInterval>
+				<!-- 消息日志级别，FULL；详细消息日志 SIMPLE：简单消息日志 OFF：不记录消息日志 -->
+				<!-- message log level, FULL:detail message log SIMPLE:simple message log OFF:no message log -->
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="billingHostZxos1-connector" parent="WinTcpBusiClient" state="1">
+			<params>
+			  <name>BillingHost-01</name>
+				<ip>10.45.4.114</ip>
+				<port>6380</port>
+				<sendTryTimes>1</sendTryTimes>
+				<!--callTimeOut>300000</callTimeOut-->
+				<connectorTimeout>20000</connectorTimeout>
+				<sendQueueMaxSize>100</sendQueueMaxSize>
+				<msgRevMaxSize>100</msgRevMaxSize>
+				<headerLength>29</headerLength>
+				<senderPno>131</senderPno>
+				<senderUnit>131</senderUnit>
+				<senderModule>134</senderModule>
+				<senderPostOffice>136</senderPostOffice>
+				<reciverPno>220:65003,65005,65007,65009,65015,65017</reciverPno>
+				<receiverUnit>0</receiverUnit>
+				<receiverModule>149</receiverModule>
+				<receiverPostOffice>179</receiverPostOffice>
+				<!--心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳 -->
+				<!-- heartbeat model. 1:The client send heartbeat, 0:The server send heartbeat, 2: will not send heartbeat -->
+				<heartBeatMode>1</heartBeatMode>
+				<!--客户端心跳间隔 -->
+				<!-- The client heartbeat interval -->
+				<HBInterval>3000</HBInterval>
+				<!-- 消息日志级别，FULL；详细消息日志 SIMPLE：简单消息日志 OFF：不记录消息日志 -->
+				<!-- message log level, FULL:detail message log SIMPLE:simple message log OFF:no message log -->
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="pcrf-connector" parent="WinTcpBusiClient" state="1">
+			<params>
+				<ip>10.45.7.43</ip>
+				<port>5013</port>
+				<senderPno>157</senderPno>
+				<senderUnit>135</senderUnit>
+				<senderModule>150</senderModule>
+				<senderPostOffice>149</senderPostOffice>
+				<reciverPno>1:1|123:58033</reciverPno>
+				<receiverUnit>0</receiverUnit>
+				<receiverModule>179</receiverModule>
+				<receiverPostOffice>13</receiverPostOffice>
+				<!--心跳模式 1：客户端发心跳 0：服务端发心跳 2：不发心跳 -->
+				<heartBeatMode>1</heartBeatMode>
+				<!--客户端心跳间隔 -->
+				<HBInterval>3000</HBInterval>
+				<isWriteMsgLog>true</isWriteMsgLog>
+			</params>
+		</adapter>
+
+		<adapter name="MMLBusiClient" parent="MMLBusiClient" state="1">
+			<params>
+				<![CDATA[@displayText:ip#@obtainType:1]]>
+				<ip>127.0.0.1</ip>
+				<![CDATA[@displayText:port#@obtainType:1]]>
+				<port>9901</port>
+				<![CDATA[@displayText:user#@obtainType:1#@zh:mml登录用户名#@en:mml login username]]>
+				<user>super</user>
+				<![CDATA[@displayText:pswd#@obtainType:1#@zh:mml密码#@en:mml login password]]>
+				<pswd>1</pswd>
+				<![CDATA[@displayText:writeMsgLogLevel#@obtainType:2#@selectOptions:FULL,SIMPLE,OFF#@zh:消息日志级别#@en:write message level]]>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="HttpUCIPClient" parent="HTTPClient" state="1">
+			<params>
+				<server>http://127.0.0.1:8080/</server>
+				<!--
+				<protocol>HttpUCIP</protocol>
+				<userAgent>zsmart/5.1/1</userAgent>
+				<user>abc</user>
+				<password>pass</password>
+				<isWriteMsgLog>true</isWriteMsgLog>
+				-->
+				<!--
+				<protocol>HttpCommon</protocol>
+				 -->
+				<protocol>HttpUCIP</protocol>
+				<userAgent>zsmart/5.1/1</userAgent>
+				<user>abc</user>
+				<password>pass</password>
+				<writeMsgLogLevel>FULL</writeMsgLogLevel>
+			</params>
+		</adapter>
+
+		<adapter name="AccountWebServiceClient" parent="WebServiceClient" state="1">
+			<params>
+				<server>http://127.0.0.1:8080/</server>
+				<protocol>ACCOUNT</protocol>
+				<!-- soap协议版本，确实是 1 , 0: http, 1: soap1.0 , 2:soap1.2 , -->
+				<!-- soap protocol version, 0: http, 1: soap1.0 , 2:soap1.2 , -->
+				<soapVersion>2</soapVersion>
+			</params>
+		</adapter>
+
+
+		<adapter name="httpClientCallV7" parent="HttpRemotingClient" state="1">
+            <params>
+                <!-- ip地址 -->
+                <server>http://localhost:8889/mock-V7BusifacadeServlet/callRemotingService.do</server>
+            </params>
+        </adapter>
+
+	</clients>
+</remoting>

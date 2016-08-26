@@ -1,0 +1,99 @@
+<form class="form-horizontal clearfix log__form js-form">
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                流程单编号
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <input type="text" NAME="HOLDER_NO" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                流程类型
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <div class="input-group">
+                    <input type="text" NAME="PROC_DEF_TYPE_ID" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                流程名称
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <input type="text" NAME="PROCESS_NAME" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                任务状态
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <input type="text" name="TASK_STATE" id="taskStatusCombox" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                任务名称
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <input type="text" NAME="TASK_NAME" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                流程单状态
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <input type="text" name="HOLDER_STATE" id="processStatusCombox" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                开始时间
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <div class="input-group">
+                    <input name="FROM_DATE" class="form-control js-begin-login-date" type="text" data-rule="开始时间:match[lt, TO_DATE, date];">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label">
+                结束时间
+            </label>
+            <div class="col-md-8 col-sm-8">
+                <div class="input-group">
+                    <input name="TO_DATE" class="form-control js-end-login-date" type="text" data-rule="结束时间:match[gt, FROM_DATE, date];">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 ">
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4">
+                <input type="button" class="btn btn_minwidth btn-primary js-query" value="查询" />
+                <button type="reset" class="btn btn_minwidth btn-default">重置</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="grid_container">
+    <div class="grid js-data-grid" id="js-data-grid"></div>
+</div>

@@ -1,0 +1,114 @@
+div#detailDiv {
+	width: 100%;
+	/*margin-top: 2px;*/
+}
+div#divOrgTree{
+	width:98%;
+	height:280px;	
+	margin-bottom:10px;
+	overflow-x:auto;
+	overflow-y:auto;
+}
+div#tbStaffContainer{
+	 
+	height:161px;		
+	/*overflow-x:auto;*/
+	overflow-y:auto;
+
+}
+
+
+div#leftPart{
+	float:left;	
+	width:28%;
+}
+div#rightPart{
+	float:right; 
+	width:70%;
+}
+div#divOrgDetail{
+	/* margin-bottom:2px*/
+}
+div#divStaffDetail{
+	/* margin-bottom:2px*/
+}
+
+td#orgBtnTd{	
+	height:22px;
+}
+td.orgBtnTd{	
+	height:22px;
+}
+
+td#staffBtnTd{
+	height:22px;
+	
+}
+
+
+span#applyTo{
+	float:right;		
+}
+div#adviceTypeContainer{
+	width:100%;
+	height:300px;
+}
+div#bottomPart{
+	width:100%;
+}
+th#th1{
+	width:10%;
+}
+th#th2{
+	width:18%;
+}
+th#th3{
+	width:18%;
+}
+th#th4{
+	width:18%;
+}
+th#th5{
+	width:11%;
+}
+th#th6{
+	width:18%;
+}
+th#th7{
+	width:2%;
+}
+
+th#th11{
+	width:15%;
+}
+th#th22{
+	width:35%;
+}
+
+textarea#contactCommentsText{
+	border:1px solid #939185;
+	width:100%;
+	 height:35px;
+}
+
+textarea#commisionRuleText{
+	border:1px solid #939185;
+	width:100%;
+	 height:35px;
+}
+
+textarea#txtComments{
+	border:1px solid #939185;
+	width:100%;
+	 height:80px;
+}
+.datepk{
+	width:100%;
+}
+
+text#companyNameQuery {
+	width:120px;
+}
+text#staffCodeQuery{
+	width:120px;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="remoting" message="HttpBinary" seq="2" id="aa7359cb-7889-49f1-a467-b840e8a56c5f">
+    <comments><![CDATA[remotingService]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-06-26 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>/remotingService.do</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

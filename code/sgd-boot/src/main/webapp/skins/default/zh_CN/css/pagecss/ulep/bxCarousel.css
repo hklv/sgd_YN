@@ -1,0 +1,8 @@
+ul{margin:0;padding:0;}
+.bx_wrap_demo{width: 660px;height: 175px;margin-left: 20px;clear: both;position: relative;border:1px solid #d3d3d3;float:left}
+.bx_wrap {margin-left: 15px; margin-top:5px}
+.bx_wrap ul img { border: 2px solid #ddd; }
+.bx_wrap ul li{text-align:center;width:140px;}
+.bx_wrap ul li a:hover{text-decoration:none; color:#f30}
+.bx_wrap a.prev {width:20px;height:24px;line-height:24px;outline-style:none;outline-width: 0;position:absolute; top:45px; left:-2px; text-indent:-999em; background: url(arr_left.gif) no-repeat;}
+.bx_wrap a.next {width:20px;height:24px;line-height:24px; left:626px;position: absolute;top:45px; text-indent:-999em; background:url(arr_right.gif) no-repeat;}

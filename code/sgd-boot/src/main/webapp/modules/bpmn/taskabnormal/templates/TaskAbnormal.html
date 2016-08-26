@@ -1,0 +1,71 @@
+<div class="panel panel_shadow js-panel">
+    <form class="form-horizontal clearfix js-form">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	流程单编号
+                </label>
+                <div class="col-md-8">
+                    <input name="HOLDER_NO" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+                <label class="col-md-4 col-sm-4 control-label">
+                    流程类型
+                </label>
+                <div class="col-md-8 col-sm-8">
+                    <div class="input-group">
+                        <input type="text" NAME="PROC_DEF_TYPE_ID" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                    任务名称
+                </label>
+                <div class="col-md-8">
+                    <input type="text" NAME="TASK_NAME" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	开始时间
+                </label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input name="START_TIME" class="form-control js-begin-login-date" type="text" data-rule="开始时间:match[lt, END_TIME, date];">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	结束时间
+                </label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input name="END_TIME" class="form-control js-end-login-date" type="text" data-rule="结束时间:match[gt, START_TIME, date];">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <input type="button" class="btn btn_minwidth btn-primary js-query" value="{{COMMON_QUERY}}" />
+                    <input type="reset" class="btn btn_minwidth btn-default" value="{{COMMON_RESET}}" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="grid_container">
+    <div class="grid js-law-grid"></div>
+</div>

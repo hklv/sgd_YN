@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <rule name="UssdCommandStatus" id="553ab410-5fec-4f81-abaa-67532b8bf470">
+    <comments><![CDATA[Ussd异常码与CommandStatus的映射关系]]></comments>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-06-18 00:00:00</modifyDate>
+    <kvlist>
+      <kv key="0" value="0" isResource="false"/>
+      <kv key="S-LOGIN-1001" value="5001" isResource="false"/>
+      <kv key="S-LOGIN-1002" value="5002" isResource="false"/>
+    </kvlist>
+    <extension>
+      <default>0</default>
+    </extension>
+  </rule>
+</zsmart>

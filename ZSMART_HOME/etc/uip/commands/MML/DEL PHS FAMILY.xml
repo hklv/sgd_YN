@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DEL PHS FAMILY" message="MML" seq="59" id="ac6ad145-489b-4141-8834-289d9d3ab756">
+    <comments><![CDATA[删除亲情号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-16 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DEL PHS FAMILY</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="fd1cccae-d4b8-40df-9237-d3687d9d35ba">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="978cf4be-8473-4a9b-9e64-9b9bbb5eae44">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="FAMILYNUM" part="Business" id="a8dc04f3-0c8d-4d7e-9111-e603f14b5779">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="FELLOWTYPE" part="Business" id="3c826b04-3492-415d-a6e6-48a792e09a63">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="d4652cf0-3a51-4134-bb12-bbd155796249">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="a71c2c77-d08a-4745-b475-fc1902bf11f5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DelFamily" site="S" id="395a5505-6b2a-4809-8058-5e3d91eaec8c">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-16 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.FAMILYNUM = $req.FAMILYNUM</request>
+            <request>$s.FELLOWTYPE = $req.FELLOWTYPE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

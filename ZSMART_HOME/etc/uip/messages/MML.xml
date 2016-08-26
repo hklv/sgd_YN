@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="MML" type="B">
+    <comments><![CDATA[MML Testing]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2011-11-22 00:00:00</modifyDate>
+    <extension>
+      <beginFlag><![CDATA[$cur.msgBeginFlag]]></beginFlag>
+      <length><![CDATA[$cur.totalLen+16]]></length>
+      <sessionField>sessionId</sessionField>
+      <transactionField>transId</transactionField>
+      <login>LOGIN</login>
+      <logout>LOGOUT</logout>
+      <linkCheck>HBHB</linkCheck>
+      <sessionPerChannel>32</sessionPerChannel>
+      <class>com.ztesoft.zsmart.uip.adapters.message.MMLMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByCommandField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="88fdba99-4505-43dd-b383-68df535401e0">
+        <extension>
+          <comments><![CDATA[MML Header]]></comments>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="true" name="msgBeginFlag" part="Header" id="ab10ded6-aa9e-4cd3-b68f-c07957aa48ba">
+            <extension>
+              <length>4</length>
+              <encodingValue>"`SC`"</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="H" requred="false" name="totalLen" part="Header" id="6cafae72-152f-42cf-8538-e6c2523dbb5a">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength-16</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="2" type="B" name="BodyHeader" id="04a27819-539c-421f-8c74-06ceedcbbe49">
+        <extension>
+          <comments><![CDATA[MML Header]]></comments>
+          <decodeSelector><![CDATA[$cur.totalLen>4]]></decodeSelector>
+          <encodeSelector><![CDATA[$cur.v.command != 'HBHB']]></encodeSelector>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="false" name="version" part="BodyHeader" id="23a9d1b9-a4e6-4a65-8adb-e12808f79498">
+            <extension>
+              <length>4</length>
+              <encodingValue>"1.00"</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="S" requred="false" name="terminal" part="BodyHeader" id="e0426527-ab62-44df-bd98-96f6e9551166">
+            <extension>
+              <length>8</length>
+              <encodingValue>"CCB00000"</encodingValue>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="S" requred="false" name="serviceName" part="BodyHeader" id="3fa82b0a-21c1-42ee-bb22-69b40da3e085">
+            <extension>
+              <length>8</length>
+              <encodingValue>"PPSPHS  "</encodingValue>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="H" requred="false" name="sessionId" part="BodyHeader" id="0c60b2a1-ee96-40c3-b433-7de4ca8c5af6">
+            <extension>
+              <length>8</length>
+            </extension>
+          </field>
+          <field seq="5" direction="both" fieldType="N" dataType="S" requred="false" name="sessionControl" part="BodyHeader" id="8ec506a1-8eeb-401a-88c5-49e768bb38e1">
+            <extension>
+              <length>6</length>
+              <encodingValue>$cur.v.command == 'LOGIN' ? 'DLGLGN' : 'DLGCON'</encodingValue>
+            </extension>
+          </field>
+          <field seq="6" direction="both" fieldType="N" dataType="S" requred="false" name="sessionRemain" part="BodyHeader" id="36f483cc-7edd-44f7-915e-e51b78eae00c">
+            <extension>
+              <length>4</length>
+              <encodingValue>"FFFF"</encodingValue>
+            </extension>
+          </field>
+          <field seq="7" direction="both" fieldType="N" dataType="H" requred="true" name="transId" part="BodyHeader" id="270ffc64-7bfa-460b-b266-13f78ad8a96a">
+            <extension>
+              <length>8</length>
+              <encodingValue>getMMLTransactionId($cur)</encodingValue>
+            </extension>
+          </field>
+          <field seq="8" direction="both" fieldType="N" dataType="S" requred="true" name="transControl" part="BodyHeader" id="01f75874-24ed-4045-becf-c50a1d6bc053">
+            <extension>
+              <length>6</length>
+              <encodingValue>"TXBEG "</encodingValue>
+              <align>R</align>
+              <pad>0</pad>
+            </extension>
+          </field>
+          <field seq="9" direction="both" fieldType="N" dataType="S" requred="true" name="transRemain" part="BodyHeader" id="f2a3dfb6-b892-42ec-8850-c8cda757b51b">
+            <extension>
+              <length>4</length>
+              <encodingValue>"FFFF"</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="3" type="B" name="Business" id="6c1fbb1d-a860-46f3-9698-6ea6bc2daae1">
+        <extension>
+          <comments><![CDATA[MML Business Body]]></comments>
+          <length>$cur.totalLen-56</length>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+      <part seq="5" type="T" name="Tailer" id="eff05f2b-bd5c-4f1c-9407-619ce9a83e34">
+        <extension>
+          <comments><![CDATA[MML Tail]]></comments>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="false" name="checkSum" part="Tailer" id="289d6f84-d0cc-462f-b007-abe96ff11c76">
+            <extension>
+              <length>8</length>
+              <encodingValue>getMMLCheckSum($cur)</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+    </parts>
+  </message>
+</zsmart>

@@ -1,0 +1,677 @@
+@CHARSET "UTF-8";
+
+body {
+	background: #ffffff;
+	margin: 0;
+	overflow: hidden;
+	background: url(../../img/portal2/bodybg.png) center 0 no-repeat;
+}
+
+.clear {
+	clear: both;
+}
+
+.clear-left {
+	clear: left;
+}
+
+.clear-right {
+	clear: right;
+}
+/*************head**************************************/
+.head {
+	width: auto;
+	margin: 0 auto;
+	height: 84px;
+}
+
+.logo {
+	background: url(../../img/common/logo-uboss.png) no-repeat top center;
+	float: left;
+	width: 300px;
+	height: 50px;
+	margin: 20px 0 0 5px;
+}
+
+.nav-menu {
+	margin: 0px 2px 0px 2px;
+	display: none;
+	height: 84px;
+	float: right;
+	overflow: hidden;
+	float: right;
+}
+
+.separator {
+	background: url("../../img/portal2/separator.png") no-repeat 0px 0px;
+	margin: 10px 5px 0px 5px;
+	width: 2px;
+	height: 52px;
+	float: right;
+}
+
+.head-right {
+	float: right;
+	margin-top: 25px;
+	width: 160px;
+}
+
+.head-right div {
+	margin-left: 2px;
+}
+
+.dock-item {
+	height: 32px;
+	width: 32px;
+	background-repeat: none;
+	background-position: 0 0;
+	margin: 0px 5px 0px 0px;
+	display: block;
+	float: left;
+	outline: none;
+	cursor: pointer;
+}
+
+.dock-home {
+	background: url(../../img/newui/dock/home.png) no-repeat top center;
+}
+
+.dock-refresh {
+	background: url(../../img/newui/dock/shuaxin.png) no-repeat top center;
+}
+
+.doc-setting {
+	background: url(../../img/newui/dock/shezhi.png) no-repeat top center;
+}
+
+.dock-logout {
+	background: url(../../img/newui/dock/tuichu.png) no-repeat top center;
+}
+/*************end head**************************************/
+
+/********************nav-menu promptu-menu*******************************/
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a,img {
+	border: 0;
+}
+
+.nav_window {
+	cursor: move;
+	background: none;
+	position: relative;
+	margin-top: 5px
+}
+
+.nav_nav {
+	z-index: 1000;
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	margin-right: -50%;
+}
+
+.nav_nav a {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	outline: none;
+	background: url(../../img/portal2/pagelink-blue.png) 0 -20px no-repeat;
+	display: block;
+	float: left;
+	position: relative;
+	left: -50%;
+	margin: 0 2px;
+}
+
+.nav_nav a.active {
+	background-position: 0 0;
+}
+
+.nav-img {
+	width: 100%;
+	height: 100%;
+	margin-top: 5px;
+}
+
+.nav-img li {
+	width: 64px;
+	height: 90px;
+	float: left;
+	margin: 2px 5px 0px 5px;
+	display: block;
+	text-align: center;
+	text-shadow: 0px 1px 2px #333;
+}
+
+.nav-img li:hover {
+	cursor: pointer;
+	background: url(../../img/portal2/m.png) center 0px no-repeat;
+}
+
+.nav-img li.active {
+	cursor: pointer;
+	background: url(../../img/portal2/m.png) center 0px no-repeat;
+}
+
+.nav-img li div {
+	line-height: 18px;
+	color: #FFFFFF;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden
+}
+
+.nav-img li:hover div {
+	line-height: 18px;
+	color: blue;
+}
+
+.nav-img li.active div {
+	line-height: 18px;
+	color: blue;
+}
+
+.nav-img li .img-div {
+	padding-top: 53px;
+	background: url(../../img/portal2/m.png) center 0px no-repeat;
+}
+
+.nav-img li img {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 3px;
+}
+
+/*******************end nav-menu promptu-menu**************************************/
+/************moreoption**************************************/
+.moreoption {
+	padding: 8px 6px 2px 2px;
+	border: 1px solid rgb(172, 172, 172);
+	top: 54px;
+	right: 20px;
+	display: none;
+	filter: alpha(opacity =               90);
+	position: absolute;
+	z-index: 3;
+	opacity: 0.9;
+	background-color: rgb(255, 255, 255);
+}
+
+.moreoption dl {
+	width: 100%;
+	overflow: hidden;
+	display: block;
+}
+
+.moreoption dl div {
+	width: 32px;
+	height: 32px;
+	margin: 0px;
+	float: left;
+}
+
+.moreoption a {
+	background-position: 6px;
+	width: 100%;
+	height: 25px;
+	color: rgb(0, 51, 204);
+	line-height: 25px;
+	font-size: 13px;
+	border-bottom-color: rgb(172, 172, 172);
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	display: block;
+	background-repeat: no-repeat;
+}
+
+.moreoption a:hover {
+	color: rgb(51, 51, 51);
+	text-decoration: none;
+	background-color: rgb(226, 226, 226);
+}
+
+.moreoption dt {
+	margin: 0px;
+}
+
+.moreoption dt a { /* text-indent: 12px; */
+	
+}
+
+.moreoption dd {
+	margin-left: 34px;
+}
+
+.moreoption dd a {
+	text-indent: 12px;
+	font-size: 12px;
+	background-image: none;
+	background-image: url("../../img/portal2/jt1.gif");
+}
+
+.dock-keyChange {
+	background: url(../../img/newui/dock/icon_reset_pwd.png) no-repeat;
+}
+
+.dock-changeCss {
+	background: url(../../img/newui/dock/icon_change_skin.png) no-repeat;
+}
+
+.dock-changePortal {
+	background: url(../../img/newui/dock/icon_change_portal.png) no-repeat;
+}
+
+/*************end moreoption**************************************/
+
+/*****************portal_content***********************/
+.portal_content {
+	clear: both;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0px 0px 2px 0px;
+}
+/*****************end portal_content***********************/
+
+/**********leftPart************/
+#leftPart { 
+	float: left;
+	background: #f3fafc;
+	width: 200px;
+	height: 100%;
+}
+
+/* 标准盒模型 */
+.ctt {
+	height: auto;
+	padding: 0px;
+	clear: both;
+	border-top: 0;
+	text-align: left;
+	width: 100%;
+}
+/* TAB 切换效果 */
+.tb_ {
+	width: 100%;
+	background: url(../../img/portal2/leftmenutopbg.jpg) 0 0 repeat-x;
+}
+
+.tb_ ul {
+	height: 34px;
+}
+
+.tb_ li {
+	float: left;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+	width: ;
+	padding: 0 4px 0 4px;
+	cursor: pointer;
+	color: #fff;
+	text-shadow: 0px 1px 1px #444;
+	border-right: 1px solid #1B91D3;
+}
+
+.tb_ li img {
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 3px;
+}
+
+.left-loginInfo {
+	margin-top: 16px;
+	width: 16px;
+	height: 16px;
+	background: url(../../img/portal2/admin.png) 0 0 repeat-x;
+	width: 16px;
+}
+
+.left_root_menu {
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden
+}
+.left_root_menu img{
+	width:20px;
+	height:17px;
+	}
+/* 控制显示与隐藏css类 */
+.normaltab {
+	
+}
+
+.hovertab {
+	background: url(../../img/portal2/leftmenubghover.jpg) 0 0 repeat-x;
+}
+
+.dis {
+	display: block;
+}
+
+.undis {
+	display: none;
+	width: 100%;
+}
+
+.easyshuxing {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x:hidden;
+}
+
+.easyshuxing li {
+	display: block;
+	line-height: 30px;
+	background: url(../../img/portal2/leftmenubg.png) 0 0 no-repeat;
+	width: 100%;
+	float: left;
+	padding-left: 2px;
+	font-weight: bold;
+	color: #666;
+	cursor: pointer;
+}
+
+.easyshuxing li div.left {
+	display: block;
+	color: #666;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	
+}
+
+.easyshuxing li div.left img.icon {
+	margin: 8px 2px 0px 2px;
+	float: left;
+	width:20px;
+	height:17px;
+}
+.easyshuxing li div.left dl {
+}
+.easyshuxing li div.right {
+	float: right;
+}
+
+.easyshuxing li div.right img.smallicon_url {
+	margin: 10px 3px 0px 2px;
+	width: 16px;
+	height: 16px;
+}
+
+.easyshuxing li a:hover {
+	color: #06c;
+}
+
+.easyshuxing div.content_list { /* background: rgb(242, 242, 242); */
+	margin: 0px;
+	width: 100%;
+	float: left;
+}
+
+.easyshuxing div.content_list span {
+	/* background: url("../../img/portal2/menuxxbg_list.png") repeat-x 0px 0px; */
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	margin: 5px 0 0 18px;
+	width: 100%;
+	line-height: 25px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	color: rgb(97, 97, 97);
+}
+
+.easyshuxing div.content_list span a {
+	text-decoration: none;
+}
+
+.easyshuxing div.content_list span a img {
+	width: 20px;
+	height: 17px;
+	margin: 2px 3px 0px 0px;
+	
+	float: left;
+	display: block;
+}
+
+.easyshuxing div.content_list span a em {
+	margin-top: 15px;
+}
+
+/********end leftPart*************************/
+._iframeBodyCover {
+	padding: 0px;
+	border: 0px currentColor;
+	top: 54px;
+	width: 150px;
+	right: 20px;
+	filter: alpha(opacity =               0);
+	position: absolute;
+	z-index: 2;
+}
+
+.rightPart {
+	
+}
+
+#divTabHeader {
+	width: 100%;
+}
+
+div.max {
+	width: 100%;
+	height: 100%;
+}
+
+.tdTabsRight {
+	width: 100%;
+	height: 25px;
+	border-bottom: 2px solid #d5d5d5;
+}
+
+/*********************************tabs*****************************************/
+.tabs {
+	width:100%;
+}
+
+.tabs div.tabScroll {
+	float: left;
+	width: 100%;
+}
+
+.tabs div.tabOwner {
+	overflow: hidden;
+	width: 300px;
+	
+}
+
+.tabs div.leftMore {
+	width: 20px;
+	float: left;
+	/*	margin:						6px 0 0 0 !important;*/
+	display: none;
+}
+
+.tabs div.leftMore a {
+	background: url(../../img/newui/tabs/tab_arrow_left.png) no-repeat 0px
+		-27px;
+	display: block;
+	height: 27px;
+	line-height: 27px;
+}
+
+.tabs div.leftMore a:hover {
+	background-position: 0px 0px;
+}
+
+.tabs div.leftMore a:active {
+	background-position: 0px -27px;
+}
+
+.tabs div.rightMore {
+	width: 20px;
+	float: left;
+	/*	margin:						6px 0 0 0 !important;*/
+	display: none;
+}
+
+.tabs div.rightMore a {
+	background: url(../../img/newui/tabs/tab_arrow_right.png) no-repeat 0px
+		-27px;
+	display: block;
+	height: 27px;
+	line-height: 27px;
+}
+
+.tabs div.rightMore a:hover {
+	background-position: 0px 0px;
+}
+
+.tabs div.rightMore a:active {
+	background-position: 0px -27px;
+}
+
+.tabs ul {
+	list-style: none;
+	width: 10000px;
+	padding-left:5px;
+}
+
+.tabs li {
+	float: left;
+	text-indent: 0px;
+	padding: 0px 5px 0px 5px;
+	list-style-image: none !important;
+	height: 27px;
+	line-height: 27px;
+	clear: right;
+	list-style-type: none;	
+	display: inline;
+}
+
+.tabs li a {
+	float: left;
+	font-size: 12px;
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	color: #525252;
+	margin-top: 1px;
+	overflow: hidden;
+	white-space: nowarp;
+	font-family: Arial;
+	zoom: 1;
+}
+.tabs li a div.titleCenter {
+	background: url(../../img/portal2/titleleftbg.png) no-repeat 0px 0;
+	float: left;
+	cursor: pointer;
+	padding-left:8px;
+}
+.tabs li a div.close {
+	width: 0px;
+	height: 11px;
+	/* background: url(../../img/portal2/closeOut.png) no-repeat 0 0; */
+	cursor: pointer;
+	margin-top: 9px;
+	float: right;
+}
+
+.tabs li a div.tail {
+	width: 8px;
+	height: 27px;
+	background: url(../../img/portal2/titlerightbg.png) right 0 no-repeat;
+	float: left;
+}
+
+.tabs li a:active, .tabs li a:hover,.tabs li.current a{
+	margin-top: 3px;
+}
+
+.tabs li a:active div.close,.tabs li a:hover div.close,.tabs li.current a div.close{
+	
+	width: 11px;
+	height: 11px;
+	background: url(../../img/portal2/closeOver.png) no-repeat 0 0;
+	cursor: pointer;
+	margin-top: 9px;
+	float: right;
+}
+.right_toggle_span{
+	width: 20px;
+	height: 20px;
+	background: url(../../img/newui/header/updn.png) no-repeat
+		0px 0px;
+	cursor: pointer;
+	position:fixed; 
+    right:15px; 
+    top:90px;  
+    z-index:100;
+	margin-right:5px;
+	}
+.right_toggle_span_open{
+	width: 20px;
+	height: 20px;
+	background: url(../../img/newui/header/updn.png) no-repeat
+		0px -24px;
+	cursor: pointer;
+	position:fixed; 
+    right:15px; 
+    top:5px;  
+    z-index:100;
+	}	
+div.panes {
+	height: 100%;
+	width: 100% padding-top :                   10px;
+	background: #ffffff;
+}
+
+div.panes div.pane {
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+div.pane body {
+	padding: 5px;
+	border: 1px solid #d5d5d5;
+}
+
+.foot-content {
+	width: 100%;
+	height: 18px;
+	margin-top: 0px;
+	padding-top: 3px;
+	position:fixed; 
+    left:0px; 
+    bottom:0px;  
+    z-index:100;
+	background: url(../../img/portal/foot.gif) repeat-x;
+	text-align: center;
+	color: #61446e;
+	font: 12px Arial;
+	text-transform: capitalize;
+}
+/******************************foot***************************/
+.foot-content .copyright { /* text-transform: uppercase; */
+	
+}
+
+.foot-content a {
+	color: #61446e;
+}
+
+.foot-content a:hover {
+	text-decoration: underline;
+}
+/******************************end foot***************************/

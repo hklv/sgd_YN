@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+	<strategylist>
+	
+		<strategy class="com.ztesoft.zsmart.core.log.strategy.impl.DecorateStrategy">
+			<!-- 是否记录源码文件、代码行数等，配置为 false 禁用此功能，但能优化性能（性能优化比较高）-->
+			<!--whether record source file,line numbers,false:forbid this function,but can promote performance-->
+			<logCodeDetail>false</logCodeDetail>
+			<!-- 对如下级别的日志记录源码文件、代码行数等，此级别以上的日志将忽略  logCodeDetail-->
+			<!--this level or over will ignore configured logCodeDetail value,log will record source file ,line numbers... -->
+			<level>WARN</level>
+		</strategy>
+		
+		<strategy class="com.ztesoft.zsmart.core.log.strategy.impl.ErrorStatisticsStrategy">
+			<!-- 需要错误统计的日志级别 -->
+			<!--error statistics log level-->
+			<level>WARN</level>
+			<!-- 如下模块的日志不会统计 -->
+			<!--the following module log don't be statistical-->
+			<exclude>
+				<logger>com.ztesoft.zsmart.core.service.interceptor.CatchServiceExceptionInterceptor</logger>
+				<logger>com.ztesoft.zsmart.core.service.interceptor.LoggingServiceInterceptor</logger>
+				<logger>com.ztesoft.zsmart.web.handler.WebHandler</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.smpp.SMPPAdapter</logger>
+				<logger>com.ztesoft.zsmart.core.jdbc.trc.SqlLogCortroller</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.dispatch.AbsDispatch</logger>
+				<logger>com.ztesoft.zsmart.core.service.QueryService</logger>
+			</exclude>
+			<cache>
+				<!-- 用于进行错误统计的缓存的最大值 -->
+				<!--max cache size used for error statistics-->
+				<capcity>5000</capcity>			
+				<!-- 存放统计信息的时间单位，单位秒 -->
+				<!--statistic information time unit, unit:second-->
+				<unit>2</unit>
+				<!-- 统计信息的有效存放时间，单位秒 -->
+				<!--statistic information valid date,unit:second -->
+				<interval>20</interval>
+			</cache>
+		</strategy>
+		
+		<strategy class="com.ztesoft.zsmart.core.log.strategy.impl.NetManagerStrategy">
+		
+			<!-- 发生内存泄漏或者连接池泄漏错误时候生成一个告警文件 -->
+			<!--when occur out of memory error or connection leak error will create a alert file-->
+			<alertToFile>
+				<!-- 内存泄漏错误次数超过这个值将写入文件 ，缺省 1-->
+				<!--out of memory error times exceed this value will write file ,default :1-->
+				<OOMTimes>1</OOMTimes>
+				<!--连接池泄漏错误次数超过这个值将写入文件，缺省 3 -->
+				<!--connection leak error times exceed this value will write file ,default:3-->
+				<connLeakTimes>3</connLeakTimes>
+				<!-- 文件名 ，此文件启动时候将被自动删除-->
+				<!--file name ,this file will delete on startup-->
+				<fileName>fataAlertFile.alert</fileName>
+			</alertToFile>	
+			
+			<!--在 alertInterval 指定的时间间隔内，相同一个错误只告警3次左右，单位秒，建议 300-->
+			<!--One error only alert three times at alertinterval designated time interval . unit : second,advise:300-->	
+			<alertInterval>300</alertInterval>
+
+			<!-- 一个异常连续出现次数超过这个值将会被网管告警，数据库异常及 netManCode 里面指定的 BaseAppException 不受此配置影响，
+				codes 节允许为不同的错误编码定制不同的告警阈值，logger 节允许为不同的模块定制不同的告警阈值。-->
+			<!--A exception continuous generant times exceed threshold value will be alert.besides database exception and netManCode
+				codes item allow different error code made different alert threshold
+				logger item allow different module made different alert threshold
+			-->
+			<threshold>
+ 
+				<!--缺省告警阈值，如果没有针对错误代码、logger配置阈值，那一个错误最近一段时间连续发生超过这个值才会告警-->
+				<!--default alert threshold value,if hasn't special error code or logger configured threshold ,
+					A error continuous generant times exceed threshold value will be alert
+				-->
+				<default>60</default>
+				<!--Warn级别错误日志的告警阈值，如果没有针对错误代码、logger配置阈值，那一个Warn级别错误日志最近一段时间连续发生超过这个值才会告警-->
+				<!--warn level error log alert threshold ,if hasn't special error code or logger configured threshold ,
+					A warn error continuous generant times exceed threshold value will be alert-->
+				<warn>80</warn>
+
+				<!--配置错误代码覆盖上述default warn 的配置缺省值-->
+				<!--this configured error code cover above-mentioned default-warn default value-->
+				<codes>
+					<code key="S" value="160"/>
+					<code key="UIP" value="30"/>
+					<code key="S-DAT" value="40"/>
+					<code key="S-UIP" value="40"/>   
+					<code key="S-SMS" value="60"/>
+					<code key="S-SYS" value="30"/>
+					<code key="S-PPS" value="160"/>
+					<code key="S-ACT" value="160"/>
+					<code key="S-PRF" value="160"/>
+					<code key="S-VPN" value="160"/>
+					<code key="S-ORD" value="160"/>
+					<code key="S-CNT" value="160"/>
+					<code key="S-PVS" value="160"/>
+					<!--印尼smpp短信中心频繁断链，特提升阈值为 60-->
+					<!--Indonesia smpp short message center didn't connect frequently,so the threshold value promote to 60-->
+					<code key="UIP-8001" value="60"/>
+					<code key="UIP_00012" value="80"/>
+					<code key="S-DAT-00020" value="50"/>
+					<code key="S-SYS-00027" value="50"/>
+					<code key="S-PRF-00109" value="500"/>
+					<code key="S-PRF-00096" value="500"/>
+					<code key="S-PRF-00110" value="500"/>
+					<code key="S-ACT-00179" value="500"/>
+					<code key="S-ACT-20193" value="500"/> 
+					<code key="S-PRF-00131" value="500"/>
+					<code key="S-ACT-20194" value="2000"/>
+				</codes>
+ 
+				<!--配置logger覆盖上述default warn 的配置缺省值-->
+				<!--this configured logger cover above-mentioned default-warn default value-->
+				<loggers>
+					<logger key="com.ztesoft.zsmart.core" warn="20" value="5"/>
+					<logger key="com.ztesoft.zsmart.bss.uip" warn="40" value="5"/>	   
+					<logger key="com.ztesoft.zsmart.core.service.QueryService" value="20"/>
+					<logger key="com.ztesoft.zsmart.core.remote.encoder.BotoXmlEncoder" value="20"/>
+					<logger key="com.ztesoft.zsmart.core.jdbc.JdbcTemplate" value="240"/>
+					<logger key="com.ztesoft.zsmart.core.jdbc.proxy.PreparedStatementProxy" value="20"/>
+					<logger key="com.ztesoft.zsmart.core.utils.DateUtil" value="20"/> 
+					<logger key="com.ztesoft.zsmart.core.jdbc.rowset.QueryResult" value="40"/>
+					<logger key="com.ztesoft.zsmart.core.jdbc.trc.SqlLogCortroller" value="40"/>
+					<logger key="com.ztesoft.zsmart.core.remote.impl.client.SocketChannelConnector" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.core.remote.protocol.wintcp.WintcpAppMessage" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.core.remote.impl.client.AbstractConnector" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.front.FrontServer" warn="40" value="5"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.front.taskqueue.FepTimeOutTaskNotify" warn="40" value="5"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.front.busiClient.ClientHeartChecker" warn="80" value="5"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.server.taskqueue" warn="40" value="5"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.server.BusiLayerWork" warn="40" value="5"/> 
+					<!--印尼smpp短信中心频繁断链，特提升阈值为 60-->
+					<!--Indonesia smpp short message center didn't connect frequently,so the threshold value promote to 60-->
+					<logger key="com.ztesoft.zsmart.bss.uip.adapter.socket.client.ClientProtocolWork" value="150"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.server.mml.MMLBusiness" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.smtp.email" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.smpp.SMPPAdapter" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.smtp.SMTPPlug" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.emailfetcher.service.EmailFetchService" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.emailfetcher.EmailFetcherPlug" warn="40" value="20"/>
+					<logger key="com.ztesoft.zsmart" value="1000"/>
+					<logger key="com.ztesoft.zsmart.bss" value="1000"/>
+					<logger key="com.ztesoft.zsmart.bss.account.base.fee.bll.CalcFeeInterface" value="1000"/>
+					<logger key="com.ztesoft.zsmart.core.utils.ScriptingUtil" value="50000"/> 
+					<!--印尼smpp短信中心频繁断链，特提升阈值为 60-->
+					<!--Indonesia smpp short message center didn't connect frequently,so the threshold value promote to 60-->
+					<!--logger key="com.ztesoft.zsmart.bss.uip.adapters.socket.client.smpp.SMPPClientPlug" value="60"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.contact.dispatch.AbsDispatch" value="40"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.order.cc.services.OrderAcceptanceService" value="50"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.order.cc.services.OrderDispatchService" value="50"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.provisioning.serviceActivation.SARemoteClient" value="50"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.provisioning.orderManagement.bll.impl.OMParamGetter" value="50"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.profile.subs.bll.base.AdviceManagement" value="50"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.profile.subs.bll.query.SubsQuery" value="80"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.profile.lifecycle.bll.scanner.ProdStateThreadService" value="80"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.account.base.fee.bll.CalcFeeInterface" value="80"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.profile.cust.bll.EditMemberBalShareBatchProcess" value="80"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.contact.dispatch.iso8583.Iso8583ProtocolDispatch" value="120"/--> 
+					<!--logger key="com.ztesoft.zsmart.bss.account.base.collection.bll.DebitManagerEngine" value="120"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.order.cc.bll.FeeManager" value="200"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.order.ctc.bll.CcOrderManager" value="200"/-->
+					<!--logger key="com.ztesoft.zsmart.report.util.ReportDynamicDict" value="200"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.order.cc.bll.SubsOrderManager" value="200"/--> 
+					<!--logger key="com.ztesoft.zsmart.bss.account.customization.Indonesia.bll.ArFileHelper" value="200"/--> 
+					<!--logger key="com.ztesoft.zsmart.bss.prov.services.ex.bll.TimeCustAndSubsInfoSyn" value="2000"/-->
+					<!--logger key="com.ztesoft.zsmart.bss.profile.lifecycle.helper.LifeCycleTrigger" value="3000"/--> 
+					<!--logger key="com.ztesoft.zsmart.bss.prov.services.ex.bll.IFSOAPMFINOPGW" value="20000"/--> 
+				</loggers>
+			</threshold>
+			
+			<!-- 如下模块的 WARN 级别以上日志都会进行网管告警 -->
+			<!--the following module's warn level or over log will be net alert-->
+			<include>
+				<!--logger>com.ztesoft.zsmart.core</logger-->
+				<!--logger>com.ztesoft.zsmart.bss.uip</logger-->
+			</include>
+			<!-- 如下模块的日志不会使用 threshold 的配置进行按前缀匹配，只会直接匹配 -->
+			<!--the following module's log don't use prefix matching threshold configuration ,only use direct match-->
+			<exclude>
+				<logger>com.ztesoft.zsmart.core.service.interceptor.CatchServiceExceptionInterceptor</logger>
+				<logger>com.ztesoft.zsmart.core.service.interceptor.LoggingServiceInterceptor</logger>
+				<logger>com.ztesoft.zsmart.core.jdbc.trc.SqlLogCortroller</logger>
+				<logger>com.ztesoft.zsmart.core.service.QueryService</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.server.BusiLayerWork</logger>
+				<logger>com.ztesoft.zsmart.core.utils.ScriptingUtil</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.dispatch.AbsDispatch</logger>
+				<!--
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.smpp.SMPPAdapter</logger>				
+				<logger>com.ztesoft.zsmart.core.jdbc.rowset.QueryResult</logger>				
+				<logger>com.ztesoft.zsmart.core.remote.encoder.BotoXmlEncoder</logger>
+				<logger>com.ztesoft.zsmart.bss.order.cc.bll.SubsOrderManager</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.adapters.mml.profile.base.ListPhsUppInfo</logger>
+				<logger>com.ztesoft.zsmart.bss.account.base.fee.bll.CalcFeeInterface</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.front.taskqueue.FepTimeOutTaskNotify</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.server.taskqueue.TimeOutTaskNotify</logger>
+				<logger>com.ztesoft.zsmart.bss.account.customization.Indonesia.bll.BankFileCreate</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.adapters.mml.profile.base.ListPhsUppInfo</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.adapters.sms.profile.base.ModCustProfile</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.server.mml.MMLBusiness</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.flow.services.ReceiveContactCmd</logger>
+				<logger>com.ztesoft.zsmart.bss.account.base.fee.bll.CalcFeeInterface</logger>
+				<logger>com.ztesoft.zsmart.bss.account.base.common.bll.AccountQuery</logger>
+				<logger>com.ztesoft.zsmart.core.jdbc.proxy.PreparedStatementProxy</logger>
+				<logger>com.ztesoft.zsmart.bss.profile.subs.bll.query.SubsQuery</logger>
+				<logger>com.ztesoft.zsmart.core.utils.DateUtil</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.front.taskqueue.FepTimeOutTaskNotify</logger>
+				<logger>com.ztesoft.zsmart.bss.contact.adapters.mml.profile.base.QueryPhsShortDN</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.smtp.email</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.server.taskqueue.TimeOutTaskNotify</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.front.FrontServer</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.smtp.SMTPPlug</logger>
+				<logger>com.ztesoft.zsmart.core.remote.impl.client.SocketChannelConnector</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.emailfetcher.service.EmailFetchService</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapters.socket.client.emailfetcher.EmailFetcherPlug</logger>
+				<logger>com.ztesoft.zsmart.bss.uip.adapter.socket.front.FrontServer</logger>
+				-->
+			</exclude>
+		</strategy>		
+	</strategylist>
+	
+	<netManCode>
+		<oracle>
+			<!-- oracle 不需要立即告警的错误 -->
+			<!--oracle error needn't to immediate alert-->
+			<exclude>
+				<state>23000</state>
+				<state>22001</state>
+				<state>22002</state>
+				<state>22003</state>
+				<state>22007</state>
+				<state>22008</state>
+				<state>22011</state>
+				<state>22012</state>
+				<state>22008</state>
+				<state>72000</state>
+				<code>1</code>
+				<code>54</code>
+				<code>911</code>
+				<code>1407</code>
+				<code>1722</code>
+				<code>1795</code>
+				<code>2049</code>
+				<code>17006</code>
+				<code>12899</code> 
+				<code>1461</code>	
+			</exclude>
+			<!-- oracle 需要立即告警的错误 -->
+			<!--oracle error need to immediate alert-->
+			<include>
+				<code>2100</code>
+				<code>17001</code>
+				<code>17002</code>
+				<code>17008</code>
+				<code>17027</code>
+				<code>17058</code>
+				<code>17059</code>
+				<code>17067</code>
+				<code>17089</code>
+				<code>17100</code>
+				<code>17111</code>
+			</include>
+		</oracle>
+		<timesten>
+			<!-- timesten 不需要立即告警的错误 -->
+			<!--timesten error needn't to immediate alert-->
+			<exclude>
+				<state>01004</state>
+				<state>01S04</state>
+				<state>07001</state>
+				<state>21S01</state>
+				<state>22001</state>
+				<state>22008</state>
+				<state>23000</state>
+				<state>22001</state>
+				<state>22002</state>
+				<state>22003</state>
+				<state>22007</state>
+				<state>22008</state>
+				<state>22026</state>
+				<state>22011</state>
+				<state>22012</state>
+				<state>22008</state>
+				<state>S1002</state>
+				<state>S1003</state>
+				<state>S1004</state>
+				<state>S1090</state>
+				<state>S1091</state>
+				<state>S1093</state>
+				<state>S1094</state>
+				<state>S1096</state>
+				<state>S1097</state>
+				<state>S1098</state>
+				<state>S1099</state>
+				<state>S1100</state>
+				<state>S1101</state>
+				<state>S1103</state>
+				<state>S1104</state>
+				<state>S1105</state>
+				<state>S1106</state>
+				<state>S1107</state>
+				<state>S1108</state>
+				<code>1000</code>
+				<code>2787</code>
+			</exclude>
+			<!-- timesten 需要立即告警的错误 -->
+			<!--timesten error nedd to immediate alert-->
+			<include>
+				<!--code>1000</code-->
+			</include>
+		</timesten>
+		<!-- 其他需要立即告警的数据库错误 -->
+		<!--other database error need to immediate alert-->
+		<zsmartDbErrors>
+			<state>08001</state>
+		</zsmartDbErrors>
+		<!-- 需要立即告警的业务错误代码 -->
+		<!--business error code need to immediate alert -->
+		<business>
+			<!--code>S-DAT-00021</code-->
+		</business>
+	</netManCode>
+	<!--JVM 信息监控-->
+	<!--JVM information monitor-->
+	<jvm>
+		<!--内存监控-->
+		<!--memory information monitor-->
+		<memory>
+		    <!--监控间隔 unit:ms-->
+		    <!--monitor interval unit:millisecond-->
+			<timeInterval>60000</timeInterval>
+			<!--内存监控正常文件-->
+			<!--normal memory monitor file-->
+			<memoryNormalFile>memoryNormalFile.log</memoryNormalFile>
+			<!--堆内存使用率告警阈值 -->
+			<!--heap momory usage rate alert threshold-->
+			<HeapMemoryAlertThreshold>0.9</HeapMemoryAlertThreshold>
+			<!--永久区内存使用率告警阈值 -->
+			<!--permanent memory usage rate alert threshold-->
+			<PermMemoryAlertThreshold>0.9</PermMemoryAlertThreshold>
+		</memory>
+	</jvm>
+</zsmart>
+

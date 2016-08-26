@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+.leftDiv {width:350px;margin: 0px 10px 0px 15px;padding: 0px 0px;position: absolute;float: left;top: 0px;left: auto;}/*左*/
+.centerDiv {width:760px;margin: 0px 0px;padding: 0px 0px;position: absolute;float: left;top: 0px;left: 345px;}/*中*/
+.rightDiv {width:273px;min-height:511px;margin: 0px 0px 0px 2px;padding: 0px 0px;position: absolute;float: left;top: 0px;left: 962px;background:url("en_US/img/images/desktop/schedule_right_center.gif") repeat-y scroll 0px 0px #FFFFFF;}/*右*/
+
+.l_topDiv{width:100%;height:255px;margin-bottom:5px;padding: 0px 0px;}/*左上层*/
+.l_bottomDiv{width:100%;height:260px;margin-top:4px;padding: 0px 0px;}/*左下层*/
+
+.c_topDiv{width: 100%;height:255px;margin-bottom:5px;padding: 0px 0px;}/*中上层*/
+.c_bottomDiv{width: 100%;height:260px;margin-top:4px;padding: 0px 0px;}/*中下层*/
+
+/*******************/
+.clearDiv{clear:both;}
+/*******************/
+
+.lt_contentMain{width:88%;height:207px;margin:0px 0px;float: left;}/*左上，主要内容*/
+.lb_contentMain{width:88%;min-height:207px;margin:0px 0px;float: left;}/*左下，主要内容*/
+.ct_contentMain, .cb_contentMain{width:78.5%;min-height:207px;margin:0px 0px;padding: 0px 0px;float: left;}/*中上，主要内容*//*中下，主要内容*/
+.rt_contentMain{width:100%;min-height:246px;margin:0px 0px;padding: 0px 0px;}/*中上，主要内容*//*中下，主要内容*/
+.rb_contentMain{width:100%;margin:0px 0px;padding: 0px 0px;}/*中下，主要内容*/
+
+.lb_contentMain ul, .ct_contentMain ul, .cb_contentMain ul, .rbc_m_ul{padding-left: 15px;margin:0px 0px;list-style-type:none;}
+.lw_li{list-style-type: disc;border-bottom: 1px dashed #DFDFDF;height: 24px;line-height: 24px;font-size: 13px;padding-left:4px; text-align:left;white-space:nowrap; }
+.lw_li a{font-family: "宋体","MS SONG","SimSun","tahoma","sans-serif";font-size: 13px;height: 24px;line-height: 24px;color: #424242;white-space:nowrap;}
+.lw_li A:link {color: #000000;text-decoration: none;}
+.lw_li_date{width: 30%;float: right;text-align: right;padding-right: 10px;}
+
+.rbc_m_li{list-style-type: none;border-bottom: 1px dashed #DFDFDF;height: 20px;line-height: 20px;font-size: 11px;padding-left:14px; text-align:left;background: url("en_US/img/images/desktop/sjx_ico.gif") no-repeat scroll 0px 6px transparent;}
+.rbc_m_li a{font-size: 11px;line-height: 20px;color: #424242;}
+.rbc_m_li A:link {color: #000000;text-decoration: none;}
+.rbc_m_li_date{width: 30%;float: right;text-align: right;padding-right: 10px;white-space:nowrap;}
+
+.rbc_m_form{width: 94%;height:90px;border: 1px solid #7F9DB9;margin: 5px auto;}
+.rbc_m_form_title{width: 98%;height:28px;border-bottom: 1px dashed #DFDFDF;text-align: left;text-indent: 5px;}
+.rbc_m_form_content{width: 98%;height:55px;border-bottom: 1px dashed #DFDFDF;text-align: left;text-indent: 5px;}
+
+.rbc_m_btn{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #497BD0;border-radius: 4px;color: #497BD0;cursor: pointer;font: 13px Arial,sans-serif;line-height: 16px;margin: 0px 4px;padding: 3px;outline: medium none;}
+
+.rightDiv_bottom{width:100%;height:5px;margin:0px 0px;padding: 0px 0px;background: url("en_US/img/images/desktop/schedule_right_bottom.gif") no-repeat scroll 0px 0px transparent;}
+
+.datepicker{width:92%;height: auto !important;min-height:180px; margin:0px 0px;padding: 1px 0 0;border: 1px solid #9CD0E7;background-color: #FFFFFF; }
+.rbc_main{width:92%;height: auto !important;min-height:175px; margin:0px 0px;padding: 11px 0 0;border: 1px solid #9CD0E7;background-color: #FFFFFF;}
+/************tab 标题*************/
+/*左上，头*/
+.lt_menu{width:88%;height:34px;margin:0px 0px;float: left;}
+.lt_menu ul{list-style:none;width:100%;height:34px;margin:0px 0px;padding: 0px 0px;background:url("en_US/img/images/desktop/d01_03.gif") repeat-x scroll 0px 0px #FFFFFF;display:block;}
+.lt_menu li{height:34px;display:block;float:left;font:bold 14px Verdana, Geneva, sans-serif;color: #497BD0;text-decoration:none;text-align:center;letter-spacing:2px;cursor:pointer;}
+.lt_menu .conLi{width:35%;padding-top: 7px;}
+.lt_menu .imgLi{width:4%;padding-top: 5px;}
+
+/*中上，头*/
+.ct_menu, .cb_menu{width:78.5%;height:34px;margin:0px 0px 0px -2px;padding: 0px 0px;float: left;}
+.ct_menu ul, .cb_menu ul{list-style:none;width:100%;height:34px;margin:0px 0px;padding: 0px 0px;background:url("en_US/img/images/desktop/d01_03.gif") repeat-x scroll 0px 0px #FFFFFF;display:block;}
+.ct_menu li, .cb_menu li{height:34px;display:block;float:left;font:bold 14px Verdana, Geneva, sans-serif;color: #497BD0;text-decoration:none;text-align:center;letter-spacing:2px;/*cursor:pointer;*/}
+.ct_menu .conLi, .cb_menu .conLi{width:18%;padding-top: 7px;}
+.ct_menu .imgLi, .cb_menu .imgLi{width:4%;padding-top: 5px;}
+.conLi a{text-decoration:none;color:#497BD0;cursor:pointer;}
+.tc_current{background-position:0 0;color:#497BD0;text-decoration:none;text-align:center;width:109px;height:34px;display:block;background:url("en_US/img/images/desktop/d_down.gif") no-repeat scroll 5px 0px transparent;}
+
+
+/*右上，头*/
+.rt_menu{width:100%;height:34px;margin:0px 0px;padding: 0px 0px;background:url("en_US/img/images/desktop/schedule_right_top.gif") no-repeat scroll 0px 0px transparent;}
+.rb_menu{width:100%;height:40px;margin:0px 0px;padding: 0px 0px;}
+
+.rt_m_img{width:36px;height:20px;float: left;text-align:center;padding-top:9px;}
+.rt_m_title{float: left;padding-top:7px;}
+.rt_m_title a, .rb_m_title a{text-decoration:none;color:#497BD0;text-decoration:none;font:bold 14px Verdana, Geneva, sans-serif;}
+.rb_m_img{width:36px;height:20px;float: left;text-align:center;padding-top:16px;}
+.rb_m_title{float: left;padding-top:14px;}
+
+/************tab 标题*************/
+/************边框*************/
+.menuHead{width:1%;height:34px;margin:0px 0px;background:url("en_US/img/images/desktop/d01_01.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+.menuEnd{width:2%;height:34px;margin:0px 0px;background:url("en_US/img/images/desktop/d01_04.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+
+.contentHead1{width:6px;height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d04_01.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+.contentHead2{height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d04_02.gif") repeat-x scroll 0px 0px #FFFFFF;float: left;}
+.l_topDiv .contentHead2, .l_bottomDiv .contentHead2{width:88%;}
+.c_topDiv .contentHead2, .c_bottomDiv .contentHead2{width:78.5%;}
+.contentHead3{width:6px;height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d04_03.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+
+.contentLeft{width:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d02_01.gif") repeat-y scroll 0px 0px #FFFFFF;float: left;}
+.l_topDiv .contentLeft{height: 207px;}
+.l_bottomDiv .contentLeft{height: 207px;}
+.c_topDiv .contentLeft{height: 207px;}
+.c_bottomDiv .contentLeft{height: 207px;}
+
+.contentRight{width:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d02_02.gif") repeat-y scroll 0px 0px #FFFFFF;float: left;}
+.l_topDiv .contentRight{height: 207px;}
+.l_bottomDiv .contentRight{height: 207px;}
+.c_topDiv .contentRight{height: 207px;}
+.c_bottomDiv .contentRight{height: 207px;}
+
+.contentEnd1{width:6px;height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d03_01.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+.contentEnd2{height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d03_02.gif") repeat-x scroll 0px 0px #FFFFFF;float: left;}
+.l_topDiv .contentEnd2, .l_bottomDiv .contentEnd2{width:88%;}
+.c_topDiv .contentEnd2, .c_bottomDiv .contentEnd2{width:78.5%;}
+.contentEnd3{width:6px;height:6px;margin:0px 0px;background:url("en_US/img/images/desktop/d03_03.gif") no-repeat scroll 0px 0px #FFFFFF;float: left;}
+/************边框*************/
+

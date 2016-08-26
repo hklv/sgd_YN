@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LOGIN" message="MML" seq="1" id="da0158e5-1e6b-4454-b927-33ba2cf31da7">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LOGIN</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="false" name="COMMAND" part="Business" id="225515d1-3b9b-4488-9133-ba0cb92edc78"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="false" name="USER" part="Business" id="34d89e01-5112-40ce-a99c-6d0404034ed6"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="PSWD" part="Business" id="a129764c-9e12-4fa1-a7dd-e7e909d8c3e8"/>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="false" name="RETN" part="Business" id="6ec97916-299e-45a7-813c-6aaa746ee8b0"/>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="98853ed6-021d-4bab-9817-3fffaa4c955a"/>
+    </fields>
+    <bindings>
+      <binding service="loginService" site="S" id="68a67d37-735a-4b22-90d0-f0a15d40ff07">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-06-15 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.Password = $req.PSWD</request>
+            <request>$s.AdapterName = $req.v.adapter</request>
+            <request>$s.UserName = $req.USER</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

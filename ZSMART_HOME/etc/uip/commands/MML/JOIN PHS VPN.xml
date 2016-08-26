@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="JOIN PHS VPN" message="MML" seq="72" id="b3333e68-893a-4f1e-aacf-0cd36009cdf7">
+    <comments><![CDATA[9.12.5 用户加入VPN]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-23 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>JOIN PHS VPN</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="6317326c-375a-4d96-aab5-8ed500fff7e5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="b93f486f-dec7-4491-b35d-946dd82d24ba">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="PWD" part="Business" id="16d2245d-e04b-4d57-9a4c-cf1b77c5cc1a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="VPNID" part="Business" id="4e9924b9-803d-42d2-bf7e-28a90be8e8d9">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="VPNCODE" part="Business" id="6bf8064e-77d7-4bb5-90dc-7d82c6c92d50">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="false" name="MEMROLE" part="Business" id="4c46b167-42d4-4d0c-bb07-d435b2e854d9">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="false" name="EFFTYPE" part="Business" id="07c03804-6ffc-4164-84d7-a3e688982a7f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="e46a1637-2ba5-4226-8247-04b1e8b371c1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="93c3cbb9-fa72-446e-b119-2561bad8b8c2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="N" requred="false" name="SHORTNO" part="Business" id="42c93359-2891-4b80-945e-367d44d0b3b5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="S" requred="false" name="SHORTNOMODE" part="Business" id="71cc595d-f5c7-4914-83a3-f0fc91072b81">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="req" fieldType="N" dataType="S" requred="false" name="isADMIN" part="Business" id="3e423ae2-88e9-4cb2-b8b0-5bf9ff18ddf9">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="13" direction="req" fieldType="N" dataType="S" requred="false" name="isATTENDANT" part="Business" id="f3c703de-1a41-430f-8825-0f93ab35374a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="14" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="4632e831-9413-410f-9015-a47119b7c795">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="15" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="9f4b5a62-545f-4c81-83f3-4647ed159b2e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_JoinVPN" site="S" id="c3e7139e-e364-4cbe-aa67-3af849fa4c8d">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-23 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PWD = $req.PWD</request>
+            <request>$s.VPNID = $req.VPNID</request>
+            <request>$s.VPNCODE = $req.VPNCODE</request>
+            <request>$s.MEMROLE = $req.MEMROLE</request>
+            <request>$s.EFFTYPE = $req.EFFTYPE</request>
+            <request>$s.EFFDATE = $req.EFFDATE</request>
+            <request>$s.EXPDATE = $req.EXPDATE</request>
+            <request>$s.SHORTNO = $req.SHORTNO</request>
+            <request>$s.SHORTNOMODE = $req.SHORTNOMODE</request>
+            <request>$s.isADMIN = $req.isADMIN</request>
+            <request>$s.isATTENDANT = $req.isATTENDANT</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

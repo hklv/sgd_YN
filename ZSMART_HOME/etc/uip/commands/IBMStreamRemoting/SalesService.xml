@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SalesService" message="IBMStreamRemoting" seq="84" id="727190f1-fff5-4424-ab59-d81b4cae8231">
+    <comments><![CDATA[SmartFren CMS 项目受理 Stream 发出的指令]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-10-12 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0001</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="true" name="data" part="Body" id="cedd8986-3532-40c1-950c-d444c81fc205"/>
+    </fields>
+    <bindings>
+      <binding service="EventTriggerService" site="S" id="a5ce5c15-d695-4b94-b14c-9b43cece0c74">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-14 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.data = $req.data</request>
+          </invoke>
+          <exception/>
+          <finally/>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

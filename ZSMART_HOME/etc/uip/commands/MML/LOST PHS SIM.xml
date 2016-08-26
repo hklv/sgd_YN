@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LOST PHS SIM" message="MML" seq="57" id="b29abea6-f604-4bdc-ae2d-cbab530ee3af">
+    <comments><![CDATA[挂失]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-15 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LOST PHS SIM</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="6c5bb20d-adb4-49cf-9734-0d97208c7a74">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="4ab89a4a-d99b-4856-965a-87c9d588977a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PWD" part="Business" id="a0f80a42-06a5-4bcb-ba1c-e5354d62db52">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="9fc6ffa5-b790-4027-88e2-c47fd8e9e80c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="135e1697-a4ce-4272-8727-943b90d99d18">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_SimCardLost" site="S" id="33427a42-e59d-4d21-9139-323673aa9c52">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-15 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PWD = $req.PWD</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

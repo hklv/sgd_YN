@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CUT PPS OPERFEE" message="MML" seq="31" id="54f45b29-11df-4bd3-8086-6c1cc8f53bf8">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>CUT PPS OPERFEE</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="8dc97708-3e93-43d2-b586-7ab5cb1c5a8e"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="ab459437-c149-4315-aa2e-c2a17e987c47"/>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="OPERCODE" part="Business" id="7cb2dfdb-398a-40ff-bf24-089498397e0e"/>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="OPERPARAM" part="Business" id="fc71abf5-57ea-44c3-84ec-dd9e8d804684"/>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="73dcaf7c-578f-49ff-b7c9-2050fa64b20e"/>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="fa47c6fa-7a20-4bb0-854f-db619d402825"/>
+      <field seq="8" direction="resp" fieldType="N" dataType="I" requred="true" name="CUTFEE" part="Business" id="280e4433-63b8-4486-9a3c-2ac37a55e298"/>
+    </fields>
+    <bindings>
+      <binding service="MmlCutPpsOperFee" site="S" id="f360f9b8-f598-4072-84d4-4bf8ee9eaa6e">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.OPERCODE = $req.OPERCODE</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.OPERPARAM = $req.OPERPARAM</request>
+            <request>$s.PARTY_TYPE = "E"</request>
+            <request>$s.IS_BAL_DEDUCT = "Y"</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.CUTFEE = $s.CUTFEE</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

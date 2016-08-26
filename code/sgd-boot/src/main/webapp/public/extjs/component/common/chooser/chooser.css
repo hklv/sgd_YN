@@ -1,0 +1,122 @@
+.img-chooser-dlg .details {
+	padding: 10px;
+}
+
+.img-chooser-dlg .thum-img {
+	width: 50px;
+	height: 50px;
+	float: left;
+	display: inline;
+	margin-left: 30px;
+}
+
+.img-chooser-dlg .details-info {
+	float: left;
+	display: inline;
+	margin-left: 40px;
+}
+
+.img-chooser-dlg .details-info p {
+	padding: 0;
+	margin: 0;
+}
+
+.img-chooser-dlg .details-info b {
+    color: #000;
+    padding: 3px 0 3px 0;
+}
+
+.img-chooser-dlg .details-info span {
+	color: #555;
+	padding: 3px 0 3px 20px;
+}
+
+.img-chooser-view {
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+.img-chooser-view .nofile {
+	position: relative;
+	height: 100%;
+}
+
+.img-chooser-view .nofile img {
+	position: absolute;
+	width: 200px;
+	height: 245px;
+	margin-left: -100px;
+	margin-top: -123px;
+	left: 50%;
+	top: 50%;
+}
+
+
+.img-chooser-view .thumb {
+    padding: 3px;
+    overflow: hidden;
+    width: 95px;
+    height: 95px;
+}
+
+.img-chooser-view .thumb img, .img-chooser-view .thumb div {
+	width: 100%;
+}
+
+.img-chooser-view .thumb-wrap {
+    float: left;
+    margin: 8px;
+    margin-right: 0;
+    padding: 5px;
+    position: relative;
+}
+
+.img-chooser-view .thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.img-chooser-view .x-view-over {
+    border:1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+.img-chooser-view .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+.img-chooser-view .x-item-selected .thumb {
+    background:transparent;
+}
+
+.img-chooser-view .x-item-selected span {
+    color:#1A4D8F;
+}
+
+.img-chooser-view .loading-indicator {
+    font-size:11px;
+    background-image:url('../../../ext-4.2.1/resources/images/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}
+
+.img-chooser-view .thumb-mark {
+	position: absolute;
+	z-index: 999;
+	right: 3px;
+	top: 3px;
+	background: #e8f0f7;
+	border: 1px solid #c2d4e3;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	padding: 2px 6px;
+	color: #2d64b3;
+}

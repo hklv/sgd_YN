@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+	<command name="LIST PPS CELLHZ" message="MML" seq="55"
+		id="c278e155-3fd9-49a3-828a-c43acd5b6eb2">
+		<comments><![CDATA[根据网络小区查询地理小区]]></comments>
+		<state>A</state>
+		<version>1.0</version>
+		<modifier>admin</modifier>
+		<modifyDate>2014-04-24 09:58:49</modifyDate>
+		<extension>
+			<commandKey>
+				<requestKey>LIST PPS CELLHZ</requestKey>
+			</commandKey>
+			<rule name="MMLCode">
+				<kvlist>
+					<kv key="S-VIETICS-CC-00001" value="1002" isResource="false" />
+					<kv key="S-VIETICS-CC-00002" value="1001" isResource="false" />
+				</kvlist>
+			</rule>
+		</extension>
+		<fields>
+			<field seq="1" direction="both" fieldType="C" dataType="S"
+				requred="true" name="COMMAND" part="Business"
+				id="02dd10e2-6911-4c36-b30e-900c2a883dd9">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+			<field seq="2" direction="req" fieldType="N" dataType="S"
+				requred="false" name="DN" part="Business"
+				id="b0f6faee-d580-4576-bdfd-e8c0d3cbcbac">
+				<extension>
+					<align>L</align>
+					<min>1</min>
+					<max>60</max>
+				</extension>
+			</field>
+			<field seq="3" direction="req" fieldType="N" dataType="S"
+				requred="true" name="CELLID" part="Business"
+				id="c506b9f2-44d0-4203-9373-f35f46304aad">
+				<extension>
+					<align>L</align>
+					<min>1</min>
+					<max>60</max>
+				</extension>
+			</field>
+			<field seq="4" direction="resp" fieldType="N" dataType="S"
+				requred="true" name="RETN" part="Business"
+				id="6b4204f7-2ee2-48f9-a68c-b84d1d97cf3c">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+			<field seq="5" direction="resp" fieldType="N" dataType="S"
+				requred="true" name="DESC" part="Business"
+				id="aabe6f4a-33b0-4595-bb14-109f6903f477">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+			<field seq="6" direction="resp" fieldType="N" dataType="S"
+				requred="true" name="CELLNAME" part="Business"
+				id="342e5432-ea13-4189-b603-aac5647f13e2">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+			<field seq="7" direction="resp" fieldType="N" dataType="S"
+				requred="true" name="ATTR" part="Business"
+				id="a2b453f6-ba9d-4302-964f-3d868b7bcd96">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+			<field seq="8" direction="resp" fieldType="N" dataType="S"
+				requred="true" name="RESULT" part="Business"
+				id="c1a08793-9726-41a6-9950-1c05f8caa2b6">
+				<extension>
+					<align>L</align>
+				</extension>
+			</field>
+		</fields>
+		<bindings>
+			<binding service="MML_ListPpsCellHz" site="S"
+				id="c7599acc-2eb8-4a93-99af-0c2650a85bf1">
+				<state>A</state>
+				<version>1.0</version>
+				<modifier>admin</modifier>
+				<modifyDate>2014-04-23 11:27:24</modifyDate>
+				<serviceFlow>
+					<node eventType="B" service="GetPrefixAccNbrService" />
+				</serviceFlow>
+				<script>
+					<invoke>
+						<request>$s.MSISDN = $req.DN</request>
+						<request>$s.CELLID = $req.CELLID</request>
+						<response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN",
+							"ATTR", "HOME_ZONE_LIST", "HZ=HZ|HZNAME=HZNAME" )
+						</response>
+					</invoke>
+					<exception />
+					<finally>
+						<response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+						<response>$resp.DESC = getMMLDesc( $resp.v.resultCode,
+							$resp.v.resultDesc )
+						</response>
+						<response>$resp.CELLNAME = $s.CELLNAME</response>
+					</finally>
+				</script>
+			</binding>
+		</bindings>
+	</command>
+</zsmart>

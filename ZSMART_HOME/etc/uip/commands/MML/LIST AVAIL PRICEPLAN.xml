@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST AVAIL PRICEPLAN" message="MML" seq="69" id="d29e360a-3a6c-41d5-b223-6f0597c18b8f">
+    <comments><![CDATA[查询用户可订购资费计划方案]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-12 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST AVAIL PRICEPLAN</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="2c1dda1b-b7e6-45b1-bd9c-5eaa22719179">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="80d082bc-19a6-4524-a2f6-edfea50bb3c5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="d5edcdde-7abd-441b-bd99-57eb5faea743">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="8d599134-2459-44cc-8f88-33082df60549">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="d52cff8f-6a4a-43ff-8e39-91e17557c97f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="9d8120a7-4b7f-4a79-9d7a-e16b94b64415">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListAvailPricePlan" site="S" id="c77ae730-4b42-4a70-b820-c49d58d17262">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-12 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "PRICE_PLAN_LIST", "PRICE_PLAN_ID=PRICE_PLAN_ID|PRICE_PLAN_CODE=PRICE_PLAN_CODE|PRICE_PLAN_NAME=PRICE_PLAN_NAME|PARAMS=PARAMS" )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

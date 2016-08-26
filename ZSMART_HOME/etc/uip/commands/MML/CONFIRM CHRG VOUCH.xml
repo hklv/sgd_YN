@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CONFIRM CHRG VOUCH" message="MML" seq="30" id="fddc45d2-715f-4814-abe3-2a19f8011597">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>CONFIRM CHRG VOUCH</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="efa8977a-151f-4261-92b4-8ed0cf3e4dd1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="5815355a-aab3-4928-86d3-16031fc0edc6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="DN" part="Business" id="d343414a-fa13-4fa5-88d7-c9c669d3648f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="14461ae4-d388-4baa-b31c-0eb58b6fe02b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="08edded4-45f2-4fbe-ae59-a8b9ead17bd6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlConfirmChrgVouch" site="S" id="9c2a0256-cceb-4cb1-92c2-f54da158effe">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.PARTNER_SN = $req.ID</request>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="AdviceMessage" type="B">
+    <comments><![CDATA[用于通知的虚拟协议]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-25 17:01:49</modifyDate>
+    <extension>
+      <class>com.ztesoft.zsmart.uip.adapters.message.AdviceMessageResovler</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryEmpty4Bin</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="2" type="B" name="CommandPart" id="f4302082-e25f-46b2-a4d7-b5ab5b0efe63">
+        <extension>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

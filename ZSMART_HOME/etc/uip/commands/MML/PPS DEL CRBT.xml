@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="PPS DEL CRBT" message="MML" seq="77" id="56562f17-1aa7-4614-b0cf-76750f9b3cf5">
+    <comments><![CDATA[1]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>PPS DEL CRBT</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="9001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="5ea13b0f-4c2a-417b-bac0-313095a3b2e0">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="MSISDN" part="Business" id="e5e141c1-2356-4199-a708-19b58a19eecd">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="SERVICETYPE" part="Business" id="7463f101-d830-4d33-96c7-85e9e9f371e5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="41a18a7f-52c7-4110-bd80-b3dfb2b6a892">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="59ed8d9b-e396-4521-bacf-102f78ffb50d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DelCRBT" site="S" id="a90d3867-16f7-41c8-8674-d0cad3d34486">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-13 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.DN = $req.MSISDN</request>
+            <request>$s.SERVICETYPE = $req.SERVICETYPE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <macros>
+    <rule name="abs" id="0a9ea7db-d466-45a3-85c9-405198d90c0e">
+      <comments><![CDATA[取绝对值]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-06 15:43:16</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>abs</method>
+      </extension>
+    </rule>
+    <rule name="concact" id="0fcf8ee2-1903-444e-b386-65513a690fef">
+      <comments><![CDATA[字符串连接]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-06 15:43:16</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>concact</method>
+      </extension>
+    </rule>
+    <rule name="concactString" id="">
+      <comments><![CDATA[字符串连接]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-06 15:43:16</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>concactString</method>
+      </extension>
+    </rule>
+    <rule name="dateInputOffset" id="4fecb78e-bcff-4490-8d9c-de5ab85d22d4">
+      <comments><![CDATA[接入时间偏移，如dateInputOffset($req.EXPDATE, $req.v.UipAdapterUser_ChannelType)]]></comments>
+      <version>1</version>
+      <modifier>admin</modifier>
+      <modifyDate>2014-03-18 13:27:32</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.DateMacro</class>
+        <method>dateInputOffset</method>
+      </extension>
+    </rule>
+    <rule name="dateOutputOffset" id="33817905-6d0a-4678-acb7-87331a3386f0">
+      <comments><![CDATA[接出时间偏移，如dateOutputOffset($s.EXPDATE, $req.v.UipAdapterUser_ChannelType)]]></comments>
+      <version>1</version>
+      <modifier>admin</modifier>
+      <modifyDate>2014-03-18 13:29:06</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.DateMacro</class>
+        <method>dateOutputOffset</method>
+      </extension>
+    </rule>
+    <rule name="dateToString" id="ee3220f3-6b2c-4654-bb65-76f590de20a1">
+      <comments><![CDATA[把日期转换为字符串，如 dateToString($s.BEGIN_DATE, "yyyy-MM-dd HH:mm:ss")]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-06 15:43:16</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>dateToString</method>
+      </extension>
+    </rule>
+    <rule name="decode" id="0dc437c4-118d-48bf-90f8-caab874f3f8c">
+      <comments><![CDATA[参考 SQL 中的 decode 函数]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-08 10:39:30</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>decode</method>
+      </extension>
+    </rule>
+    <rule name="decomposeDN" id="f32adbf0-8e2d-4ce0-8107-edb28ca0c44a">
+      <comments><![CDATA[把 DN 解析为 MSISDN DN_TYPE BAL_CODE
+
+例子 : (MSISDN, DN_TYPE, BAL_CODE)=
+decomposeDN(DN)]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-15 15:51:36</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>decomposeDN</method>
+      </extension>
+    </rule>
+    <rule name="decomposeDNService" id="02814da9-65ab-4e29-8c69-2baab6f57d90">
+      <comments><![CDATA[把 DN 解析为 MSISDN DN_TYPE BAL_CO]]></comments>
+      <version>2</version>
+      <modifier>admin</modifier>
+      <modifyDate>2012-06-28 14:09:05</modifyDate>
+      <extension>
+        <service>DecomposeDNService</service>
+        <input>dn</input>
+        <output>MSISDN,DN_TYPE,BAL_CODE</output>
+      </extension>
+    </rule>
+    <rule name="getField" id="c5954cf6-d79f-4ca7-abbf-bd06714fee68">
+      <comments><![CDATA[从登录信息中获取指定名称的值]]></comments>
+      <version>1</version>
+      <modifier>fang.yi</modifier>
+      <modifyDate>2012-10-31 00:00:00</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>getField</method>
+      </extension>
+    </rule>
+    <rule name="getMMLSessonId" id="3e5e5c80-39e7-43cf-acae-efa2ccbf7320">
+      <comments><![CDATA[用于获取 MML 消息的会话事务标识]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-08 10:38:01</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>getMMLSessonId</method>
+      </extension>
+    </rule>
+    <rule name="getMMLTransactionId" id="f540442b-1d14-43e8-a79e-7afa32447f9b">
+      <comments><![CDATA[用于获取 MML 消息的事务标识]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-08 10:37:53</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>getMMLTransactionId</method>
+      </extension>
+    </rule>
+    <rule name="getMMLDesc" id="26025b02-6828-4db2-bdd1-1de2ba150a58">
+      <comments><![CDATA[取MML返回描述]]></comments>
+      <version>1</version>
+      <modifier>admin</modifier>
+      <modifyDate>2014-03-05 14:55:26</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>getMMLDesc</method>
+      </extension>
+    </rule>
+    <rule name="getMMLCheckSum" id="f540442b-1d14-43e8-a79e-7afa32447f9b">
+      <comments><![CDATA[用于获取 MML 消息的事务标识]]></comments>
+      <version>1</version>
+      <modifier>chen.kuan</modifier>
+      <modifyDate>2013-08-12 10:37:53</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>getMMLCheckSum</method>
+      </extension>
+    </rule>
+    <rule name="getRemotingSeq" id="25b57d7f-91aa-49fe-95e9-5e0c3629cd08">
+      <comments><![CDATA[用于生成 Remoting 消息的序列号]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-08 10:18:08</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.RemotingMacro</class>
+        <method>getRemotingSeq</method>
+      </extension>
+    </rule>
+    <rule name="getVCCommand" id="d2ce641b-da86-4d89-b66a-91ee41019ad0">
+      <comments><![CDATA[根据传入的VC 请求 CommandId 生成匹配的应答 CommandId]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-08 10:38:38</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.VCMacro</class>
+        <method>getVCCommand</method>
+      </extension>
+    </rule>
+    <rule name="parseAccNbr" id="32624bf3-d12c-48d9-9bab-611ad6a0d1f1">
+      <comments><![CDATA[把号码解析为前缀跟号码，
+
+例子(PREFIX, ACC_NBR)=
+decomposeDN(MSIDN)]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-03-16 14:46:01</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>parseAccNbr</method>
+      </extension>
+    </rule>
+    <rule name="parseAccNbrTest" id="81d47387-f602-4886-9470-2458a1e75d2d">
+      <comments><![CDATA[供UIP开发自测使用的宏，模拟号码前缀分解]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-03-16 14:46:01</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>parseAccNbrTest</method>
+      </extension>
+    </rule>
+    <rule name="parseAttrResult" id="cd94e0e7-8086-4c46-afb5-d8ed62d54695">
+      <comments><![CDATA[parseAttrResult]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-14 13:25:56</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.MMLMacro</class>
+        <method>parseAttrResult</method>
+      </extension>
+    </rule>
+    <rule name="stringToDate" id="717adebd-4060-4cda-9758-e189312c40d6">
+      <comments><![CDATA[把字符串转换为日期，如 stringToDate($s.BEGIN_DATE, "yyyy-MM-dd HH:mm:ss")]]></comments>
+      <version>1</version>
+      <modifier>0027004002</modifier>
+      <modifyDate>2012-02-06 15:43:16</modifyDate>
+      <extension>
+        <class>com.ztesoft.zsmart.uip.adapters.macro.CommonMacro</class>
+        <method>stringToDate</method>
+      </extension>
+    </rule>
+      <rule name="validDate" id="b469af4e-6531-4ec0-b6e6-c1ca906d2ebf">
+          <comments><![CDATA[CDATA[验证时间格式，如validDate($s.EXPDATE,format)]]></comments>
+          <version>1</version>
+          <modifier>admin</modifier>
+          <modifyDate>2014-06-30 16:46:27</modifyDate>
+          <extension>
+              <class>com.ztesoft.zsmart.uip.adapters.macro.DateMacro</class>
+              <method>validDate</method>
+          </extension>
+      </rule>
+  </macros>
+</zsmart>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RELEASE PHS CALLBL" message="MML" seq="69" id="2e1e7eb5-d126-46fc-a20a-713a15f46f15">
+    <comments><![CDATA[9.4.31 解除用户呼叫黑名单]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-23 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>RELEASE PHS CALLBL</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="8d1829db-7dce-482d-b87f-3dffcbf99048">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="299a153b-97f6-466e-b0f1-d66d6394e9bb">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PWD" part="Business" id="c9214714-1373-4320-be78-f05865be0335">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="664e9fb6-6f0e-445d-8378-7e8f18b76f5b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="f7c3e0c2-d396-4ed9-ade2-bc87ef858791">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ReleasePhsCallBlacklist" site="S" id="bb93ee15-c963-4859-86f0-383794ef5487">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-23 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PWD = $req.PWD</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

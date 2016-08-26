@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- framework节点下的配置文件供框架使用-->
+	<!-- The configuration items under this node are used by framework -->
+	<framework Desc="The configuration items under this node are used by framework">
+		<!-- 系统配置骨架文件，禁止修改 -->
+		<!-- system configuration backbone file,forbidden modified -->
+		<xml name="app_system_def" fileName="./defined/system.def" autoReload="true" override="false" />
+		<!-- 系统配置参数文件，可以修改 -->
+		<!-- system configuration parameter file ,allowable modified -->
+		<properties name="app_system_cfg" fileName="./projectized/system.cfg" autoReload="true" override="true" />
+
+		<!-- 日志告警累积策略骨架文件，禁止修改 -->
+		<!-- log alert strategy backbone file,,forbidden modified -->
+		<xml name="logging_def" fileName="./defined/logging.def" autoReload="true" override="false" />
+		<!-- 日志告警累积策略参数文件，可以修改 -->
+		<!-- log alert strategy parameter file,allowable modified -->
+		<properties name="logging_cfg" fileName="./projectized/logging.cfg" autoReload="true" override="true" />
+	</framework>
+	<!-- 环境变量 -->
+	<!-- envionment variables -->
+	<system />
+	
+	<!-- 进程级别配置项 -->
+	<!-- The process level configuration items -->
+	<app />
+	<!-- 版本信息不再从system.cfg和system.def中获取，而是从下列配置项的文件中获取，可根据需要配置成etc/version目录下的任意文件 -->
+	<versioninfo>
+		<properties name="versioninfo" fileName="./version/ZSMART_FTF.version" autoReload="true" override="true" />
+	</versioninfo>
+</configuration>

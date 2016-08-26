@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DISP PHS HZINFO" message="MML" seq="56" id="fed8a003-2e6f-4304-ba5f-367947c9ef60">
+    <comments><![CDATA[查询用户Home Zone签约信息]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-04-28 16:02:26</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DISP PHS HZINFO</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <extension/>
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="ba54a658-b764-40b7-8eaf-4d4ce8dbe0f8">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="32fb4c61-8954-4966-98cf-88ae39fb955a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="e469d0a6-1ae9-4224-b846-be1d20c45481">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="881d62c8-d0b2-4185-8695-47eb3f17347e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="37e545a2-5cc4-4495-b982-a9f4167df0fe">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="ec0d135a-dbb7-4c6d-a17f-566c0dbf8e19">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="080abb20-5919-4652-b386-c5f4f77c5831">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DispPhsHzInfo" site="S" id="f106fe11-b5eb-4572-8d2b-d2c1baaf2924">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-04-28 16:04:24</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.ATTR = $req.ATTR</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = getMMLDesc( $resp.v.resultCode, $resp.v.resultDesc )</response>
+            <response>$resp.ATTR = $s.ATTR</response>
+            <response>$resp.RESULT = $s.RESULT</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

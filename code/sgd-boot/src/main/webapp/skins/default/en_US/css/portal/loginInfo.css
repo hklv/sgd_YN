@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+* {
+	margin:					0;
+	padding:				0;
+}
+
+html, body {
+	height:					100%;
+}
+
+body {
+	background:	#ffffff;
+	margin:					0;
+	overflow:hidden;
+}
+
+table {
+	margin:					0;
+	padding:				0;
+	border-collapse:		collapse;
+}
+A:link { COLOR: #78278B;TEXT-DECORATION: none }
+A:visited {COLOR: #78278B;	TEXT-DECORATION: none }
+A:hover {
+	COLOR: #78278B;
+	text-decoration: underline;
+}

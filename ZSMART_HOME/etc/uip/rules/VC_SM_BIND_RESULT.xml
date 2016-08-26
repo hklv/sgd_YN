@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <rule name="VC_SM_BIND_RESULT" id="f214af5c-8666-407e-bd58-a1c9aa83c36f">
+    <comments><![CDATA[VC 的异常码跟返回码的映射关系]]></comments>
+    <version>1</version>
+    <modifier>0027004002</modifier>
+    <modifyDate>2012-03-14 16:19:58</modifyDate>
+    <kvlist>
+      <kv key="0" value="0" isResource="false"/>
+      <kv key="S-LOGIN-1001" value="1" isResource="false"/>
+      <kv key="S-LOGIN-1002" value="2" isResource="false"/>
+    </kvlist>
+    <extension>
+      <default>4</default>
+    </extension>
+  </rule>
+</zsmart>

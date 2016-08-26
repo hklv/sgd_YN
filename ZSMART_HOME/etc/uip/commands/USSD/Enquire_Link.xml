@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Enquire_Link" message="USSD" seq="47" id="060c9929-1697-4873-b1d5-8ba8a51db229">
+    <comments><![CDATA[Enquire_Link]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-03-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000083</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

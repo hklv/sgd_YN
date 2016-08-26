@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADD PHS VPN" message="MML" seq="71" id="a0ad85e8-8ad0-4eaa-b551-e3208c000ba7">
+    <comments><![CDATA[增加VPN]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-07 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADD PHS VPN</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="ba8c0d37-21e5-4450-9226-b30c639ac5d2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="false" name="VPNNAME" part="Business" id="30b33399-d64e-468f-bbf3-30189245277b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="N" requred="false" name="VPNTYPEID" part="Business" id="656f59c3-8e50-4150-97db-5ccdf35ebf5a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="false" name="EFFTYPE" part="Business" id="fda25321-e138-4bde-923e-7f9e959d05d8">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="3f67b208-531f-4370-b347-14c5492dd00a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="99cec8a9-1d06-4eba-961b-6c9985ad4f3e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="VPNCODE" part="Business" id="59896b01-4a4b-4338-8a5d-5a9cddd7e035">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="71970e72-35c9-4217-acbe-0b7f63057a63">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="4bae6cb4-1ac3-452b-90a1-30291dc6e67f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

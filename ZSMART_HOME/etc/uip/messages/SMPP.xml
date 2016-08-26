@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="SMPP" type="B">
+    <comments><![CDATA[SMPP]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2011-11-23 00:00:00</modifyDate>
+    <extension>
+      <length><![CDATA[$cur.Command_Length]]></length>
+      <transactionField>Sequence_No</transactionField>
+      <login>BIND_RECEIVER</login>
+      <login>BIND_TRANSCEIVER</login>
+      <login>BIND_TRANSMITTER</login>
+      <logout>UNBIND</logout>
+      <linkCheck>ENQUIRE_LINK</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.SmppMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="7c1f26e7-3ff2-43b5-a907-312812e98914">
+        <extension>
+          <comments><![CDATA[SMPP  Header]]></comments>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="I" requred="true" name="Command_Length" part="Header" id="f37eecce-8c55-46b4-9213-ddad4cb15408">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="C" dataType="I" requred="true" name="Command_ID" part="Header" id="fa3a5d70-eb80-4703-bc71-1a2f70845561">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="Command_status" part="Header" id="81b1970a-97d1-4106-8cee-b90f97f80908">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="I" requred="true" name="Sequence_No" part="Header" id="c357f6c6-cb7c-48a2-90be-64884df91e13">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="2" type="B" name="Body" id="61d8ddf3-a694-4d80-90dc-480379bee54f">
+        <extension>
+          <comments><![CDATA[SMPP  Body]]></comments>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+        <artifactId>sgd-parent</artifactId>
+        <version>1.0.0-snapshot</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>sgd-boot</artifactId>
+    <packaging>war</packaging>
+
+    <name>sgd-boot</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <!-- portal  -->
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>webcore</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>portal</artifactId>
+            <type>war</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ztesoft.zsmart.pot</groupId>
+                    <artifactId>portal-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.ztesoft.zsmart.pot</groupId>
+                    <artifactId>portal-server</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- sgd -->
+        <dependency>
+            <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+            <artifactId>sgd-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+            <artifactId>portal-adapter</artifactId>
+            <version>1.0.0-snapshot</version>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-transport-local</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>portal-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.mfr</groupId>
+            <artifactId>core-jdbc</artifactId>
+            <version>${mfr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>1.9.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.mfr</groupId>
+            <artifactId>core-base</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <overlays>
+                        <overlay>
+                            <groupId>com.ztesoft.zsmart.pot</groupId>
+                            <artifactId>portal</artifactId>
+                        </overlay>
+                    </overlays>
+                    <dependentWarExcludes>
+                        WEB-INF/lib/spring-*-4.1.6.RELEASE.jar,
+                        WEB-INF/lib/commons-*.jar,
+                        WEB-INF/lib/ibatis-core-3.0.jar,
+                        WEB-INF/lib/portal-server-9.0.1.jar,
+                        WEB-INF/lib/portal-web-9.0.1.jar,
+                        main.html
+                    </dependentWarExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>ngportal</finalName>
+    </build>
+</project>

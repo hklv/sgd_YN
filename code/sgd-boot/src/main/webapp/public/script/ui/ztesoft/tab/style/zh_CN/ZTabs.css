@@ -1,0 +1,100 @@
+/**
+ * ����ͬZTEsoftTabs.css��ͬ����Ϊ��ȫ������ĸ�����
+ */
+.TabHeaders {
+	height: 23px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	margin-left: 10px;
+	border-bottom:#626982 0px solid ;}
+
+.TabHeaders li {
+	float: left;
+	padding-left:10px;
+	background: url(images/tagleft.png) no-repeat left bottom;
+	height: 23px;	
+	list-style-type: none;
+	cursor:hand;
+}
+
+.TabHeaders li span {
+	font-family: Arial,sans-serif;;
+	font-weight:bold;
+	font-size: 12px;
+	color: #525252;
+	text-decoration: none;
+	float: left;
+	height: 23px;
+	/*background: url(images/tagright.png) no-repeat right bottom;*/
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+}
+.TabHeaders li div{
+	background:url(images/close.gif) no-repeat right top;
+	cursor:hand;
+	width:10px;
+	height:10px;
+	display:inline;		
+}
+.TabHeaders li.PageControlLi{
+	float: left;
+	margin-right: 0px;
+	background: url() no-repeat left bottom;
+	height: 23px;
+	list-style-type: none;
+}
+.TabHeaders li.PageControlLi div{
+	background:url() no-repeat right top;
+	width:20px;
+	height:10px;
+	display:inline;
+}
+.TabHeaders li.PageControlLi div span.LeftSpan{
+	background: url(images/left_arrow.gif) no-repeat center center;	
+	border:1px solid deepskyblue;
+	width:10px;	
+	margin-top:3px;
+	margin-bottom:-3px;
+	height: 10px;
+}
+.TabHeaders li.PageControlLi div span.LeftSpanGray{
+	background: url(images/left_arrow.gif) no-repeat center center;	
+	background-color:#F0C0C0;
+	border:1px solid deepskyblue;
+	width:10px;	
+	margin-top:3px;
+	margin-bottom:-3px;
+	height: 10px;
+}
+.TabHeaders li.PageControlLi div span.RightSpan{
+	background: url(images/right_arrow.gif) no-repeat center center;
+	border:1px solid deepskyblue;	
+	width:10px;
+	margin-top:3px;
+	margin-bottom:-3px;
+	height:10px;
+}
+.TabHeaders li.PageControlLi div span.RightSpanGray{
+	background: url(images/right_arrow.gif) no-repeat center center;
+	background-color:#F0C0C0;
+	border:1px solid deepskyblue;	
+	width:10px;
+	margin-top:3px;
+	margin-bottom:-3px;
+	height:10px;
+}
+
+.TabHeaders li.TabHeaderSelected {
+	background-position: left top;	
+	height: 25px;
+	margin-bottom: -2px;
+	color:#64078c;
+}
+
+.TabHeaders li.TabHeaderSelected span {
+	background-position: right top;
+	height: 25px;
+	color:#64078c;

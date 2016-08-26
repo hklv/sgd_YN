@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CANCEL_SM" message="SMPP" seq="83" id="f758863c-e9d2-4baa-9804-6da79f58dae7">
+    <comments><![CDATA[CANCEL_SM]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-09-29 15:45:42</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000008</requestKey>
+        <responseKey>0X80000008</responseKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="true" name="service_type" part="Body" id="0b1d35a5-974b-4c09-a3b5-31d087f34c65">
+        <extension>
+          <max>6</max>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="M" requred="true" name="message_id" part="Body" id="2338b5ec-5296-4017-a6e7-21e6ab94191c">
+        <extension>
+          <max>65</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="I" requred="true" name="source_addr_ton" part="Body" id="e8ce1f49-9a4b-4705-8a4a-5617383095c1">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="true" name="source_addr_npi" part="Body" id="22b40257-9418-4a7b-af90-39adb35e6cad">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="source_addr" part="Body" id="1269ce5d-c68e-4f19-b337-6df459932530">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="true" name="dest_addr_ton" part="Body" id="492c9928-0277-4de3-9eb6-ff9a1d3da1d8">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="dest_addr_npi" part="Body" id="95423108-2812-410e-b27c-f341400e535c">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="true" name="destination_addr" part="Body" id="06f45287-1238-43c4-b1b5-865dfb19db4d">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="CANCEL_SM" site="C" id="15f4a79a-be47-4432-8c57-2d9915c4f290">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-09-29 15:47:04</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.service_type = $s.service_type</request>
+            <request>$req.message_id = $s.message_id</request>
+            <request>$req.source_addr_ton = $s.source_addr_ton</request>
+            <request>$req.source_addr_npi = $s.source_addr_npi</request>
+            <request>$req.source_addr = $s.source_addr</request>
+            <request>$req.dest_addr_ton = $s.dest_addr_ton</request>
+            <request>$req.dest_addr_npi = $s.dest_addr_npi</request>
+            <request>$req.destination_addr = $s.destination_addr</request>
+          </invoke>
+          <exception/>
+          <finally/>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

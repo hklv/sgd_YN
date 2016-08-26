@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS LASTCALLINFO" message="MML" seq="23" id="aab91908-50c8-4fb3-8800-8a40632acbb4">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS LASTCALLINFO</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="9e014b9f-7b85-4063-956c-43e0b6c77512">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="3d8d32cb-a6d7-480e-9b2a-b49c241b7e6d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="SEQ" part="Business" id="cd42820c-5aa9-481a-b96f-4e90059ed963">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="a705322d-2721-4285-8eb3-7f85f523f948">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="0ee5beb3-838e-44ab-b2bb-1f8a5be66ee5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="9c029eec-950a-4279-b61a-c2c17abfbbe4">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="29bead83-2648-4361-8a24-bc055f7a266a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="2a1f7cc5-f59b-455c-a19d-bb8e9b0a6fb6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlListPhsLastCallInfo" site="S" id="b5d7438e-6554-4df3-ba25-6083494fd8f3">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.SEQ = $req.SEQ</request>
+            <request>$s.ATTR = $req.ATTR</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "LAST_CALL_LIST", "SEQ=SEQ|LATESTCNSMCHARGE=CHARGE|LATESTCNSMTIME=DURATION|CALLEDNUM=CALLED_NUMBER|STARTTIME=START_TIME" )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

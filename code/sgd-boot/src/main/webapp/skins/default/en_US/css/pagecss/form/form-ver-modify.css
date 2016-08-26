@@ -1,0 +1,465 @@
+  img{vertical-align: text-bottom ;} 
+   .editTable{
+    width:700px;
+    border:1px solid #000000;
+   }
+   .editTr{
+   border:1px solid #000000;
+   height:25px;
+   width:100%;
+   }
+   .editCell{
+    height:100%;
+    border:1px solid #000000;
+   }
+  .readClass {
+      background:#D4D0C8;
+      readonly;
+  }
+  .selectClass {
+      width:70;
+  }  
+  .trMouseOver {
+      background:#F6F6F4;
+      cursor:pointer;
+  }
+  .trMouseOut {
+      background:#FFFFFF;
+      cursor:none;
+  }
+  .trMouseDown {
+      background:#A6F6F4;
+      cursor:pointer;
+  }
+  
+.btnImg {
+    cursor: pointer;
+    border:1px solid #333333;
+    
+}
+.btnImgOver {
+    cursor: pointer;
+   /* border:1px solid #c0c0c0;*/
+       
+}
+
+
+.tool_01 {
+    width: 10px;
+    height: 30px;
+    background-image:  url(../../../img/form/tool_01.gif);
+}
+.tool_02 {
+    height: 30px;
+    width: 70px;
+    background-image:  url(../../../img/form/tool_02.gif);
+}
+.tool_03 {
+    width: 10px;
+    height: 30px;
+    background-image:  url(../../../img/form/tool_03.gif);
+}
+
+.tool_11 {
+    width: 10px;
+    height: 30px;
+    background-image:  url(../../../img/form/tool_11.gif);
+}
+.tool_12 {
+    height: 30px;
+    width: 70px;
+    background-image:  url(../../../img/form/tool_12.gif);
+}
+.tool_13 {
+    width: 10px;
+    height: 30px;
+    background-image:  url(../../../img/form/tool_13.gif);
+}
+
+.tool_21 {
+    width: 10px;
+    height: 20px;
+    background-image:  url(../../../img/form/tool_21.gif);
+}
+.tool_22 {
+    height: 20px;
+    width: 70px;
+    background-image:  url(../../../img/form/tool_22.gif);
+}
+.tool_23 {
+    width: 10px;
+    height: 20px;
+    background-image:  url(../../../img/form/tool_23.gif);
+}
+
+.line_img {
+    height: 5px;
+    width:220px;
+	line-height:5px;
+	background-image:  url(../../../img/form/line1.gif);
+	background-repeat:repeat-x;
+}
+
+.line_img2 {
+    height: 2px;
+}
+
+/*****************zhou.huicai1*******************/
+.prop_gif_0{
+	
+	background-image:  url(../../../img/form/prop.gif);
+	background-repeat:no-repeat;
+	cursor:pointer;
+	display:block;
+	display:-moz-inline-box; 
+    display:inline-block; 
+    width:20px;
+	height:20px;
+	line-height:20px;
+ }
+.table_gif_0{
+	
+	background-image:  url(../../../img/form/table.gif);
+	background-repeat:no-repeat;
+	cursor:pointer;
+	display:block;
+	display:-moz-inline-box; 
+    display:inline-block; 
+    width:20px;
+	height:20px;
+ }
+.tool2_gif_0{
+	
+	background-image:  url(../../../img/form/tool2.gif);
+	background-repeat:no-repeat;
+	cursor:pointer;
+	display:block;
+	display:-moz-inline-box; 
+    display:inline-block; 
+    width:20px;
+	height:20px;
+	line-height:20px;
+ }
+.close_gif_0{
+	width:20px;
+	height:20px;
+	line-height:20px;
+	background-image:  url(../../../img/form/close.gif);
+	background-repeat:no-repeat;
+	cursor:pointer;
+ }	
+.prop_gif{
+	padding-left:25px;
+	background-image:  url(../../../img/form/prop.gif);
+	background-repeat:no-repeat;
+	}
+.table_gif{
+	padding-left:25px;
+	background-image:  url(../../../img/form/table.gif);
+	background-repeat:no-repeat;
+	}
+.tool2_gif{
+	padding-left:25px;
+	background-image:  url(../../../img/form/tool2.gif);
+	background-repeat:no-repeat;
+	}
+	
+
+.table_01_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_01.gif);
+	  background-repeat:no-repeat;
+	}
+.table_02_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_02.gif);
+	  background-repeat:no-repeat;
+	}
+.table_03_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_03.gif);
+	  background-repeat:no-repeat;
+	}
+.table_04_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_04.gif);
+	  background-repeat:no-repeat;
+	}
+.table_05_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_05.gif);
+	  background-repeat:no-repeat;
+	}
+.table_06_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_06.gif);
+	  background-repeat:no-repeat;
+	}
+.table_07_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_07.gif);
+	  background-repeat:no-repeat;
+	}
+.table_08_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_08.gif);
+	  background-repeat:no-repeat;
+	}
+.table_09_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_09.gif);
+	  background-repeat:no-repeat;
+	}
+.table_10_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_10.gif);
+	  background-repeat:no-repeat;
+	}
+.table_11_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_11.gif);
+	  background-repeat:no-repeat;
+	}
+.table_12_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_12.gif);
+	  background-repeat:no-repeat;
+	}
+.table_13_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_13.gif);
+	  background-repeat:no-repeat;
+	}
+.table_14_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_14.gif);
+	  background-repeat:no-repeat;
+	}
+.table_15_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_15.gif);
+	  background-repeat:no-repeat;
+	}
+.table_16_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_16.gif);
+	  background-repeat:no-repeat;
+	}
+.table_17_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_17.gif);
+	  background-repeat:no-repeat;
+	}
+.table_18_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_18.gif);
+	  background-repeat:no-repeat;
+	}
+.table_19_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_19.gif);
+	  background-repeat:no-repeat;
+	}
+							
+.table_20_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_20.gif);
+	  background-repeat:no-repeat;
+	}	
+.table_21_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_21.gif);
+	  background-repeat:no-repeat;
+	}
+.table_22_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_22.gif);
+	  background-repeat:no-repeat;
+	}
+.table_23_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_23.gif);
+	  background-repeat:no-repeat;
+	}
+.table_24_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_24.gif);
+	  background-repeat:no-repeat;
+	}	
+.table_25_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/table_25.gif);
+	  background-repeat:no-repeat;
+	}	
+	
+	
+.object_01_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_01.gif);
+	  background-repeat:no-repeat;
+	}
+.object_02_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_02.gif);
+	  background-repeat:no-repeat;
+	}
+.object_03_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_03.gif);
+	  background-repeat:no-repeat;
+	}
+.object_04_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_04.gif);
+	  background-repeat:no-repeat;
+	}
+.object_05_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_05.gif);
+	  background-repeat:no-repeat;
+	}
+.object_06_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_06.gif);
+	  background-repeat:no-repeat;
+	}
+.object_07_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_07.gif);
+	  background-repeat:no-repeat;
+	}
+.object_08_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_08.gif);
+	  background-repeat:no-repeat;
+	}
+.object_082_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_082.gif);
+	  background-repeat:no-repeat;
+	}	
+.object_09_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_09.gif);
+	  background-repeat:no-repeat;
+	}
+.object_10_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_10.gif);
+	  background-repeat:no-repeat;
+	}
+.object_11_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_11.gif);
+	  background-repeat:no-repeat;
+	}
+.object_12_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_12.gif);
+	  background-repeat:no-repeat;
+	}
+.object_13_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_13.gif);
+	  background-repeat:no-repeat;
+	}
+.object_14_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_14.gif);
+	  background-repeat:no-repeat;
+	}
+.object_15_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_15.gif);
+	  background-repeat:no-repeat;
+	}
+.object_16_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_16.gif);
+	  background-repeat:no-repeat;
+	}
+.object_17_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_17.gif);
+	  background-repeat:no-repeat;
+	}
+.object_18_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_18.gif);
+	  background-repeat:no-repeat;
+	}
+.object_19_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_19.gif);
+	  background-repeat:no-repeat;
+	}
+.object_20_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_20.gif);
+	  background-repeat:no-repeat;
+	}	
+.object_21_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_21.gif);
+	  background-repeat:no-repeat;
+	}			
+.object_22_gif{
+	  width:100px;
+	  height:20px;
+	  background-image:  url(../../../img/form/object_22.gif);
+	  background-repeat:no-repeat;
+	}	
+.calbtn_gif{
+	  width:34px;
+	  height:22px;
+	  background-image:  url(../../../img/form/calendar/calbtn.gif);
+	  background-repeat:no-repeat;
+	 
+	}																		

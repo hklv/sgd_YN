@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="MOD PHS DEFAULTPRICE" message="MML" seq="55" id="7ec332f9-5ae7-4fa5-bc75-6b0454f2360c">
+    <comments><![CDATA[修改订户默认资费计划]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-03 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>MOD PHS DEFAULTPRICE</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="1004" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="9f516201-01ce-48be-9efe-a913c4a074f2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="b7b06757-e665-403d-83a7-cf7d1091585a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PRICENUM" part="Business" id="2abb26a0-99fc-480c-9ee8-2f1ad4857800">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="4d8b448f-6101-455e-a1d2-d0136353cbc4">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="6df1db7a-dd0b-4a54-ae25-1992b6918992">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ModDefPricePlan" site="S" id="04742749-b98c-4b39-856d-04370fecc5d2">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-03 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PRICENUM = $req.PRICENUM</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

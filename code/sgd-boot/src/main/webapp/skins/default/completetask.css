@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.cb_menu{width:78.5%;height:34px;margin:0px 0px 0px -2px;padding: 0px 0px;float: left;}
+.cb_menu ul{list-style:none;width:100%;height:34px;margin:0px 0px;padding: 0px 0px;display:block;}
+.cb_menu li{height:34px;display:block;float:left;font:bold 14px Verdana, Geneva, sans-serif;color: #497BD0;text-decoration:none;text-align:center;letter-spacing:2px;/*cursor:pointer;*/}
+.cb_menu .conLi{width:18%;padding-top: 7px;}
+.cb_menu .imgLi{width:4%;padding-top: 5px;}
+.conLi a{text-decoration:none;color:#497BD0;cursor:pointer;}
+.tc_current{background-position:0 0;color:#497BD0;text-decoration:none;text-align:center;width:109px;height:34px;display:block;}
+

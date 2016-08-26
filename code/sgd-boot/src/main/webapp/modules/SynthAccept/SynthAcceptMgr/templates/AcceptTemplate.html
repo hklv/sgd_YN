@@ -1,0 +1,289 @@
+<div class="panel panel-default" style="margin-bottom: 5px;">
+	<div class="panel-body">
+		<span class="label label-default">{{ORG_NAME}}</span>
+		<span style="float: right;"><a href="javascript:void(0);" id="specialHref">专线</a></span>
+	</div>
+</div>
+<div id="scrollPart" style="background-color: #fff;">
+	<!--申请人信息-->
+	<div class="panel panel_shadow clearfix js-panel" style="margin-top: 5px;">
+		<div class="panel-heading">
+			<h4 class="panel-title">申请人信息</h4>
+		</div>
+		<form class="form-horizontal js-form">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	申请人类型
+	                </label>
+					<div class="col-md-8">
+						<input name="APPLY_TYPE_ID" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	证件类型
+	                </label>
+					<div class="col-md-8">
+						<input name="ID_TYPE_ID" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	证件号码
+	                </label>
+					<div class="col-md-8">
+						<input type="text" NAME="ID_NO" data-rule="required;ID_card" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	姓名
+	                </label>
+					<div class="col-md-8">
+						<input name="NAME" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	性别
+	                </label>
+					<div class="col-md-8">
+						<select class="form-control" name="GENDER" data-rule="required">
+							<option value="M" selected="selected">男</option>
+							<option value="F">女</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	出生日期
+	                </label>
+					<div class="col-md-8">
+						<div class="input-group">
+							<input name="BIRTH_DATE" class="form-control" data-rule="required">	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	移动电话
+	                </label>
+					<div class="col-md-8">
+						<input name="MOBILE_PHONE" type="text" data-rule="required;mobile" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	固定电话
+	                </label>
+					<div class="col-md-8">
+						<input name="FIXED_PHONE" type="text" data-rule="required;tel" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	短信通知
+	                </label>
+					<div class="col-md-8">
+						<input type="checkbox">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="col-md-1-5 col-sm-2 control-label">
+	                	户籍地址
+	                </label>
+					<div class="col-md-8-5 col-sm-10">
+						<input name="PERMANENT_ADD" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="col-md-1-5 col-sm-2 control-label">
+	                	居住地址
+	                </label>
+					<div class="col-md-8-5 col-sm-10">
+						<input name="RESIDENCE_ADD" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+	            <div class="form-group">
+	                <label class="col-md-2 control-label">
+	                	邮寄地址
+	                </label>
+	                <div class="col-md-10">
+	                    <input name="MAILING_ADD" data-rule="required" class="form-control">
+	                </div>
+	            </div>
+	      	</div>
+	      	<div class="col-md-4">
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">
+	                	代理人办理
+	                </label>
+	                <div class="col-md-6">
+	                    <input name="isProxyApply" type="checkbox" class="proxy-apply"/>
+	                </div>
+	            </div>
+	      	</div>
+		</form>
+	</div>
+	<!--代理人信息-->
+	<div class="panel panel_shadow clearfix js-proxy-panel" style="display: none;">
+		<div class="panel-heading">
+			<h4 class="panel-title">代理人信息</h4>
+		</div>
+		<form class="form-horizontal js-form-proxy">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	证件类型
+	                </label>
+					<div class="col-md-8">
+						<input name="ID_TYPE_ID" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="form-group">
+					<label class="col-md-2 control-label">
+	                	证件号码
+	                </label>
+					<div class="col-md-4">
+						<input type="text" NAME="ID_NO" data-rule="required;ID_card" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	姓名
+	                </label>
+					<div class="col-md-8">
+						<input name="NAME" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	性别
+	                </label>
+					<div class="col-md-8">
+						<select class="form-control" name="GENDER" data-rule="required">
+							<option value="M" selected="selected">男</option>
+							<option value="F">女</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	出生日期
+	                </label>
+					<div class="col-md-8">
+						<div class="input-group">
+							<input name="BIRTH_DATE" data-rule="required" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	移动电话
+	                </label>
+					<div class="col-md-8">
+						<input name="MOBILE_PHONE" type="text" data-rule="required;mobile" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-md-4 control-label">
+	                	固定电话
+	                </label>
+					<div class="col-md-8">
+						<input name="FIXED_PHONE" type="text" data-rule="required;tel" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="col-md-1-5 col-sm-2 control-label">
+	                	户籍地址
+	                </label>
+					<div class="col-md-8-5 col-sm-10">
+						<input name="PERMANENT_ADD" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="col-md-1-5 col-sm-2 control-label">
+	                	居住地址
+	                </label>
+					<div class="col-md-8-5 col-sm-10">
+						<input name="RESIDENCE_ADD" data-rule="required" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12">
+	            <div class="form-group">
+	                <label class="col-md-1-5 col-sm-2 control-label">
+	                	邮寄地址
+	                </label>
+	                <div class="col-md-8-5 col-sm-10">
+	                    <input name="MAILING_ADD" data-rule="required" class="form-control js-menu-url" data-rule="{{DIRMENUMGR_MENU_URL}}:required;length[1~4000, true]">
+	                </div>
+	            </div>
+	      	</div>
+		</form>
+	</div>
+	<!--证明材料-->
+	<div class="panel panel_shadow clearfix">
+		<div class="panel-heading">
+			<h4 class="panel-title">证明材料</h4>
+		</div>
+		<table style="width: 100%;text-align: center;" class="FILE_LIST_TABLE table table-bordered table-striped">
+			<tr style="background-color: #F7F7F7;">
+				<td>材料名称</td>
+				<td>材料形式</td>
+				<td>材料要求</td>
+				<td>份数</td>
+				<td>备注</td>
+				<td>附件</td>
+				<td style="width: 50px;"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="col-md-12 col-sm-12 text-right" style="margin-top: 5px;">
+    <div class="row">
+        <button type="button" class="btn btn_minwidth btn-primary js-submit">
+        	提交 
+        </button>
+    </div>
+</div>

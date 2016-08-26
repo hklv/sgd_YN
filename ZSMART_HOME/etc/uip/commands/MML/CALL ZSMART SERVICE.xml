@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CALL ZSMART SERVICE" message="MML" seq="78" id="52425c19-ba31-45df-b902-a20eb534aead">
+    <comments><![CDATA[调用ZSMART服务]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-09-14 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>CALL ZSMART SERVICE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="c718b2bf-b094-4711-8998-b40a9cf07849">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="both" fieldType="N" dataType="S" requred="true" name="BOXML" part="Business" id="e11e0796-6491-4eba-a174-8a89177ed0c7">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="46c8f7ec-b9d8-4874-994c-169d7b657b29">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="5f211274-2cf7-459a-9398-346a5519b1c3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="CallV71CService" site="C" id="d0432831-8548-4902-a6db-c4a7e79efb33">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-09-14 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.BOXML = $s.BOXML</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$req.BOXML = $s.BOXML</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

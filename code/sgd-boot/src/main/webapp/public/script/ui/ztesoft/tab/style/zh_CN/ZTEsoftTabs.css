@@ -1,0 +1,32 @@
+.Menubox {
+	width: 100%;
+	background: #EEEEEE;
+	height: 28px;
+	line-height: 28px;
+}
+
+.Menubox ul{
+margin:0px;
+padding:0px;
+}
+.Menubox li{
+float:left;
+display:block;
+cursor:pointer;
+width:144px;
+text-align:center;
+color:#949694;
+font-weight:bold;
+}
+.Menubox li.hover{
+padding:0px;
+background:#fff;
+width:146px;
+border-left:1px solid #A8C29F;
+border-top:1px solid #A8C29F;
+border-right:1px solid #A8C29F;
+color:#739242;
+font-weight:bold;
+height:27px;
+line-height:27px;
+}

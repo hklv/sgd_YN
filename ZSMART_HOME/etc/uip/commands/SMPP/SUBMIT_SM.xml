@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SUBMIT_SM" message="SMPP" seq="28" id="46bf594a-a5cb-4ccd-9e72-2c226b386c4b">
+    <comments><![CDATA[SUBMIT_SM from SmartfrenCMS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-05 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00000004</requestKey>
+        <responseKey>0X80000004</responseKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="req" fieldType="N" dataType="M" requred="true" name="service_type" part="Body" id="c29e7d7a-8dcc-4f76-8102-0744bced5036">
+        <extension>
+          <max>6</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="I" requred="true" name="source_address_ton" part="Body" id="c5d245c8-592b-4672-9d3d-51b6b59eed5e">
+        <extension>
+          <length>1</length>
+          <encodingValue>1</encodingValue>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="true" name="source_address_npi" part="Body" id="b6a45d9a-29ab-4838-ae3d-6ccb32a660a8">
+        <extension>
+          <length>1</length>
+          <encodingValue>1</encodingValue>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="source_address" part="Body" id="036445e8-6f0c-4382-b63b-3ed7169a512e">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="true" name="dest_address_ton" part="Body" id="d3a58c52-04cb-40bb-99ea-702f04780882">
+        <extension>
+          <length>1</length>
+          <encodingValue>1</encodingValue>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="dest_address_npi" part="Body" id="fa9d7c5c-5423-477a-9492-4e4ccdb92860">
+        <extension>
+          <length>1</length>
+          <encodingValue>1</encodingValue>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="true" name="destination_address" part="Body" id="2ea1a9d1-72e9-450a-8808-110b01de0156">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="I" requred="true" name="esm_class" part="Body" id="d835c1be-2026-4d21-ab64-3f6de9ed10b9">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="I" requred="true" name="protocol_ID" part="Body" id="f66b9d1e-c27d-4177-b20f-1a8001143163">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="I" requred="true" name="priority_flag" part="Body" id="308e40d5-cf00-4d92-98b0-31760ba9525a">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="12" direction="req" fieldType="N" dataType="M" requred="true" name="schedule_delivery_time" part="Body" id="bd31a865-9b3a-48a7-8e37-5d683f526786">
+        <extension>
+          <max>17</max>
+        </extension>
+      </field>
+      <field seq="13" direction="req" fieldType="N" dataType="M" requred="true" name="validity_peroid" part="Body" id="3950b567-2137-442a-ba95-1949da212d65">
+        <extension>
+          <max>17</max>
+        </extension>
+      </field>
+      <field seq="14" direction="req" fieldType="N" dataType="I" requred="true" name="registered_delivery_flag" part="Body" id="50bfdc62-0b37-4c6b-95cb-58f66f7f0d34">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="15" direction="req" fieldType="N" dataType="I" requred="true" name="replace_if_present_flag" part="Body" id="f6da4554-364e-4d43-8cd7-70be041e2c08">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="16" direction="req" fieldType="N" dataType="I" requred="true" name="data_coding" part="Body" id="59d51e11-6519-46c1-a238-921481adcff3">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="17" direction="req" fieldType="N" dataType="I" requred="true" name="sm_default_msg_id" part="Body" id="11317f89-22a2-41a2-bb1c-e4e15377480e">
+        <extension>
+          <length>1</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+      <field seq="18" direction="req" fieldType="N" dataType="I" requred="true" name="sm_length" part="Body" id="1ffc1ab8-a4f4-4494-bbb8-cec77610d9f6">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="19" direction="req" fieldType="N" dataType="S" requred="true" name="short_message_text" part="Body" id="e9929f94-ea7c-4af3-ae86-052857136967">
+        <extension>
+          <max>160</max>
+        </extension>
+      </field>
+      <field seq="20" direction="resp" fieldType="N" dataType="M" requred="false" name="Message_id" part="Body" id="4674b99e-3b63-484f-9c3d-77fc10a65bc8">
+        <extension>
+          <max>9</max>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="SUBMIT_SM" site="C" id="fb2017ec-aa1b-4da4-abde-ec70cec5a9af">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-06-29 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.short_message_text = $s.short_message_text</request>
+            <request>$req.source_address = $s.source_address</request>
+            <request>$req.source_address_ton = $s.source_address_ton</request>
+            <request>$req.destination_address = $s.destination_address</request>
+            <request>$req.v.lang_code = $s.lang_code</request>
+            <request>$req.registered_delivery_flag = $s.registered_delivery_flag</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.Message_id = $resp.Message_id</response>
+            <response>$s.Command_status = $resp.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="SendCMSAdvice" site="C" id="813a66e0-b968-4e47-b715-bf15eda86f41">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-20 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.short_message_text = $s.short_message_text</request>
+            <request>$req.source_address_ton = $s.source_address_ton</request>
+            <request>$req.source_address = $s.source_address</request>
+            <request>$req.destination_address = $s.destination_address</request>
+            <request>$req.v.lang_code = $s.lang_code</request>
+            <request>$req.registered_delivery_flag = $s.registered_delivery_flag</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.SendResult = $req.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="callSendSmpp" site="C" id="8bbf6ae0-746c-47ae-960e-377e3e97eef2">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2013-04-07 13:19:59</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.short_message_text = $s.short_message_text</request>
+            <request>$req.source_address_ton = $s.source_address_ton</request>
+            <request>$req.source_address = $s.source_address</request>
+            <request>$req.destination_address = $s.destination_address</request>
+            <request>$req.v.lang_code = $s.lang_code</request>
+            <request>$req.registered_delivery_flag = $s.registered_delivery_flag</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.SendResult = $req.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

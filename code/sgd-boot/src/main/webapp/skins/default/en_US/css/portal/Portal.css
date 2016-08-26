@@ -1,0 +1,1010 @@
+@CHARSET "UTF-8";
+
+* {
+	margin:					0;
+	padding:				0;
+}
+
+html, body {
+	height:					100%;
+}
+
+body {
+	background:	#ffffff;
+	margin:					0;
+	overflow:hidden;
+}
+
+table {
+	margin:					0;
+	padding:				0;
+	border-collapse:		collapse;
+}
+
+#portal_table {
+	width:					100%;
+	background:				#FFFFFF;
+}
+
+#portal_head {
+	display:				block;
+}
+
+#portal_menu {
+	height:					38px;
+	display:				block;
+}
+
+#tabs_header {
+
+}
+
+#foot {
+	width:					100%;
+	height:					16px;
+	margin:					0px;
+	background:				url(../../img/newui/foot.gif) repeat-x;
+	text-align:				center;
+	color:					#61446e;
+	font:					11px Arial;
+	text-transform:			capitalize;
+}
+
+#foot .copyright {
+	/*text-transform:			uppercase;*/
+}
+
+#foot a {
+	color:					#61446e;
+}
+
+#foot a:hover {
+	text-decoration:		underline;
+}
+
+#portal_content {
+	background-color:		#ffffff;
+	padding:				0px 5px;
+	overflow:				hidden;
+	/*height:					449px;*/
+}
+
+#divTabHeader {
+	width:					100%;	
+}
+
+.imgLogo {
+	padding-top:			20px;
+	padding-right:			0px;
+	padding-bottom:			7px;
+	padding-left:			25px;
+	width:					140px;
+	height:					50px;
+	
+}
+
+.menu_bottom_space {
+	height:					2px;
+}
+
+.logoNav_text {
+	width:					600px;
+	height:					60px;
+	float:					right;
+	padding:				10px 4px 0px 8px;
+	text-align:				right;
+	font:					normal 11px/22px Arial;
+	color:					#333333;
+}
+
+.new_nav {
+	background:				#5e2c84;
+	width:					auto;
+	padding:				0 0 0 10px;
+	font-family:			Gotham Rounded book;
+	font-size:				12px;
+	font-weight:			bold;
+	display:				inline-block;
+}
+.new_nav:after {
+	clear:					both;
+	display:				block;
+	content:				"";
+	height:					0;
+	font-size:				0;
+	line-height:			0;
+}
+
+.new_logo {
+	width:					170px;
+	height:					39px;
+	background:				url(../../img/newui/header/new_header_bg_01.png) no-repeat top left;
+	overflow:				hidden;
+	text-indent:			-1000em;
+	float:					left;
+}
+
+.new_nav_bar {
+	height:					39px;
+	overflow:				hidden;
+	zoom:					1;
+	float:					left;
+}
+
+.nav_ul {
+	list-style:				none;
+}
+
+.nav_menu {
+	float:					left;
+	height:					38px;
+	background:				none;
+	margin-right:1px;
+	clear:					right;
+	list-style-type:		none;
+	/*text-transform:			uppercase;*/
+	line-height: normal;
+}
+
+
+.nav_menu a:hover {
+ color:#525252; TEXT-DECORATION: none ; background:	none
+}
+
+.nav_menu a:active
+{
+    color: #525252;
+}
+
+
+.nav_menu a {
+	padding:				13px 15px 0px 15px;
+	display:				block;
+	height:					26px;
+	cursor:					pointer;
+	float:					left;
+	text-align:				left;
+	color:					#ffffff;
+	overflow:				hidden;
+	white-space:			nowrap;
+}
+
+.nav_menu span i {
+	font-style:				normal;
+	font-size:				9px;
+	color:					#65a6ed;
+	display:				block;
+	margin-top:				-2px;
+	font-family:			Arial,sans-serif;
+}
+
+.nav_menu a:hover td {
+	color:					#fff;
+	
+}
+
+.nav_menu_hover {
+	background-color: #c1d82f;
+}
+
+.nav_menu_hover a {
+    color:#525252;
+}
+
+.nav_menu_current {
+		background-color: #c1d82f;
+}
+
+.nav_menu_current a {
+	color:#525252;
+}
+.nav_menu_current2 {
+	background-color: #c1d82f;color:#525252;
+}
+.nav_menu_current2 a{color:#525252;}
+
+
+.nav_menu .has_children {
+	line-height:			normal;
+}
+
+.has_children span {
+	background:				url(../../img/newui/header/down_arrow.png) no-repeat left -50px;
+	margin-left:			7px;
+	line-height:			normal;
+}
+
+.nav_menu_hover .has_children span {
+	background-position:	left -23px;
+}
+
+.nav_menu_current .has_children span {
+	background-position:	left -23px;
+}
+
+.nav_menu_current .sub_menu_1 {
+	display:				block;
+}
+
+.up_donw_btn {
+	background:				url(../../img/newui/header/up_arrow.png) no-repeat center -62px;
+	display:				none;
+	height:					11px;
+	font-size:				0px;
+	line-height:			0px;
+	margin:					5px;
+	cursor:					pointer;
+	-moz-border-radius:		5px;
+	-webkit-border-radius:	5px;
+}
+
+.down_arrow {
+	background-image:		url(../../img/menus/down_arrow.png);
+}
+
+.up_arrow {
+	background-image:		url(../../img/menus/up_arrow.png);
+}
+
+.up_donw_show {
+	display:				block;
+}
+
+.left_has_more {
+	background:				#5e2c84;
+	display:				none;
+}
+
+.left_has_more .show_more {
+	display:				inline-block;
+}
+
+.left_has_more span {
+	background:				url(../../img/newui/header/new_header_bg_05_left.png) no-repeat 6px -40px;
+	height:					38px;
+	display:				block;
+	width:					48px;
+}
+
+.left_has_more .more_hover {
+	border-top:				1x solid #FBFBFF;
+	border-left:			1x solid #FBFBFF;
+	border-right:			1x solid #11376A;
+	border-bottom:			1x solid #11376A;
+	background:				url(../../img/newui/header/new_header_bg_05_left.png) no-repeat 6px 0px;
+}
+
+.left_has_more .more_down {
+	border-top:				1x solid #11376A;
+	border-left:			1x solid #11376A;
+	border-right:			1x solid #FBFBFF;
+	border-bottom:			1x solid #FBFBFF;
+	background:				url(../../img/newui/header/new_header_bg_05_left.png) no-repeat 6px -80px;
+}
+
+.right_has_more {
+	background:				#5e2c84;
+	display:				none;
+}
+
+.right_has_more .show_more {
+	display:				inline-block;
+}
+
+.right_has_more span {
+	background:				url(../../img/newui/header/new_header_bg_05.png) no-repeat 6px -40px;
+	height:					38px;
+	display:				block;
+	width:					48px;
+}
+
+.right_has_more .more_hover {
+	border-top:				1x solid #FBFBFF;
+	border-left:			1x solid #FBFBFF;
+	border-right:			1x solid #11376A;
+	border-bottom:			1x solid #11376A;
+	background:				url(../../img/newui/header/new_header_bg_05.png) no-repeat 6px 0px;
+}
+
+.right_has_more .more_down {
+	border-top:				1x solid #11376A;
+	border-left:			1x solid #11376A;
+	border-right:			1x solid #FBFBFF;
+	border-bottom:			1x solid #FBFBFF;
+	background:				url(../../img/newui/header/new_header_bg_05.png) no-repeat 6px -80px;
+}
+
+.hover {
+	background-position:	center -35px;
+	background-color:		#264870;
+}
+
+.moreScroll {
+	width:					100%;
+}
+
+.moreOwner {
+	overflow:				hidden;
+	height:					38px;
+}
+
+.menuHide {
+	width:					0px;
+	position:				absolute;
+	left:					-100px;
+	top:					-100px;
+}
+
+.pop_menu_parent {
+	position:				absolute;
+	left:					50px;
+	top:					40px;
+	font-family:			Arial,sans-serif;
+	font-size:				12px;
+	visibility:				hidden;
+	z-index:				1;
+	border:					1px solid #525252;
+}
+
+.pop_menu_parent .pop_menu_child {
+	position:				relative;
+	left:					0px;
+	top:					0px;
+	width:					100%;
+	height:					100%;
+}
+
+.pop_menu_parent iframe {
+	position:				absolute;
+	left:					0px;
+	top:					0px;
+	width:					100%;
+	height:					100%;
+	z-index:				2;
+ 	filter:					progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+
+.pop_menu_more {
+	position:				absolute;
+	left:					0px;
+	top:					0px;
+	width:					100%;
+	height:					100%;
+	z-index:				3;
+	background-color:		#FFFFFF;
+	opacity:				0.9;
+	filter:					alpha(opacity = 100);
+}
+
+.pop_menu_scroll {
+	float:					left;
+	overflow:				hidden;
+}
+
+.pop_menu {
+	float:					left;
+	white-space:			nowrap;
+	padding:				0px 0px;
+	min-width:				200px;
+}
+
+.pop_menu a {
+	display:				block;
+	text-decoration:		none;
+	color:					#333333;
+	background:				url(../../img/menus/nav_menu_right.png) no-repeat right 100px;
+	font-size:				12px;
+}
+
+.pop_menu li {
+	list-style:				none;
+	margin:					0px 0px;
+	display:				block;
+}
+
+.pop_menu .has_children span {
+	background:				url(../../img/menus/right_arrow.png) no-repeat right 1px;
+	margin-left:			0px;
+}
+
+.pop_menu span {
+	padding:				6px 20px 6px 13px;
+	white-space:			nowrap;
+	margin-right:			6px;
+	display:				block;
+	line-height:			1.4em;
+}
+
+.pop_menu .select {
+	background:				url(../../img/newui/header/new_bar_hover_bg_10.png) repeat-x 0 0 #2459a2;
+	color:					#333333;
+}
+
+.pop_menu .nosub {
+	background-image:		none;
+}
+
+div.max {
+	width:					100%;
+	height:					100%;
+}
+
+/*********************************dock*****************************************/
+.tdToolBars {
+	width:					300px;
+/*	word-break:				keep-all;
+	overflow:				hidden;
+	padding-right:			9px;*/
+	padding-top:			14px;
+	/*background:				url(../../img/newui/header/new_header_bg_03.png) repeat-x top left;*/
+}
+
+.tdTabsRight {width:250px; height:25px;background:url(../../img/newui/tabs/tabs_bg.jpg); borde}
+
+.dock {
+	
+}
+.dock-container {
+	float:right;
+	text-align: right;
+	overflow:hidden;
+	zoom:1;
+	/*margin-top:4px;*/
+	background:url(../../img/newui/dock/sub_menu_bg.png) repeat-x top left;
+}
+.dock-container span{
+	padding-right:5px;
+	background:url(../../img/newui/dock/sub_menu_v.png) no-repeat right center;
+	margin-right:5px;
+	float:left;
+}
+.dock-item {
+	height: 37px;
+	background-repeat:none;
+	background-position:0 0;
+	margin:0px 16px 0px 0px;
+	display:block;
+	float:left;
+	outline:none;
+}
+/*
+.dock-item:hover {
+	background-position: 0 -37px
+}
+.dock-item:active {
+	background-position: 0 -74px
+}
+*/
+.dock-container .dock-expand{
+	background-image:url(../../img/newui/dock/sub_menu_01.gif);
+}
+.dock-container .dock-fav{
+	background-image:url(../../img/newui/dock/sub_menu_02.gif);
+}
+.dock-container .dock-fav-has {
+	background-position:0 -66px;
+}
+
+.dock-container .dock-keyChange{
+	width:	26px;
+	background-image:url(../../img/newui/dock/icon2.jpg);
+}
+.dock-container .dock-refresh{
+	width:	35px;
+	background-image:url(../../img/newui/dock/icon3.jpg)
+}
+.dock-container .dock-notice{
+	background-image:url(../../img/newui/dock/sub_menu_05.jpg)
+}
+.dock-container .dock-home{
+	width:	39px;
+	background-image:url(../../img/newui/dock/icon1.jpg)
+}
+.dock-container .dock-osshome{
+	width:	39px;
+	background-image:url(../../img/newui/dock/icon5.jpg)
+}
+.dock-container .dock-logout{
+	width:	30px;
+	background-image:url(../../img/newui/dock/icon4.jpg)
+}
+
+
+/*********************************tabs*****************************************/
+
+.tabs {
+	
+}
+
+.tabs div.tabScroll {
+	float:						left;
+	width:						100%;
+}
+
+.tabs div.tabOwner {
+	overflow:					hidden;
+	width:						300px;
+}
+
+.tabs div.leftMore {
+	width:						20px;
+	float:						left;
+/*	margin:						6px 0 0 0 !important;*/
+	display:					none;
+}
+
+.tabs div.leftMore a {
+	background:					url(../../img/newui/tabs/tab_arrow_left.png) no-repeat 0px -27px;
+    display:					block;
+    height:						27px;
+    line-height:				27px;
+}
+
+.tabs div.leftMore a:hover {
+	background-position:		0px 0px;
+}
+.tabs div.leftMore a:active {
+	background-position:		0px -27px;
+}
+
+.tabs div.rightMore {
+	width:						20px;
+	float:						left;
+/*	margin:						6px 0 0 0 !important;*/
+	display:					none;
+}
+
+.tabs div.rightMore a {
+	background:					url(../../img/newui/tabs/tab_arrow_right.png) no-repeat 0px -27px;
+    display:					block;
+    height:						27px;
+    line-height:				27px;
+}
+
+.tabs div.rightMore a:hover {
+	background-position:		0px 0px;
+}
+.tabs div.rightMore a:active {
+	background-position:		0px -27px;
+}
+
+.tabs ul {
+	list-style:					none;
+
+    width:						10000px;
+}
+
+.tabs li {
+	float:						left;
+    text-indent:				0px;
+    padding:					0px;
+    margin:						0px !important;
+    list-style-image:			none !important;
+    height:						27px;
+    line-height:				27px;
+    clear:						right;
+	list-style-type:			none;   
+	border-right:				1px soild #525252;
+}
+
+.tabs li {
+	display:					inline;
+}
+
+.tabs li a {
+    background:					url(../../img/newui/tabs/tabs_bg.png) no-repeat 0px 0;
+    font-size:					12px;
+    display:					block;
+    text-align:					left;
+    text-decoration:			none;
+    color:						#525252;
+    padding:					0 6px 0 6px;
+    margin:						0px;
+    overflow:					hidden;
+    white-space:				nowarp;
+    font-family:				Arial;
+    zoom:						1;
+    
+}
+
+
+
+.tabs a span {
+
+}
+
+.tabs a:active {
+    outline:					none;
+    color:						#525252;
+}
+
+.tabs a:hover {
+    background-position:		0px -29px;
+    color:						#78278b;
+}
+
+.tabs a.current, .tabs a.current:hover, .tabs li.current a {
+    background-position:		0px -62px;
+    color:						#78278b !important;
+    height:						30px;
+    border-right:				#b0b0b0 1px solid;
+/*
+    font-weight:				bold;
+    font-size:					11px;
+*/
+}
+
+.tabs div.closeOut {
+	width:						11px;
+	height:						11px;
+	background:					url(../../img/newui/tabs/close.png) no-repeat 0 0;
+	float:						left;
+	margin-top:					9px;
+}
+
+.tabs div.closeOver {
+	width:						11px;
+	height:						11px;
+	background:					url(../../img/newui/tabs/close1.png) no-repeat 0 0;
+	cursor:						pointer;
+	margin-top:					9px;
+	float:						left;
+}
+
+.tabs div.titleCenter {
+	float:						left;
+	cursor:						pointer;
+	margin:						0px 3px 0px 3px;
+}
+
+.tabs div.favoriteOut {
+	width:						11px;
+	height:						11px;
+	background:					url(../../img/newui/tabs/tab_star.png) no-repeat 0px 0px;
+	float:						left;
+	margin-top:					9px;
+}
+
+.tabs div.favoriteExists {
+	width:						11px;
+	height:						11px;
+	background:					url(../../img/newui/tabs/tab_star.png) no-repeat 0px -11px;
+	cursor:						pointer;
+	float:						left;
+	margin-top:					9px;
+}
+
+.tabs div.favoriteOver {
+	width:						11px;
+	height:						11px;
+	background:					url(../../img/newui/tabs/tab_star.png) no-repeat 0px -11px;
+	cursor:						pointer;
+	float:						left;
+	margin-top:					9px;
+}
+
+div.panes {
+	height:						100%;
+	width:						100%
+	background:					#ffffff;
+}
+
+div.panes div.pane {
+	display:					none;
+	width:						100%;
+	height:						100%;
+}
+
+div.pane body {
+	padding:					5px;
+}
+
+
+/************************************Favorite**********************************/
+
+div.favorite {
+	width:					280px;
+	display:				none;
+	overflow:				hidden;
+	position:				absolute;
+	border:					1px solid #334761;
+	background-color:		#7a8fa9;
+	font-size:				12px;
+	-moz-box-shadow:		2px 2px 10px #3b3b3b;
+	-webkit-box-shadow:		2px 2px 10px #3b3b3b;
+	box-shadow:				2px 2px 10px #3b3b3b;
+	top:					15px;
+	left:					315px;
+	list-style:				none;
+}
+
+div.favorite .mask {
+	position:				relative;
+	left:					0px;
+	top:					0px;
+	width:					100%;
+	height:					358px;
+}
+
+div.favorite .mask .owner {
+	position:				absolute;
+	left:					0px;
+	top:					0px;
+	z-index:				3;
+	background-color:		#7a8fa9;
+	padding:				0px 2px 0px 3px;
+}
+
+div.favorite iframe {
+	position:				absolute;
+	left:					0;
+	top:					0;
+	width:					100%;
+	height:					358px;
+	z-index:				2;
+ 	filter:					progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+}
+
+div.favorite .bars {
+	margin:					4px 0 3px 0;
+	padding:				0;
+}
+
+div.favorite .bar_item {
+	border:					1px solid #192d46;
+	background-color:		#1b304a;
+	width:					272px;
+}
+
+div.favorite .tip {
+	text-align:				center;
+	background-color:		#ffe7a7;
+	padding:				5px;
+	margin:					4px 2px;
+	display:				none;
+}
+
+
+div.favorite .tip span {
+	color:					#a26a34;
+	padding:				0 5px;
+}
+
+div.favorite .tip a {
+	font-weight:			bold;
+	color:					#3466a2;
+}
+
+/*列表*/
+div.favorite .list {
+	list-style:				none;
+	padding:				0;
+	margin:					0;
+	height:					320px;
+	overflow:				auto;
+}
+
+div.favorite .list ul {
+	padding:				0;
+	margin:					0;
+	display:				none;
+}
+
+div.favorite .list ul .title {
+	margin-left:			20px;
+}
+
+div.favorite .list li {
+	border-bottom:			1px solid #2e435d;
+}
+
+div.favorite .list a {
+	text-decoration:		none;
+	color:					#e6f2ff;
+	padding:				7px;
+	display:				block;
+	margin:					1px;
+	overflow:				hidden;
+	zoom:					1;
+}
+
+div.favorite .list a:hover {
+	background:				url(../../img/newui/favorite/menu_select_bg_38.png) repeat-x top left;
+	color:					#fff;
+}
+
+div.favorite .list a:active {
+	background:				#19457e;
+	color:					#fff;
+	padding:				8px 7px 6px;
+}
+
+div.favorite .list a:focus {
+	outline:				none;
+}
+
+/*有子内容的列表项*/
+div.favorite .list .has_children .title {
+	background-image:		url(../../img/newui/favorite/folder-horizontal.png);
+	float:					left;
+}
+
+div.favorite .list .title, div.favorite .list .has_children ul .title {
+	padding-left:			20px;
+	background:				url(../../img/newui/favorite/sort-rating.png) no-repeat top left;
+	cursor:					pointer;
+	float:					left;
+}
+
+div.favorite .action {
+	float:					right;
+	padding-right:			10px;
+	display:				none;
+	cursor:					pointer;
+}
+
+/*收藏列表可操作状态*/
+.收藏列表可操作 a:hover .操作 {
+	display:block
+}
+
+/*可操作状态菜单项*/
+div.favorite .buttons {
+	background:				url(../../img/newui/favorite/sub_nemu_bg_54.png) repeat-x top left;
+	border-top:				1px solid #768497;
+	padding:				4px;
+	margin:					2px 0px 0px 0px;
+/*	display:				none;*/
+}
+
+div.favorite .buttons .button {
+	display:				inline-block;
+	margin-right:			4px;
+}
+
+div.favorite .buttons .button span {
+	padding:				4px 5px 3px;
+	display:				block;
+	color:					#c2d4e9;
+	cursor:					pointer;
+	margin:					1px
+}
+
+div.favorite .buttons .button:hover {
+	background:				url(../../img/newui/favorite/sub_menu_btn_bg_57.png) repeat-x center center;
+	border:					1px solid #3c4e67;
+}
+
+div.favorite .buttons .button:hover span {
+	border:					1px solid #7f8e9e;
+	padding:				3px 4px 2px;
+	color:					#fff;
+	margin:					0;
+}
+
+div.favorite .buttons .button:active {
+	background:				#6d7a8c;
+}
+
+div.favorite .buttons .button span.new {
+	background:				url(../../img/newui/favorite/plus.png) no-repeat 2px center;
+	padding-left:			20px;
+}
+
+#收藏夹 .子菜单按钮:hover .新 {
+	padding-left:19px;
+	background-position:1px center
+}
+
+/*点击操作列表展开*/
+#收藏列表 .open {
+	background-color:#435871;
+	border-bottom:none
+}
+#收藏列表 .open ul {
+	display:block;
+	border-top:1px solid #14263c;
+	background-color:#30435c;
+	list-style:none;
+}
+#收藏列表 .open ul li {
+	border-bottom:none
+}
+#收藏列表 .open .名 {
+	background-image:url(../../img/newui/favorite/folder-horizontal-open.png)
+}
+
+div.favorite .edit .action { display:block }
+
+
+div.favorite .del {
+	color: #00b421;
+}
+
+div.favorite .normal {
+	color: #E6F2FF;
+}
+
+/************************************Tips**************************************/
+/*公用*/
+.zsui_dialog {position:absolute; display:none}
+.zsui_dialog table { border-collapse:collapse; border:0 none; margin:0; padding:0; z-index:2; position:relative}
+.zsui_dialog h3, .zsui_dialog p { margin:0; padding:0;}
+
+.zsui_bgIframe { 
+	position:				absolute;
+	left:					0;
+	top:					0;
+	width:					100%;
+	height:					20px;
+	z-index:				1;
+ 	filter:					progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+}
+
+/*皮肤 window*/
+.window { width:350px;}
+.window table{ width:100%; width:100%; height:100%; }
+.window .zsui_border {opacity:0.7; filter:alpha(opacity=70);}/*边框半透明*/
+/*四个角*/
+.window .zsui_leftTop, .zsui_rightTop, .zsui_leftBottom, .zsui_rightBottom { width:10px; height:10px; background-repeat:no-repeat;background-image:url(images/window/border_corner.png)}
+.window .zsui_leftTop {background-position:0 0;}
+.window .zsui_rightTop {background-position:100% 0}
+.window .zsui_leftBottom {background-position:0 100%}
+.window .zsui_rightBottom {background-position:100% 100%}
+/*边*/
+.window .zsui_left, .zsui_right { width:10px; background:url(../../img/newui/window/border.png) repeat-y;}
+.window .zsui_top, .zsui_bottom { height:10px;  background:url(../../img/newui/window/border.png) repeat-x;}
+/*主要内容*/
+.window .zsui_center { background-color:#fff; }
+.window .zsui_content {border:1px solid #394c6b; border-top:none; border-left:none; height:100%;}
+.window h3 { height:59px; background:url(../../img/newui/window/title_bg.png) no-repeat 100% 0 #7d8fad; color:#fff; font: bold 14px/1.5em Tahoma, Geneva, sans-serif; position:relative}
+.window h3 span { background:url(../../img/newui/window/alert.png) no-repeat 15px 15px; padding:30px 0 0 65px; display:block}
+.window h3 a { display:block; width:15px; height:15px; background:url(../../img/newui/window/close_btn.png) no-repeat top left; position:absolute; right:10px; top:10px}
+.window p { font:normal 12px/1.5em Tahoma, Geneva, sans-serif; margin:10px 20px; height:50px}
+.window p .zsui_insert_img { position:relative;}
+.window p .zsui_insert_img img{ position:absolute;}
+.window .zsui_option { font-size:12px;overflow:hidden; padding:10px 0; margin:0 20px;}
+.window .zsui_option label {float:left; color:#7a8fa9}
+.window .zsui_option input { float:left; margin:0 5px 0 0}
+.window .zsui_btnBar { background-color:#eeeff0; padding:10px; text-align:right}
+.window .zsui_btnBar a, .window .zsui_btnBar span { background:url(../../img/newui/window/main.png) no-repeat 0 0}
+.window .zsui_btnBar a{ display:inline-block;text-align:center; font:bold 12px/1.5em Tahoma, Geneva, sans-serif ; text-decoration:none; color:#fff; padding-left:5px;}
+.window .zsui_btnBar span { display:block; width:75px; height:26px;line-height:30px; padding-right:5px; background-position:100% 0;}
+.window .zsui_btnBar a.small {}
+.window .zsui_btnBar a.small span {  width:75px; height:26px; line-height:24px;}
+.window .zsui_btnBar a.big, .window .zsui_btnBar a.big span { background-image:url(../../img/newui/window/main_b.png)}
+.window .zsui_btnBar a.big {}
+.window .zsui_btnBar a.big span { width:107px; height:33px; line-height:31px; }
+
+.window .zsui_btnBar a.main { background-position:0 0}
+.window .zsui_btnBar a.sub { background-position:0 50%; color:#576d9b}
+.window .zsui_btnBar a.unvailable { background: 0 100%; color:#a6aeb8; cursor:default}
+
+
+/*皮肤 tooltip*/
+.tooltip { width:400px;-moz-box-shadow:2px 2px 5px #253654;-webkit-box-shadow:2px 2px 5px #253654;box-shadow:2px 2px 5px #253654 }
+.tooltip .zsui_border {display:none;}
+/*主要内容*/
+.tooltip .zsui_center { background-color:#fff0c3; }
+.tooltip .zsui_content {border:1px solid #e5bd00; background:url(../../img/newui/tooltip/bg_24.png) no-repeat 5px 5px; padding:5px 20px 5px 40px;}
+.tooltip h3 { padding-left:40px;}
+.tooltip h3 span { text-indent:-99999px; overflow:hidden; width:9px; height:9px; background-repeat:no-repeat; position:absolute;}
+.arrow_left { background:url(../../img/newui/tooltip/arrow_left.png) no-repeat 0 0; height:9px; width:6px; top:5px; left:-5px}
+.arrow_right { background:url(../../img/newui/tooltip/arrow_right.png) no-repeat 0 0; right:-7px; top:5px;}
+.arrow_up {background:url(../../img/newui/tooltip/arrow_up.png) no-repeat 0 0; top:-5px; left:5px; *top:-4px}
+.arrow_down {background:url(../../img/newui/tooltip/arrow_down.png) no-repeat 0 0; bottom:-7px; left:5px}
+.tooltip h3 a { width:12px; height:11px; display:block; position:absolute; background:url(../../img/newui/tooltip/close_23.png) no-repeat top left;right:5px; top:5px; cursor:pointer}
+.tooltip p { font:normal 12px/1.5em Tahoma, Geneva, sans-serif; margin:0 0 5px;}
+.tooltip p b{ font-weight:bold; color:#15427d;}
+.tooltip p .zsui_insert_img { position:relative; cursor:pointer}
+.tooltip p .zsui_insert_img img{ position:absolute;}
+.tooltip .zsui_btnBar {display:none;}
+.tooltip .zsui_btnBar a { font:normal 12px/1.5em Tahoma, Geneva, sans-serif ;}
+.tooltip .zsui_option { font-size:12px;overflow:hidden; padding:5px 0; display:none}
+.tooltip .zsui_option label {float:left; color:#7a8fa9}
+.tooltip .zsui_option input { float:left; margin:0 5px 0 0}
+
+
+
+
+

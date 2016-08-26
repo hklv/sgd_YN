@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST FAMILYTYPE" message="MML" seq="65" id="ba0ed6ea-92d8-4aab-bd3c-fde38416500f">
+    <comments><![CDATA[查询亲情号码/地区类型]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST FAMILYTYPE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="d7985448-381b-47c7-985d-4f699aa880aa">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="false" name="FILTER" part="Business" id="1e73430b-1a17-4057-9e12-13ef593c556a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="DN" part="Business" id="5cfd5d12-a575-4df9-b882-55de6e227d41">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="78dedaee-9379-4835-a8af-d07aa7b58ef6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="1522ec97-f3ab-4d83-81bf-cf5f8fc5035f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="4764cd31-6e23-4ddc-8845-b5be34a6a9e3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="true" name="RESULT" part="Business" id="b3c51a4f-aacd-4833-8af5-a585335d1c8a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListFamType" site="S" id="b48f69a4-6c5e-4752-b6bc-83e72057e3ef">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-20 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.FILTER = $req.FILTER</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "null", "ATTR", "FAMILYTYPE_LIST", "FELLOW_TYPE=FELLOW_TYPE|FELLOW_TYPE_NAME=FELLOW_TYPE_NAME|IS_FA=IS_FA|FELLOW_TYPE_CODE=FELLOW_TYPE_CODE" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

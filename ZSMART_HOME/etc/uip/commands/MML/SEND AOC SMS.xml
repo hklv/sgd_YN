@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SEND AOC SMS" message="MML" seq="48" id="9514b881-c204-4b10-afd0-c675a55b578b">
+    <comments><![CDATA[SEND AOC SMS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-05-07 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>SEND AOC SMS</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="0" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="b9724184-8eff-4a8c-ad13-aa011c63d18e"/>
+      <field seq="1" direction="req" fieldType="N" dataType="S" requred="true" name="SUBS" part="Business" id="db9c7f77-0691-4c2e-af21-66438c888388"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="CHAN" part="Business" id="bcc66743-68c2-4b98-9e79-5eb26deee321"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="ADVS" part="Business" id="4e0f94bc-3a39-47cd-8e3e-8a83576f58bd"/>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="__partString__" part="Business" id="e1b383a0-25d2-47d2-bc9b-b09d2807bf7b"/>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="de676aa3-9263-40d6-b11d-21d033a3c125"/>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="61997896-a732-4a04-8cb1-7007b1dff0c7"/>
+    </fields>
+    <bindings>
+      <binding service="SendAocSms" site="S" id="eca9873a-86f3-4a7b-b9d9-6fefb00680f3">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-05-11 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.MESSAGE = $req.__partString__</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

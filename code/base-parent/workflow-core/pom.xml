@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>base-parent</artifactId>
+        <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+        <version>1.0.0-snapshot</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <name>workflow-core</name>
+    <packaging>jar</packaging>
+    <artifactId>workflow-core</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-email</groupId>
+            <artifactId>commons-email</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>knowledge-internal-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.uuid</groupId>
+            <artifactId>java-uuid-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ztesoft.zsmart.mfr</groupId>
+            <artifactId>core-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.mfr</groupId>
+            <artifactId>core-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+            <artifactId>framework</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>webcore</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>portal-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmart.pot</groupId>
+            <artifactId>portal-server</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xsd</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

@@ -1,0 +1,57 @@
+<div class="panel panel_shadow">
+    <div class="panel-heading">
+        <h4 class="panel-title">任务模板列表</h4>
+    </div>
+    <form class="form-horizontal clearfix js-form">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                    任务名称
+                </label>
+                <div class="col-md-8">
+                    <input name="TEMPLATE_NAME" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                    任务类型
+                </label>
+                <div class="col-md-8">
+                    <input type="text" NAME="TASK_TYPE" id="taskStatusCombox" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <input type="button" class="btn btn_minwidth btn-primary js-query" value="查询" />
+                    <input type="reset" class="btn btn_minwidth btn-default" value="重置" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="grid_container">
+        <div class="grid js-data-grid"></div>
+    </div>
+</div>
+<div class="tabs js-taskcenter-tab tabs_bottom">
+    <ul class="tabs__navbar">
+        <li class="taskDetailTab"><a href="#tabs-task-detail">任务模板详情</a></li>
+        <li class="distributionRuleTab"><a href="#tabs-distribution-rule">派发规则</a></li>
+        <li class="associatedbutton"><a href="#tabs-associated-button">关联按钮</a></li>
+        <li class="actionListen"><a href="#tabs-action-listen">事件监听</a></li>
+        <li class="backReason"><a href="#tabs-back-reason">回退原因</a></li>
+    </ul>
+    <div id="tabs-task-detail">
+    </div>
+    <div id="tabs-distribution-rule">
+    </div>
+    <div id="tabs-associated-button">
+    </div>
+    <div id="tabs-action-listen">
+    </div>
+    <div id="tabs-back-reason">
+    </div>
+</div>

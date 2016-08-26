@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Abort" message="USSD" seq="45" id="c84b1eb3-2c4e-4fa0-b57e-1c1f671e4e40">
+    <comments><![CDATA[Abort]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-03-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000072</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings>
+      <binding service="ReceiveContactCmd" site="S" id="cd4d14a5-4e92-431a-aae3-afb936905862">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-22 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.session_id = $req.ReceiverId</request>
+            <request>$s.sender_id = $req.SenderId</request>
+            <request>$s.command_status = $req.CommandStatus</request>
+            <request>$s.command = $req.v.command</request>
+            <request>$s.contact_channel = "5"</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.ReceiverId = $s.sender_id</response>
+            <response>$resp.SenderId = $s.session_id</response>
+            <response>$resp.v.command = $s.command</response>
+            <response>$resp.CommandStatus = $s.command_status</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

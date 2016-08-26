@@ -1,0 +1,15 @@
+<tr style="height:10px">
+	<td><span class="glyphicon glyphicon-record"></span></td>
+	<td><input type="text" name="fileName" value="{{NAME}}" data-rule="required" class="form-control" /></td>
+	<td>
+		<select style="width:100%" class="form-control" value="{{FORMAT_ID}}" name="fileFormat">
+		<option value="1">原件</option>
+		<option value="2">复印件</option>
+		<option value="3">电子件</option>
+		</select>
+	</td>'
+	<td><input type="text" class="form-control" value="{{REQUIREMENT}}" data-rule="required" name="fileRequirement" /></td>
+	<td><input type="number" class="form-control" value="{{NUM}}" data-rule="required" name="fileNum" /></td>
+	<td><input type="text" class="form-control" value="{{COMMENTS}}" name="fileComments" /></td>
+	<td><span class="glyphicon glyphicon-remove js-delete-file" style="cursor: pointer;"></span></td>
+</tr>

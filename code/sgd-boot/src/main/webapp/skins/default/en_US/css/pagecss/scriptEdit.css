@@ -1,0 +1,46 @@
+/*选项卡1*/
+#Tab1{
+
+margin:0px;
+padding:0px;
+margin:0 auto;}
+
+/*选项卡1*/
+.Menubox {
+width:100%;
+background:#EEEEEE;
+height:28px;
+line-height:28px;
+}
+.Menubox ul{
+margin:0px;
+padding:0px;
+}
+.Menubox li{
+float:left;
+display:block;
+cursor:pointer;
+width:114px;
+text-align:center;
+color:#949694;
+font-weight:bold;
+}
+.Menubox li.hover{
+padding:0px;
+background:#fff;
+width:116px;
+border-left:1px solid #A8C29F;
+border-top:1px solid #A8C29F;
+border-right:1px solid #A8C29F;
+color:#739242;
+font-weight:bold;
+height:27px;
+line-height:27px;
+}
+.Contentbox{
+clear:both;
+margin-top:0px;
+border:1px solid #A8C29F;
+border-top:none;
+text-align:center;
+}

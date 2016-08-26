@@ -1,0 +1,72 @@
+<div class="ui-dialog dialog dialog-lg">
+<div class="modal-header">
+    <h4 class="modal-title">流程变量</h4>
+</div>
+<div class="modal-body">
+   	<div class="search-bar clearfix">
+		<div class="input-group search-group" data-toggle="searchbar"></div>
+	</div>
+    <div class="grid js-grid-menu-mgr grid-row-5 grid_container"></div>
+    <div class="panel panel_shadow js-panel border-top no-margin">
+        <div class="panel-heading"><span class="panel-title">详情</span></div>
+        <div class="panel-body">
+          	<form class="form-horizontal js-menu-detail js-form">
+            	<div class="col-md-6 col-sm-12">
+                    <div class="form-group required">
+                        <input name="ID_" style="display: none">
+                        <label class="col-md-3 col-sm-4 control-label">
+                            变量名称
+                        </label>
+                        <div class="col-md-8 col-sm-8">
+                            <input name="VAR_NAME" class="form-control js-menu-name" data-rule=
+                        "变量名称:required;length[1~60, true]" disabled>
+                        </div>
+                    </div>
+	            </div>
+              <div class="col-md-6 col-sm-12">
+                    <div class="form-group required">
+                        <label class="col-md-3 col-sm-4 control-label">
+                            变量类型
+                        </label>
+                        <div class="col-md-8 col-sm-8">
+                            <input type="text" name="VAR_TYPE" id="VariableType" class="form-control js-menu-hold" data-rule="变量类型:required;length[1~60, true]" disabled/>
+                        </div>
+                    </div>
+                </div>
+	            <div class="col-md-6 col-sm-12">
+                    <div class="form-group required">
+                        <label class="col-md-3 col-sm-2 control-label">
+                            变量值
+                        </label>
+                        <div class="col-md-8 col-sm-10">
+                            <input name="DEFAULT_VALUE" class="form-control js-menu-url" data-rule="变量值:required;length[1~60, true]" disabled>
+                        </div>
+                    </div>
+              	</div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-4 control-label">
+                            说明
+                        </label>
+                        <div class="col-md-8 col-sm-8">
+                            <input type="text" name="VAR_COMMENTS" class="form-control js-menu-type"  disabled/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-9">
+                    <button type="button" class="btn btn_minwidth btn-primary js-procVar-new">新建</button>
+                    <button type="button" class="btn btn_minwidth btn-primary js-procVar-edit">编辑</button>
+                </div>
+                <div class="col-md-3 col-md-offset-9" style="display:none;">
+                    <button type="button" class="btn btn_minwidth btn-primary js-submit">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn_minwidth btn-default js-cancel">
+                        取消
+                    </button>
+                </div>
+          	</form>
+        </div>
+    </div>
+</div>
+</div>

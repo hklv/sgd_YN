@@ -1,0 +1,57 @@
+<div class="panel panel_shadow js-panel">
+    <form class="form-horizontal clearfix js-form">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	事项名称
+                </label>
+                <div class="col-md-8">
+                    <input name="NAME" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	事项编码
+                </label>
+                <div class="col-md-8">
+                    <input name="ITEM_CODE" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-4 control-label">
+                	审批类别
+                </label>
+                <div class="col-md-8">
+                    <input type="text" NAME="SP_TYPE_ID" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        	<div class="form-group">
+                <label class="col-md-4 control-label">
+                	所属部门
+                </label>
+                <div class="col-md-8">
+                    <div class="input-group">
+	                	<input name="ORG_ID" class="form-control">
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+        	<div class="form-group">
+      			<div class="col-md-8 col-md-offset-4">
+                    <input type="button" class="btn btn_minwidth btn-primary js-query" value="{{COMMON_QUERY}}" />
+                    <input type="reset" class="btn btn_minwidth btn-default" value="{{COMMON_RESET}}" />
+                </div>          
+            </div>
+        </div>
+    </form>
+</div>
+<div class="grid_container">
+    <div class="grid js-item-grid"></div>
+</div>

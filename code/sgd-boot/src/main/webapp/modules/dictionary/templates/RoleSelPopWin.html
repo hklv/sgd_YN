@@ -1,0 +1,53 @@
+<div class="ui-dialog dialog dialog-lg">
+<div class="modal-header">
+	<h4 class="modal-title">{{JOBMGR_ADD_JOB_ROLE}}</h4>
+</div>
+
+<div class="modal-body">
+	<div class="grid_container no-shadow no-margin">
+        <div class="search-bar clearfix">
+           	<p class="title_forgrid pull-left ">
+               	<span>{{JOBMGR_JOB_NAME}}:</span>
+               	<span class="js-job-name"></span>
+           	</p>
+			<div class="input-group pull-right" data-toggle="searchbar"></div>
+        </div>
+        <div class="grid js-grid-role grid-row-10 grid_container bottom-margin"></div>
+    </div><!-- end of grid -->
+</div>
+
+<div class="modal-footer">
+	<form class="form-horizontal">
+		<div class="col-md-8 col-sm-8 invisible no-padding text-left js-add-type">
+			<div class="form-group required no-margin pull-left">
+			    <label class="control-label">{{JOBMGR_ADD_TYPE}}</label>
+			</div>
+		    <div class="radio col-md-10 col-sm-10">
+		        <label class="control-label">
+		          <input type="radio" value="T" name="ADD_TYPE"> {{JOBMGR_ADD_TO_JOB_TPL}}
+		        </label>
+		        <label class="control-label">
+		          <input type="radio" value="U" name="ADD_TYPE"> {{JOBMGR_ADD_TO_JOB_USER}}
+		        </label>
+		    </div>
+		</div>
+		<div class="col-md-4 col-sm-4 no-padding">
+			<button type="button" class="btn btn_minwidth btn-primary js-ok" autofocus>{{COMMON_OK}}</button>
+			<button type="button" class="btn btn_minwidth btn-default js-cancel" data-dismiss>{{COMMON_CANCEL}}</button>
+		</div>
+
+		<!-- <div class="col-md-6">
+			<div class="form-group required">
+				<label class="col-md-2 control-label">{{JOBMGR_ADD_TYPE}}</label>
+				<div class="col-md-8">
+					<select class="form-control js-add-type">
+						<option value="#" selected="selected">{{COMMON_PLS_SEL}}</option>
+						<option value="T">{{JOBMGR_ADD_TO_JOB_TPL}}</option>
+						<option value="U">{{JOBMGR_ADD_TO_JOB_USER}}</option>
+					</select>
+				</div>
+			</div>
+		</div> -->
+	</form>
+</div>
+</div>

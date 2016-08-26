@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="CHARGE CARD ACNT" message="MML" seq="24" id="54989af1-7f1a-4b25-a6f2-f5bd3d8914d4">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>CHARGE CARD ACNT</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="" value="1020" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="bf58578d-f17d-4d71-aa05-fd2ec2892081">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="cd35df2c-802c-4c00-ae39-e02dd27b390c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="9899e928-8883-4fd7-9300-f3145579036c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="true" name="PWD" part="Business" id="c83a7c3e-8ef5-4eca-b7cb-a25647936356">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="true" name="PPSCARDPIN" part="Business" id="83b71cad-3a0e-4ebd-9ac3-d4a55ac4413e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="ECHO" part="Business" id="1fef09fd-d8af-47ef-9cc6-44bff5bf2e47">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="S" requred="false" name="SACCNT" part="Business" id="6bd2e930-e92d-468d-8be0-8b4538120916">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="301b5d6d-1b1b-44ed-8fea-981e0834005c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="3912b7cf-18ec-4aba-8906-7d4f30d99f0a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="b3dbf418-19e6-4329-a205-caab01391435">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="e28ae869-337c-4a5c-911c-34a94a8c0462">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlChargeCardAcnt" site="S" id="58343e39-f00e-4b73-84d6-217058f5f8fb">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-26 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.PARTNER_SN = $req.ID</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PASSWORD = $req.PWD</request>
+            <request>$s.VOUCHER_CARD = $req.PPSCARDPIN</request>
+            <request>$s.VIEW_RESULT = $req.ECHO</request>
+            <request>$s.SMS_MSISDN = $req.SACCNT</request>
+            <request>$s.PAYMENT_METHOD_ID = 1</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ATTR = concact( "AMOUNT", "CSVSTOP", "CREDIT" )</response>
+            <response>$resp.RESULT = concact( $s.RECHARGE_RESULT.NEW_BAL.REAL_BAL, $s.RECHARGE_RESULT.NEW_BAL.EXP_DATE, $s.CHARGE )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

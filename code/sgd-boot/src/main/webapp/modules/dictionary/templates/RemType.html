@@ -1,0 +1,30 @@
+<div class="ui-dialog dialog-xs">
+<div class="modal-header">
+	<h4 class="modal-title">{{JOBMGR_ROLE_REM_TYPE_SEL}}</h4>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal clearfix top-padding">
+		<div class="form-group required">
+			<label class="col-md-4 col-sm-4 control-label">{{JOBMGR_ROLE_REM_TYPE}}</label>
+			<div class="col-md-8 col-sm-8">
+				<select name="REM_TYPE" class="form-control" placeholder="{{COMMON_PLS_SEL}}" data-rule="{{JOBMGR_ROLE_REM_TYPE}}:required">
+					<option value="T">{{JOBMGR_REM_FROM_JOB_TPL}}</option>
+					<option value="U">{{JOBMGR_REM_FROM_JOB_USER}}</option>
+				</select>
+			</div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 text-right">
+			<button type="button" class="btn btn_minwidth btn-primary js-ok" autofocus>
+				{{COMMON_OK}}
+			</button>
+			<button type="button" class="btn btn_minwidth btn-default js-cancel" data-dismiss>
+				{{COMMON_CANCEL}}
+			</button>
+		</div>
+	</div>
+</div>
+</div>

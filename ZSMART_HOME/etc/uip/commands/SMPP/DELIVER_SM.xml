@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DELIVER_SM" message="SMPP" seq="28" id="089da28f-aff1-4e2e-a5e7-8ce2f69fdc16">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-05-24 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00000005</requestKey>
+        <responseKey>0X80000005</responseKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="req" fieldType="N" dataType="M" requred="true" name="service_type" part="Body" id="39472c47-037c-4539-95d2-4d74226a1793">
+        <extension>
+          <max>6</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="I" requred="true" name="source_address_ton" part="Body" id="535d5db3-04ef-421b-8c6c-088d14625bd2">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="I" requred="true" name="source_address_npi" part="Body" id="77021ff6-60e1-4670-872b-f45745e3ca89">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="source_address" part="Body" id="7c4525d8-34aa-4baa-a9df-f76420aaddda">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="true" name="dest_address_ton" part="Body" id="caa07593-9ea8-46c2-88e0-45ef645bcc0f">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="dest_address_npi" part="Body" id="e8a5307d-c29b-4b8c-a3dc-97670f86aa44">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="true" name="destination_address" part="Body" id="89de54fe-d71d-4d4f-9929-2737150af5be">
+        <extension>
+          <max>21</max>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="I" requred="true" name="esm_class" part="Body" id="8647c3d1-f4b0-4f4f-8923-ce9e1f1e3894">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="I" requred="true" name="protocol_ID" part="Body" id="d1e91332-cc92-40fa-9046-4db0b3fdc377">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="I" requred="true" name="priority_flag" part="Body" id="eef3c901-a744-46b3-9653-3e23de507397">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="12" direction="req" fieldType="N" dataType="M" requred="true" name="schedule_delivery_time" part="Body" id="8b4fcba5-0097-4168-b286-728daf6b487d">
+        <extension>
+          <max>17</max>
+        </extension>
+      </field>
+      <field seq="13" direction="req" fieldType="N" dataType="M" requred="true" name="validity_peroid" part="Body" id="88230e1a-52bb-40ed-b4e1-9ea20d8a7c8f">
+        <extension>
+          <max>17</max>
+        </extension>
+      </field>
+      <field seq="14" direction="req" fieldType="N" dataType="I" requred="true" name="registered_delivery_flag" part="Body" id="e5ec4c7f-81d5-4a36-81e2-ed86c96cd6b4">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="15" direction="req" fieldType="N" dataType="I" requred="true" name="replace_if_present_flag" part="Body" id="7677dcc6-a610-43d7-ab36-4be38b638b19">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="16" direction="req" fieldType="N" dataType="I" requred="true" name="data_coding" part="Body" id="c544519e-ddbc-4970-85aa-3d386e9aef44">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="17" direction="req" fieldType="N" dataType="I" requred="true" name="sm_default_msg_id" part="Body" id="9a2add33-4e8d-4f77-87f7-6505035c5ce7">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="18" direction="req" fieldType="N" dataType="I" requred="true" name="sm_length" part="Body" id="e0c8d1eb-9261-4a0b-87dd-4933921fbf19">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="19" direction="req" fieldType="N" dataType="M" requred="false" name="short_message_text" part="Body" id="bb45c98d-19c1-4b66-939d-0b6c7eabd1af">
+        <extension>
+          <length>$cur.sm_length</length>
+          <max>161</max>
+        </extension>
+      </field>
+      <field seq="20" direction="resp" fieldType="N" dataType="M" requred="true" name="Message_id" part="Body" id="f71b817d-7187-458e-bc6a-856e806c5089">
+        <extension>
+          <max>9</max>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="ReceiveContactCmd" site="S" id="69617a73-8b0a-4744-b4b8-1bbd4d533201">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-05-28 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.short_message_text = $req.short_message_text</request>
+            <request>$s.source_address = $req.source_address</request>
+            <request>$s.destination_address = $req.destination_address</request>
+            <request>$s.data_coding = $req.data_coding</request>
+            <request>$s.esm_class = $req.esm_class</request>
+            <request>$s.AdapterName = $req.v.adapter</request>
+            <request>$s.contact_channel = 4</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.Message_id = $s.Message_id</response>
+            <response>$resp.Command_status = $s.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

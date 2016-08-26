@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="MOD ABBRV NUMBER" message="MML" seq="62" id="31cdbcfb-4dc7-48d5-b21a-3723905fa044">
+    <comments><![CDATA[修改缩位拨号号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-17 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>MOD ABBRV NUMBER</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="2e74c31b-6589-4778-a300-651258bf0a05">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="0951831d-d3c5-464b-8142-a59f4c550aac">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="SHORTNO" part="Business" id="faaba497-c9d8-4f50-9d23-85dfc553dd0a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="ABBRVNUM" part="Business" id="595aa290-4385-4652-b952-92555d07e3f0">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="c4eb9779-89be-41ec-9abc-7c3cca506969">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="be3f46cc-5e06-4db2-8b4b-5f0efecee531">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ModAbbrvNbr" site="S" id="800f4c51-0855-43ef-93c8-042504ee8e71">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-17 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.SHORTNO = $req.SHORTNO</request>
+            <request>$s.ABBRVNUM = $req.ABBRVNUM</request>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

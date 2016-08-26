@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS FAMILY" message="MML" seq="64" id="3f2b4fbf-e3f9-4d41-8999-65b554fd6d80">
+    <comments><![CDATA[查询亲情号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-18 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS FAMILY</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="5eb46cc4-3762-46be-a6d4-e61c108daa1b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="0de3198d-f1e4-44ab-b52a-4b62ae49ea9f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="SEQ" part="Business" id="968b6004-0a13-4400-a04d-11bfba4b2985">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="NEEDCHRG" part="Business" id="e0d3ecd6-5e6e-48ca-8eef-208c0e106a58">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="FELLOWTYPE" part="Business" id="8bbc06ab-7eeb-4068-8f53-a949e2305f42">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="3a5c58a6-9bef-475b-b652-2c127cb190bc">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="b8113e7e-5852-4fa8-a8ec-87079214c96d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="ROWCNT" part="Business" id="d0144e8b-da99-463b-8541-8ce1ad43ea1f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="1ce04539-e176-43d4-a84e-0820d2160422">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="true" name="RESULT" part="Business" id="ff6cdf94-48be-493e-a841-bd1d0e77b61e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListFamily" site="S" id="25fbbf9c-e220-4ba0-a5d2-84879328612b">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-20 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.SEQ = $req.SEQ</request>
+            <request>$s.NEEDCHRG = $req.NEEDCHRG</request>
+            <request>$s.FELLOWTYPE = $req.FELLOWTYPE</request>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "BAL_LIST", "SEQ=SEQ|FELLOW_NBR=FELLOW_NBR|FELLOW_TYPE=FELLOW_TYPE|EFFDATE=EFFDATE|EXPDATE=EXPDATE" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ROWCNT = $s.ROWCNT</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

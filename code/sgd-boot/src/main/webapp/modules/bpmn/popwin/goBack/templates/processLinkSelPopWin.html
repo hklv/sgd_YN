@@ -1,0 +1,26 @@
+<div class="ui-dialog dialog-sm">
+    <div class="modal-header">
+        <h4 class="modal-title">退回</h4>
+    </div>
+    <div class="modal-body top-padding">
+        <form class="form-horizontal js-form">
+            <div class="form-group required">
+                <label class="col-md-2 control-label">
+                    退回原因
+                </label>
+                <div class="col-md-10">
+                    <textarea rows="10" class="form-control" name="REASON"  data-rule="退回原因:required"></textarea>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-md-offset-7 col-sm-offset-7 text-right margin-bottom_s">
+                <button type="button" class="btn btn_minwidth btn-primary js-ok">
+                    {{COMMON_OK}}
+                </button>
+                <button type="button" class="btn btn_minwidth btn-default js-cancel" data-dismiss>
+                    {{COMMON_CANCEL}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

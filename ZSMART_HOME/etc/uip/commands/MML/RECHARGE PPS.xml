@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RECHARGE PPS" message="MML" seq="21" id="4385c479-488e-4887-afbd-b9e5b7b06caf">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>RECHARGE PPS</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="86e739fb-dc4c-405c-9299-67c045fe0f28"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="MDN" part="Business" id="0559acad-e37f-4890-9533-2343307cee8e">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="ACCOUNT" part="Business" id="bb12e85b-087c-4780-9996-40b896004d6a">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="ADDDAYS" part="Business" id="59bc9246-63d2-40c6-8ec8-9cdd3e4605ec">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="false" name="TYPE" part="Business" id="1d24b417-2e5e-4b92-9e47-de127b3d4f9e">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="VOUCH" part="Business" id="01be7638-84aa-4054-8d94-641210c8efd5">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="S" requred="false" name="SERIALNO" part="Business" id="7cb0111b-fa97-4405-873a-7140efe7222a">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="S" requred="false" name="TAX" part="Business" id="99df5956-cb90-4f6b-8b4a-21fd1b7ff72b">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="S" requred="false" name="TopupAmount" part="Business" id="f6dcb09e-175f-4ba5-9398-12a5aa05d3e5">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="S" requred="false" name="Source" part="Business" id="3edb7665-4e74-44a1-b5f1-b301fb10b991">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="12" direction="req" fieldType="N" dataType="S" requred="false" name="ProcessingFee" part="Business" id="0827c381-19e0-4928-8914-0c79036d09d0">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="13" direction="req" fieldType="N" dataType="S" requred="false" name="TransactionDate" part="Business" id="6e11d9d8-f864-4a95-83e4-3565677d5ff0"/>
+      <field seq="14" direction="req" fieldType="N" dataType="S" requred="false" name="RINGID" part="Business" id="48233cd6-cbe7-4701-af1e-c41a3b1d0f2e"/>
+      <field seq="15" direction="req" fieldType="N" dataType="S" requred="false" name="SPID" part="Business" id="e816f3d3-5bba-4ae5-85ec-57baf413fd53"/>
+      <field seq="16" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="7cec6679-a29d-4342-a899-d804f01e1171"/>
+      <field seq="17" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="02bc19ca-db7d-4892-b1a4-3685265415b8"/>
+      <field seq="18" direction="resp" fieldType="N" dataType="S" requred="false" name="BONUSTYPE" part="Business" id="b04e03bb-89d8-43a7-94c3-37493f506b48"/>
+      <field seq="19" direction="resp" fieldType="N" dataType="S" requred="false" name="BONUSVALUE" part="Business" id="90a42b59-a71b-4294-be0c-dd0dc9b0b1df"/>
+      <field seq="20" direction="resp" fieldType="N" dataType="S" requred="false" name="LOYALTY" part="Business" id="00c6f90d-8149-4908-b3b4-2d5819428c6c"/>
+      <field seq="21" direction="resp" fieldType="N" dataType="S" requred="false" name="SERIALNO" part="Business" id="b441e1c1-b77a-41b8-b9a8-9985679c91ce"/>
+      <field seq="22" direction="resp" fieldType="N" dataType="S" requred="false" name="ACCOUNT" part="Business" id="81713bf9-90b3-485b-8cc1-ba22d8ec8dbd"/>
+      <field seq="23" direction="resp" fieldType="N" dataType="S" requred="false" name="TopupAmount" part="Business" id="c1bdca3d-247e-4d4f-8400-a97da4fdce01"/>
+      <field seq="24" direction="resp" fieldType="N" dataType="S" requred="false" name="Source" part="Business" id="bc451d71-0197-4247-8bf4-9df9856c2333"/>
+      <field seq="25" direction="resp" fieldType="N" dataType="S" requred="false" name="ProcessingFee" part="Business" id="17133633-c735-4485-8d1a-284e42562087"/>
+      <field seq="26" direction="resp" fieldType="N" dataType="S" requred="false" name="Servicetax" part="Business" id="15642f3e-8a18-4150-b2c5-bbc97a511269"/>
+      <field seq="27" direction="resp" fieldType="N" dataType="S" requred="false" name="AMOUNT" part="Business" id="efcaf5ef-1d54-44bd-9a4f-f253e64e181d"/>
+      <field seq="28" direction="resp" fieldType="N" dataType="S" requred="false" name="CSVSTOP" part="Business" id="9b19111c-3d8a-4506-a00a-0ff13d971b7d"/>
+      <field seq="29" direction="resp" fieldType="N" dataType="S" requred="false" name="TransactionDate" part="Business" id="99c5a877-cb87-478d-9e12-71bcc2a4f582"/>
+      <field seq="30" direction="resp" fieldType="N" dataType="S" requred="false" name="MDN" part="Business" id="f273fd8c-118f-4c7c-ba36-8b1a4340d389"/>
+      <field seq="31" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="d3f6475c-1c87-44d9-b683-ae49345b7619">
+        <extension>
+          <offset>100000070</offset>
+        </extension>
+      </field>
+      <field seq="32" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="db98fb45-9ac8-47b7-9848-d30612e0eb52"/>
+    </fields>
+    <bindings>
+      <binding service="MmlRechargePps" site="S" id="9a649ca7-6383-4d83-b002-73d0d03ea763">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.TAX = $req.TAX</request>
+            <request>$s.SCRATCH_CARD_PWD = $req.VOUCH</request>
+            <request>$s.PAYMENT_METHOD_ID = 4</request>
+            <request>$s.SP_ID = $req.SPID</request>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.MSISDN = $req.MDN</request>
+            <request>$s.CHARGE = $req.ACCOUNT</request>
+            <request>$s.TYPE = $req.TYPE</request>
+            <request>$s.PARTNER_SN = $req.SERIALNO</request>
+            <request>$s.PROLONG_DAYS = $req.ADDDAYS</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ACCOUNT = $s.IN_AMOUNT</response>
+            <response>$resp.SERIALNO = $s.PARTNER_SN</response>
+            <response>$resp.AMOUNT = $s.RECHARGE_RESULT.NEW_BAL.REAL_BAL</response>
+            <response>$resp.CSVSTOP = $s.RECHARGE_RESULT.NEW_BAL.EXP_DATE</response>
+            <response>$resp.MDN = $s.MSISDN</response>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "null", "ATTR", "RECHARGE_RESULT.PRESENT_LIST", "BONUSTYPE=ACCT_RES.STD_CODE|BONUSVALUE=CHARGE|EFFDATE=EFF_DATE|EXPDATE=EXP_DATE" )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

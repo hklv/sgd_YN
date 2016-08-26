@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DEL ABBRV NUMBER" message="MML" seq="63" id="a6f97940-2d1d-471d-b4b3-4385006ec589">
+    <comments><![CDATA[删除缩位拨号号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-18 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DEL ABBRV NUMBER</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="20a73a0e-ee35-46bd-918d-0819d0c50db1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="76639651-bbe8-4c9e-860e-f7e118af4f14">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="SHORTNO" part="Business" id="78faaff6-7bda-470e-b27e-eddcf6fd41cd">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="9674c11a-8c94-4ce9-9c83-b139e964757a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="cb0ff30c-ccd0-4163-98a5-bab9daa34606">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DelAbbrvNbr" site="S" id="76d02d1a-91db-4649-bd3f-8e1134045606">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-18 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.SHORTNO = $req.SHORTNO</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

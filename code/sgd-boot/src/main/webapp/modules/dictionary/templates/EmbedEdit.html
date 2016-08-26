@@ -1,0 +1,13 @@
+{{#ifCond inEdit '==' true}}
+<button class="btn-link" data-action="ok">{{COMMON_OK}}</button><button class="btn-link" data-action="cancel">{{COMMON_CANCEL}}</button>
+{{/ifCond}}
+{{#else}}
+{{#if job}}
+<span class="btn btn_minwidth glyphicon glyphicon-edit" data-action="edit" title="{{COMMON_EDIT}}"></span>
+{{#ifCond state '==' 'A'}} (state === 'A') {}}<span class="btn fa fa-ban" data-action="disable" title="{{COMMON_DISABLE}}"></span>
+{{#else}}
+<span class="btn btn_minwidth glyphicon glyphicon-remove-circle" data-action="del" title="{{COMMON_DELETE}}"></span>
+{{/else}}
+{{/ifCond}}
+{{/if}}
+{{/else}}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SM_CHARGE" message="VC" seq="13" id="21d440aa-9331-4f4d-85f1-5da078bf3789">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-03-19 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00001003</requestKey>
+        <responseKey>0X80001003</responseKey>
+      </commandKey>
+      <rule name="VC_SM_BIND_RESULT">
+        <kvlist>
+          <kv key="S-ACT-00043" value="4" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="false" name="SN" part="Body" id="441057a0-66ec-4ce9-80b3-2f200d595735">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="I" requred="true" name="NetType" part="Body" id="af65747f-46dd-4e56-b913-47021b4a5927">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="Account" part="Body" id="174937a9-82bb-49e6-9651-c61dbde6bb94">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="M" requred="true" name="Callingnumber" part="Body" id="07db1d17-e266-4b08-a3fe-025cc14515a3">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="Servicekey" part="Body" id="0ec4d007-55ff-42df-97f0-faf487488ade">
+        <extension>
+          <length>3</length>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="I" requred="true" name="FeeValue" part="Body" id="9d7a8359-d016-467a-98d4-209e6b841b24">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="Adddays" part="Body" id="5336072c-313b-453e-9007-285fd2c81dbc">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="true" name="Vcnumber" part="Body" id="777d5dff-b40c-4eed-a059-b635e324517d">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="I" requred="true" name="Type" part="Body" id="d6a653e2-f45d-4dc5-8ae4-4acac92665b1">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="I" requred="true" name="Flag" part="Body" id="e343901b-7270-4191-84e9-1237dbc57221">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="I" requred="true" name="Reserve1" part="Body" id="f7adcfa1-31af-436e-ad6e-86fcc23bba9a">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="12" direction="req" fieldType="N" dataType="I" requred="true" name="Cost" part="Body" id="59703503-f861-4b24-94b3-91388cd847a5">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="13" direction="req" fieldType="N" dataType="I" requred="true" name="Income" part="Body" id="5f0b7dbf-7bd1-4908-92d0-517d5ebcc1c1">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="14" direction="resp" fieldType="N" dataType="I" requred="true" name="Result" part="Body" id="73993804-6e8d-4d38-8d91-ce4d2cc703f5">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="15" direction="resp" fieldType="N" dataType="I" requred="true" name="Balance" part="Body" id="1cba41fe-4433-4bb4-86ad-8ec41c10afcb">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="16" direction="resp" fieldType="N" dataType="M" requred="true" name="Activedays" part="Body" id="426ad845-4436-4333-a543-0943f07c9f04">
+        <extension>
+          <length>9</length>
+          <align>R</align>
+        </extension>
+      </field>
+      <field seq="17" direction="resp" fieldType="N" dataType="I" requred="true" name="Balance1" part="Body" id="156c5bba-0728-40b8-9757-a630ee1272fb">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="18" direction="resp" fieldType="N" dataType="I" requred="true" name="flag" part="Body" id="7e686f48-91ed-4427-8b5c-5a8198c623f8">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="19" direction="resp" fieldType="N" dataType="M" requred="true" name="Transparent 1" part="Body" id="42a8485f-3c9e-4487-ab4f-b5265a8a2b88">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="20" direction="resp" fieldType="N" dataType="M" requred="true" name="Transparent 2" part="Body" id="06b28acb-2869-4282-a406-0357b415fed7">
+        <extension>
+          <length>12</length>
+        </extension>
+      </field>
+      <field seq="21" direction="resp" fieldType="N" dataType="M" requred="true" name="Transparent 3" part="Body" id="e1f44551-6439-4ab8-9c6b-b88f067c39bd">
+        <extension>
+          <length>12</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="VcTopUp" site="S" id="c0d4dfbc-cb7d-4f8b-b226-716f486ca7a6">
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-08 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.CONTACT_CHANNEL_ID = "UipAdapterUser_ChannelType"</request>
+            <request>$s.PARTNER_SN = $req.SN</request>
+            <request>$s.PARTY_CODE = "E"</request>
+            <request>$s.PARTY_TYPE = "E"</request>
+            <request>$s.NET_TYPE = $req.NetType</request>
+            <request>$s.MSISDN = $req.Account</request>
+            <request>$s.CALLING_NUMBER = $req.Callingnumber</request>
+            <request>$s.SERVICE_KEY = $req.Servicekey</request>
+            <request>$s.CHARGE = $req.FeeValue</request>
+            <request>$s.PROLONG_DAYS = $req.Adddays</request>
+            <request>$s.SCRATCH_CARD_PWD = $req.Vcnumber</request>
+            <request>$s.TYPE = $req.Type</request>
+            <request>$s.FLAG = $req.Flag</request>
+            <request>$s.RESERVE1 = $req.Reserve1</request>
+            <request>$s.RPT_FLAG = "0"</request>
+            <request>$s.IS_CHECK_LOST = "TRUE"</request>
+            <request>$s.IS_ALLOW_BLACK_LIST = "TRUE"</request>
+            <request>$s.IS_CLEAR_BLACK_LIST = "TRUE"</request>
+            <request>$s.IS_NEED_CDR = "FALSE"</request>
+            <request>$s.PAYMENT_METHOD_ID = "1"</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.Result = VC_SM_BIND_RESULT( $resp.v.resultCode )</response>
+            <response>$resp.Balance = $s.BALANCE</response>
+            <response>$resp.Activedays = $s.ACTIVE_DAYS</response>
+            <response>$resp.Balance1 = $s.BALANCE</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

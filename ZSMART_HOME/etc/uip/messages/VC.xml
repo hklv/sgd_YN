@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="VC" type="B">
+    <comments><![CDATA[MML]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2011-11-22 00:00:00</modifyDate>
+    <extension>
+      <length><![CDATA[$cur.Command_Length+0]]></length>
+      <transactionField>Sequence_No</transactionField>
+      <login>SM_BIND</login>
+      <logout>SM_UNBIND</logout>
+      <linkCheck>SM_ENQUIRELINK</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.VCMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="9bf07d6f-52c3-4687-b554-3931465d6aa4">
+        <extension/>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="I" requred="true" name="Command_Length" part="Header" id="a5716c7e-3841-4df6-a319-631345fe9fd2">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="C" dataType="I" requred="true" name="Command_ID" part="Header" id="4b30c656-0b87-4287-9aae-8cd25fe200ce">
+            <extension>
+              <length>4</length>
+              <encodingValue>getVCCommand($cur.Command_ID)</encodingValue>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="Command_status" part="Header" id="f7b95982-30ee-4d4b-b042-26449717e059">
+            <extension>
+              <length>4</length>
+              <encodingValue>decode($cur.v.status,0,0,1,0,1002,1,1004,1,1005,1,1011,1,1010,3,1015,3,1000,4,7)</encodingValue>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="I" requred="true" name="Sequence_No" part="Header" id="9192e534-8d89-4882-813d-679a7bdcd0ce">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="2" type="B" name="Body" id="42b983c6-237f-48dc-8ae3-af9c40d38f2a">
+        <extension>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="MOD PHS USERPRICE" message="MML" seq="90" id="e83eb7fd-f076-4ea5-ac3d-a5f2cab7b158">
+    <comments><![CDATA[修改用户个性化资费计划失效日期]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-14 13:12:55</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>MOD PHS USERPRICE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="b19882eb-1986-4ba4-a262-beed312a29d1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="739977c8-bebe-4d65-ac36-e1fad014ee3a">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="PRICENUM" part="Business" id="1c0ba9d8-5514-4a80-a972-2c8b6f5678ca">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="EXPTYPE" part="Business" id="3319f301-cb1c-45d9-8ee1-e4414537a18b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="EXPDATE" part="Business" id="9996ec8e-c043-438f-bbce-58d0a42edb69">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="false" name="EXPTIME" part="Business" id="9e1a5c45-42d7-4d16-b6dc-d6db7e82c8aa">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="PARAMS" part="Business" id="3a4d5c32-e46f-4056-93ec-b0956cd6bae5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="2064de06-c232-45d1-86b1-e588a0a9f09b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="d1ca81b6-ff7a-4ec9-a0f4-ca9f1c4ba76c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ModPhsUserPrice" site="S" id="51472444-dc95-40d4-9e41-692af3b674f0">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-14 13:16:06</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PRICENUM = $req.PRICENUM</request>
+            <request>$s.EXPTYPE = $req.EXPTYPE</request>
+            <request>$s.EXPDATE = $req.EXPDATE</request>
+            <request>$s.EXPTIME = $req.EXPTIME</request>
+            <request>$s.PARAMS = $req.PARAMS</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

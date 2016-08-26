@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <webService name="SPNService" message="Provisioning" id="ad8e4197-67cf-4007-8abd-cb7de84d10e0">
+    <comments><![CDATA[SPN]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-17 00:00:00</modifyDate>
+    <extension>
+      <urlPrefix>spnServices</urlPrefix>
+      <importWSDL>false</importWSDL>
+    </extension>
+    <schemas>
+      <object name="doServiceBO" id="963256e7-b710-42ad-a2ff-e5510c7deb26">
+        <comments><![CDATA[dosService]]></comments>
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="reqXml" dataType="String" required="true" id="57c7cf65-d1e7-4d74-8850-76edff52fa4d">
+            <comments/>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="doServiceBOResponse" id="786d06ce-63ab-4f6a-96c3-01b8fab7d32f">
+        <comments><![CDATA[dosService]]></comments>
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="retnDto" dataType="Schema" required="true" id="fe24af5a-e130-4cf6-9516-286c1a6bb670" refSchema="retnDtoResponse">
+            <comments/>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="retnDtoResponse" id="bcdc5c41-4906-4990-be6b-1e00e10bafb2">
+        <comments><![CDATA[Reponse]]></comments>
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-26 12:24:25</modifyDate>
+        <attributes>
+          <attribute name="retnCode" dataType="String" required="true" id="12ad8d87-c0d2-4a97-b5ee-a14e8190ac98">
+            <comments/>
+            <extension/>
+          </attribute>
+          <attribute name="retnDesc" dataType="String" required="false" id="26fbd3fe-82e8-4794-be8f-33649a2baec4">
+            <comments/>
+            <extension/>
+          </attribute>
+          <attribute name="currentNE" dataType="String" required="true" id="1c065867-231c-402e-9f0e-d14861d7f3b5">
+            <comments/>
+            <extension>
+              <default>Provisioning</default>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AuthHeader" id="9a5b0f48-48e7-4c02-8fec-009d920c32c5">
+        <comments><![CDATA[AuthHeader]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-22 14:59:16</modifyDate>
+        <attributes>
+          <attribute name="Username" dataType="String" required="false" id="2b77370d-7325-49ca-af1b-9d1aa31171b8">
+            <comments/>
+            <extension/>
+          </attribute>
+          <attribute name="Password" dataType="String" required="false" id="c13a46e2-94ac-464d-91ae-462c53311630">
+            <comments/>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+    </schemas>
+    <operations>
+      <operation name="doService" id="2a313827-07a4-4125-8de7-eb3ef55cce42">
+        <request>doServiceBO</request>
+        <response>doServiceBOResponse</response>
+        <headers>
+          <header name="authHeader" type="AUTH" schemaId="AuthHeader" id="2b9dd615-f155-4e16-ae93-6b6d48261cf1"/>
+        </headers>
+        <bindings>
+          <binding service="SubmitServiceOrderForSPN" site="S" id="8fe8fe51-daa4-41de-ba6c-0b29d727f536">
+            <state>A</state>
+            <version>1.0</version>
+            <modifier>admIN</modifier>
+            <modifyDate>2012-09-19 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$req.reqXml = $req.reqXml</request>
+                <response>$resp.retnDto.retnCode = $s.RETN</response>
+                <response>$resp.retnDto.retnDesc = $s.DESC</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+    </operations>
+  </webService>
+</zsmart>

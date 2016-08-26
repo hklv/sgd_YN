@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS CUSTINFO" message="MML" seq="94" id="8996e060-a802-4e32-8f37-720dc0df0509">
+    <comments><![CDATA[查询号码归属的客户名称]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-15 15:27:11</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS CUSTINFO</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="b9690491-935f-4548-9c71-2736496fd687">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="b0554e38-f9a1-460e-aa9b-ed2b755e8219">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="7baa505f-2dd4-40a4-a0e7-b58676642354">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="17c47070-55bc-41c7-9577-44207120ca19">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="CUSTNAME" part="Business" id="5d7184a3-0c60-44ff-bd4a-7a2e59125d8e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListPhsCustInfo" site="S" id="9493158f-d25f-4d0b-ae1d-b4b8afd3017f">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-15 15:36:15</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <response>$resp.CUSTNAME = $s.CUSTNAME</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

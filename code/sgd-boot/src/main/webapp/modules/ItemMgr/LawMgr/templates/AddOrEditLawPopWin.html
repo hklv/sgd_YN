@@ -1,0 +1,101 @@
+<div class="ui-dialog dialog-md">
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body top-padding">
+    <form class="form-horizontal js-law-form">
+        <div class="form-group required">
+            <label class="col-md-2 control-label">
+            	法律法规名称
+            </label>
+            <div class="col-md-4">
+                <input name="NAME" class="form-control" data-rule="名称:required;length[1~60, true]"/>
+            </div>
+            <label class="col-md-2 control-label">
+				法律法规类型
+            </label>
+            <div class="col-md-4">
+                <input name="TYPE_ID" class="form-control " data-rule="法律法规类型:required"/>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="col-md-2 control-label">
+            	文号
+            </label>
+            <div class="col-md-4">
+                <input name="FILE_NO" class="form-control " data-rule="文号:required"/>
+            </div>
+            <label class="col-md-2 control-label">
+				适用范围
+            </label>
+            <div class="col-md-4">
+                <input name="SCOPE" class="form-control " data-rule="适用范围:required"/>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="col-md-2 control-label">
+            	实施日期
+            </label>
+            <div class="col-md-4">
+            	<div class="input-group">
+                	<input name="EXE_DATE" class="form-control " data-rule="实施日期:required"/>
+               </div>
+            </div>
+            <label class="col-md-2 control-label">
+				颁布日期
+            </label>
+            <div class="col-md-4">
+            	<div class="input-group">
+                	<input name="PUB_DATE" class="form-control " data-rule="颁布日期:required"/>
+				</div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="col-md-2 control-label">
+            	颁布单位
+            </label>
+            <div class="col-md-4">
+                <input name="PUB_DEPARTMENT" class="form-control " data-rule="颁布单位:required"/>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="col-md-2 control-label">
+            	颁布情况概述
+            </label>
+            <div class="col-md-10">
+                <textarea rows="2" class="form-control" name="PUB_SUMMARY" style="width: 100%;resize: auto;max-width: 100%;" data-rule="颁布情况概述:required"></textarea>
+            </div>
+        </div>
+    </form>
+    <form class="form-horizontal js-file-form">
+    	<div class="form-group required">
+            <label class="col-md-2 control-label">附件：</label>
+            <div class=" col-md-10">
+                <table style="width: 100%;text-align: center;" class="FILE_LIST_TABLE table table-bordered table-striped">
+	        		<tr style="background-color: #F7F7F7;height: 40px;">
+	        			<td style="width: 50px;"></td>
+	        			<td>文件名称</td>
+	        			<td style="width: 50px;"></td>
+	        		</tr>
+	        	</table>
+				<span class="btn btn-primary fileinput-button">
+                    	点击上传
+                    <input class="js-fileupload" type="file" data-ui-role="fileupload">
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="col-md-12 col-sm-12 text-right">
+        <div class="row">
+            <button type="button" class="btn btn_minwidth btn-primary js-ok" autofocus>
+            	{{COMMON_OK}}
+            </button>
+            <button type="button" class="btn btn_minwidth btn-default js-cancel" data-dismiss>
+                {{COMMON_CANCEL}}
+            </button>
+        </div>
+    </div>
+</div>
+</div>

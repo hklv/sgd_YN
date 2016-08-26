@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="Remoting" type="B">
+    <comments><![CDATA[Remoting]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2011-12-05 00:00:00</modifyDate>
+    <extension>
+      <beginFlag><![CDATA[$cur.beginFlag]]></beginFlag>
+      <length><![CDATA[$cur.bodyLen+48]]></length>
+      <isRemoting>true</isRemoting>
+      <sessionField>msgSeq</sessionField>
+      <transactionField>msgSeq</transactionField>
+      <linkCheck>RemotingLinkCheck</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.RemotingMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>true</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="6e26f38b-0f1c-46b7-bedb-5f34dba3d2ab">
+        <extension>
+          <byteOrder>B</byteOrder>
+          <comments><![CDATA[Header]]></comments>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="true" name="beginFlag" part="Header" id="8b80debc-c989-4a38-816b-befc20b96527">
+            <extension>
+              <length>8</length>
+              <encodingValue>"'@MG_B@'"</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="I" requred="false" name="bodyLen" part="Header" id="e0d0e59a-e8ff-452b-a617-b28f55d8c5bb">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength-48</encodingValue>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="C" dataType="I" requred="true" name="msgType" part="Header" id="439facea-a606-47c8-8cf8-cf4933c3fbd2">
+            <extension>
+              <length>2</length>
+              <encodingValue>decode($cur.v.command ,"RemotingLinkCheck",0,"RemotingLoadReport","5","2")</encodingValue>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="S" requred="false" name="msgSeq" part="Header" id="77fe2239-a8e7-4d20-9933-6030df1ddd7c">
+            <extension>
+              <length>22</length>
+              <encodingValue>getRemotingSeq($cur)</encodingValue>
+            </extension>
+          </field>
+          <field seq="5" direction="both" fieldType="N" dataType="S" requred="false" name="reserve" part="Header" id="3a64b381-f572-4015-88aa-63b9d6c09b14">
+            <extension>
+              <length>4</length>
+              <encodingValue>"xxxx"</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="2" type="B" name="LinkCheck" id="71f4024b-69b8-4a71-9ed7-b5716b8aee6c">
+        <extension>
+          <comments><![CDATA[Link Check Body]]></comments>
+          <decodeSelector><![CDATA[$cur.msgType==0]]></decodeSelector>
+          <encodeSelector><![CDATA[$cur.v.command == 'RemotingLinkCheck']]></encodeSelector>
+          <length>$cur.bodyLen</length>
+        </extension>
+        <fields>
+          <field seq="6" direction="both" fieldType="N" dataType="S" requred="false" name="body" part="LinkCheck" id="794431e7-74b9-4b94-a277-7e67a40e2b45">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="3" type="B" name="Business" id="eb783f5e-2408-4a56-a200-1bd5322ac021">
+        <extension>
+          <comments><![CDATA[Business Body]]></comments>
+          <decodeSelector><![CDATA[$cur.bodyLen > 9]]></decodeSelector>
+          <encodeSelector><![CDATA[$cur.v.command != 'RemotingLinkCheck']]></encodeSelector>
+          <length>$cur.bodyLen</length>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+      <part seq="5" type="T" name="Tailer" id="85623418-6e0f-4f17-9218-925acd2074e4">
+        <extension>
+          <comments><![CDATA[Tailer]]></comments>
+        </extension>
+        <fields>
+          <field seq="8" direction="both" fieldType="N" dataType="S" requred="true" name="endFlag" part="Tailer" id="f43a3ae8-ee16-49a1-a08e-6e06a8d69431">
+            <extension>
+              <length>8</length>
+              <encodingValue>"'@MG_E@'"</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+    </parts>
+  </message>
+</zsmart>

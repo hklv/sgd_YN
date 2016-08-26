@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Login" message="VC_Client" seq="38" id="6b5d9e79-3422-49f7-86ab-4a9b2050b2b2">
+    <comments><![CDATA[Login]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-02-24 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x0001</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="M" requred="true" name="0x01" part="Body" id="4a673b8e-6ec8-48fc-8a51-5df5dba4fced">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="0x02" part="Body" id="25fb48c8-20a4-4d25-b3f2-8a91e7b45a89">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="4" direction="both" fieldType="N" dataType="I" requred="true" name="0x03" part="Body" id="1a9d51f5-aef0-41b8-8839-7daffb59e799">
+        <extension>
+          <length>2</length>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="I" requred="true" name="0x04" part="Body" id="eca143b2-d9fb-4692-bda7-9dcbcd1a9416">
+        <extension>
+          <length>2</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+        <binding service="UipLogin" site="S" id="206a45fb-d521-41a7-bf68-486ed428f659">
+            <state>A</state>
+            <version>1.0</version>
+            <modifier>admIN</modifier>
+            <modifyDate>2012-12-20 15:17:50</modifyDate>
+            <serviceFlow/>
+            <script>
+                <invoke>
+                    <request>$s.UserName = $req.0x01</request>
+                    <request>$s.AdapterName = $req.v.adapter</request>
+                    <request>$s.Password = $req.0x02</request>
+                    <request>$s.InterfaceVersion = $req.0x03</request>
+                </invoke>
+                <exception/>
+                <finally>
+                    <response>$resp.0x01 = $s.UserName</response>
+                    <response>$resp.0x04 = $resp.v.resultCode</response>
+                    <response>$resp.0x03 = $s.InterfaceVersion</response>
+                </finally>
+            </script>
+        </binding>
+    </bindings>
+  </command>
+</zsmart>

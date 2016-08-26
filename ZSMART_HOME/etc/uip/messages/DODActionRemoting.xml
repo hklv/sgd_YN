@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="DODActionRemoting" type="B">
+    <comments><![CDATA[用于MCCM解决方案中,DOD产品与UIP的接口]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-09-05 11:08:13</modifyDate>
+    <extension>
+      <beginFlag><![CDATA[$cur.beginFlag]]></beginFlag>
+      <length><![CDATA[java.lang.Integer.parseInt($cur.bodyLen)+40]]></length>
+      <comments>协议头</comments>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="f599133f-fd1d-4ab5-a219-8d3cd09eb5f7">
+        <extension>
+          <comments><![CDATA[协议头]]></comments>
+        </extension>
+        <fields>
+          <field seq="0" direction="both" fieldType="N" dataType="S" requred="true" name="beginFlag" part="Header" id="0e3e3292-36d0-49ef-b34a-8ce26a5dec46">
+            <extension>
+              <length>8</length>
+              <encodingValue>"'@MG_B@'"</encodingValue>
+            </extension>
+          </field>
+          <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="msgCode" part="Header" id="75eaeb9b-02e9-4193-9f40-da99254cba96">
+            <extension>
+              <length>4</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="S" requred="true" name="transId" part="Header" id="a749682a-2c0b-44b1-8dda-426968c98b16">
+            <extension>
+              <length>12</length>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="S" requred="true" name="bodyLen" part="Header" id="ded1bc20-2d4c-4e24-9140-8661cde5f678">
+            <extension>
+              <align>L</align>
+              <pad>0</pad>
+              <length>8</length>
+              <encodingValue>$cur.v.messageLength-40</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="2" type="H" name="Body" id="fbc85a78-968b-41b3-920b-cd866d178c81">
+        <extension>
+          <comments><![CDATA[协议体]]></comments>
+          <length>java.lang.Integer.parseInt($cur.bodyLen)</length>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+      <part seq="4" type="H" name="Tail" id="0731e63c-2d30-4499-87cc-4eb8d521c9e5">
+        <extension/>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="true" name="endFlag" part="Tail" id="735e9202-1f49-4204-b299-0d59ec3ba31b">
+            <extension>
+              <length>8</length>
+              <encodingValue>"'@MG_E@'"</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+    </parts>
+  </message>
+</zsmart>

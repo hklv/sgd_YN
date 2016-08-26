@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADJUST MULCHRG MONEY" message="MML" seq="81" id="78e43e1d-4d1a-4aa2-8278-2e7b2fbd2076">
+    <comments><![CDATA[ADJUST MUL CHRG MONEY]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-10-23 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADJUST MULCHRG MONEY</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="6bd8953c-d4d5-4cd8-834f-af04af7b6a22">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="a003d223-5dc2-4dad-b46c-7dbe46f6e165">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="cef471f3-677f-4b42-8cbc-79151025259f">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>60</max>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="409317fe-2a19-46f0-9157-1d267173c994">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="req" fieldType="N" dataType="S" requred="true" name="REQUEST" part="Business" id="e8ab6982-0368-437b-90f1-fb11b428668b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="64f44128-7c82-4363-95ec-03e8b3173c64">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>10</max>
+        </extension>
+      </field>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="a55446d7-dba7-444c-ba01-fd26eff9744c">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>256</max>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ADJUST_MUL_CHEG_MONEY_CLINET" site="C" id="43857583-4400-4b05-83ca-41029f680870">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-26 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.ID = $s.ID</request>
+            <request>$req.DN = $s.DN</request>
+            <request>$req.ATTR = $s.ATTR</request>
+            <request>$req.REQUEST = $s.REQUEST</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.RETN = $resp.RETN</response>
+            <response>$s.DESC = $resp.DESC</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

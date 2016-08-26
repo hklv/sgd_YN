@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <rule name="MMLCode" id="fb36bacf-3c3f-458c-9145-5a3a0c4d5d4e">
+    <comments><![CDATA[MML 异常码跟返回码的映射关系]]></comments>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-05-29 14:49:29</modifyDate>
+    <kvlist>
+      <kv key="0" value="0000" isResource="false"/>
+      <kv key="BL-S-ACT-00002" value="1002" isResource="false"/>
+      <kv key="BL-S-ACT-00007" value="1418" isResource="false"/>
+      <kv key="BL-S-ACT-00009" value="1409" isResource="false"/>
+      <kv key="BL-S-ACT-00011" value="1413" isResource="false"/>
+      <kv key="BL-S-ACT-00013" value="1401" isResource="false"/>
+      <kv key="BL-S-ACT-00014" value="1408" isResource="false"/>
+      <kv key="BL-S-ACT-00020" value="1404" isResource="false"/>
+      <kv key="BL-S-ACT-00041" value="1005" isResource="false"/>
+      <kv key="BL-S-ACT-00043" value="2001" isResource="false"/>
+      <kv key="BL-S-ACT-00046" value="1006" isResource="false"/>
+      <kv key="BL-S-ACT-00048" value="1008" isResource="false"/>
+      <kv key="BL-S-ACT-00067" value="1002" isResource="false"/>
+      <kv key="BL-S-ACT-00068" value="1005" isResource="false"/>
+      <kv key="BL-S-ACT-00070" value="1003" isResource="false"/>
+      <kv key="BL-S-ACT-00083" value="1404" isResource="false"/>
+      <kv key="BL-S-ACT-00084" value="1404" isResource="false"/>
+      <kv key="BL-S-ACT-00088" value="1405" isResource="false"/>
+      <kv key="BL-S-ACT-00089" value="1406" isResource="false"/>
+      <kv key="BL-S-ACT-00090" value="1406" isResource="false"/>
+      <kv key="BL-S-ACT-00091" value="1407" isResource="false"/>
+      <kv key="BL-S-ACT-00092" value="1405" isResource="false"/>
+      <kv key="BL-S-ACT-00093" value="1410" isResource="false"/>
+      <kv key="BL-S-ACT-00094" value="1412" isResource="false"/>
+      <kv key="BL-S-ACT-00095" value="1414" isResource="false"/>
+      <kv key="BL-S-ACT-00097" value="1402" isResource="false"/>
+      <kv key="BL-S-ACT-00099" value="1411" isResource="false"/>
+      <kv key="BL-S-ACT-00100" value="1415" isResource="false"/>
+      <kv key="BL-S-ACT-00140" value="1001" isResource="false"/>
+      <kv key="BL-S-ACT-00141" value="1003" isResource="false"/>
+      <kv key="S-ACT-00032" value="1001" isResource="false"/>
+      <kv key="S-ACT-00049" value="1004" isResource="false"/>
+      <kv key="S-ACT-00051" value="1003" isResource="false"/>
+      <kv key="S-ACT-00177" value="1103" isResource="false"/>
+      <kv key="S-ACT-00178" value="1108" isResource="false"/>
+      <kv key="S-ACT-00179" value="1105" isResource="false"/>
+      <kv key="S-ACT-00181" value="1003" isResource="false"/>
+      <kv key="S-ACT-00197" value="1001" isResource="false"/>
+      <kv key="S-ACT-00344" value="1107" isResource="false"/>
+      <kv key="S-ACT-00346" value="1106" isResource="false"/>
+      <kv key="S-ACT-00406" value="1003" isResource="false"/>
+      <kv key="S-ACT-10203" value="1006" isResource="false"/>
+      <kv key="S-ACT-10204" value="1006" isResource="false"/>
+      <kv key="S-ACT-10619" value="1099" isResource="false"/>
+      <kv key="S-CNT-01018" value="1003" isResource="false"/>
+      <kv key="S-LOGIN-1001" value="1001" isResource="false"/>
+      <kv key="S-LOGIN-1002" value="1001" isResource="false"/>
+      <kv key="S-PRF-00096" value="1001" isResource="false"/>
+      <kv key="S-SMS-1001" value="1001" isResource="false"/>
+    </kvlist>
+    <extension>
+      <default>1099</default>
+    </extension>
+  </rule>
+</zsmart>

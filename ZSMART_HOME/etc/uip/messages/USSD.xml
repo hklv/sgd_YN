@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="USSD" type="B">
+    <comments><![CDATA[USSD Server]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>0027004002</modifier>
+    <modifyDate>2012-03-20 11:02:08</modifyDate>
+    <extension>
+      <length><![CDATA[$cur.CommandLength]]></length>
+      <login>Bind</login>
+      <logout>UnBind</logout>
+      <linkCheck>Enquire_Link</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.UssdMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="2" type="H" name="Header" id="d4121474-3fc7-4358-9efb-4dba414915cd">
+        <extension>
+          <comments><![CDATA[Header]]></comments>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="I" requred="true" name="CommandLength" part="Header" id="096347c8-86e1-4759-a8df-02aeb65e5904">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength</encodingValue>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="C" dataType="I" requred="true" name="CommandId" part="Header" id="41f0c2df-c433-4b6b-813c-9e300205052a">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="CommandStatus" part="Header" id="83c5eea3-1372-4560-84dc-7e714be383a0">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="I" requred="true" name="SenderId" part="Header" id="586d0d2e-90b0-48c0-88d4-79558985df37">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+          <field seq="5" direction="both" fieldType="N" dataType="I" requred="true" name="ReceiverId" part="Header" id="29e6b844-4c83-403a-b523-29ef478b9ff1">
+            <extension>
+              <length>4</length>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="3" type="B" name="Body" id="115aa7f0-0d32-4d27-ab7a-ce50488d59db">
+        <extension>
+          <comments><![CDATA[Body]]></comments>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

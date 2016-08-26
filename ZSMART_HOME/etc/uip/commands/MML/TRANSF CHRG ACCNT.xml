@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="TRANSF CHRG ACCNT" message="MML" seq="18" id="994bf4d7-39f6-4b98-b1aa-889c2844e67c">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>TRANSF CHRG ACCNT</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="BL-S-ACT-00097" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="BL-S-ACT-00097" value="1402" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="10b2ae5f-6a97-4e65-9690-340f660544ca"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="ID" part="Business" id="cd5089c3-11bb-4787-add4-92074b566346"/>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="SACCNT" part="Business" id="6eaa4484-1d7e-44eb-99c0-9e5f9cd39243"/>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="true" name="SPWD" part="Business" id="8e9dbb45-5cea-4913-86b0-646c0cde5052"/>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="true" name="DACCNT" part="Business" id="bd5423ad-11a4-4623-99f4-df06a1f5c60d"/>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="FEE" part="Business" id="03b9231c-7987-4e4f-9fa2-a78ed4152a16"/>
+      <field seq="8" direction="req" fieldType="N" dataType="S" requred="false" name="MSGLANG" part="Business" id="cb0bded3-be0f-4d2f-9baf-86a3118d5179"/>
+      <field seq="9" direction="req" fieldType="N" dataType="S" requred="false" name="BALCODE" part="Business" id="82b02359-619b-4fff-a267-a8f4236b2b83"/>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="a3029f5c-3565-4a58-bcd8-823dbc099413">
+        <extension>
+          <offset>100000067</offset>
+        </extension>
+      </field>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="f978f958-e719-44a8-a5ff-876a5f0a539d">
+        <extension>
+          <offset>100000067</offset>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="BEFOROPER" part="Business" id="1c99d234-6714-4f1d-a642-420b3bf4a8e1"/>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="FEE" part="Business" id="64075f4c-eff1-46e7-bd7a-0c336b51db36"/>
+      <field seq="14" direction="resp" fieldType="N" dataType="S" requred="false" name="AFTEROPER" part="Business" id="6155f954-8c9d-4dee-a8b9-16c44ca362bf"/>
+      <field seq="15" direction="resp" fieldType="N" dataType="S" requred="false" name="MINAMOUNT" part="Business" id="986eef42-0eef-4a0e-83d4-be992057acc9"/>
+      <field seq="16" direction="resp" fieldType="N" dataType="S" requred="false" name="MAXAMOUNT" part="Business" id="65d8848f-aede-4d57-9eb7-119132960c6f"/>
+      <field seq="17" direction="resp" fieldType="N" dataType="S" requred="false" name="EXPDATE" part="Business" id="0480fe15-3f8a-44d1-ac2b-c62cc7a916d4">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlTransfChrgAccnt" site="S" id="ca3620fb-4e2f-4b06-acd7-c019744e2d18">
+        <state>A</state>
+        <version>1</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.PARTNER_SN = $req.ID</request>
+            <request>$s.FROM_PASSWORD = $req.SPWD</request>
+            <request>$s.MSGLANG = $req.MSGLANG</request>
+            <request>$s.SACCNT = $req.SACCNT</request>
+            <request>$s.DACCNT = $req.DACCNT</request>
+            <request>$s.FEE = $req.FEE</request>
+            <request>$s.BALCODE = $req.BALCODE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.BEFOROPER = $s.TRANSFER_RESULT.BAL_OLD.REAL_BAL</response>
+            <response>$resp.FEE = $s.TRANSFER_RESULT.CHARGE</response>
+            <response>$resp.AFTEROPER = $s.TRANSFER_RESULT.BAL.REAL_BAL</response>
+            <response>$resp.EXPDATE = $s.TRANSFER_RESULT.BAL.EXP_DATE</response>
+            <response>$resp.MINAMOUNT = $s.ERROR_MIN_AMOUNT</response>
+            <response>$resp.MAXAMOUNT = $s.ERROR_MAX_AMOUNT</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

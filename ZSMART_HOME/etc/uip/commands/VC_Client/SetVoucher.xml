@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SetVoucher" message="VC_Client" seq="40" id="8f08e4c0-0e74-47c8-911b-0da621116504">
+    <comments><![CDATA[SetVoucher]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-24 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x000d</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="M" requred="true" name="0x05" part="Body" id="c2f402c1-a229-45a2-8dd2-6c3df4be3f03">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="0x0e" part="Body" id="43170d81-05bd-4a81-80c2-6a44701dddf1">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="M" requred="true" name="0x06" part="Body" id="af920ac5-dbce-44b8-a7b5-5145267cf638">
+        <extension>
+          <max>16</max>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="M" requred="true" name="0x07" part="Body" id="efaeab6e-5d7a-4026-8998-e06a79c2776a">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="M" requred="true" name="0x08" part="Body" id="400bc2e0-516e-4900-acd1-d9eb68d24a25">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="I" requred="true" name="0x09" part="Body" id="543617bd-1553-4da1-a242-85b1ea4b7f7e">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="M" requred="true" name="0x0c" part="Body" id="7ba1744a-5414-4afe-8d31-03a5f44261f3">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="I" requred="true" name="0x0d" part="Body" id="9c4e0b2e-0293-47d5-b559-88517a768028">
+        <extension>
+          <length>2</length>
+          <encodingValue>2</encodingValue>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="I" requred="true" name="0x13" part="Body" id="d5904c39-7dee-4a13-9865-5ee72c05a6c0">
+        <extension>
+          <length>2</length>
+          <encodingValue>0</encodingValue>
+        </extension>
+      </field>
+        <field seq="11" direction="req" fieldType="N" dataType="I" requred="true" name="0x14" part="Body" id="d5904c39-idea-4a13-9865-5ee72c05a6c0">
+            <extension>
+                <length>2</length>
+                <encodingValue>0</encodingValue>
+            </extension>
+        </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="I" requred="true" name="0x04" part="Body" id="b1e45df5-6e9e-44f3-be77-2842976798af">
+        <extension>
+          <length>2</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="SetVoucher" site="C" id="903c4b29-50f0-4da2-adf5-11a2a936d654">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-02-29 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.0x05 = $s.SESSION_ID</request>
+            <request>$req.0x0e = $s.VC_SESSION_ID</request>
+            <request>$req.0x06 = $s.SUBSCRIBER_ID</request>
+            <request>$req.0x07 = $s.VOUCHER_CARD_PASS</request>
+            <request>$req.0x08 = $s.VOUCHER_CARD</request>
+            <request>$req.0x09 = $s.CHARGE_MONEY</request>
+            <request>$req.0x0c = $s.RECHARGE_TIME</request>
+            <request>$req.0x0d = $s.CHARGE_TYPE</request>
+            <request>$req.0x13 = $s.USER_CHOICE</request>
+            <request>$req.0x14 = $s.USER_HOME_SYSTEM</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.SESSION_ID = $resp.0x05</response>
+            <response>$s.RETN_CODE = $resp.0x04</response>
+          </finally>
+        </script>
+      </binding>
+        <binding service="VcSimulator" site="S" id="f125c7db-ef6d-4055-b123-a17db47c19a5">
+            <state>A</state>
+            <version>1.0</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-04 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+                <invoke>
+                    <request>$s.SESSION_ID = $req.0x05</request>
+                    <request>$s.VC_SESSION_ID = $req.0x0e</request>
+                    <request>$s.SUBSCRIBER_ID = $req.0x06</request>
+                    <request>$s.VOUCHER_CARD_PASS = $req.0x07</request>
+                    <request>$s.VOUCHER_CARD = $req.0x08</request>
+                    <request>$s.CHARGE_MONEY = $req.0x09</request>
+                    <request>$s.RECHARGE_TIME = $req.0x0c</request>
+                    <request>$s.CHARGE_TYPE = $req.0x0d</request>
+                    <request>$s.USER_CHOICE = $req.0x13</request>
+                    <request>$s.USER_HOME_SYSTEM = $req.0x14</request>
+                </invoke>
+                <exception/>
+                <finally>
+                    <response>$resp.0x04 = 0</response>
+                    <response>$resp.0x05 = $s.SESSION_ID</response>
+                </finally>
+            </script>
+        </binding>
+    </bindings>
+  </command>
+</zsmart>

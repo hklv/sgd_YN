@@ -1,0 +1,30 @@
+相比原来的treetable，扩展了一些api
+支持异步请求
+
+配置参数
+
+◦theme: string {主题，有两个选项：default、vsStyle. 默认:default}
+◦expandLevel: int {树表的展开层次. 默认:1}
+◦column: int {可控制列的序号. 默认:0，即第一列}
+◦onSelect: function {拥有controller自定义属性的元素的点击事件，return false则中止展开. 默认值: function($treeTable, id) {
+      //$treeTable 当前树表的jquery对象.
+      //id 当前行的id
+    
+      //返回false，则直接退出，不会激发后面的beforeExpand和子节点的展开
+      return true;
+} 
+◦beforeExpand: {展开子节点前触发的事件, 默认值：
+ function($treeTable, id) {
+      //$treeTable 当前树表的jquery对象.
+      //id 当前行的id
+}
+属性说明
+
+◦id: string 行的id
+◦pId: string 父行的id
+◦controller: bool 指定某一个元素是否可以控制行的展开
+◦hasChild: bool 指定某一个tr元素是否有孩子（动态加载需用到）
+◦isFirstOne: bool 指定某一个tr元素是否是第一个孩子（自动生成属性，只读）
+◦isLastOne: bool 指定某一个tr元素是否是最后一个孩子（自动生成属性，只读）
+◦prevId: string 前一个兄弟节点的id（自动生成属性，只读）
+◦depth: string 当前行的深度（自动生成属性，只读）

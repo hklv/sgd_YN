@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="MOD AUTH PHS LANG" message="MML" seq="92" id="6b537a67-1b12-43a5-bbc2-46c026a1f92f">
+    <comments><![CDATA[修改用户语言鉴权]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-15 13:37:50</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>MOD AUTH PHS LANG</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="37a7ef1f-9c41-4a9b-ae3d-70ba79f774ce">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="de84f6f7-7e00-441f-a69c-3d47dce1fdee">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="cea25579-9195-4c09-aa4e-a4b927778c6c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="4a32b709-5273-4dfa-bffc-e3aebab40a16">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="false" name="ACNTLEFT" part="Business" id="c3210ee2-24c5-4395-9170-ca4b74933eeb">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="OPERFEE" part="Business" id="df64a913-a68c-48eb-92b9-c3c8b497c9c4">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ModAuthPhsLang" site="S" id="87050570-cf15-4f9d-aae4-6c7bfdf9c9f8">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-15 13:41:59</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ACNTLEFT = $s.ACNTLEFT</response>
+            <response>$resp.OPERFEE = $s.OPERFEE</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,43 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ztesoft.zsmartcity.sgd</groupId>
+		<artifactId>sgd-parent</artifactId>
+		<version>1.0.0-snapshot</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>portal-adapter</artifactId>
+	<name>portal-adapter</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.ztesoft.zsmart.pot</groupId>
+			<artifactId>portal-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ztesoft.zsmart.pot</groupId>
+			<artifactId>portal-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ztesoft.zsmartcity.sgd</groupId>
+			<artifactId>workflow-core</artifactId>
+			<version>1.0.0-snapshot</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<resources>
+		    <resource>
+		        <directory>src/main/java</directory>
+		    </resource>
+		    <resource>
+				<directory>src/main/resources</directory>
+			</resource>
+        </resources>
+    </build>
+
+</project>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DISP PHS FNINFO" message="MML" seq="66" id="616105b9-79a2-4f8c-9b06-e6946eb014e5">
+    <comments><![CDATA[查询用户亲情号码签约信息]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-21 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DISP PHS FNINFO</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="3b9dab9d-f3e6-4f25-a0a1-f78ac34afed3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="1642b72d-84f4-46d7-a5b8-ec456828579f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="4dd743ab-f1ba-4241-a332-1d86f2e7bd16">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="FELLOWTYPE" part="Business" id="62fde095-65b1-41a1-b505-cc37f8c55a9e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="e4fb5d55-65f8-427d-b501-67cddca5e666">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="b2b51766-3a61-41be-b491-25946e0174fc">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="0c42b267-9aa8-4be2-a2a0-4a64b189c00c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="RESULT" part="Business" id="dd60e506-299b-4632-9a96-9dfd5eb0bc4c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DispFninfo" site="S" id="9f166ae8-7daf-43cf-9638-32239915688a">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-21 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+          <node eventType="B" service="MML_AttrChange"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.ATTR = $req.ATTR</request>
+            <request>$s.FELLOWTYPE = $req.FELLOWTYPE</request>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "RE_LIST", "CANUSEFAMILYNUM=CANUSEFAMILYNUM|ACTIVEFAMILYNUMFLAG=ACTIVEFAMILYNUMFLAG|ACTIVEFNCHARGE=ACTIVEFNCHARGE|MAXFAMILYNUM=MAXFAMILYNUM|FNFREEMODTIMES=FNFREEMODTIMES|FNMAXMODTIMES=FNMAXMODTIMES|FNRESFREEMODTIMES=FNRESFREEMODTIMES|FNHASMODTIMES=FNHASMODTIMES|FNFREEADDTIMES=FNFREEADDTIMES|FNRESFREEADDTIMES=FNRESFREEADDTIMES|FNHASADDTIMES=FNHASADDTIMES|HASFAMILYNUM=HASFAMILYNUM|FNROAMAUTH=FNROAMAUTH|NEWFNCHARGE=NEWFNCHARGE|MODFNCHARGE=MODFNCHARGE|FAMILYCNT=FAMILYCNT|FNFREEADDMODTIMES=FNFREEADDMODTIMES|FNRESFREEADDMODTIMES=FNRESFREEADDMODTIMES|DEFAULT=DEFAULT|FELLOWTYPE=FELLOWTYPE" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

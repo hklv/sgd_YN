@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://com.ztesoft.zsmart/service" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ns="http://com.ztesoft.zsmart/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://com.ztesoft.zsmart/service">  
+  <wsdl:documentation>SPNService</wsdl:documentation>  
+  <wsdl:types> 
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://com.ztesoft.zsmart/xsd"> 
+      <xs:complexType name="tdoServiceBO"> 
+        <xs:sequence> 
+          <xs:element name="reqXml" type="xs:string"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="doServiceBO" type="ns:tdoServiceBO"/>  
+      <xs:complexType name="tdoServiceBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="retnDto" type="ns:tretnDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="doServiceBOResponse" type="ns:tdoServiceBOResponse"/>  
+      <xs:complexType name="tretnDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="retnCode" type="xs:string"/>  
+          <xs:element name="retnDesc" nillable="true" type="xs:string"/>  
+          <xs:element default="Provisioning" name="currentNE" type="xs:string"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="retnDtoResponse" type="ns:tretnDtoResponse"/> 
+    </xs:schema> 
+  </wsdl:types>  
+  <wsdl:message name="doServiceRequest"> 
+    <wsdl:part name="parameters" element="ns:doServiceBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="doServiceResponse"> 
+    <wsdl:part name="parameters" element="ns:doServiceBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:portType name="SPNServicePortType"> 
+    <wsdl:operation name="doService"> 
+      <wsdl:input message="tns:doServiceRequest" wsaw:Action="urn:doServiceBO"/>  
+      <wsdl:output message="tns:doServiceResponse" wsaw:Action="urn:doServiceBOResponse"/> 
+    </wsdl:operation> 
+  </wsdl:portType>  
+  <wsdl:binding name="SPNServiceSoap11Binding" type="tns:SPNServicePortType"> 
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>  
+    <wsdl:operation name="doService"> 
+      <soap:operation soapAction="urn:doService" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:binding name="SPNServiceSoap12Binding" type="tns:SPNServicePortType"> 
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>  
+    <wsdl:operation name="doService"> 
+      <soap12:operation soapAction="urn:doService" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:binding name="SPNServiceHttpBinding" type="tns:SPNServicePortType"> 
+    <http:binding verb="POST"/>  
+    <wsdl:operation name="doService"> 
+      <http:operation location="doService"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:service name="SPNService"> 
+    <wsdl:port name="SPNServiceHttpSoap11Endpoint" binding="tns:SPNServiceSoap11Binding"> 
+      <soap:address location="http://localhost:8080/spnServices/SPNService.SPNServiceHttpSoap11Endpoint/"/> 
+    </wsdl:port>  
+    <wsdl:port name="SPNServiceHttpSoap12Endpoint" binding="tns:SPNServiceSoap12Binding"> 
+      <soap12:address location="http://localhost:8080/spnServices/SPNService.SPNServiceHttpSoap12Endpoint/"/> 
+    </wsdl:port>  
+    <wsdl:port name="SPNServiceHttpEndpoint" binding="tns:SPNServiceHttpBinding"> 
+      <http:address location="http://localhost:8080/spnServices/SPNService.SPNServiceHttpEndpoint/"/> 
+    </wsdl:port> 
+  </wsdl:service> 
+</wsdl:definitions>

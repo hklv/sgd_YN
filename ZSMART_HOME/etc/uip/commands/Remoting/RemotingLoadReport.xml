@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RemotingLoadReport" message="Remoting" seq="49" id="c98f6ae4-8449-4965-8ef4-ea1002439e51">
+    <comments><![CDATA[RemotingLoadReport]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-05-10 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>5</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings/>
+  </command>
+</zsmart>

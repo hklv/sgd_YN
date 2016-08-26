@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<zsmart>
+	<dbConfig>
+		<dataType>1
+			<![CDATA[@displayText:事务控制方式#@obtainType:2#@selectOptions:1,2#@zh:事务控制方式：1纯JDBC事务、2为分布式事务（尚未实现）；该配置项不需要修改]]>
+		</dataType>
+		<sessionFacotry>TheadLocalSessionFactory</sessionFacotry>
+		<sqlCache>
+      		<capacity>${dbSqlCache_capacity}</capacity>
+      		<maxClear>${dbSqlCache_maxClear}</maxClear>
+		</sqlCache>
+		<queryService>
+      		<!-- 查询服务返回结果集个数的告警阈值，超过这个值将打印错误日志 -->
+      		<!-- query service return resultset count alert threshold,exceeded this value will print warn log-->
+      		<warningThreshold>${db_fetch_threshold_warn}</warningThreshold>
+      		<!-- 查询服务返回结果集个数的异常阈值，超过这个值将抛出异常中止业务处理 -->
+      		<!-- query service return resultset count error threshold,exceeded this value will throw exception and stop business process-->
+      		<exceptionThreshold>${db_fetch_threshold_error}</exceptionThreshold>
+      		<!-- 查询服务返回的结果集进行数据转换类型失败时候是否抛出异常中止业务执行，
+					throw : 抛异常
+					log : 打印异常堆栈
+					其他 ：打印异常描述
+					缺省打印异常描述-->
+			<!-- query service return resultset type converted process failed whether throw exceptiion to stop business process
+				throw : throw exception
+				log : only print exception stack trace
+				others : only print exception stack trace
+				default : only print exception stack trace
+			-->
+      		<actionWhenDataConvertError>${db_fetch_convert_onerror}</actionWhenDataConvertError>
+		</queryService>
+		<routing>
+			<isDistributedDB>${isDistributedDB}</isDistributedDB>
+			<masterDBRoutingID>${masterDBRoutingID}</masterDBRoutingID>
+			<defaultDBRoutingID>${defaultDBRoutingID}</defaultDBRoutingID>
+		</routing>		
+	</dbConfig>
+	<connectUser url="${connectUser_url}" driver="${connectUser_driver-Doracle.jdbc.driver.OracleDriver}" user="${connectUser_user}" password="${connectUser_password}" isPasswordEncrypt="${connectUser_isPasswordEncrypt}"/>
+	<!--
+	<connectUser url="jdbc:oracle:thin:@127.0.0.1:1521:mycc" driver="oracle.jdbc.driver.OracleDriver" user="CCLGV80" password="smart" isPasswordEncrypt="false"/>
+	<connectUser url="jdbc:oracle:thin:@10.45.4.194:1521:pcc" driver="oracle.jdbc.driver.OracleDriver" user="CCLGV80" password="smart" isPasswordEncrypt="false"/>
+	<connectUser url="jdbc:oracle:thin:@10.45.4.61:1521:cc" driver="oracle.jdbc.driver.OracleDriver" user="CCLGV80" password="smart" isPasswordEncrypt="false"/>
+	<connectUser url="jdbc:oracle:thin:@10.45.4.170:1521:cc" driver="oracle.jdbc.driver.OracleDriver" user="CCLGV80" password="smart" isPasswordEncrypt="false"/>
+	<connectUser url="jdbc:oracle:thin:@10.45.7.149:1521:cc" driver="oracle.jdbc.driver.OracleDriver" user="CCV80" password="cc13" isPasswordEncrypt="false"/>
+	<connectUser url="jdbc:oracle:thin:@10.45.15.90:cc" driver="oracle.jdbc.driver.OracleDriver" user="CCV80SFA" password="sfa" isPasswordEncrypt="false"/>
+	<connectUser url="${connectUser_url}" driver="oracle.jdbc.driver.OracleDriver" user="${connectUser_user}" password="${connectUser_password}" isPasswordEncrypt="${connectUser_isPasswordEncrypt}"/>
+	-->
+	<sqlLog>
+		<enabled>${sqlLog_enabled}
+			<![CDATA[@displayText:是否记录数据库访问层的SQL日志#@obtainType:2#@selectOptions:true,false#@zh:是否记录数据库访问层的SQL日志
+					@en:Whether or not to record sql log of database#@autoReload#@defaultValue:true#@needRestart]]>
+		</enabled>
+		<minCostTime>${sqlLog_minCostTime}
+			<![CDATA[@displayText:SQL执行时间超过这个值才打印，单位：毫秒#@obtainType:1#@inputRegExp:#@zh:SQL执行时间超过这个值才打印，单位：毫秒
+					@en:#@autoReload#@defaultValue:250]]>
+		</minCostTime>
+		<detailSql>${sqlLog_detailSql}
+			<![CDATA[@displayText:是否把SQL执行的参数也打印出来#@obtainType:2#@selectOptions:true,false#@zh:是否把SQL执行的参数也打印出来
+					@en:Whether or not to print sql execute parameters#@autoReload#@defaultValue:true#@needRestart]]>
+		</detailSql>
+		<encoding>${sqlLog_encoding}
+			<![CDATA[@displayText:是否需要把参数进行字符集转换#@obtainType:2#@selectOptions:true,false#@zh:是否需要把参数进行字符集转换
+					@en:#@autoReload#@defaultValue:false]]>
+		</encoding>
+		<fromEncoding>${sqlLog_fromEncoding}
+			<![CDATA[@displayText:转换前的字符集#@obtainType:1#@inputRegExp:#@zh:转换前的字符集#@en:#@autoReload#@defaultValue:GBK]]>
+		</fromEncoding>
+		<toEncoding>${sqlLog_toEncoding}
+			<![CDATA[@displayText:转换后的字符集#@obtainType:1#@inputRegExp:#@zh:转换后的字符集#@en:#@autoReload#@defaultValue:ISO-8859-1]]>
+		</toEncoding>
+	</sqlLog>
+ 	<!--
+        transactionTimeout  ：事务超时的时间，单位秒，缺省值 120
+        sqlTimeout   ：sql执行挂起长时间不返回的告警时间，单位秒，缺省值 40
+        connectionTimeout  ：连接空闲长时间不释放的告警时间，单位秒，缺省值  90
+        dumpInterval  ： 发生连接泄漏时候生成 dump 文件的时间间隔，单位秒
+        dumpFile       ：写入文件的名称
+        checkInterval      ：连接泄露检查间隔，单位毫秒
+	-->
+	<!--
+        transactionTimeout  ：transaction timeout, unit:second ,default value :120
+        sqlTimeout   ：sql suspended executive duration alert time , unit:second ,default value :40
+        connectionTimeout  ：idle connection didn't release alert time, unit:second ,default value :90
+        dumpInterval  ： when connection leaked,interval for created dump file , unit:second
+        dumpFile       ：dump file name
+        checkInterval      ：check connection leaked interval ,unit:millisecond
+        idleCheckInterval      ：check connection idle interval ,unit:millisecond
+	-->
+	<jdbcMonitor>
+		<transactionTimeout>${jdbc_transactionTimeout-D120}</transactionTimeout>
+		<sqlTimeout>${jdbc_sqlTimeout-D40}</sqlTimeout>
+		<connectionTimeout>${jdbc_connectionTimeout-D90}</connectionTimeout>
+		<dumpInterval>${jdbc_dumpInterval}</dumpInterval> 
+		<dumpFile>${jdbc_dumpFile}</dumpFile>
+		<checkInterval>${jdbc_checkInterval}</checkInterval>
+		<idleCheckInterval>${jdbc_idleCheckInterval-D5000}</idleCheckInterval>
+	</jdbcMonitor>
+	
+	<!-- 默认的区域，在获取不到区域信息时使用 -->
+	<!-- Default area is used when area information is not obtained-->
+	<i18n>
+      <local>${i18n_local}
+      	<![CDATA[@displayTest:国际化，区域编码]]>
+      </local>
+      <supportLocList>${i18n_supportLocList}
+      	<![CDATA[@displayTest:国际化，支持的区域列表]]>
+      </supportLocList>
+	</i18n>
+	<project>
+		<!-- 项目命名空间，用于项目化代码和基础代码分离.--> 
+		<!-- project namespace ,used for project code separated with base code-->       
+      	<projectCode>${project_projectCode}
+      		<![CDATA[@displayTest:SmartfrenCMS: 印尼金光CMS , SFA: 阿富汗营销 , StarHubEBS: 新加坡EBS， mCelMCCM: 莫桑 MCC，vietics：越南Viettel，
+      		NamiMCCM：纳米比亚 电信 新建 GU-SPN，FijiMCCM：沃达丰斐济MCCM项目，法电波兰实验室项目：poland,CBSeatelMCCM:柬埔寨东南亚电信IT支撑项目，
+      		mali：马里法电OML OCS新建项目，CBSeatel：柬埔寨东南亚电信IT支撑项目]]>
+      	</projectCode>
+	</project>
+	
+	<!-- 国际化资源文件
+        comResource    一些异常提示信息目录，对应getCommonResString方法
+        comResourceCus 客户自定义，会覆盖comResource中同键的值
+	-->
+	<!-- international resource file
+        comResource    exception alert information directory,getCommonResString method use it
+        comResourceCus custom defined,overwrite the key-value which defined in comResource
+	-->
+	<comResource>
+		<path>comResource</path>
+	</comResource>
+	<comResourceCus>
+		<path>comResourceCus</path>
+	</comResourceCus>
+	
+	<AuditLog>
+		<value>${AuditLog_open}
+			<![CDATA[@displayText:是否打开静态数据管理的审计日志模式#@obtainType:2#@selectOptions:true,false
+					@zh:是否打开静态数据管理的审计日志模式#@en:Whether or not to open static data management of the audit log mode
+					@autoReload#@defaultValue:true#@needRestart]]>
+		</value>
+	</AuditLog>
+	
+	<productMode>
+		<value>${productMode.isDevelopMode}
+			<![CDATA[@displayText:是否是开发模式#@obtainType:2#@selectOptions:true,false#@zh:是否是开发模式#@en:Whether or not to use developing mode
+					@autoReload#@defaultValue:true#@needRestart]]>
+		</value>
+	</productMode>
+
+  <serviceLog>
+    <!-- 是否开启服务日志记录功能  true or false-->
+    <!--whether open service log record function :true or false-->
+    <use>${serviceLog_use}</use>
+    <!-- 是否记录所有的服务，如果为false则记录配置的服务，为true则记录所有的服务 -->
+    <!--whether record all service true : record all service, false:record configured service-->
+    <defalutLog>${serviceLog_defalutLog}</defalutLog>
+    <!-- 当服务运行错误时,是否记录错误日志到tfm_error_log表中,默认不输出。此项为单独设置,不受serviceLog use项约束  true or false-->
+    <!--when service execute failed,whether record error log to tfm_error_log table.default:false this isn't related with <use> item  -->
+    <recordErrorLog>${serviceLog_recordErrorLog}</recordErrorLog>
+    <!-- 是否把错误打印出来  默认inner_error=1,busi_error=1-->
+    <!--whether print error information ,default:inner_error=1,busi_error=1-->
+    <printStack>${serviceLog_printStack}</printStack>
+	<!--647860 服务调用耗时日志是否打印的阀值，小于此时间的服务调用不打印日志，单位毫秒-->
+	<printLogMinTime>${serviceLog_printLogMinTime}</printLogMinTime>
+  </serviceLog>
+  
+  <!--WEB服务器上传文件相关配置-->
+  <!--web server upload file relative configuration-->
+  <upload>
+  	<uploadThresholdSize>${uploadThresholdSize}
+  		<![CDATA[@displayText:上传时内存中最大驻留字节数#@obtainType:1#@zh:上传时内存中最大驻留字节数
+					@en:Max bytes retained in memory when doing upload#@autoReload#@defaultValue:true#@needRestart]]>
+			</uploadThresholdSize>
+  	<uploadFileSizeMax>${uploadFileSizeMax}
+  		<![CDATA[@displayText:上传时单个文件最大文件大小字节数#@obtainType:1#@zh:上传时单个文件最大文件大小字节数#@en:Max bytes of the uploaded file
+					@autoReload#@defaultValue:true#@needRestart]]>
+		</uploadFileSizeMax>
+	<allUploadFileSizeMax>${allUploadFileSizeMax}
+  		<![CDATA[@displayText:上传时所有文件最大文件大小字节数#@obtainType:1#@zh:上传时所有文件最大文件大小字节数#@en:Max bytes of the uploaded file
+					@autoReload#@defaultValue:true#@needRestart]]>
+		</allUploadFileSizeMax>
+  	<uploadFileDirectory>${uploadFileDirectory}
+  		<![CDATA[@displayText:上传文件在服务器上的物理路径#@obtainType:1#@zh:上传文件在服务器上的物理路径
+					@en:absolute path on the server for store the uploaded file#@autoReload#@defaultValue:true#@needRestart]]>
+		</uploadFileDirectory>
+		<uploadRepository>${uploadRepository}
+			<![CDATA[@displayText:大文件上传时使用的临时目录
+					@en:absolute path on the server for store the temp file when uploading big file#@autoReload#@defaultValue:true#@needRestart]]>
+		</uploadRepository>
+  </upload>
+  <ssoMode>
+	<value>${ssoMode_value}
+		<![CDATA[@displayTest:是否启用SSO模式]]>
+    </value>
+    <webServiceUserName>${ssoMode_webServiceUserName}
+        <![CDATA[@displayTest:当前系统和其他系统做SSO集成的时候，其他系统中调用当前系统提供的管理用户的服务时候需要输入的用户名]]>
+    </webServiceUserName>
+    <webServiceUserPassword>${ssoMode_webServiceUserPassword}
+       <![CDATA[@displayTest:当前系统和其他系统做SSO集成的时候，其他系统中调用当前系统提供的管理用户的服务时候需要输入的用户密码]]>
+    </webServiceUserPassword>
+    <ssoServerUrl>${ssoMode_ssoServerUrl}
+       <![CDATA[@displayTest:SSO服务器的URL]]>
+    </ssoServerUrl>
+  </ssoMode>
+  <!--业务配置项读取模式,Y从文件读取，N从库表读取-->
+  <!--business configured item read mode ,Y:read from file,N:read from database-->
+  <buss_config_rule>${isReadBusiConfigFromFile}</buss_config_rule>
+  <!--如果经过F5转发的时候，在外面需要把请求重定向成Https的，目前是通过域名来区分，一般不配置，目前在新加坡EBS项目中用-->
+  <!--if used F5, request nend redirect to https on the outside.currently distinguished from domain -->
+  <f5_domain_name>${F5DomainName}</f5_domain_name>
+  <!-- 打开界面时检测用户浏览器，当用户浏览器是IE7或以下版本，是否提示用户升级 -->
+  <!--when user open the webpage,whether alert user to upgrade the browser which is IE7 or under IE7 version-->
+  <IE_upgrade_notify>${IEUpgradeNotify}</IE_upgrade_notify>
+  <!-- 记录系统服务日志 的数据库名称,例如：dbBackService,dbBilling,dbCache,dbQDB-->
+  <!--database name for record system service log，e.g:dbBackService,dbBilling,dbCache,dbQDB-->
+  <serviceLogDB>${serviceLog_DB}</serviceLogDB>
+  <channelsDateTimeOffset>
+  	<value>${channels_datetime_offset}
+  		<![CDATA[@displayTest:渠道失效期偏移量，主要用来解决失效日期的时候不同局方理解的不一样的问题]]>
+  	</value>
+  </channelsDateTimeOffset>
+  <!-- 业务场景的KPI，统计每次web调用服务的耗时，生成csv文件-->
+  <!--service scene kpi，count per httpcall cost time,generate csv file -->
+  <kpi>
+    <!-- KPI信息统计的间隔-->
+    <!--KPI information statistics interval -->
+    <timeout>${kpi_timeout}</timeout>
+    <!-- KPI信息文件输出路径 -->
+    <!--KPI information file output path -->
+    <path>${kpi_path}</path>
+  </kpi>
+  <mdr>
+  	<!--元数据仓储 的数据加载模式: db或local-->
+  	<!--metadata repertory data load model : db or local-->
+    <loadMode>${mdr_loadMode}</loadMode>
+  </mdr>
+  <!--这个节点配置需要自动运行的线程启动类，线程启动类实现AutoRunning接口-->
+  <!--this node config auto running thread startup class ,these class need implement AutoRunning interface-->
+  <autoRunningThread>
+  	<StartupThread>
+  		<!--内存监控线程启动类 -->
+  		<!--memory monitor thread startup class.-->
+  		<class>com.ztesoft.zsmart.core.auto.MemoryMonitorStartUp</class>
+  		<!--state配置为1表示启动，其他值表示禁用-->
+  	    <!--state : 1: startup other:forbid-->
+  		<state>${autoRunningThread_StartupThread_MemoryMonitorStartUp_state-D1}</state>
+  	</StartupThread>
+  </autoRunningThread>
+  
+  <logConfig>
+  	<reset>${logConfig_reset-Dtrue}
+			<![CDATA[@displayText:是否开启日志配置重置功能#@obtainType:2#@selectOptions:true,false#@zh:是否开启日志配置重置功能
+					@en:Whether or not to reset the log configuration.#@autoReload#@defaultValue:true#@needRestart]]>
+		</reset>
+		<resetIntelval>${logConfig_resetIntelval-D15}
+			<![CDATA[@displayText:日志配置重置间隔(单位:分钟)#@obtainType:1#@zh:日志配置重置间隔(单位:分钟)
+					@en:Log configuration reset interval#@autoReload#@defaultValue:15#@needRestart]]>
+		</resetIntelval>
+  </logConfig>
+  <!--控制是否使用数据源产品化，0：忽略所有产品级配置1：启用产品级配置,此配置优先级高于 tfm_config_meta 表配置-->
+  <!--Controls whether to use product data source, 0: ignore all product level configuration 1: enabled products configuration, this configuration has higher precedence than tfm_config_meta table configuration -->
+  <dbOverrideType>${db_Override_Type}</dbOverrideType>
+  <!--安全等级：较低，低，一般，高和较高-->
+  <!--security level:LOWER, LOW, MODERATE, HIGH AND HIGHER. -->
+  <!--<securityLevel>${security_level}</securityLevel-->
+</zsmart>

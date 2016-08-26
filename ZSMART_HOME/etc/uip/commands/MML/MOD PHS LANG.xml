@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="MOD PHS LANG" message="MML" seq="53" id="9eaba1a9-e0f3-4a4e-9a12-68d7f9cde934">
+    <comments><![CDATA[修改用户语言]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-01 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>MOD PHS LANG</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="6c6f418a-3b32-41d1-a567-02343cdaead1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="0cb63932-9307-4e69-a3ac-b4750a5b369d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DEFLANG" part="Business" id="676bcd9a-0efa-44fd-aa70-f93e6b0fdbcf">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="OPERFEE" part="Business" id="c89177c1-956c-4aa3-b0d1-c6428cd7837f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="089a01a0-1fe8-488d-96df-b3bf43e2d3f6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="bce62a49-3ec2-4d51-8683-1bf8329d257f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ModDefLang" site="S" id="1c455186-f0f4-4641-84aa-f5b7ec5dd5bb">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-01 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.DEFLANG = $req.DEFLANG</request>
+            <request>$s.OPERFEE = $req.OPERFEE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

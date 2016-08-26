@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.redlink {color: red;font-weight: bold;}
+.redlink:link {color:#e20303;text-decoration:none;}
+.redlink:visited {color:#e20303;text-decoration:none;}
+.redlink:hover {color:#e20303;text-decoration:none;}
+.redlink:actived {color:#e20303;text-decoration:none;}
+select.ListArea {BORDER: #BDC6DD 1px solid;font-size:12px;width: 65px;background: #f2f5aa}
+.calendar_t{font:bold 12px Verdana, Geneva, sans-serif;color:#4b4b4c;}
+.calendar {background-color:#d3d3d3;}
+.calendar_top {padding:3px;color:#333333;background-color:#DFDFDF;FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0.1, startColorStr=#ffffff, endColorStr=#f7f7f7);}
+.calendar_tr{border-bottom: 1px dashed #DFDFDF;}
+.calendar_td {background-color:#fefee0;text-align: center;}
+.calendar_td1 {background-color:#DFDFDF;text-align: center;}
+.calendar_td2 {background-color:#ffffff;text-align: center;}

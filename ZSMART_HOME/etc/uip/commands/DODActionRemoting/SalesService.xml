@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SalesService" message="DODActionRemoting" seq="1" id="ad2264ba-d36f-4921-9180-c077edd1c96d">
+    <comments><![CDATA[SmartFren CMS 项目受理 Stream 发出的指令]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-09-05 09:40:53</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0001</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="true" name="data" part="Body" id="c55300dc-6cc3-436c-8498-cde5e384c380"/>
+    </fields>
+    <bindings>
+      <binding service="EventTriggerService" site="S" id="a5ce5c15-d695-4b94-b14c-9b43cece0c74">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-14 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.data = $req.data</request>
+            <request>$s.transId = $req.transId</request>     
+          </invoke>
+          <exception/>
+          <finally/>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

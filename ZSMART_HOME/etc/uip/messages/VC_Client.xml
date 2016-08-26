@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="VC_Client" type="B">
+    <comments><![CDATA[VC Client]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-02-20 18:48:37</modifyDate>
+    <extension>
+      <length><![CDATA[$cur.MESSAGE_LEN]]></length>
+      <transactionField>MESSAGE_ID</transactionField>
+      <login>Login</login>
+      <linkCheck>LinkTest</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.VCClientMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="2" type="H" name="Head" id="7a9cd56b-d693-4a39-84d6-757d51f400ea">
+        <extension/>
+        <fields>
+          <field seq="1" direction="both" fieldType="C" dataType="I" requred="true" name="MESSAGE_CODE" part="Head" id="6d0591b7-7204-4cbc-8611-af72a4aabe20">
+            <extension>
+              <length>2</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="I" requred="true" name="MESSAGE_ID" part="Head" id="2cec4839-7bb1-4a09-9c5f-2be800c6dea3">
+            <extension>
+              <length>4</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="MESSAGE_LEN" part="Head" id="3409ac84-b2d6-4d6d-a02a-2937bbfd7216">
+            <extension>
+              <length>4</length>
+              <encodingValue>$cur.v.messageLength</encodingValue>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="3" type="B" name="Body" id="1ff223b4-974d-4bcf-a824-45b588f75fef">
+        <extension>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

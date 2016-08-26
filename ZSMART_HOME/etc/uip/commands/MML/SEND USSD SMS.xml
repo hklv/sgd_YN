@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SEND USSD SMS" message="MML" seq="60" id="32bd6cec-a92c-483e-8330-f857917dbc69">
+    <comments><![CDATA[SEND USSD SMS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-10-08 16:21:48</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>SEND USSD SMS</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="0" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="6c0ba0f2-04f0-4d2e-88db-f7703c42fddd"/>
+      <field seq="1" direction="req" fieldType="N" dataType="S" requred="true" name="SOURCE_ADDRESS" part="Business" id="da18a165-794c-4fcf-9575-552a74c93b71"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="SHORT_MESSAGE_TEXT" part="Business" id="c828dbae-80a8-48fb-9d13-ba587661a6f2"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DESTINATION_ADDRESS" part="Business" id="d9357753-c034-430a-9ed4-a35f1e0cc10e"/>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="2cc47848-9773-4869-892b-94031db12716"/>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="c69fd105-ac51-4cb2-b66b-6fd20b6f540b"/>
+    </fields>
+    <bindings>
+      <binding service="USSDService" site="S" id="fa78311e-127b-45af-a2b0-6816c648de28">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-10-08 16:26:15</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.source_address = $req.SOURCE_ADDRESS</request>
+            <request>$s.short_message_text = $req.SHORT_MESSAGE_TEXT</request>
+            <request>$s.destination_address = $req.DESTINATION_ADDRESS</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="USSD_MML" site="C" id="f9b46938-1e34-4b69-ba82-b2cbfa84e3b9">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-10-08 16:27:17</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.SOURCE_ADDRESS = $s.source_address</request>
+            <request>$req.SHORT_MESSAGE_TEXT = $s.short_message_text</request>
+            <request>$req.DESTINATION_ADDRESS = $s.destination_address</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.RETN = $resp.RETN</response>
+            <response>$s.DESC = $resp.DESC</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

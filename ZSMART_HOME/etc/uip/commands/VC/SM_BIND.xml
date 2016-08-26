@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SM_BIND" message="VC" seq="11" id="f0c37659-52ae-45f4-908d-ec8750ea3d72">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00001001</requestKey>
+        <responseKey>0X80001001</responseKey>
+      </commandKey>
+      <rule name="VC_SM_BIND_RESULT">
+        <kvlist>
+          <kv key="" value="4" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="true" name="system_id" part="Body" id="01419143-618c-456b-a671-acc0025ffa18">
+        <extension>
+          <length>16</length>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="M" requred="false" name="Password" part="Body" id="2782ccb7-f88f-4a7a-b582-698823270c22">
+        <extension>
+          <length>9</length>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="I" requred="true" name="interface_version" part="Body" id="72126ebd-a7fb-4654-b41c-425f6ac521d4">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="I" requred="false" name="Result" part="Body" id="d8d3490f-84a0-4eaa-b2b3-cb1a9608941e">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="UipLogin" site="S" id="7d917f8d-6e15-414e-b755-a97d976a95f8">
+        <state>A</state>
+        <version>1</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-25 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.Password = $req.Password</request>
+            <request>$s.UserName = $req.system_id</request>
+            <request>$s.AdapterName = $req.v.adapter</request>
+            <request>$s.interface_version = $req.interface_version</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.Result = VC_SM_BIND_RESULT( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

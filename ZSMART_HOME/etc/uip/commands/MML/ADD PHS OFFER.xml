@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADD PHS OFFER" message="MML" seq="80" id="b6a41742-0902-4804-8ae4-60af1bf12402">
+    <comments><![CDATA[ADD PHS OFFER]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADD PHS OFFER</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="b3216248-361c-4201-b2d0-0f64b186c364">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="389ea491-a5e9-485a-930f-b474e529821f">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>60</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="OFFERCODE" part="Business" id="d1b15c2f-9302-4f2f-aecf-a3f8d94d89d6">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>60</max>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="a581328a-7a13-4f28-b625-ddecc1d62ba2">
+        <extension>
+          <align>L</align>
+          <format>yyyy-MM-dd</format>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="3cfea416-8f3c-47c8-9b18-10ab4543495e">
+        <extension>
+          <align>L</align>
+          <format>yyyy-MM-dd</format>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="c89d53dd-a089-47ab-b97c-784ac3c55a7f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="754a87e2-89db-4dc1-8dee-e7cfcbf40e97">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="BKID" part="Business" id="1bafcd4b-b09c-473c-b118-e8064d38e6e2">
+        <extension>
+          <align>L</align>
+          <min>1</min>
+          <max>60</max>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_AddPHSOffer_Client" site="C" id="f09c6d8d-49ac-4b48-93b9-742a50aaa8f2">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-20 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.DN = $s.DN</request>
+            <request>$req.OFFERCODE = $s.OFFERCODE</request>
+            <request>$req.EFFDATE = $s.EFFDATE</request>
+            <request>$req.EXPDATE = $s.EXPDATE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.RETN = $resp.RETN</response>
+            <response>$s.DESC = $resp.DESC</response>
+            <response>$s.BKID = $resp.BKID</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

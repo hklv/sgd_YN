@@ -1,0 +1,1608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <webService name="AccountService" message="ACCOUNT" id="f8c4c0ca-c73d-45f9-81d8-24eab274fde9">
+    <comments><![CDATA[IvrChargeIvrAcnt]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2011-11-22 00:00:00</modifyDate>
+    <extension>
+      <urlPrefix>services</urlPrefix>
+      <importWSDL>false</importWSDL>
+    </extension>
+    <schemas>
+      <object name="BalTransferBO" id="5ccee818-d60e-4f51-917e-66eb56207506">
+        <comments><![CDATA[帐户转帐]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-27 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="SN" dataType="String" required="true" id="5c7aed89-6bd3-447b-b621-c052197e28bc">
+            <comments><![CDATA[转帐流水，必选参数，由数据输入端产生。格式：充值渠道+YYYYMMDDHHMMSS+3位序列号。范围000～999。例如：IVR20030430173055123]]></comments>
+            <extension>
+              <max>20</max>
+            </extension>
+          </attribute>
+          <attribute name="SAccnt" dataType="String" required="true" id="42571a6a-e0f4-4c48-9d1d-1ff683cb32a3">
+            <comments><![CDATA[源帐户代表号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="SPwd" dataType="String" required="true" id="175a7a44-8277-4c9f-95a8-f22b202cbc56">
+            <comments><![CDATA[源帐户代表号码管理密码。以鉴别用户身份]]></comments>
+            <extension>
+              <max>8</max>
+            </extension>
+          </attribute>
+          <attribute name="Amount" dataType="String" required="false" id="1648fe51-9ab4-46af-9130-73d29013f4a2">
+            <comments><![CDATA[转帐额度。如不指定转帐额度，则表示A帐户的所有基本余额。单位为最小货币单位：分]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="DAccnt" dataType="String" required="true" id="0c9abb2b-43e7-4049-bbb5-3c7e3cbbfd0c">
+            <comments><![CDATA[目标帐户代表号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="BalTransferBOResponse" id="7b631d5f-8fe9-4dd8-b759-02039b3e64fa">
+        <comments><![CDATA[帐户转帐]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-27 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="TransferResultDto" dataType="Schema" required="false" id="baf78e8d-022c-4d56-9d2a-c39f400ebd06" refSchema="TransferResultDtoResponse">
+            <comments><![CDATA[转帐结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="TransferResultDtoResponse" id="ef21f742-cce4-46e3-8e4d-303056c66e16">
+        <comments><![CDATA[转帐结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-27 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="Amount" dataType="String" required="true" id="a9494e2c-dd0e-4774-a7ef-65754ab1cce8">
+            <comments><![CDATA[转帐金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="BeforeBalance" dataType="String" required="true" id="78683619-0dac-4d20-9dd8-05e4e570ea3f">
+            <comments><![CDATA[转帐前，目标帐户余额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="true" id="960139d7-50fd-49c8-9ff2-4f82ca5de1bb">
+            <comments><![CDATA[转帐后，目标帐户余额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="ModifyBalReturnAllBalBO" id="ebbcf83a-eff9-4dad-9590-be797366ef68">
+        <comments><![CDATA[修改余额帐本的余额或失效日期，并返回该帐户的所有在有效期内的余额]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="445582bc-2f66-46c3-8c2c-55f486c61951">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="5127097d-8dc1-43fa-a408-aada7fe5e9b1">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="BalID" dataType="String" required="false" id="c667c150-bc63-4184-91ab-2931c198427b">
+            <comments><![CDATA[余额帐本标识.当BalID有值时，忽略AcctResID参数.BalID、MSISDN、AccountCode至少有一个参数有值]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctResID" dataType="String" required="false" id="05a2df40-a274-460d-8785-afcd550003c9">
+            <comments><![CDATA[余额类型标识。仅当BalID为空时，AcctResID有效，需要根据帐本的失效时间、优先级降序排序，取当前时间点已生效的第一条帐本。]]></comments>
+            <extension>
+              <max>9</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="false" id="88717870-dc92-4e35-86b7-1e1de6e45e09">
+            <comments><![CDATA[修改后的余额。大于等于零，表示将帐户余额帐本改为欠费；小于零，表示重新指定帐户余额帐本的可用余额。Balance、ExpDate、AddDays至少需要有一个参数有值]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AddBalance" dataType="String" required="false" id="c75afd34-d6c2-406a-847e-057aac9a1144">
+            <comments><![CDATA[需要增加的余额。当Balance、AddBalance同时有值时，以AddBalance为准]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="ExpDate" dataType="Date" required="false" id="44585f08-95f4-4f7e-b424-28e04622b957">
+            <comments><![CDATA[修改后的余额失效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="AddDays" dataType="Long" required="false" id="dbf12e52-211b-41a0-9436-286ce3ace588">
+            <comments><![CDATA[需要延长的余额失效天数。ExpDate、AddDays至少有一个参数有值。同时有值的情况下，只取ExpDate参数]]></comments>
+            <extension>
+              <max>3</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="ModifyBalReturnAllBalBOResponse" id="24b631aa-4ba8-4cb6-888d-9bd77d19eb28">
+        <comments><![CDATA[修改余额帐本的余额或失效日期，并返回该帐户的所有在有效期内的余额]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="BalDtoList" dataType="Schema" required="false" id="410bbffb-f2ab-4339-a9ff-78671909672a" refSchema="BalDtoListResponse">
+            <comments><![CDATA[帐户余额帐本]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="BalDtoListResponse" id="b4f3a646-556b-4011-9b26-50db09831ee7">
+        <comments><![CDATA[帐户余额帐本]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="BalID" dataType="String" required="true" id="e8c1e16b-504f-46c4-8c9c-67347c2dc710">
+            <comments><![CDATA[余额帐本标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctResID" dataType="String" required="true" id="71f1b71a-ff6b-4c39-b662-bc039450307b">
+            <comments><![CDATA[余额类型标识]]></comments>
+            <extension>
+              <max>9</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctResName" dataType="String" required="true" id="0fbe40e6-eb1d-4e6d-9e7b-8cd879e601a1">
+            <comments><![CDATA[余额类型名称]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="BalType" dataType="Long" required="true" id="48954942-7e09-4416-9889-696f1f3599db">
+            <comments><![CDATA[余额大类。1：基本余额。每个帐户有且只有一个，货币类型2：受限余额。通常有使用时间、方向、额度限制，货币类型3：转入余额。通常是由消费产生，包括开户和使用等，或者来自其他余额的转移，比如积分等，货币类型4：赠送余额：通常是赠送，包括字节数，分钟数等]]></comments>
+            <extension>
+              <max>3</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="true" id="e71c4bd1-f630-4627-9bbb-b540e5dbdff8">
+            <comments><![CDATA[当前余额。大于等于零，表示帐户当前余额帐本已欠费；小于零，表示帐户当前余额帐本有可用余额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="EffDate" dataType="Date" required="true" id="d5d125b7-ffe8-45eb-a14d-55694e9fcf84">
+            <comments><![CDATA[余额生效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="ExpDate" dataType="Date" required="false" id="86afb37c-f42b-453b-8aa5-e86c8ae646e0">
+            <comments><![CDATA[余额失效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="UpdateDate" dataType="Date" required="false" id="125c9c45-5ecf-4b58-8af9-0ead5209a3af">
+            <comments><![CDATA[最近一次更新时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+          <attribute name="BalShareDtoList" dataType="Schema" required="false" id="6ec7c4e6-5468-4200-a184-ade73236ab3c" refSchema="BalShareDtoListResponse">
+            <comments><![CDATA[余额共享规则]]></comments>
+            <extension>
+              <maxOccurs>-1</maxOccurs>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="BalShareDtoListResponse" id="521279ed-fac6-4fea-804b-8577ac38d5a7">
+        <comments><![CDATA[余额共享规则]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="BalShareID" dataType="String" required="true" id="4b47b465-7da4-4e46-8126-f65360e4a3f1">
+            <comments><![CDATA[余额共享标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="MSISDN" dataType="String" required="true" id="a291f32a-42c7-4fba-977c-0ebc9332b5e2">
+            <comments><![CDATA[余额共享对象：MSISDN号码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="CeilLimit" dataType="String" required="true" id="ccf3aa9d-8ae5-4318-8fb5-2aca650c02eb">
+            <comments><![CDATA[帐期扣费最高额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Priority" dataType="Long" required="false" id="4cce2248-09ba-498e-bbb4-cac8fcf0f626">
+            <comments><![CDATA[优先级，缺省为0，数值越小优先级越高]]></comments>
+            <extension>
+              <max>1</max>
+            </extension>
+          </attribute>
+          <attribute name="EffDate" dataType="Date" required="true" id="43763d4e-6b1c-4edd-b3ea-e46a4c0bce7a">
+            <comments><![CDATA[共享规则生效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="ExpDate" dataType="Long" required="false" id="c4f91f8a-79fa-4c11-92f4-243394444747">
+            <comments><![CDATA[共享余额失效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="PaymentForce" dataType="String" required="true" id="a46b4ecc-bd7c-4e0e-9474-b4ed1541428c">
+            <comments><![CDATA[强制支付标志；Y表示该规则对应的订户帐目全部由指定的余额付费]]></comments>
+            <extension>
+              <max>1</max>
+            </extension>
+          </attribute>
+          <attribute name="DailyCeilLimit" dataType="String" required="false" id="1e62a3ea-fb81-428d-8a98-f577613ca6bd">
+            <comments><![CDATA[日扣费最高额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QueryAcctItemTypeBO" id="b0b7c085-f43d-41bd-a079-4450a368bdd4">
+        <comments><![CDATA[查询帐目类型]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-30 00:00:00</modifyDate>
+        <attributes/>
+      </object>
+      <object name="QueryAcctItemTypeBOResponse" id="44e78384-b378-40c9-b5ef-96b25414fddb">
+        <comments><![CDATA[查询帐目类型]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-30 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctItemTypeDtoList" dataType="Schema" required="false" id="8f3248d4-eab1-466e-be95-df06ec437e24" refSchema="AcctItemTypeDtoListResponse">
+            <comments><![CDATA[账目类型结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AcctItemTypeDtoListResponse" id="fc34b21e-0b71-4b2b-8af1-1042be2b8fe2">
+        <comments><![CDATA[账目类型结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-30 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctItemTypeID" dataType="String" required="true" id="e3003ea9-56d8-4dfd-b31f-30a012620b6f">
+            <comments><![CDATA[帐目类型标识]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemTypeName" dataType="String" required="true" id="7a5eb84b-0824-4e07-aa30-85191990b3a2">
+            <comments><![CDATA[帐目类型名称]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="ParentID" dataType="String" required="false" id="7c67a490-fe66-4dd2-9e9a-57b46b5b4d80">
+            <comments><![CDATA[上级帐目类型标识]]></comments>
+            <extension>
+              <max>6</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeBO" id="c48e200e-93c7-4022-ab73-1a6efa5628b2">
+        <comments><![CDATA[争议]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="98f9efc6-bbeb-4588-8a2c-1564ff49821e">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="0e79700f-915d-4bce-843d-56d56e36ad04">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码(MSISDN,AccountCode至少一个有值)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="false" id="b0a19e97-3031-45fe-a7e4-bcf6da4606d1">
+            <comments><![CDATA[争议方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="Comment" dataType="String" required="false" id="b4694e14-ce0a-4a66-8fd9-fd9bd0635f37">
+            <comments><![CDATA[争议原因]]></comments>
+            <extension>
+              <max>256</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="false" id="1a47fed1-74e7-41ff-a531-6e53f5cc0e72">
+            <comments><![CDATA[争议总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="DisputeItemExDtoList" dataType="Schema" required="true" id="8f40371d-d200-4fe8-9962-42488e80ac98" refSchema="DisputeItemExDtoList">
+            <comments><![CDATA[争议帐目明细]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeItemExDtoList" id="a1338cc7-ce2d-44c8-ad6f-56d5c34489bf">
+        <comments><![CDATA[争议帐目明细]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctItemID" dataType="String" required="true" id="abc1eb49-991e-404c-8e46-39b151c942ce">
+            <comments><![CDATA[帐目唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="fd4665d2-86dd-4bdc-a69b-ec739fb71bbf">
+            <comments><![CDATA[帐目金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeBOResponse" id="f7217b5f-2764-40e2-b042-23afda0b65a2">
+        <comments><![CDATA[争议]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="DisputeExDto" dataType="Schema" required="false" id="44f2037d-7444-4851-b14b-480fad190b09" refSchema="DisputeExDtoResponse">
+            <comments><![CDATA[争议结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeExDtoResponse" id="f571ec2b-6361-4c9a-8353-073fcc41e587">
+        <comments><![CDATA[争议结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="DisputeID" dataType="String" required="true" id="633df8fb-27f4-4b43-975f-a60513ff146d">
+            <comments><![CDATA[争议唯一流水标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="5d4413fa-98c7-4cfa-9f21-a5401fcc9dca">
+            <comments><![CDATA[争议总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QryAcctBookBO" id="6ff36a51-4236-4b42-98fb-8cc1a03bb255">
+        <comments><![CDATA[查询账簿信息]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AccountCode" dataType="String" required="true" id="b76a64a2-7de0-4dac-9fac-76a4e791fc94">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctBookType" dataType="String" required="false" id="d46aa575-c8f8-469f-b277-81c2ae4bf249">
+            <comments><![CDATA[帐簿类型(D争议 I下帐 P缴费空表示所有)]]></comments>
+            <extension>
+              <max>1</max>
+            </extension>
+          </attribute>
+          <attribute name="BeginDate" dataType="Date" required="false" id="fea1b9fa-7456-4382-a0af-39e1ba2e5336">
+            <comments><![CDATA[查询的起始时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+          <attribute name="EndDate" dataType="Date" required="false" id="3c75a4cb-955d-480b-aa6e-df33fccc4b2e">
+            <comments><![CDATA[查询的结束时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+          <attribute name="LastRecordCount" dataType="String" required="false" id="33f02b43-09f4-42ab-91a2-9ea47e5660d3">
+            <comments><![CDATA[最近记录数]]></comments>
+            <extension>
+              <max>6</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QryAcctBookBOResponse" id="b4a71830-a5d4-4f75-ae23-bd7a4d642a87">
+        <comments><![CDATA[查询账簿信息]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctBookExDtoList" dataType="Schema" required="false" id="5dcfe9d0-121c-4d50-94ba-563e43dadede" refSchema="AcctBookExDtoListResponse">
+            <comments><![CDATA[帐簿记录]]></comments>
+            <extension>
+              <maxOccurs>-1</maxOccurs>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AcctBookExDtoListResponse" id="f201db91-5a58-465e-b6e8-8c3381eca60d">
+        <comments><![CDATA[AcctBookExDtoList]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctBookID" dataType="String" required="true" id="ecdb9ebb-2dcc-4bea-bad2-ed61c6df2a06">
+            <comments><![CDATA[帐簿唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PreBalance" dataType="String" required="true" id="063f9e00-85df-49be-b86b-d1f6524b1cea">
+            <comments><![CDATA[帐簿发生前的Balance]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="e3dced02-cb44-4236-b661-637fa3b47c06">
+            <comments><![CDATA[发生金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="true" id="678c3f36-e60a-4e21-abb5-b4647ffd61ab">
+            <comments><![CDATA[参与方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctBookType" dataType="String" required="true" id="aa7140cf-e069-4432-93ca-17110c4ee00b">
+            <comments><![CDATA[帐簿类型(D争议 I下帐 P缴费空表示所有)]]></comments>
+            <extension>
+              <max>1</max>
+            </extension>
+          </attribute>
+          <attribute name="CreatedDate" dataType="Date" required="false" id="3e7d9478-b240-4bc6-80ad-685084ae3f61">
+            <comments><![CDATA[帐簿发生时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeProcessBO" id="d11fe149-5a2c-44cb-99c8-6c834dc90a2d">
+        <comments><![CDATA[争议处理]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="DisputeID" dataType="String" required="true" id="9c91de07-1049-4e80-9278-fb9502bd5823">
+            <comments><![CDATA[争议唯一流水标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="false" id="59d87e98-90da-4c6d-aec5-e9be55c209a5">
+            <comments><![CDATA[争议总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="false" id="b3c3eb6e-c8c9-4c4e-85aa-d03622256a74">
+            <comments><![CDATA[争议处理方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="ProcessResult" dataType="String" required="true" id="bbb89704-1e66-48c2-9759-2be8727b4d4f">
+            <comments><![CDATA[争议处理结果(X表示注销,C表示恢复未销帐)]]></comments>
+            <extension>
+              <max>1</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="DisputeProcessBOResponse" id="c1663763-2c96-46be-bbff-8eced6402b90">
+        <comments><![CDATA[争议处理]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="DisputeExDto" dataType="Schema" required="false" id="af6eb389-66d5-41c2-8762-14923a915127" refSchema="DisputeExDtoResponse">
+            <comments><![CDATA[争议结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="ModifyBalBO" id="804bc8f1-9f7c-407f-84ce-7734600f041a">
+        <comments><![CDATA[修改余额帐本]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-31 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="8d640db3-24de-460c-9b7b-29bcbd68836b">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="2fd4ceec-1a5e-423f-a4b9-894eb4046206">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码。]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="BalID" dataType="String" required="false" id="126624bf-a7d9-4d90-a569-77e0d73e810d">
+            <comments><![CDATA[余额帐本标识。]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctResID" dataType="String" required="false" id="428b76e9-c83a-4644-b50e-a3312e791ec1">
+            <comments><![CDATA[余额类型标识。]]></comments>
+            <extension>
+              <max>9</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="false" id="7b83829f-6793-4bb3-87e5-a0011dfcc21c">
+            <comments><![CDATA[修改后的余额。]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AddBalance" dataType="String" required="false" id="058381c3-3f91-4b7d-8e31-61e8a6b441da">
+            <comments><![CDATA[需要增加的余额。]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="ExpDate" dataType="Date" required="false" id="a889037e-d1c6-4078-9d50-cc96ddc6b345">
+            <comments><![CDATA[修改后的余额失效日期]]></comments>
+            <extension>
+              <max>10</max>
+            </extension>
+          </attribute>
+          <attribute name="AddDays" dataType="Long" required="false" id="9c49ba37-6ec0-4675-b3f0-8e51fa16c186">
+            <comments><![CDATA[需要延长的余额失效天数]]></comments>
+            <extension>
+              <max>3</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentBO" id="11133181-65c2-4e19-bb59-2955770f73df">
+        <comments><![CDATA[缴费]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-12 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="14ce3bd2-caed-4a2b-b413-5923a27547e5">
+            <comments><![CDATA[用户选定的MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="Amount" dataType="String" required="true" id="a913e60c-84ab-4461-8d1a-a2c4aee7858d">
+            <comments><![CDATA[缴费金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="false" id="eb3ccde6-1b42-4259-afa0-d6ec3f55bd40">
+            <comments><![CDATA[收费方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="BillNbr" dataType="String" required="false" id="6be5ae01-3065-4e43-bcf7-9a2441679a5c">
+            <comments><![CDATA[帐单编码,帐单唯一编码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="6462f104-44dd-402c-821d-d38db9b04289">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="SN" dataType="String" required="false" id="66210018-5781-4d4f-8e04-c4f1637d4397">
+            <comments><![CDATA[调用方操作流水标识（需要对帐则必须填写，保证唯一）]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentBOResponse" id="96dc35c3-63b4-4cce-8617-acd002653b2c">
+        <comments><![CDATA[缴费]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-12 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="PaymentDto" dataType="Schema" required="false" id="2422339d-d66e-4bf5-a1be-469a49d3fe32" refSchema="PaymentDtoResponse">
+            <comments><![CDATA[缴费结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentDtoResponse" id="ef33a5de-cc2e-4657-8d9c-c54383e57ad7">
+        <comments><![CDATA[缴费结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>CHEN.KUAN</modifier>
+        <modifyDate>2012-03-12 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="PaymentID" dataType="String" required="true" id="c0027dd4-bbeb-442e-91b3-29861493092e">
+            <comments><![CDATA[缴费流水唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="true" id="4f5587aa-83ba-47eb-9a66-9c0720da220f">
+            <comments><![CDATA[缴费后帐户Balance]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QryOweAcctItemBO" id="4a292e0f-9825-4aa8-a7b4-6aa39faefe5c">
+        <comments><![CDATA[根据用户号码,帐单,或者帐户查询对应的帐户欠费]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="true" id="f2ef2a6f-d910-4c9c-92b1-bfd92d9b61cb">
+            <comments><![CDATA[用户选定的MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="BillID" dataType="String" required="false" id="e2193577-d79e-4580-a383-2a011dc7041a">
+            <comments><![CDATA[帐单标识,帐单唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="BillNbr" dataType="String" required="false" id="c678be62-d21b-4d1a-a621-373d3e3040af">
+            <comments><![CDATA[帐单编码,帐单唯一编码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountID" dataType="String" required="false" id="8b95fc15-78b5-4669-89f9-77ed359b71a1">
+            <comments><![CDATA[帐户标识,付费帐户的唯一标识]]></comments>
+            <extension>
+              <max>9</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="d5d98ce3-4fb8-47c6-b74d-c2c7f846e059">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QryOweAcctItemBOResponse" id="d29ec9a4-4a66-4d71-9ef3-38691eef0e9f">
+        <comments><![CDATA[根据用户号码,帐单,或者帐户查询对应的帐户欠费]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="OweAcctItemDto" dataType="Schema" required="false" id="bbd3a538-bdf9-411d-87ab-8f8b1d84388b" refSchema="OweAcctItemDtoResponse">
+            <comments><![CDATA[欠费明细帐目]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="OweAcctItemDtoResponse" id="16a00140-f9af-4f0f-b446-d4306b41f25e">
+        <comments><![CDATA[欠费明细帐目]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="SumCharge" dataType="String" required="true" id="59c6fc59-6bbf-4208-a71a-029d430d02c7">
+            <comments><![CDATA[帐目总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="DepositChange" dataType="String" required="true" id="518f98e7-d37c-498d-919f-86777308d921">
+            <comments><![CDATA[帐户预存]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="true" id="169cbb2c-180c-49cf-8c0b-d0e642a8c478">
+            <comments><![CDATA[帐户总欠费=DepositChange+ SumCharge(+为欠费,-为预存)]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="GrossBal" dataType="String" required="true" id="b5f6bc35-e233-4268-aafa-73f7b22e0d6c">
+            <comments><![CDATA[帐户准实时余额(Balance+实时费用)]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemExDtoList" dataType="Schema" required="false" id="0debb333-f9ca-4a3e-86f7-602de7d14604" refSchema="AcctItemExDtoListResponse">
+            <comments><![CDATA[明细帐目数组(无欠费时为空)]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AcctItemExDtoListResponse" id="8cd6329a-6280-441e-b043-15eecd343c7d">
+        <comments><![CDATA[明细帐目数组(无欠费时为空)]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AcctItemID" dataType="String" required="true" id="1fc5dd82-e93e-43a6-9a29-9b30fb6821cd">
+            <comments><![CDATA[帐目唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="BillingCycleID" dataType="String" required="true" id="6448697f-3b11-4241-8c27-abca83b6bd2f">
+            <comments><![CDATA[帐期标识]]></comments>
+            <extension>
+              <max>6</max>
+            </extension>
+          </attribute>
+          <attribute name="CycleBeginDate" dataType="Date" required="false" id="1da620bb-4987-46a3-bc3b-e23ec67b521f">
+            <comments><![CDATA[帐期起始时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+          <attribute name="CycleEndDate" dataType="Date" required="false" id="162e7294-de03-4064-8771-ef0622d3252d">
+            <comments><![CDATA[帐期结束时间]]></comments>
+            <extension>
+              <max>19</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemTypeID" dataType="String" required="true" id="37d8db70-1a6b-4e9e-bd4c-0d3d431e171d">
+            <comments><![CDATA[帐目类型]]></comments>
+            <extension>
+              <max>6</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemTypeName" dataType="String" required="true" id="57b41c90-3fe3-47e2-8e4a-538c19dbe5d0">
+            <comments><![CDATA[帐目类型名称]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="18e1dcf6-407b-4926-8ffd-37dac35ee908">
+            <comments><![CDATA[帐目金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="SubsID" dataType="String" required="false" id="cd6d2a60-7e9a-462d-924a-7c0676758fe3">
+            <comments><![CDATA[用户标识(可空)]]></comments>
+            <extension>
+              <max>9</max>
+            </extension>
+          </attribute>
+          <attribute name="MSISDN" dataType="String" required="false" id="e18195f4-0223-4d95-957c-58dbc327d7b7">
+            <comments><![CDATA[用户号码(可空)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentReverseBO" id="cc9299b1-f6f0-4969-8325-3c1acbe2417e">
+        <comments><![CDATA[缴费冲正]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-26 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="331ac8c2-3693-4a48-acbf-444381a0d5fd">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="PaymentID" dataType="String" required="true" id="534c8d7c-d67e-49d9-bdf8-e7b86ccd8397">
+            <comments><![CDATA[缴费流水唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Amount" dataType="String" required="false" id="2786fa20-0779-4d7c-80e8-07a8c7f8211f">
+            <comments><![CDATA[缴费金额,有则校验]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="false" id="16b38118-5091-4d0d-a405-14e1cb80dd1b">
+            <comments><![CDATA[冲正方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="BillNbr" dataType="String" required="false" id="7b27179d-020b-4780-8a0f-318965ff28b6">
+            <comments><![CDATA[帐单编码,帐单唯一编码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="73fc8ae6-6f8a-4996-8343-1d8c5bdc0bf2">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="SN" dataType="String" required="false" id="c385a599-56e5-4c3f-914a-34e0e0e881b2">
+            <comments><![CDATA[调用方操作流水标识（需要对帐则必须填写，保证唯一）]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="ReverseSN" dataType="String" required="false" id="5d72dc35-2ce9-4881-b2f2-65fb790a08a6">
+            <comments><![CDATA[被冲正的调用方操作流水标识（需要对帐则必须填写，保证唯一）]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentReverseBOResponse" id="30171f4f-aa61-4039-867c-90f8d69766b5">
+        <comments><![CDATA[缴费冲正]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-26 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="PaymentReverseDto" dataType="Schema" required="false" id="66f99972-a15f-428c-bbec-9c1765f96aaa" refSchema="PaymentReverseDtoResponse">
+            <comments><![CDATA[冲正结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="PaymentReverseDtoResponse" id="932c4b47-77ae-467f-8191-6032ab4a6e05">
+        <comments><![CDATA[冲正结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-26 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="PaymentID" dataType="String" required="true" id="c6ee5935-08a2-4b25-9781-b40d28d487de">
+            <comments><![CDATA[冲正流水唯一标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Balance" dataType="String" required="true" id="47604210-d5bc-45f0-9685-d06e043942e6">
+            <comments><![CDATA[冲正后帐户Balance]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="PaymentDesc" dataType="String" required="false" id="4ebba104-5ed3-478a-af3a-1c5298f5bf09">
+            <comments><![CDATA[冲正信息描述]]></comments>
+            <extension>
+              <max>20</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AdjustPrepareBO" id="2f2bd8a3-f5ec-477b-ba68-517b1e185e56">
+        <comments><![CDATA[帐前调帐]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="665edc18-b2fb-42ee-8ad0-d4777d756efe">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="8f0ce151-827d-499e-b27a-b174ceaf415e">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码(MSISDN,AccountCode至少一个有值)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="PartyCode" dataType="String" required="false" id="3290db25-128f-4fd0-91b7-b600b41e3398">
+            <comments><![CDATA[调帐方标识]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="Comment" dataType="String" required="false" id="42983f8a-e494-4c75-913a-04280f0a7a7f">
+            <comments><![CDATA[调帐原因]]></comments>
+            <extension>
+              <max>256</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="ce4826d6-135f-489e-a374-13fff08a5574">
+            <comments><![CDATA[调帐总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AdjustPrepareItemExDtoList" dataType="Schema" required="true" id="51a8bf8c-5215-457f-a4eb-1c5b568f8bc4" refSchema="AdjustPrepareItemExDtoList">
+            <comments><![CDATA[调帐明细帐目]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AdjustPrepareItemExDtoList" id="bebeadbc-cb55-41f9-a6ef-07d36c2c913c">
+        <comments><![CDATA[调帐明细帐目]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="300a62f4-0b1b-45f1-a759-bc4f5543b4b6">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="337eb170-0897-4d81-82be-c4aff6c8c793">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemTypeID" dataType="String" required="true" id="40a457aa-a559-4af5-884e-f1dc72cfe73d">
+            <comments><![CDATA[帐目类型唯一标识(帐户为用户付费帐目类型,为空表示对应帐户为主帐户)]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="AcctItemTypeName" dataType="String" required="false" id="f6d2680c-0463-46d2-8e0f-74a3718d302f">
+            <comments><![CDATA[帐目类型名称(为空表示对应帐户为主张户)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="false" id="25a03dd7-1df4-41b2-a05b-6a5fff6d36e9">
+            <comments><![CDATA[调帐帐目金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AdjustPrepareBOResponse" id="d625acef-40f1-4d94-9764-65b9503f49c2">
+        <comments><![CDATA[帐前调帐]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AdjustPrepareDto" dataType="Schema" required="false" id="d8eb0358-ac67-4910-8bf9-832443919f73" refSchema="AdjustPrepareDtoResponse">
+            <comments><![CDATA[调帐返回结果]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="AdjustPrepareDtoResponse" id="1ec5aa28-1696-458b-a288-ac9b9cca7ef2">
+        <comments><![CDATA[调帐返回结果]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="AdjustPrepareID" dataType="String" required="true" id="0343d721-0860-44c6-9798-0b1fe6582221">
+            <comments><![CDATA[调帐唯一流水标识]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+          <attribute name="Charge" dataType="String" required="true" id="f0edf59e-d70c-43ba-ae5e-d54719f43a88">
+            <comments><![CDATA[调帐总金额]]></comments>
+            <extension>
+              <max>12</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="MakeBillBO" id="965047f3-59cd-431d-9284-49544c1161be">
+        <comments><![CDATA[立即出帐]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-03-29 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="f2103b7e-8629-401f-8c7f-eeeb7ba6a0c4">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="a1430471-feca-439d-8b6d-5f9fcaf33fd1">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码(MSISDN,AccountCode至少一个有值)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QueryAcctBalBO" id="fff2c7d8-147d-48db-839a-cca3eeff6bf3">
+        <comments><![CDATA[帐户多余额帐本查询]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="MSISDN" dataType="String" required="false" id="d3859979-750e-48ac-938d-7b27480ea508">
+            <comments><![CDATA[用户MSISDN号码]]></comments>
+            <extension>
+              <max>30</max>
+            </extension>
+          </attribute>
+          <attribute name="AccountCode" dataType="String" required="false" id="f1eb1e6e-7ba6-4f53-b704-9a7791e06ea3">
+            <comments><![CDATA[帐户编号,付费帐户的唯一编码(MSISDN,AccountCode至少一个有值)]]></comments>
+            <extension>
+              <max>60</max>
+            </extension>
+          </attribute>
+        </attributes>
+      </object>
+      <object name="QueryAcctBalBOResponse" id="b0900bec-5cd1-4b9b-a274-25ad8b02363e">
+        <comments><![CDATA[帐户多余额帐本查询]]></comments>
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-23 00:00:00</modifyDate>
+        <attributes>
+          <attribute name="BalDtoList" dataType="Schema" required="false" id="4353fe91-ca86-416d-9ebd-5e5d6e614f11" refSchema="BalDtoListResponse">
+            <comments><![CDATA[帐户余额帐本]]></comments>
+            <extension/>
+          </attribute>
+        </attributes>
+      </object>
+    </schemas>
+    <operations>
+      <operation name="BalTransfer" id="06d48ac3-627e-4cd5-a124-d78fda4c1783">
+        <request>BalTransferBO</request>
+        <response>BalTransferBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsBalTransfer" site="S" id="4d541b41-222a-4c33-b74b-249d46428e5c">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.PARTNER_SN = $req.SN</request>
+                <request>$s.FROM_PREFIX, $s.FROM_ACC_NBR = parseAccNbr( $req.SAccnt )</request>
+                <request>$s.FROM_PASSWORD = $req.SPwd</request>
+                <request>$s.CHARGE = $req.Amount</request>
+                <request>$s.TO_PREFIX, $s.TO_ACC_NBR = parseAccNbr( $req.DAccnt )</request>
+                <response>$resp.TransferResultDto.Amount = $s.CHARGE</response>
+                <response>$resp.TransferResultDto.BeforeBalance = $s.BEFORE_BALANCE</response>
+                <response>$resp.TransferResultDto.Balance = $s.BALANCE</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="ModifyBalReturnAllBal" id="8d44dd74-a053-4999-819a-eca1e3fc5e06">
+        <request>ModifyBalReturnAllBalBO</request>
+        <response>ModifyBalReturnAllBalBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsModifyBalReturnAllBal" site="S" id="fb5de878-4c15-4470-bef9-739cc1bcdf3c">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.BAL_ID = $req.BalID</request>
+                <request>$s.ACCT_RES_ID = $req.AcctResID</request>
+                <request>$s.BALANCE = $req.Balance</request>
+                <request>$s.CHARGE = $req.AddBalance</request>
+                <request>$s.EXP_DATE = $req.ExpDate</request>
+                <request>$s.DAYS = $req.AddDays</request>
+                <request>$s.IS_FROM_WS = "Y"</request>
+                <response targets="$resp.BalDtoList" params="$s.NEW_BAL_LIST">
+                  <response>$resp.BalDtoList.BalID = $s.NEW_BAL_LIST.BAL_ID</response>
+                  <response>$resp.BalDtoList.AcctResID = $s.NEW_BAL_LIST.ACCT_RES_ID</response>
+                  <response>$resp.BalDtoList.AcctResName = $s.NEW_BAL_LIST.ACCT_RES.ACCT_RES_NAME</response>
+                  <response>$resp.BalDtoList.BalType = $s.NEW_BAL_LIST.ACCT_RES.BAL_TYPE</response>
+                  <response>$resp.BalDtoList.Balance = $s.NEW_BAL_LIST.REAL_BAL</response>
+                  <response>$resp.BalDtoList.EffDate = $s.NEW_BAL_LIST.EFF_DATE</response>
+                  <response>$resp.BalDtoList.ExpDate = $s.NEW_BAL_LIST.EXP_DATE</response>
+                  <response>$resp.BalDtoList.UpdateDate = $s.NEW_BAL_LIST.UPDATE_DATE</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="QueryAcctItemType" id="3ec74e35-c6ad-487b-bbd4-fa0c0333d429">
+        <request>QueryAcctItemTypeBO</request>
+        <response>QueryAcctItemTypeBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsQueryAcctItemType" site="S" id="05102e20-7a59-4096-bd87-e306f9cfbee3">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <response targets="$resp.AcctItemTypeDtoList" params="$s.ACCT_ITEM_TYPE_LIST">
+                  <response>$resp.AcctItemTypeDtoList.AcctItemTypeID = $s.ACCT_ITEM_TYPE_LIST.ACCT_ITEM_TYPE_ID</response>
+                  <response>$resp.AcctItemTypeDtoList.AcctItemTypeName = $s.ACCT_ITEM_TYPE_LIST.ACCT_ITEM_TYPE_NAME</response>
+                  <response>$resp.AcctItemTypeDtoList.ParentID = $s.ACCT_ITEM_TYPE_LIST.PARENT_ID</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="Dispute" id="569974c1-b3ea-4686-bae7-906979f462af">
+        <request>DisputeBO</request>
+        <response>DisputeBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsDispute" site="S" id="f231b009-b6ce-463b-aee8-061207487c48">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.PARTY_CODE = $req.PartyCode</request>
+                <request>$s.COMMENTS = $req.Comment</request>
+                <request>$s.CHARGE = $req.Charge</request>
+                <request>$s.JOB_ID = $req.PartyCode</request>
+                <request targets="$s.DISPUTE_ITEM_EX_LIST" params="$req.DisputeItemExDtoList">
+                  <request>$s.DISPUTE_ITEM_EX_LIST.ACCT_ITEM_ID = $req.DisputeItemExDtoList.AcctItemID</request>
+                  <request>$s.DISPUTE_ITEM_EX_LIST.CHARGE = $req.DisputeItemExDtoList.Charge</request>
+                </request>
+                <response>$resp.DisputeExDto.DisputeID = $s.DISPUTE_ID</response>
+                <response>$resp.DisputeExDto.Charge = $s.CHARGE</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="QryAcctBook" id="82bd4e36-cb9c-4186-afa5-506e40364158">
+        <request>QryAcctBookBO</request>
+        <response>QryAcctBookBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsQryAcctBook" site="S" id="41fc6a10-bc7a-4880-8d67-a31b65bec5b9">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.ACCT_BOOK_TYPE = $req.AcctBookType</request>
+                <request>$s.BEGIN_DATE = $req.BeginDate</request>
+                <request>$s.END_DATE = $req.EndDate</request>
+                <request>$s.LAST_RECORD_COUNT = $req.LastRecordCount</request>
+                <response targets="$resp.AcctBookExDtoList" params="$s.z_d_r">
+                  <response>$resp.AcctBookExDtoList.AcctBookID = $s.z_d_r.M_ACCT_BOOK_ID</response>
+                  <response>$resp.AcctBookExDtoList.PreBalance = $s.z_d_r.M_PRE_BALANCE</response>
+                  <response>$resp.AcctBookExDtoList.Charge = $s.z_d_r.M_CHARGE</response>
+                  <response>$resp.AcctBookExDtoList.PartyCode = $s.z_d_r.PARTY_CODE</response>
+                  <response>$resp.AcctBookExDtoList.AcctBookType = $s.z_d_r.ACCT_BOOK_TYPE</response>
+                  <response>$resp.AcctBookExDtoList.CreatedDate = $s.z_d_r.CREATED_DATE</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+          <binding service="CallWebService" site="C" id="85fabc92-b769-47a5-9ed3-6e737b342846">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$req.AccountCode = $s.ACCT_NBR</request>
+                <request>$req.AcctBookType = $s.ACCT_BOOK_TYPE </request>
+                <request>$req.BeginDate = stringToDate($s.BEGIN_DATE, "yyyy-MM-dd HH:mm:ss") </request>
+                <!--request>$req.BeginDate = stringToDate( dateToString($s.BEGIN_DATE, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss") </request-->
+                <request>$req.EndDate = $s.END_DATE</request>
+                <request>$req.LastRecordCount = $s.LAST_RECORD_COUNT</request>
+                <response targets="$s.z_d_r" params="$resp.AcctBookExDtoList">
+                  <response>$s.z_d_r.M_ACCT_BOOK_ID = $resp.AcctBookExDtoList.AcctBookID</response>
+                  <response>$s.z_d_r.M_PRE_BALANCE = $resp.AcctBookExDtoList.PreBalance</response>
+                  <response>$s.z_d_r.M_CHARGE = $resp.AcctBookExDtoList.Charge</response>
+                  <response>$s.z_d_r.PARTY_CODE = $resp.AcctBookExDtoList.PartyCode</response>
+                  <response>$s.z_d_r.ACCT_BOOK_TYPE = $resp.AcctBookExDtoList.AcctBookType</response>
+                  <response>$s.z_d_r.CREATED_DATE = $resp.AcctBookExDtoList.CreatedDate</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+          <binding service="CallWebService" site="C" id="18f993d5-72b1-4901-8ade-d8dd65c09e48">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$req.AccountCode = $s.ACCT_NBR </request>
+                <request>$req.AcctBookType = $s.ACCT_BOOK_TYPE</request>
+                <request>$req.BeginDate = $s.BEGIN_DATE</request>
+                <request>$req.EndDate = $s.END_DATE</request>
+                <request>$req.LastRecordCount = $s.LAST_RECORD_COUNT</request>
+                <response targets="$s.z_d_r" params="$resp.AcctBookExDtoList">
+                  <response>$s.z_d_r.M_ACCT_BOOK_ID = $resp.AcctBookExDtoList.AcctBookID</response>
+                  <response>$s.z_d_r.M_PRE_BALANCE = $resp.AcctBookExDtoList.PreBalance</response>
+                  <response>$s.z_d_r.M_CHARGE = $resp.AcctBookExDtoList.Charge</response>
+                  <response>$s.z_d_r.PARTY_CODE = $resp.AcctBookExDtoList.PartyCode</response>
+                  <response>$s.z_d_r.PARTY_CODE = $resp.AcctBookExDtoList.PartyCode</response>
+                  <response>$s.z_d_r.ACCT_BOOK_TYPE = $resp.AcctBookExDtoList.AcctBookType</response>
+                  <response>$s.z_d_r.ACCT_BOOK_TYPE = $resp.AcctBookExDtoList.AcctBookType</response>
+                  <response>$s.z_d_r.CREATED_DATE = $resp.AcctBookExDtoList.CreatedDate</response>
+                  <response>$s.z_d_r.CREATED_DATE = $resp.AcctBookExDtoList.CreatedDate</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="DisputeProcess" id="277217eb-8193-4501-8463-b2f026736f40">
+        <request>DisputeProcessBO</request>
+        <response>DisputeProcessBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsDisputeProcess" site="S" id="b67a4b4d-dab4-4259-b214-a0e254238dfa">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.DISPUTE_ID = $req.DisputeID</request>
+                <request>$s.CHARGE = $req.Charge</request>
+                <request>$s.JOB_ID = $req.PartyCode</request>
+                <request>$s.PROCESS_TYPE = $req.ProcessResult</request>
+                <request>$s.PARTY_CODE = $req.PartyCode</request>
+                <response>$resp.DisputeExDto.DisputeID = $s.DISPUTE_ID</response>
+                <response>$resp.DisputeExDto.Charge = $s.CHARGE</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="ModifyBal" id="6c2d142c-1163-4fcf-8f2e-ca175897663f">
+        <request>ModifyBalBO</request>
+        <headers/>
+        <bindings>
+          <binding service="WsModifyBal" site="S" id="7b1870c2-c9c9-416a-bbc1-b84f399945a0">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.BAL_ID = $req.BalID</request>
+                <request>$s.ACCT_RES_ID = $req.AcctResID</request>
+                <request>$s.BALANCE = $req.Balance</request>
+                <request>$s.CHARGE = $req.AddBalance</request>
+                <request>$s.EXP_DATE = $req.ExpDate</request>
+                <request>$s.DAYS = $req.AddDays</request>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="Payment" id="f09cb099-ef5a-445f-aaa8-35d9dfbba6ff">
+        <request>PaymentBO</request>
+        <response>PaymentBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsPayment" site="S" id="cc516a0c-c347-44c8-943c-0127080df51f">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$req.MSISDN = $s.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.CHARGE = $req.Amount</request>
+                <request>$s.PARTY_CODE = $req.PartyCode</request>
+                <request>$s.BILL_NBR = $req.BillNbr</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.PARTNER_SN = $req.SN</request>
+                <request>$s.PAYMENT_METHOD_ID = "1"</request>
+                <response>$resp.PaymentDto.PaymentID = $s.PAYMENT_ID</response>
+                <response>$resp.PaymentDto.Balance = $s.BALANCE</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="QryOweAcctItem" id="95f90686-73fc-40f2-b581-13d6b310bbc2">
+        <request>QryOweAcctItemBO</request>
+        <response>QryOweAcctItemBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsQryOweAcctItem" site="S" id="c963ad17-7fcd-4446-93a7-dd0807280197">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.BILL_ID = $req.BillID</request>
+                <request>$s.BILL_NBR = $req.BillNbr</request>
+                <request>$s.ACCT_ID = $req.AccountID</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <response>$resp.OweAcctItemDto.SumCharge = $s.SUM_CHARGE</response>
+                <response>$resp.OweAcctItemDto.DepositChange = $s.DEPOSIT_CHANGE</response>
+                <response>$resp.OweAcctItemDto.Balance = $s.BALANCE</response>
+                <response>$resp.OweAcctItemDto.GrossBal = $s.GROSS_BAL</response>
+                <response targets="$resp.OweAcctItemDto.AcctItemExDtoList" params="$s.z_d_r">
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.AcctItemID = $s.z_d_r.ACCT_ITEM_ID</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.BillingCycleID = $s.z_d_r.BILLING_CYCLE_ID</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.CycleBeginDate = $s.z_d_r.CYCLE_BEGIN_DATE</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.CycleEndDate = $s.z_d_r.CYCLE_END_DATE</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.AcctItemTypeID = $s.z_d_r.ACCT_ITEM_TYPE_ID</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.AcctItemTypeName = $s.z_d_r.ACCT_ITEM_TYPE_NAME</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.Charge = $s.z_d_r.CHARGE</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.SubsID = $s.z_d_r.SUBS_ID</response>
+                  <response>$resp.OweAcctItemDto.AcctItemExDtoList.MSISDN = $s.z_d_r.MSISDN</response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="PaymentReverse" id="a7cee075-5954-424d-b8ca-6d5fbf2ba635">
+        <request>PaymentReverseBO</request>
+        <response>PaymentReverseBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsPaymentReverse" site="S" id="704b19bd-9ce1-42ac-9945-23504a18e80c">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.OLD_PAYMENT_ID = $req.PaymentID</request>
+                <request>$s.REVERSED_CHARGE = $req.Amount</request>
+                <request>$s.PARTY_CODE = $req.PartyCode</request>
+                <request>$s.BILL_NBR = $req.BillNbr</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.PARTNER_SN = $req.SN</request>
+                <request>$s.OLD_PARTNER_SN = $req.ReverseSN</request>
+                <response>$resp.PaymentReverseDto.PaymentID = $s.PAYMENT_ID</response>
+                <response>$resp.PaymentReverseDto.Balance = $s.BALANCE</response>
+                <response>$resp.PaymentReverseDto.PaymentDesc = "null"</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="AdjustPrepare" id="4b9f4cba-128c-483b-83f5-14c185dee56b">
+        <request>AdjustPrepareBO</request>
+        <response>AdjustPrepareBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsAdjustPrepare" site="S" id="09f9d17f-0073-44e4-84d4-be730c6789e9">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <request>$s.PARTY_CODE = $req.PartyCode</request>
+                <request>$s.COMMENTS = $req.Comment</request>
+                <request>$s.ACCT_ITEM_CHARGE = $req.Charge</request>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request targets="$s.ADJUST_PREPARE_ITEM_EX_LIST" params="$req.AdjustPrepareItemExDtoList">
+                  <request>$s.ADJUST_PREPARE_ITEM_EX_LIST.MSISDN = $req.AdjustPrepareItemExDtoList.MSISDN</request>
+                  <request>$s.ADJUST_PREPARE_ITEM_EX_LIST.ACCT_NBR = $req.AdjustPrepareItemExDtoList.AccountCode</request>
+                  <request>$s.ADJUST_PREPARE_ITEM_EX_LIST.ACCT_ITEM_TYPE_ID = $req.AdjustPrepareItemExDtoList.AcctItemTypeID</request>
+                  <request>$s.ADJUST_PREPARE_ITEM_EX_LIST.ACCT_ITEM_TYPE_NAME = $req.AdjustPrepareItemExDtoList.AcctItemTypeName</request>
+                  <request>$s.ADJUST_PREPARE_ITEM_EX_LIST.CHARGE = $req.AdjustPrepareItemExDtoList.Charge</request>
+                </request>
+                <response>$resp.AdjustPrepareDto.AdjustPrepareID = $s.ACCT_BOOK_EX.ACCT_BOOK_ID</response>
+                <response>$resp.AdjustPrepareDto.Charge = $s.ACCT_BOOK_EX.CHARGE</response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="MakeBill" id="608c139d-430c-4182-a265-c12654c9dc32">
+        <request>MakeBillBO</request>
+        <headers/>
+        <bindings>
+          <binding service="WsMakeBill" site="S" id="ca626d88-f2c5-43c6-9ce2-56cddf1e6033">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+      <operation name="QueryAcctBal" id="9d9a94de-bac6-4b78-a232-03689ca83ac7">
+        <request>QueryAcctBalBO</request>
+        <response>QueryAcctBalBOResponse</response>
+        <headers/>
+        <bindings>
+          <binding service="WsQueryAcctBal" site="S" id="3fdff975-ca8a-4545-841c-7c55a6fa1cb4">
+            <state>A</state>
+            <version>1</version>
+            <modifier>admin</modifier>
+            <modifyDate>2012-05-21 00:00:00</modifyDate>
+            <serviceFlow/>
+            <script>
+              <invoke>
+                <request>$s.MSISDN = $req.MSISDN</request>
+                <request>$s.PREFIX, $s.ACC_NBR = parseAccNbr( $req.MSISDN )</request>
+                <request>$s.ACCT_NBR = $req.AccountCode</request>
+                <response targets="$resp.BalDtoList" params="$s.BAL_LIST">
+                  <response>$resp.BalDtoList.BalID = $s.BAL_LIST.BAL_ID</response>
+                  <response>$resp.BalDtoList.AcctResID = $s.BAL_LIST.ACCT_RES_ID</response>
+                  <response>$resp.BalDtoList.AcctResName = $s.BAL_LIST.ACCT_RES.ACCT_RES_NAME</response>
+                  <response>$resp.BalDtoList.BalType = $s.BAL_LIST.ACCT_RES.BAL_TYPE</response>
+                  <response>$resp.BalDtoList.Balance = $s.BAL_LIST.REAL_BAL</response>
+                  <response>$resp.BalDtoList.EffDate = $s.BAL_LIST.EFF_DATE</response>
+                  <response>$resp.BalDtoList.ExpDate = $s.BAL_LIST.EXP_DATE</response>
+                  <response>$resp.BalDtoList.UpdateDate = $s.BAL_LIST.UPDATE_DATE</response>
+                  <response targets="$resp.BalDtoList.BalShareDtoList" params="$s.BAL_LIST.BAL_SHARE_LIST">
+                    <response>$resp.BalDtoList.BalShareDtoList.BalShareID = $s.BAL_LIST.BAL_SHARE_LIST.BAL_SHARE_ID</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.MSISDN = $s.BAL_LIST.BAL_SHARE_LIST.MSISDN</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.CeilLimit = $s.BAL_LIST.BAL_SHARE_LIST.CEIL_LIMIT</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.Priority = $s.BAL_LIST.BAL_SHARE_LIST.PRIORITY</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.EffDate = $s.BAL_LIST.BAL_SHARE_LIST.EFF_DATE</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.ExpDate = $s.BAL_LIST.BAL_SHARE_LIST.EXP_DATE</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.PaymentForce = $s.BAL_LIST.BAL_SHARE_LIST.PAYMENT_FORCE</response>
+                    <response>$resp.BalDtoList.BalShareDtoList.DailyCeilLimit = $s.BAL_LIST.BAL_SHARE_LIST.DAILY_CEIL_LIMIT</response>
+                  </response>
+                </response>
+              </invoke>
+              <exception/>
+              <finally/>
+            </script>
+          </binding>
+        </bindings>
+      </operation>
+    </operations>
+  </webService>
+</zsmart>

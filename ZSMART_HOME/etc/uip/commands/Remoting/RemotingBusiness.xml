@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RemotingBusiness" message="Remoting" seq="2" id="7602324e-e80e-41bb-b7f4-c173c2e6fc92">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>2</requestKey>
+      </commandKey>
+    </extension>
+    <fields/>
+    <bindings>
+    </bindings>
+  </command>
+</zsmart>

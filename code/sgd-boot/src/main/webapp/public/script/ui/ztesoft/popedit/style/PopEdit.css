@@ -1,0 +1,81 @@
+
+.PopEdit
+{
+	margin: 0px;
+	padding: 0px;
+	cellspacing: 0px;
+	cellspadding: 0px;
+	border: 0px;
+	width: 100%
+}
+
+.PopEdit tr
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+.PopEdit td
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+.textBox_popedit{
+    border-right: #939185 1px solid;
+    border-top: #939185 1px solid;
+    font-size: 10pt;
+    border-left: #939185 1px solid;
+    border-bottom: #939185 1px solid;
+    font-family: Tahoma;
+    height: 19px;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 0px;
+    padding-left:5px;
+    width:100%;
+}
+
+.button_popedit_open {
+    background-color: transparent;
+    border: none;
+    cursor: hand;
+    background-image: url(images/popedit.gif);
+    width: 18px;
+    height: 19px;
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+.button_popedit_open_gray {
+    background-color: transparent;
+    border: none;
+    cursor: hand;
+    background-image: url(images/popedit_gray.gif);
+    width: 18px;
+    height: 19px;
+    margin-left: 1px;
+    cursor: default;
+}
+
+.button_popedit_clear {
+    background-color: transparent;
+    border: none;
+    cursor: hand;
+    background-image: url(images/clear.png);
+    width: 18px;
+    height: 19px;
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+.button_popedit_clear_gray {
+    background-color: transparent;
+    border: none;
+    cursor: hand;
+    background-image: url(images/clear_gray.png);
+    width: 18px;
+    height: 19px;
+    margin-left: 1px;
+    cursor: default;
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS MULBAL" message="MML" seq="8" id="0f9f9de9-f4ce-42e0-801a-eb21ed264be9">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS MULBAL</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="75dcb3d5-a164-4cae-adc5-4e2561188000"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="32f7705a-8305-49ed-b345-3625341ea63f">
+        <extension>
+          <min>6</min>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="QRYTYPE" part="Business" id="74faab6b-d222-4694-9b19-f00a5d55d32e"/>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="BALCODE" part="Business" id="440a19a5-5b2f-4df1-b88a-688583044e63"/>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="PARENTBALCODE" part="Business" id="2835417f-a25e-4f6b-bec0-36ae6b92b828">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="ae1cd09d-cc87-478a-a3c9-bbf26049ad7e"/>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="74317fac-e2f1-4ab4-9a6b-44a5e31704a7"/>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="9112f9bd-0140-475f-ba3d-2eea502dfc3a"/>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="3250fb82-b3f3-40ee-ba36-b6296e057127"/>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="8e769328-b534-40c2-8813-62c3fd3b07dd"/>
+    </fields>
+    <bindings>
+      <binding service="MmlListPhsMulBal" site="S" id="1430831a-e0d2-4e7b-ace7-cb723b9e1007">
+        <state>A</state>
+        <version>1</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.QRYTYPE = $req.QRYTYPE</request>
+            <request>$s.BALCODE = $req.BALCODE</request>
+            <request>$s.ATTR = $req.ATTR</request>
+            <request>$s.PARENTBALCODE = $req.PARENTBALCODE</request>
+            <request>$s.CONTACT_CHANNEL_ID = "7"</request>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "BAL_LIST", "BALID=BAL_ID|BALCODE=ACCT_RES.STD_CODE|BALDESC=ACCT_RES.ACCT_RES_NAME|BALANCE=REAL_BAL|EFFDATE=EFF_DATE|EXPDATE=EXP_DATE|UPDATEDATE=UPDATE_DATE|CONSUMEBAL=CONSUME_BAL" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Begin" message="USSD" seq="43" id="cd2e5e31-6f7a-49f7-a99b-bd4d7dedaf92">
+    <comments><![CDATA[Begin]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-03-22 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x0000006F</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="I" requred="true" name="UssdVersion" part="Body" id="3b95c3c7-b530-4848-a2b8-c7c9a43a83bb">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="UssdOpType" part="Body" id="4d2a3014-52aa-4619-a26a-1e4b45daf6c1">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="4" direction="both" fieldType="N" dataType="M" requred="true" name="MsIsdn" part="Body" id="b9e0dc02-b3a7-43db-a285-61fe1c039a70">
+        <extension>
+          <length>21</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="both" fieldType="N" dataType="I" requred="true" name="ServiceCode" part="Body" id="22201446-f659-4ec7-bb95-12f448cb90cd">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="6" direction="both" fieldType="N" dataType="I" requred="true" name="CodeScheme" part="Body" id="9cb62710-2970-49b2-bc5a-97c00cb8115b">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="7" direction="both" fieldType="N" dataType="M" requred="true" name="UssdString" part="Body" id="f9fdc077-2081-4302-89ef-9174ccec008b">
+        <extension>
+          <length>182</length>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="ReceiveContactCmd" site="S" id="7a6756d9-4bd6-4b60-bf35-7e2d9df17655">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-22 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.command = $req.v.command</request>
+            <request>$s.session_id = $req.ReceiverId</request>
+            <request>$s.sender_id = $req.SenderId</request>
+            <request>$s.source_address = $req.MsIsdn</request>
+            <request>$s.short_message_text = $req.UssdString</request>
+            <request>$s.contact_channel = "5"</request>
+            <request>$s.notify = $req.UssdOpType</request>
+          </invoke>
+          <exception/>
+          <finally/>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

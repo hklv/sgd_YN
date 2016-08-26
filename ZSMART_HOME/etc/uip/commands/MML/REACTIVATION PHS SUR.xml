@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="REACTIVATION PHS SUR" message="MML" seq="54" id="b69ba80d-9540-461e-8514-295265ac79d1">
+    <comments><![CDATA[停机保号复机]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-07-31 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>REACTIVATION PHS SUR</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="1ddaf7b6-8fe1-46d0-9362-7d1ae85136c5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="49a80790-c019-4673-be7e-6a1a1aced3b2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PWD" part="Business" id="a21fc818-020e-457f-b177-e76b84212f88">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="5948bc29-40c3-422f-88a6-334264e25619">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="adcc093b-d8ba-470e-99a2-cfb16cfb1f54">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="UnPreLockOldAccNbr" site="S" id="f9e20cf7-11e7-4c73-a68a-8ebd8ff770fd">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-07-31 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.ZYQ = $req.DN</request>
+            <request>$s.PASSWORD = $req.PWD</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

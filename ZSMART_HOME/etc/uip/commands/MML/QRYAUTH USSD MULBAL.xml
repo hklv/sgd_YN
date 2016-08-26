@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="QRYAUTH USSD MULBAL" message="MML" seq="29" id="eef15af1-9654-49d8-b148-8e2b9b4d95de">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>QRYAUTH USSD MULBAL</requestKey>
+      </commandKey>
+      <rule name="MMLDesc">
+        <kvlist>
+          <kv key="S-PRF-00003" value="" isResource="true"/>
+        </kvlist>
+      </rule>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="S-PRF-00003" value="1001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="aeb119ea-f9b5-466b-bfe9-b87f455cb40b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="e1c29e8f-8091-42fd-97c6-4d2c59a7566c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="BALCODE" part="Business" id="f665856e-8259-4b8f-9d05-bfe2742d798e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="ba1f6f20-b40d-44a2-99f3-aef36af7d0f3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="6f28b2c6-400b-4313-be63-d7e17350f3f0">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="1567493e-28c2-4176-b70d-6f05ee380c27">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="CVSTOP" part="Business" id="b31b2912-6207-4d9d-b4ff-161081d60012">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="resp" fieldType="N" dataType="S" requred="false" name="ACNTSTAT" part="Business" id="dfb756f1-255b-426f-b8a7-6a9bb2780666">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="resp" fieldType="N" dataType="S" requred="false" name="BALEXPDATE" part="Business" id="8b8f2ddd-184a-4233-919c-42713c49d0a2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="false" name="ACNTLEFT" part="Business" id="4c8d0ebd-a307-48ca-af80-94e0f30af45c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="GROSSBAL" part="Business" id="657a2329-9df6-4228-8833-30d99005a0e9">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="13" direction="resp" fieldType="N" dataType="S" requred="false" name="LOCKED" part="Business" id="a3108619-88cb-41e0-9664-f59f88d54976">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="14" direction="resp" fieldType="N" dataType="S" requred="false" name="DEFLANG" part="Business" id="d8ef9c41-36f0-4b2b-838c-65415ee45beb">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="15" direction="resp" fieldType="N" dataType="S" requred="false" name="FIRSTCALL" part="Business" id="a88aea70-39c9-41ec-82e4-e8cb77220fc3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="16" direction="resp" fieldType="N" dataType="S" requred="true" name="USERTYPE" part="Business" id="bbb1ff9f-a0d7-4d02-ade1-3d03d97c609e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="17" direction="resp" fieldType="N" dataType="S" requred="false" name="BRANDINDEX" part="Business" id="425bb1e3-6352-4e5d-9717-5619e1222b2f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="18" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="5b0d1be3-a17b-4295-9c6c-442a4d3d9464">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="19" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="7bda4897-6216-4733-9542-f8f705b37fc2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MmlQryAuthUssdMulBal" site="S" id="7116d170-a74a-43ee-87b2-332aa4dbc70c">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>fang.yi</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.COMMAND = $req.COMMAND</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.BALCODE = $req.BALCODE</request>
+            <request>$s.ATTR = $req.ATTR</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.COMMAND = $s.COMMAND</response>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.CVSTOP = $s.CVSTOP</response>
+            <response>$resp.ACNTSTAT = $s.ACNTSTAT</response>
+            <response>$resp.BALEXPDATE = $s.DEFAULT_BAL.EXP_DATE</response>
+            <response>$resp.ACNTLEFT = $s.DEFAULT_BAL.REAL_BAL</response>
+            <response>$resp.GROSSBAL = $s.DEFAULT_BAL.GROSS_BAL</response>
+            <response>$resp.LOCKED = $s.LOCKED</response>
+            <response>$resp.DEFLANG = $s.DEFLANG</response>
+            <response>$resp.FIRSTCALL = $s.FIRSTCALL</response>
+            <response>$resp.USERTYPE = $s.USERTYPE</response>
+            <response>$resp.BRANDINDEX = $s.BRANDINDEX</response>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "BAL_LIST", "BALID=BAL_ID|BALCODE=ACCT_RES.STD_CODE|BALDESC=ACCT_RES.ACCT_RES_NAME|BALANCE=REAL_BAL|EFFDATE=EFF_DATE|EXPDATE=EXP_DATE|UPDATEDATE=UPDATE_DATE|CONSUMEBAL=CONSUME_BAL" )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

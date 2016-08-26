@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LINKCHECK" message="WINTCP" seq="33" id="fdf1978c-6b65-4850-9c2d-6cfaac44c3ef">
+    <comments><![CDATA[11]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-03-30 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>255</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="S" requred="true" name="checkData" part="BUSINESS" id="521b3113-4ca8-4519-94f2-f947a754a13f">
+        <extension>
+          <length>11</length>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

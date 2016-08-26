@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.outline {background: none repeat scroll 0 0 #FFFFFF;border: 3px solid #D1D7DB;height: 630px;width: 800px;margin: auto;}
+.wrapper {background: url("../image/login.jpg") no-repeat scroll 0 0 #FFFFFF;margin:0px auto;width: 800px;height: 550px;position: relative;}
+.formDiv {margin:auto auto;width: 300px;height: 170px;position: absolute;top: 200px;left: 250px;font: Arial,sans-serif;font-size:18px;color:#3f82c3;font-weight:bold;text-align:left;}
+.inputTxt{width:180px;height: 26px; line-height: 26px;font: Arial,sans-serif;font-size:14px;color:#4f4e4e;font-weight:bold;box-shadow:1px 3px 5px rgba(0, 0, 0, 0.3);border:1px solid #9e9d9d;}
+.aForgot {color: #3f82c3;font: 12px/20px Arial,sans-serif;height: 20px;text-decoration: underline;width: 125px;white-space:nowrap;}
+.loginBtn {background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #497BD0;border-radius: 4px;color: #497BD0;cursor: pointer;font: 14px Arial,sans-serif;line-height: 18px;height: 28px;margin: 0px 4px;padding: 3px;width: 60px;outline: medium none;}
+
+
+.footer {border-top: 3px solid #497BD0;color: #525252;font: 12px Arial;text-align: center;text-transform: capitalize;margin-top: 3px;}
+.footer .link {margin-top: 10px;}
+.footer a {outline: medium none;color: #525252;text-decoration: none;}
+.footer a:link {color: #497BD0;text-decoration: none;}
+.footer .copyright {margin-top: 10px;text-transform: uppercase;}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="HttpXml" type="W">
+    <comments><![CDATA[HttpXml]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2015-03-16 15:11:11</modifyDate>
+    <extension>
+      <class>com.ztesoft.zsmart.uip.facilities.http.ws.HttpXmlResolver</class>
+    </extension>
+  </message>
+</zsmart>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADD PHS FAMILY" message="MML" seq="56" id="a781e539-f6cd-45a3-ac7f-424c380910e3">
+    <comments><![CDATA[增加亲情号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-15 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADD PHS FAMILY</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="da80f541-b51f-45d0-864e-0e62c3c2fd5c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="89a6b540-6fd3-49f9-b915-c4f24747a4db">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="FAMILYNUM" part="Business" id="d1e5b1bb-f17b-4d54-88fd-37480106138b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="FELLOWTYPE" part="Business" id="c9e7b547-a472-419c-9768-4ab03a29489b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="88f43193-3cd0-44e7-af20-2327f94f7756">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="48185903-820c-491c-ad3f-547f63d91d04">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="dc01dff9-5723-48f1-8e20-31d1a5b93d25">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="998e7d8e-5386-4c52-809a-defdfadd82af">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_AddFamily" site="S" id="b054cb79-acf7-44fa-8f39-1bf185d35a19">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-15 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.FAMILYNUM = $req.FAMILYNUM</request>
+            <request>$s.FELLOWTYPE = $req.FELLOWTYPE</request>
+            <request>$s.EFFDATE = $req.EFFDATE</request>
+            <request>$s.EXPDATE = $req.EXPDATE</request>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

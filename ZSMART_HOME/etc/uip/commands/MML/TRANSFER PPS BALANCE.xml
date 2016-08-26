@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="TRANSFER PPS BALANCE" message="MML" seq="58" id="0d9b7deb-9c36-4e67-8c42-225175b95280">
+    <comments><![CDATA[TRANSFER PPS BALANCE]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-05-12 14:38:13</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>TRANSFER PPS BALANCE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="0" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="25bc9acc-d465-42e0-b9d7-b11ec0c4a31e"/>
+      <field seq="1" direction="req" fieldType="N" dataType="S" requred="true" name="ORGNUM" part="Business" id="0c7556d6-6c3f-44e8-a85c-7985ba583730"/>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DESNUM" part="Business" id="42ac9eb8-a0c1-45fa-af51-a70b250fd3d5"/>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="BAL" part="Business" id="c862c7c1-59d8-464a-8b6e-db82c8dd573b"/>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="b4be8fba-fe18-43a1-a6a4-7311a16948a1"/>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="8267f854-dd1d-4691-a007-4569579c4959"/>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="MSISDN" part="Business" id="da3cf0ed-49cb-43df-9c0d-bd0924f591ed"/>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="false" name="NEWBALANCE" part="Business" id="5b5be52e-6e7f-4282-8b30-0676853eb45c"/>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="ORIGBALANCE" part="Business" id="7dd1d580-ba17-42e9-b6f4-13c8f3bc55b0"/>
+    </fields>
+    <bindings>
+      <binding service="MML_TransferPpsBalance{PN}VIETICS" site="S" id="a56e336d-d0f4-40bf-9b85-bc62a90f138a">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-05-14 14:04:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.ORGNUM = $req.ORGNUM</request>
+            <request>$s.DESNUM = $req.DESNUM</request>
+            <request>$s.BAL = $req.BAL</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.MSISDN = $s.MSISDN</response>
+            <response>$resp.NEWBALANCE = $s.NEWBALANCE</response>
+            <response>$resp.ORIGBALANCE = $s.ORIGBALANCE</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="MmlTransferPpsBalance" site="C" id="d7e020cd-c1ee-4264-b859-8f2bc1dd5e60">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-05-12 14:44:38</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.ORGNUM = $s.ORGNUM</request>
+            <request>$req.DESNUM = $s.DESNUM</request>
+            <request>$req.BAL = $s.BAL</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.RETN = $resp.RETN</response>
+            <response>$s.DESC = $resp.DESC</response>
+            <response>$s.MSISDN = $resp.MSISDN</response>
+            <response>$s.NEWBALANCE = $resp.NEWBALANCE</response>
+            <response>$s.ORIGBALANCE = $resp.ORIGBALANCE</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

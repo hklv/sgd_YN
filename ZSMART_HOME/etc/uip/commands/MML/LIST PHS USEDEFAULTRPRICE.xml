@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS USEDEFAULTRPRICE" message="MML" seq="89" id="cf82dd2e-c961-44ab-8b96-029de37a1d7f">
+    <comments><![CDATA[查询用户默认资费计划]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-14 08:37:05</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS USEDEFAULTRPRICE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="4700b8ef-5f4f-4cf7-b749-a67e79d9cc24">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="cac15c82-a419-4fee-b271-7e26972ceaa6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="b5d0687f-ef16-4f06-956a-1496e5d4864b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="9cd2cae0-2eeb-4e3e-905e-45d382c73fc0">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="d381a90b-b8da-4693-86f0-6041aeef24c8">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="975200b0-670b-4a43-9373-5f861d1d80ca">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListPhsUserDefaultPrice" site="S" id="772ada80-a6d8-4268-be95-fbc008738bca">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-14 08:43:29</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "DN", "ATTR", "PRICE_PLAN_LIST", "PRICE_PLAN_ID=PRICE_PLAN_ID|PRICE_PLAN_CODE=PRICE_PLAN_CODE|PRICE_PLAN_NAME=PRICE_PLAN_NAME" )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

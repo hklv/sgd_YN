@@ -1,0 +1,57 @@
+<div class="col-md-12 col-sm-12">
+    <div class="form-group required">
+        <label class="col-md-4 col-sm-4 control-label">版本</label>
+        <div class="col-md-8 col-sm-8">
+            <input name="VER" class="form-control" data-rule="表单名称:required;length[1~60, true]">
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group required ">
+        <label class="col-md-4 col-sm-4 control-label">生效日期</label>
+        <div class="col-md-8 col-sm-8">
+            <div class="input-group">
+                <input name="EFFECTIVE_DATE" class="form-control js-begin-login-date" type="text" data-rule="生效日期:match[lt, EXPIRED_DATE, date];">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group required ">
+        <label class="col-md-4 col-sm-4 control-label">失效日期</label>
+        <div class="col-md-8 col-sm-8">
+            <div class="input-group">
+                <input name="EXPIRED_DATE" class="form-control js-end-login-date" type="text" data-rule="失效日期:match[gt, EFFECTIVE_DATE, date];">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group required ">
+        <label class="col-md-4 col-sm-4 control-label">状态</label>
+        <div class="col-md-8 col-sm-8">
+            <input name="VER_STATE" id="stateCombox" class="form-control">
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group">
+        <label class="col-md-4 col-sm-4 control-label">描述</label>
+        <div class="col-md-8 col-sm-8">
+            <input name="VER_COMMENTS" class="form-control">
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group">
+        <div class="col-md-8 col-md-offset-4">
+            <button type="button" class="btn btn_minwidth btn-primary js-form-edit">编辑</button>
+            <button type="button" class="btn btn_minwidth btn-primary js-form-ok">
+                确定
+            </button>
+            <button type="button" class="btn btn_minwidth btn-default js-form-cancel" style="display:none;">
+                取消
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task-3.2.xsd"
+	default-autowire="byName">
+    <context:component-scan base-package="com.ztesoft.uboss"/>
+    <context:component-scan base-package="org.activiti"/>
+    <context:component-scan base-package="utils"/>
+
+	<import resource="classpath*:spring-config.xml"/>
+
+	<!-- 如果是单体应用,则不需要引入dubbo的client.xml与server.xml的配置文件；maven依赖的项目为portal-server -->
+	<!-- 如果是分布式应用客户端,则需要引入client.xml的配置文件；maven依赖的项目为portal-client,只有服务的接口文件 -->
+	<!-- 如果是分布式应用服务端,则需要引入server.xml的配置文件，对外提供dubbo服务 ；maven依赖的项目为portal-server，与单体应用一致-->
+	<!-- 如果是分布式应用服务端单独部署,且不随着web应用统一发布；则web项目作为应用的客户端，单独起portal-boot项目，对外提供dubbo服务 -->
+	<!-- import resource="classpath*:dubbo-client*.xml" /> -->
+	<!-- import resource="classpath*:dubbo-server*.xml" /> -->
+	
+	<beans profile="develop">
+        <context:property-placeholder location=""/>
+		<import resource="classpath*:spring-config-server.xml"/>
+        <!-- 开发环境，单机-->
+    </beans>
+    
+    <beans profile="production-single">
+        <context:property-placeholder location=""/>
+        <import resource="classpath*:spring-config-server.xml"/>
+        <!-- 生产环境，单机-->
+    </beans>
+    <beans profile="production-dubbo-server">
+        <context:property-placeholder location=""/>
+        <!-- 生产环境，分布式服务端-->
+		<import resource="classpath*:spring-config-server.xml"/>
+        <import resource="classpath*:dubbo-server*.xml" />
+    </beans>
+    <beans profile="production-dubbo-client">
+        <context:property-placeholder location=""/>
+        <!-- 生产环境，分布式 客户端-->
+		<import resource="classpath*:spring-config-client.xml"/>
+        <import resource="classpath*:dubbo-client*.xml" />
+    </beans>
+
+</beans>

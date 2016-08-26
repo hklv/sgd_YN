@@ -1,0 +1,291 @@
+#img-chooser-dlg .details {
+    text-align: center;
+}
+
+#img-chooser-dlg .details-info {
+    border-top: 1px solid #cccccc;
+    font: 11px Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+#img-chooser-dlg .details-info b {
+    color: #555555;
+    display: block;
+    margin-bottom: 4px;
+    margin-left: 5px;
+}
+
+#img-chooser-dlg .details-info span {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+#img-chooser-view {
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+}
+
+#img-chooser-view .thumb {
+    padding: 3px;
+}
+
+#img-chooser-view .thumb-wrap {
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}
+
+#img-chooser-view .thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+#img-chooser-view .x-view-over {
+    border:1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+#img-chooser-view .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+#img-chooser-view .x-item-selected .thumb {
+    background:transparent;
+}
+
+#img-chooser-view .x-item-selected span {
+    color:#1A4D8F;
+}
+
+#img-chooser-view .loading-indicator {
+    font-size:11px;
+    background-image:url('../lib/ext-4.1.1a/resources/images/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}
+
+#images img {
+    margin: 20px;
+}
+
+
+
+
+   
+		
+		.olControlZoom {
+		  display : none
+		}
+		.olControlMapToolbar {
+		    margin: 5px 5px 0 0;
+		    left: 0;
+		    top: 0;
+		}
+
+		.olControlMapToolbar div {
+		    background-repeat: no-repeat;
+		    margin: 0 0 5px 5px;
+		    width: 50px;
+		    height: 50px;
+		    cursor: pointer;
+		    
+		}
+		
+		.olControlMapToolbar .olControlZoomToMaxExtentItemInactive{ 
+          background-image: url("../icons/5.png");
+        }
+        .olControlMapToolbar .olControlZoomToMaxExtentItemActive{ 
+          background-image: url("../icons/05.png");
+        }
+        
+        .olControlMapToolbar .olControlPreviousViewItemInactive{ 
+          background-image: url("../icons/e.png");
+        }
+        .olControlMapToolbar .olControlPreviousViewItemActive{ 
+          background-image: url("../icons/e.png");
+        }
+
+        .olControlMapToolbar .olControlNextViewItemInactive{ 
+          background-image: url("../icons/f.png");
+        }
+        .olControlMapToolbar .olControlNextViewItemActive{ 
+          background-image: url("../icons/f.png");
+        }
+        
+        .olControlMapToolbar .olControlZoomOutItemInactive{ 
+          background-image: url("../icons/c.png");
+        }
+        .olControlMapToolbar .olControlZoomInItemInactive{ 
+          background-image: url("../icons/b.png");
+        }
+		
+        .olControlMapToolbar .olControlNavigateItemInactive{ 
+          background-image: url("../icons/8.png");
+        }
+        .olControlMapToolbar .olControlNavigateItemActive{ 
+          background-image: url("../icons/08.png");
+        }
+
+        .olControlMapToolbar .olControlZoomBoxItemInactive{ 
+          background-image: url("../icons/g.png");
+        }
+        .olControlMapToolbar .olControlZoomBoxItemActive{ 
+          background-image: url("../icons/0g.png");
+        }
+   
+   
+        .olControlMapToolbar .olControlInformationButtonItemInactive{ 
+          background-image: url("../icons/a1.png");
+        }
+        .olControlMapToolbar .olControlInformationButtonItemActive{ 
+          background-image: url("../icons/0a1.png");
+        }           
+        
+        .olControlMapToolbar .olControlDrawFeaturePathItemActive{ 
+          background-image: url("../icons/02.png");
+        }
+        
+        .olControlMapToolbar .olControlDrawFeaturePathItemInactive{ 
+          background-image: url("../icons/2.png");
+        }
+ 
+
+        .olControlMapToolbar .olControlDrawFeaturePolygonItemActive{ 
+          background-image: url("../icons/01.png");
+        }
+        
+        .olControlMapToolbar .olControlDrawFeaturePolygonItemInactive{ 
+          background-image: url("../icons/1.png");
+        } 
+  
+
+   		.olControlMapToolbar .olControlSelectTargetButtonItemActive{ 
+          background-image: url("../icons/0j.png");
+        }
+        .olControlMapToolbar .olControlSelectTargetButtonItemInactive{ 
+          background-image: url("../icons/j.png");
+        }	
+  
+		
+		.olControlMarkPanel {
+		    margin: 0 0 0 0;
+			float: right;
+		    right: 0;
+		    top: 200;
+		}
+		
+		.olControlMarkPanel div {
+		    background-repeat: no-repeat;
+			
+			width: 19px;
+		    height: 50px;
+		    cursor: pointer;
+		}
+		
+        .olControlMarkPanel .olControlMarkButtonItemInactive{ 
+          background-image: url("../icons/west-mini.png");
+        }
+        .olControlMarkPanel  .olControlMarkButtonItemActive{ 
+          background-image: url("../icons/west-mini2.png");
+        } 
+		
+		.olControlTrackPanel {
+		    margin: 5px 5px 0 0;
+		    right: 0;
+		    top: 0;
+		}
+		
+		.olControlTrackPanel div {
+		    background-repeat: no-repeat;
+		    margin: 0 0 5px 5px;
+		    width: 50px;
+		    height: 50px;
+		    cursor: pointer;
+		}
+
+         .olControlTrackButtonItemInactive{ 
+          background-image: url("../icons/3.png");
+        }
+         .olControlTrackButtonItemActive{ 
+          background-image: url("../icons/03.png");
+        }  
+        
+        .olControlTrackPanel .olControlDrawFeaturePathItemActive{ 
+          background-image: url("../icons/02.png");
+        }
+        
+        .olControlTrackPanel .olControlDrawFeaturePathItemInactive{ 
+          background-image: url("../icons/2.png");
+        }
+        
+        .olControlTrackPanel .olControlDrawFeaturePolygonItemActive{ 
+          background-image: url("../icons/01.png");
+        }
+        
+        .olControlTrackPanel .olControlDrawFeaturePolygonItemInactive{ 
+          background-image: url("../icons/1.png");
+        }
+
+ 		.olControlTrackPanel .olControlTrackTargetButtonItemActive{ 
+          background-image: url("../icons/07.png");
+        }
+        .olControlTrackPanel .olControlTrackTargetButtonItemInactive{ 
+          background-image: url("../icons/7.png");
+        }		
+	
+ 		.olControlTrackPanel .olControlSelectTargetButtonItemActive{ 
+          background-image: url("../icons/0j.png");
+        }
+        .olControlTrackPanel .olControlSelectTargetButtonItemInactive{ 
+          background-image: url("../icons/j.png");
+        }		
+        
+ 
+ 
+  		.olControlTrackPanel .olControlShowAllTargetButtonItemActive{ 
+          background-image: url("../icons/0n.png");
+        }
+        .olControlTrackPanel .olControlShowAllTargetButtonItemInactive{ 
+          background-image: url("../icons/n.png");
+        }	       
+ 
+ 
+  		.olControlTrackPanel .olControlTrackFirstTargetButtonItemActive{ 
+          background-image: url("../icons/0p.png");
+        }
+        .olControlTrackPanel .olControlTrackFirstTargetButtonItemInactive{ 
+          background-image: url("../icons/p.png");
+        }	          	
+		
+       
+        .clear{
+		  background-image: url("../icons/1346556352_Error.png") !important;
+		} 
+		
+		.play{
+		  background-image: url("../icons/play.png") !important;
+		}   
+		
+		.stop{
+		  background-image: url("../icons/record.png") !important;
+		}     
+		.play2{
+		  background-image: url("../icons/forwardtoend.png") !important;
+		} 
+		.play3{
+		  background-image: url("../icons/fastforward.png") !important;
+		} 
+		
+		.clear1{
+		  background-image: url("../icons/delete.png") !important;
+		} 

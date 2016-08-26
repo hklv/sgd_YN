@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="PPS ADD CRBT" message="MML" seq="75" id="59df3f6f-b4e4-4e17-a3b7-8221b542307a">
+    <comments><![CDATA[PPS ADD CRBT]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-09-07 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>PPS ADD CRBT</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00001" value="9001" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="70cfbdea-2a19-4a46-a456-414dcaa496fc">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="MSISDN" part="Business" id="832bb464-96b0-4145-be35-8bd85a0ad4f2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="false" name="FEE" part="Business" id="bb9928d7-8508-4f43-949b-6554aae2d06d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="TAX" part="Business" id="f9392831-19fe-453a-865e-954fd75b57e1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="S" requred="true" name="SERVICETYPE" part="Business" id="eb5285a0-7813-42ab-af0c-c7020a9df0ef">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="9afb30a1-ae39-4fc7-8e82-7574e506845f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="45cc484e-232a-417b-a44e-2e84fd9762da">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_AddCRBT" site="S" id="b60355f3-f9b4-4275-b8b2-42e2015e1b5f">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-07 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.DN = $req.MSISDN</request>
+            <request>$s.FEE = $req.FEE</request>
+            <request>$s.TAX = $req.TAX</request>
+            <request>$s.SERVICETYPE = $req.SERVICETYPE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

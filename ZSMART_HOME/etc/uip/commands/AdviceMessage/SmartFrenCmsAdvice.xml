@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SmartFrenCmsAdvice" message="AdviceMessage" seq="82" id="6cc5b985-07dc-4494-8223-133519715cb3">
+    <comments><![CDATA[印尼 CMS 营销项目，用于在 CVBS/BP 等远程调用 UIP 发邮件的指令]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-10-12 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>SmartFrenCmsAdvice</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="N" dataType="S" requred="true" name="Command_status" part="CommandPart" id="2fa8d4df-990e-400b-ae2f-b6abf749e493">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="SendCMSMail" site="C" id="acf99f4d-637a-499a-a9d4-1c314c50b423">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-09-27 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke/>
+          <exception/>
+          <finally>
+            <response>$s.SendResult = $req.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="SendCMSMms" site="C" id="0fe633ff-e1b9-400a-a3ac-dda8c3badd95">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-12 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke/>
+          <exception/>
+          <finally>
+            <response>$s.SendResult = $req.Command_status</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

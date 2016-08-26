@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="HttpBinary" type="H">
+    <comments><![CDATA[Http]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-06-23 01:09:09</modifyDate>
+    <extension>
+      <class>com.ztesoft.zsmart.uip.adapters.message.HttpBinMessageResovler</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByVariable</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="1" type="H" name="Header" id="c48fe87f-5bd1-41db-b846-4dd5848169e9">
+        <extension/>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:URL" part="Header" id="86a94303-4838-4e7b-b71c-60ffd01a8cc8"/>
+          <field seq="2" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Path" part="Header" id="c68a10d7-6370-4184-80d8-62ec66d20aca"/>
+          <field seq="2" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Method" part="Header" id="bc69b592-20d7-4ad4-88b9-e6a8cf89b35c"/>
+          <field seq="4" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:HttpVersion" part="Header" id="326e98b3-1b6d-472b-a4f0-96026c2a7262"/>
+          <field seq="5" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept" part="Header" id="f3dec170-481d-4d3b-bbe4-8d9c009b33da"/>
+          <field seq="6" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept-Charset" part="Header" id="f9e79df7-e5a3-4cab-be7a-6e271545f5ab"/>
+          <field seq="7" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept-Encoding" part="Header" id="5a5ddea0-0314-47dd-8865-078cdc8d7d40"/>
+          <field seq="8" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept-Language" part="Header" id="301e7151-ed50-456f-bca8-995b25c1776e"/>
+          <field seq="9" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept-Ranges" part="Header" id="b203aacc-9f69-4078-8a9e-a59d3c165036"/>
+          <field seq="10" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Accept-Patch" part="Header" id="6def512e-e7d6-47d6-bd88-9b8d27a6b84b"/>
+          <field seq="11" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Age" part="Header" id="63016e0c-8b05-48dc-b28b-024b4b1b5ace"/>
+          <field seq="12" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Allow" part="Header" id="dc9b2ff6-dc4f-4e44-8eb7-6ec1a7f8ecf6"/>
+          <field seq="13" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Authorization" part="Header" id="ea2fa345-c978-4c79-b730-27f5cbb294f2"/>
+          <field seq="14" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Cache-Control" part="Header" id="207705cd-30ed-4c61-8aac-eff97b11bb8d"/>
+          <field seq="15" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Connection" part="Header" id="13dee85b-007e-4dc5-aebc-3b0982d5c579"/>
+          <field seq="16" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Base" part="Header" id="c4f8555f-f23b-4484-8d09-fe6215e24ba1"/>
+          <field seq="17" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Encoding" part="Header" id="e49eaf3d-e893-4ad0-b9d4-24747bd6dd6f"/>
+          <field seq="18" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Language" part="Header" id="ec90d241-863e-426c-bf9d-90eea039e0fe"/>
+          <field seq="19" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Length" part="Header" id="90359159-ba9d-489f-b976-93ea431ee3f5"/>
+          <field seq="20" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Location" part="Header" id="a6c506a9-43c9-4d1f-b976-ff775422f6d4"/>
+          <field seq="21" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Transfer-Encoding" part="Header" id="8ddfe120-ede2-4ae4-a9b5-33e8c69a3afb"/>
+          <field seq="22" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-MD5" part="Header" id="8a18369f-716d-4d1a-bd17-0d3fd7a0f9fe"/>
+          <field seq="23" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Range" part="Header" id="9b3dbe18-d31b-44b3-a82d-2d18107f95cc"/>
+          <field seq="24" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Content-Type" part="Header" id="317a9a53-9fa5-453b-88c0-da8cab37aadf"/>
+          <field seq="25" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Cookie" part="Header" id="e1d5e075-d3bb-40d2-9bd1-7116bbd34800"/>
+          <field seq="26" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Date" part="Header" id="e95fbfba-5a51-4df3-9b33-89c48f196089"/>
+          <field seq="27" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:ETag" part="Header" id="e00c2c1f-4349-486c-9e21-79d270a276bc"/>
+          <field seq="28" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Expect" part="Header" id="f7c4de25-954b-46a0-87c0-a83a32cb3a85"/>
+          <field seq="29" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Expires" part="Header" id="17d2afd7-7baa-4448-9a0a-8b1f218e10d1"/>
+          <field seq="30" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:From" part="Header" id="9e59ded3-ba0e-4532-abf6-8232cc9819f4"/>
+          <field seq="31" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Host" part="Header" id="1e93c00d-8a15-4af4-8328-020c2bdedec9"/>
+          <field seq="32" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:If-Match" part="Header" id="f7d0dfd0-e5f2-4b1b-ba69-a663089f4d6d"/>
+          <field seq="33" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:If-Modified-Since" part="Header" id="17fef50c-ce98-40e0-80e6-cce6758e103a"/>
+          <field seq="34" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:If-None-Match" part="Header" id="76b924a1-c3ac-4d57-a98a-74b2bc7645e0"/>
+          <field seq="35" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:If-Range" part="Header" id="2616a2e9-1673-4502-b8b6-f5c7b0ff89be"/>
+          <field seq="36" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:If-Unmodified-Since" part="Header" id="1bd3e8e4-314d-4f76-b2ce-4779b5f766f2"/>
+          <field seq="37" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Last-Modified" part="Header" id="3b0802ce-61b0-42e9-ad0e-17d54368afdb"/>
+          <field seq="38" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Location" part="Header" id="35979ee9-e7bc-498e-9137-4d32fb719167"/>
+          <field seq="39" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Max-Forwards" part="Header" id="5622c0ab-f1f8-4c45-8439-d3038ffa70e7"/>
+          <field seq="40" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Origin" part="Header" id="32bc3e3d-3363-48f9-a40d-5d218bf27ee6"/>
+          <field seq="41" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Pragma" part="Header" id="90486333-52e5-4a0b-bbcd-889483f92b30"/>
+          <field seq="42" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Proxy-Authenticate" part="Header" id="0fe64df3-72ff-4d35-9706-b27ad8487f4c"/>
+          <field seq="43" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Proxy-Authorization" part="Header" id="d4712ec0-af6b-4983-bade-1a5f947519b1"/>
+          <field seq="44" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Range" part="Header" id="ec10de2b-4c3d-49c2-a99d-a01aaae02968"/>
+          <field seq="45" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Referer" part="Header" id="b20f1b5b-be2a-47bf-af7d-05618de15286"/>
+          <field seq="46" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Retry-After" part="Header" id="9aa967c1-852f-4871-ac18-a4fceeff058c"/>
+          <field seq="47" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Sec-WebSocket-Key1" part="Header" id="ca3153ea-0957-43bb-9752-901abf526103"/>
+          <field seq="48" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Sec-WebSocket-Key2" part="Header" id="d94350c6-d0ad-4281-b9ae-ddd853ec664f"/>
+          <field seq="49" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Sec-WebSocket-Location" part="Header" id="42d14c9a-cca3-4e87-8822-44506fb38170"/>
+          <field seq="50" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Sec-WebSocket-Origin" part="Header" id="942f3f47-c73f-40cf-9d46-375bbbec9f12"/>
+          <field seq="51" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Sec-WebSocket-Protocol" part="Header" id="89ba979a-7406-4942-86df-4ccf7e8856ae"/>
+          <field seq="52" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Server" part="Header" id="2eb81e06-08f0-4601-a28b-e849c44f31de"/>
+          <field seq="53" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Set-Cookie" part="Header" id="e03b8d60-1cde-4f93-b974-d89c6f3fee71"/>
+          <field seq="54" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Set-Cookie2" part="Header" id="944de267-76ed-41ce-a0c6-78de9ba473a1"/>
+          <field seq="55" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:TE" part="Header" id="ce316fd9-f271-44e3-8711-346b315b21ee"/>
+          <field seq="56" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Trailer" part="Header" id="c015b1b8-4759-46ec-9d6f-ec9754b6ff35"/>
+          <field seq="57" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Transfer-Encoding" part="Header" id="b2e91df3-7f4b-49dc-bfe3-32e1c0a608d9"/>
+          <field seq="58" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Upgrade" part="Header" id="e38e5461-b42f-485b-ae48-f048393431dd"/>
+          <field seq="59" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:User-Agent" part="Header" id="1f75a0ef-7e42-411f-be3d-be90cbdbe141"/>
+          <field seq="60" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Vary" part="Header" id="321efec6-aa60-47b7-85e0-e3c5f2ff4fca"/>
+          <field seq="61" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Via" part="Header" id="6307aeb5-2c8a-4d58-9fd3-135150d1ab35"/>
+          <field seq="62" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:Warning" part="Header" id="f05b14bc-3d5c-406f-baab-57d426a8fbea"/>
+          <field seq="63" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:WebSocket-Location" part="Header" id="e5ba36c1-4cdc-4b42-b293-9a6b6df03689"/>
+          <field seq="64" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:WebSocket-Origin" part="Header" id="6d8658f0-c956-4a40-ba53-00ef25f35cd9"/>
+          <field seq="65" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:WebSocket-Protocol" part="Header" id="14a817ec-3110-47db-be4c-fba7d69640a1"/>
+          <field seq="66" direction="both" fieldType="N" dataType="S" requred="false" name="HEADER:WWW-Authenticate" part="Header" id="9e4c6f1b-187f-4ebb-9fc6-cf2aa6ae4365"/>
+        </fields>
+      </part>
+      <part seq="2" type="B" name="Body" id="69f9d012-0df1-442e-a950-5669bd9a2e4d">
+        <extension>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

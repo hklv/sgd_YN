@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="DISP PHS ACNTINFO" message="MML" seq="87" id="b0a3bb94-0b10-4d51-89cc-418861f8d688">
+    <comments><![CDATA[查询用户业务信息查询PHS用户业务数据资料。PHS用户业务信息包括：开户日期、终止日期、最晚头次使用日期、有效期、最大充值金额、最少提醒余额、用户使用状态、用户帐户余额。可以在命令参数中指定返回属性的集合]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-06 15:10:35</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>DISP PHS ACNTINFO</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="b321140c-d194-4d16-a994-4e086a8d4c76">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="89a5635e-cb2a-4107-b377-e8fb5a269791">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="26187426-080d-4eec-8943-a47741adb7f7">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="a20754fd-4436-4d8c-8639-52c4037fac3b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="b420bda1-673a-47db-abb3-cc753a3359e3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="bbb46785-3455-409e-b01d-feab9a6cd2e1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RESULT" part="Business" id="4367557a-aef8-40eb-9534-d6841578efe1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_DispAcntInfo" site="S" id="5db16965-8cf4-40aa-a982-3f9aeda3fad5">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-08 16:50:32</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+          <node eventType="B" service="MML_AttrChange"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.ATTR = $req.ATTR</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <response>$resp.RESULT, $resp.ATTR = parseAttrResult( $req, "DN", "ATTR", "RE_LIST", "MAXCHR=MAXCHR" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.DESC = MMLDesc( $s._RETN_CODE_ )</response>
+            <response>$resp.RETN = MMLCode( $s._RETN_CODE_ )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

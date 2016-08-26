@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+        <artifactId>sgd-parent</artifactId>
+        <version>1.0.0-snapshot</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>sgd-service</artifactId>
+    <packaging>jar</packaging>
+
+    <name>sgd-service</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+            <artifactId>framework</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ztesoft.zsmartcity.sgd</groupId>
+            <artifactId>workflow-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.lodsve</groupId>
+            <artifactId>lodsve-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lodsve</groupId>
+            <artifactId>lodsve-mvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lodsve</groupId>
+            <artifactId>lodsve-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lodsve</groupId>
+            <artifactId>lodsve-security</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

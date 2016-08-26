@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS PRICEPLAN" message="MML" seq="67" id="1b953d0d-8350-40bf-a0d0-6032a4e8fbf6">
+    <comments><![CDATA[查询系统资费计划方案]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-21 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS PRICEPLAN</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="92c287e4-e026-4bb5-8b39-9abe1864becb">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="fdb1555a-313b-4b23-ae91-0e0fa54a8991">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PARAMCODE" part="Business" id="9ec0b9cf-e7d7-495d-8e34-5875c58c2079">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="PRICEPLANCODE" part="Business" id="cfe6a87e-5ce5-4f57-865f-b858fa8a2a64">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="b1344f41-0a37-48b7-91ff-3d1d77a30944">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="5f1129c2-bbb2-46dd-a522-8bfeee56ec37">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="ATTR" part="Business" id="bbfcbcb0-b887-4024-bc17-54adba27c7a6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="true" name="RESULT" part="Business" id="c41822ce-d661-4da5-aa11-4a51ee9f5c89">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListPhsPricePlan" site="S" id="0b207a3f-64eb-4c79-8cc5-bf378fa4cb74">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-21 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PARAMCODE = $req.PARAMCODE</request>
+            <request>$s.PRICEPLANCODE = $req.PRICEPLANCODE</request>
+            <response>$resp.ATTR, $resp.RESULT = parseAttrResult( $req, "null", "ATTR", "FORMAT_ATTRS", "PRICE_PLAN_ID=PRICE_PLAN_ID|PRICE_PLAN_CODE=PRICE_PLAN_CODE|PRICE_PLAN_NAME=PRICE_PLAN_NAME|PARAMS=PARAMS" )</response>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <message name="WINTCP" type="B">
+    <comments><![CDATA[WINTCP]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>0027004002</modifier>
+    <modifyDate>2012-02-14 10:44:14</modifyDate>
+    <extension>
+      <length><![CDATA[$cur.bodyLength+29]]></length>
+      <linkCheck>LINKCHECK</linkCheck>
+      <class>com.ztesoft.zsmart.uip.adapters.message.WinTcpMessageResolver</class>
+      <repository>com.ztesoft.zsmart.uip.facilities.message.command.RepositoryByPartField</repository>
+      <remoting>false</remoting>
+    </extension>
+    <parts>
+      <part seq="2" type="H" name="Header" id="355eed3b-75c6-476e-9d97-5f8bd0bb1754">
+        <extension>
+          <byteOrder>L</byteOrder>
+        </extension>
+        <fields>
+          <field seq="1" direction="both" fieldType="N" dataType="U" requred="true" name="senderPno" part="Header" id="20cbbbf8-2971-42e6-ae0d-ce6e7f447167">
+            <extension>
+              <length>2</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="2" direction="both" fieldType="N" dataType="U" requred="true" name="senderUnit" part="Header" id="fe747a7f-555c-42e6-9607-a1d638eed527">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="3" direction="both" fieldType="N" dataType="U" requred="true" name="senderModule" part="Header" id="27767db6-2d52-4733-b895-5b95221f768a">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="4" direction="both" fieldType="N" dataType="U" requred="true" name="senderPostOffice" part="Header" id="dd5c6cb9-d392-493c-bd98-bac4612d0a8c">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="5" direction="both" fieldType="N" dataType="U" requred="true" name="receiverPno" part="Header" id="0223d9dd-5c45-45e2-b173-5e2b47b576c8">
+            <extension>
+              <length>2</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="6" direction="both" fieldType="N" dataType="U" requred="true" name="receiverUnit" part="Header" id="412f7c3d-5897-4ff5-9418-1636c2da1551">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="7" direction="both" fieldType="N" dataType="U" requred="true" name="receiverModule" part="Header" id="6cb0f583-6fa7-4582-9d9f-d13e098afb87">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="8" direction="both" fieldType="N" dataType="U" requred="true" name="receiverPostOffice" part="Header" id="ec71fc2e-ac51-4759-bb9a-981d0e8ff7d3">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="9" direction="both" fieldType="N" dataType="U" requred="true" name="event" part="Header" id="333e6a9e-de7f-42de-8568-49b1f3c9bd77">
+            <extension>
+              <length>2</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="10" direction="both" fieldType="N" dataType="U" requred="true" name="bodyLength" part="Header" id="ea7a904c-cf7f-4554-bcc0-5ecea69644d1">
+            <extension>
+              <length>2</length>
+              <encodingValue>$cur.v.messageLength-29</encodingValue>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="11" direction="both" fieldType="C" dataType="U" requred="true" name="type" part="Header" id="977ede21-7e39-4278-86f9-a16149b15c50">
+            <extension>
+              <length>1</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="12" direction="both" fieldType="N" dataType="U" requred="true" name="secretfield" part="Header" id="431b8bfc-e1e8-4762-86f0-361bff49f9d6">
+            <extension>
+              <length>4</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="13" direction="both" fieldType="N" dataType="U" requred="true" name="ack" part="Header" id="1b320bf1-0187-44fa-a855-fb1fb1ee1d26">
+            <extension>
+              <length>4</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="14" direction="both" fieldType="N" dataType="U" requred="true" name="ackLen" part="Header" id="232165cd-81c4-46f4-82ee-83f4cfed6ee0">
+            <extension>
+              <length>2</length>
+              <align>L</align>
+            </extension>
+          </field>
+          <field seq="15" direction="both" fieldType="N" dataType="U" requred="true" name="reserve" part="Header" id="4ab1541c-0773-4775-a19b-3e7067a29e5d">
+            <extension>
+              <length>4</length>
+              <align>L</align>
+            </extension>
+          </field>
+        </fields>
+      </part>
+      <part seq="3" type="B" name="BUSINESS" id="638b5dc0-fee0-4842-ba60-e3142a7d7c90">
+        <extension>
+          <length>$cur.bodyLength</length>
+          <byteOrder>B</byteOrder>
+          <commandOnly>true</commandOnly>
+        </extension>
+      </part>
+    </parts>
+  </message>
+</zsmart>

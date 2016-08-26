@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="SM_QUERY" message="VC" seq="15" id="e67a8e32-9e93-43ff-8d78-a7ab68a214c1">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-03-19 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0X00001004</requestKey>
+        <responseKey>0X80001004</responseKey>
+      </commandKey>
+      <rule name="VC_SM_BIND_RESULT">
+        <kvlist>
+          <kv key="" value="4" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="2" direction="req" fieldType="N" dataType="I" requred="true" name="NetType" part="Body" id="c0889a1c-9f3c-4488-a0aa-aceda367ed98">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="Account" part="Body" id="31c7a4f2-2584-461b-bb78-1345f40ad20b">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="M" requred="true" name="Servicekey" part="Body" id="0ba60181-9c96-485a-969d-97505c22e227">
+        <extension>
+          <length>3</length>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="I" requred="true" name="Result" part="Body" id="b23cdac6-0513-422d-9cd4-c2e13ddd3ab9">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="I" requred="true" name="Balance" part="Body" id="483d7d89-da65-4274-9db4-9cd11c5ddceb">
+        <extension>
+          <length>4</length>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="I" requred="true" name="UserStat" part="Body" id="1af60753-d4ef-4f5e-9a28-7787b3baba33">
+        <extension>
+          <length>1</length>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="M" requred="true" name="Expiredate" part="Body" id="221c29fc-4bc6-436a-b6e3-bc795852b03d">
+        <extension>
+          <length>9</length>
+          <align>R</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="VcQuery" site="S" id="1abcf2d4-b426-47cf-ba7b-3539476f7dfe">
+        <state>A</state>
+        <version>1</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-09 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.NET_TYPE = $req.NetType</request>
+            <request>$s.MSISDN = $req.Account</request>
+            <request>$s.SERVICE_KEY = $req.Servicekey</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.Result = VC_SM_BIND_RESULT( $resp.v.resultCode )</response>
+            <response>$resp.Balance = $s.BALANCE</response>
+            <response>$resp.UserStat = $s.USER_STAT</response>
+            <response>$resp.Expiredate = $s.EXPIRE_DATE</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

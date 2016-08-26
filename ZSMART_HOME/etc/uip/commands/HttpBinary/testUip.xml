@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="testUip" message="HttpBinary" seq="1" id="e2907079-c390-4d82-a4eb-6c1477389db9">
+    <comments><![CDATA[testUip]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-06-26 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>/testUip.do</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="req" fieldType="N" dataType="M" requred="true" name="DN" part="Body" id="49b4c05a-2b18-42de-af7b-15d05df132a2"/>
+      <field seq="2" direction="req" fieldType="N" dataType="M" requred="true" name="ATTR" part="Body" id="dfad2912-a3b0-41b6-9ef9-8614ba08779c"/>
+      <field seq="3" direction="resp" fieldType="N" dataType="M" requred="true" name="RETN" part="Body" id="31d03759-3a28-4158-8626-74b3508a94f7"/>
+      <field seq="4" direction="resp" fieldType="N" dataType="M" requred="true" name="DESC" part="Body" id="5dfe2ad1-96f7-4477-9498-d9df9eff1fbc"/>
+      <field seq="5" direction="resp" fieldType="N" dataType="M" requred="true" name="ATTR" part="Body" id="5cd40798-943e-41fd-8c4a-1d64f012ed5e"/>
+      <field seq="6" direction="resp" fieldType="N" dataType="M" requred="true" name="RESULT" part="Body" id="e88bd220-fd10-46f5-9b76-52b703923cfb"/>
+    </fields>
+    <bindings>
+      <binding service="UipFuntcionTest" site="S" id="bfdbda4e-c0cd-4be1-bbc6-50ff8bf568bf">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-06-27 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.ATTR = $req.ATTR</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = $resp.v.resultCode</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

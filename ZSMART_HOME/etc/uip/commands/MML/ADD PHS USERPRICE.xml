@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADD PHS USERPRICE" message="MML" seq="88" id="e66d522b-8a69-4b9a-a30a-2e426134dcc0">
+    <comments><![CDATA[增加用户个性化资费计划]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-12 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADD PHS USERPRICE</requestKey>
+      </commandKey>
+      <rule name="MMLCode">
+        <kvlist>
+          <kv key="CC-S-SALES-00177" value="1004" isResource="false"/>
+        </kvlist>
+      </rule>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="4da9d2a4-0c1c-435e-945d-b94a25dc9d1e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="3b0bac87-300f-4756-b40c-5967006a6cc5">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PRICENUM" part="Business" id="444b3887-6431-44d1-884e-82c452197931">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="EFFTYPE" part="Business" id="2cb0fe32-1b74-45d6-b6ec-5eb65601620b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="a3cb03a7-5871-43a8-a51b-2eb329acdae2">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="8899df51-8e87-4c19-9247-408c5e0de1b1">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="req" fieldType="N" dataType="S" requred="false" name="DEALFLAG" part="Business" id="d1de4532-afc5-4c44-9f0c-a97599a08653">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="req" fieldType="N" dataType="S" requred="false" name="EXPDATEOFFSET" part="Business" id="0246d169-9f70-434f-8bd0-95142d890458">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="9" direction="req" fieldType="N" dataType="S" requred="false" name="EXPDATEOFFSETUNIT" part="Business" id="a27e47bf-bf4b-4c79-bc3f-40ce516a6a01">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="10" direction="req" fieldType="N" dataType="S" requred="false" name="PARAMS" part="Business" id="37839664-4535-4fd0-9f0f-dda2583b9003">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="11" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="a4e69605-5a5e-4fc8-8c34-204ddf4a0879">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="12" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="f80a9fac-0ac8-4ce3-bd00-41076f8d4336">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="13" direction="resp" fieldType="N" dataType="T" requred="false" name="EFFDATETIME" part="Business" id="78837308-103c-42c7-9d5d-dcb5ef13b72c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="14" direction="resp" fieldType="N" dataType="T" requred="false" name="EXPDATETIME" part="Business" id="ff29acd1-4575-4e95-985b-853fcc94fd2c">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_AddPhsUserPrice" site="S" id="2c28bce1-c6a1-48a9-ad12-8e779c659baa">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-13 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.PRICENUM = $req.PRICENUM</request>
+            <request>$s.EFFTYPE = $req.EFFTYPE</request>
+            <request>$s.EFFDATE = $req.EFFDATE</request>
+            <request>$s.EXPDATE = $req.EXPDATE</request>
+            <request>$s.DEALFLAG = $req.DEALFLAG</request>
+            <request>$s.EXPDATEOFFSET = $req.EXPDATEOFFSET</request>
+            <request>$s.EXPDATEOFFSETUNIT = $req.EXPDATEOFFSETUNIT</request>
+            <request>$s.PARAMS = $req.PARAMS</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.EFFDATETIME = $s.EFFDATETIME</response>
+            <response>$resp.EXPDATETIME = $s.EXPDATETIME</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

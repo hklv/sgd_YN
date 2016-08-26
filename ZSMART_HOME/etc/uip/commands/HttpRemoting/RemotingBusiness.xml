@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="RemotingBusiness" message="HttpRemoting" seq="1" id="3df86b0a-cb70-4245-80ad-216a69c55587">
+    <comments><![CDATA[RemotingBusiness]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admin</modifier>
+    <modifyDate>2014-09-02 16:21:48</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>RemotingBusiness</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="0" direction="both" fieldType="C" dataType="S" requred="true" name="commandKey" part="Body" id="0f4fdd30-7328-49c6-8321-48c4a86096c6"/>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="BUSINESS" message="WINTCP" seq="34" id="fcc75d5e-cb87-42ad-a8f6-12701462a11d">
+    <comments><![CDATA[同步发请求给ZXOS的指令]]></comments>
+    <state>A</state>
+    <version>1.0</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2013-02-17 16:27:43</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="S" requred="true" name="sessionId" part="BUSINESS" id="45f6f345-67b7-4b3e-959e-3dda199a1638">
+        <extension>
+          <length>20</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="both" fieldType="N" dataType="S" requred="true" name="data" part="BUSINESS" id="ad3582d8-7344-4951-8023-076d91e25135">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="WINTCPServerPushCall" site="S" id="93ac19ab-7037-4be8-b55e-14a453e568ca">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-22 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.remote_call_output = $req.data</request>
+            <request>$s.bo_event_id = $req.event</request>
+            <request>$s.senderPno = $req.senderPno</request>
+            <request>$s.sessionId = $req.sessionId</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.data = $s.remote_call_input</response>
+            <response>$resp.event = $s.bo_event_id</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="CallZxosService" site="C" id="cc067ad0-9902-4683-9fd7-2d38e2cfbea6">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-09 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.data = $s.remote_call_input</request>
+            <request>$req.event = $s.bo_event_id</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.remote_call_output = $resp.data</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="CallCollectService" site="C" id="753f241d-a32a-4d4d-9328-91e70a365f8f">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-22 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.data = $s.remote_call_input</request>
+            <request>$req.event = $s.bo_event_id</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.remote_call_output = $req.data</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="CallBmcService" site="C" id="a75119a8-2ecb-45a6-844c-e205c182647e">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-12 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.data = $s.remote_call_input</request>
+            <request>$req.event = $s.bo_event_id</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.remote_call_output = $req.data</response>
+          </finally>
+        </script>
+      </binding>
+	  <binding service="CallBillingHostZxosService" site="C" id="CallBillingHostZxosService">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-10-12 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.data = $s.remote_call_input</request>
+            <request>$req.event = $s.bo_event_id</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.remote_call_output = $req.data</response>
+          </finally>
+        </script>
+      </binding>
+      <binding service="CallPcrfService" site="C" id="0c3866bf-2685-4650-8f79-33cbe6ecb7f5">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2014-06-25 13:29:19</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$req.data = $s.remote_call_input</request>
+            <request>$req.event = $s.bo_event_id</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$s.remote_call_output = $req.data</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

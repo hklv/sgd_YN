@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LinkTest" message="VC_Client" seq="37" id="aaf67821-0cc3-4fd3-a98e-103f57b753d5">
+    <comments><![CDATA[LinkTest]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-02-24 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x0003</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="M" requred="true" name="0x01" part="Body" id="40b488ff-29e2-40fc-926b-4fb77c94b8b0">
+        <extension>
+          <max>20</max>
+        </extension>
+      </field>
+      <field seq="3" direction="resp" fieldType="N" dataType="I" requred="true" name="0x04" part="Body" id="9ba0b62d-4838-4467-a6a9-721ce3bcb4fc">
+        <extension>
+          <length>2</length>
+          <pad>4</pad>
+        </extension>
+      </field>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Continue" message="USSD" seq="43" id="af50407d-628d-4728-b2f3-ee7a4b922c58">
+    <comments><![CDATA[Continue]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>zen</modifier>
+    <modifyDate>2012-03-28 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000070</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="I" requred="true" name="UssdVersion" part="Body" id="3ac286d7-1035-4496-b736-d348a1495ece">
+        <extension>
+          <length>1</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="both" fieldType="N" dataType="I" requred="true" name="UssdOpType" part="Body" id="a70a2aa0-9e53-43f0-9f7e-bcae07603e27">
+        <extension>
+          <length>1</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="both" fieldType="N" dataType="M" requred="true" name="MsIsdn" part="Body" id="a62630bd-f5e9-4528-ba87-53bc37680fb0">
+        <extension>
+          <length>21</length>
+        </extension>
+      </field>
+      <field seq="5" direction="both" fieldType="N" dataType="I" requred="true" name="ServiceCode" part="Body" id="dcf50fee-b28c-4fb3-a96f-bf5378e0bd20">
+        <extension>
+          <length>4</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="both" fieldType="N" dataType="I" requred="true" name="CodeScheme" part="Body" id="0631a8bf-97e0-4448-bdb8-09292fa4155b">
+        <extension>
+          <length>1</length>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="both" fieldType="N" dataType="M" requred="true" name="UssdString" part="Body" id="b5cfd1cb-1675-426a-be69-b39f5bd7de30">
+        <extension>
+          <length>182</length>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="ReceiveContactCmd" site="S" id="39ec7a0c-028a-4c97-9d64-4cac259c8786">
+        <state>A</state>
+        <version>1.0</version>
+        <modifier>zen</modifier>
+        <modifyDate>2012-03-28 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.command = $req.v.command</request>
+            <request>$s.session_id = $req.ReceiverId</request>
+            <request>$s.sender_id = $req.SenderId</request>
+            <request>$s.short_message_text = $req.UssdString</request>
+            <request>$s.notify = $req.UssdOpType</request>
+            <request>$s.contact_channel = "5"</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.ReceiverId = $s.sender_id</response>
+            <response>$resp.SenderId = $s.session_id</response>
+            <response>$resp.v.command = $s.command</response>
+            <response>$resp.UssdString = $s.short_message_text</response>
+            <response>$resp.UssdOpType = $s.notify</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

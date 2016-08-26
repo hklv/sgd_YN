@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <rule name="MMLDesc" id="360445b9-8957-480e-8bbe-ed15c7079c4c">
+    <comments><![CDATA[MML 异常码跟异常描述的映射关系]]></comments>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-05-29 14:49:49</modifyDate>
+    <kvlist>
+      <kv key="0" value="SUCCESS" isResource="false"/>
+      <kv key="1099" value="System Inner ERROR" isResource="false"/>
+      <kv key="BL-S-ACT-00002" value="MML_CHARGE_IVR_ACNT_1002" isResource="true"/>
+      <kv key="BL-S-ACT-00007" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00009" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00011" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00013" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00014" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00020" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00043" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00048" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00063" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00066" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00068" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00070" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00083" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00084" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00088" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00089" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00090" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00091" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00092" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00093" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00094" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00095" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00097" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00099" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00100" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00140" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00141" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00148" value="" isResource="true"/>
+      <kv key="BL-S-ACT-00149" value="" isResource="true"/>
+      <kv key="BUSINESS_OVERLOAD" value="UIP_BUSI_FLOW_OVERLOAD" isResource="true"/>
+      <kv key="COMMAND_N_FOUND" value="UIP_COMMAND_NOT_EXIST" isResource="true"/>
+      <kv key="COMMAND_PARAM_ILLEGAL" value="UIP_ILLEGAL_MML_PARAM" isResource="true"/>
+      <kv key="FIND_BP_ERROR" value="UIP_CAN_NOT_FIND_BP" isResource="true"/>
+      <kv key="FLUX_OVERLOAD" value="UIP_TOTAL_FLOW_OVERLOAD" isResource="true"/>
+      <kv key="NO_SESSION" value="UIP_NO_SESSION" isResource="true"/>
+      <kv key="REMOTING_TIMEOUT" value="UIP remoting timeout" isResource="false"/>
+      <kv key="REPOSITORY_TIMEOUT" value="UIP_REPOSITORY_TIMEOUT" isResource="true"/>
+      <kv key="S-ACT-00051" value="" isResource="true"/>
+      <kv key="S-ACT-00197" value="" isResource="true"/>
+      <kv key="S-ACT-10203" value="" isResource="true"/>
+      <kv key="S-ACT-10204" value="" isResource="true"/>
+      <kv key="S-ACT-10619" value="" isResource="true"/>
+      <kv key="S-CNT-01018" value="" isResource="true"/>
+      <kv key="S-LOGIN-1001" value="" isResource="true"/>
+      <kv key="S-LOGIN-1002" value="" isResource="true"/>
+      <kv key="S-PRF-00025" value="" isResource="true"/>
+      <kv key="S-PRF-00096" value="The prefix of service number is incorrect" isResource="false"/>
+      <kv key="S-SYS-00009" value="" isResource="true"/>
+      <kv key="UIP_EXCEPTION" value="System Inner ERROR" isResource="false"/>
+    </kvlist>
+    <extension>
+      <default>unknow error</default>
+    </extension>
+  </rule>
+</zsmart>

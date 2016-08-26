@@ -1,0 +1,1459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://com.ztesoft.zsmart/service" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ns="http://com.ztesoft.zsmart/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://com.ztesoft.zsmart/service">  
+  <wsdl:documentation>AccountService</wsdl:documentation>  
+  <wsdl:types> 
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://com.ztesoft.zsmart/xsd"> 
+      <xs:complexType name="tBalTransferBO"> 
+        <xs:sequence> 
+          <xs:element name="SN"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="20"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="SAccnt"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="SPwd"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="8"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Amount" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="DAccnt"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="BalTransferBO" type="ns:tBalTransferBO"/>  
+      <xs:complexType name="tBalTransferBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="TransferResultDto" nillable="true" type="ns:tTransferResultDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="BalTransferBOResponse" type="ns:tBalTransferBOResponse"/>  
+      <xs:complexType name="tTransferResultDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="Amount"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BeforeBalance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="TransferResultDtoResponse" type="ns:tTransferResultDtoResponse"/>  
+      <xs:complexType name="tModifyBalReturnAllBalBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BalID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctResID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="9"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AddBalance" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="ExpDate" nillable="true" type="xs:date"/>  
+          <xs:element name="AddDays"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:long"> 
+                <xs:maxInclusive value="3"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="ModifyBalReturnAllBalBO" type="ns:tModifyBalReturnAllBalBO"/>  
+      <xs:complexType name="tModifyBalReturnAllBalBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="BalDtoList" nillable="true" type="ns:tBalDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="ModifyBalReturnAllBalBOResponse" type="ns:tModifyBalReturnAllBalBOResponse"/>  
+      <xs:complexType name="tBalDtoListResponse"> 
+        <xs:sequence> 
+          <xs:element name="BalID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctResID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="9"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctResName"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BalType"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:long"> 
+                <xs:maxInclusive value="3"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="EffDate" type="xs:date"/>  
+          <xs:element name="ExpDate" nillable="true" type="xs:date"/>  
+          <xs:element name="UpdateDate" nillable="true" type="xs:date"/>  
+          <xs:element name="BalShareDtoList" nillable="true" type="ns:tBalShareDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="BalDtoListResponse" type="ns:tBalDtoListResponse"/>  
+      <xs:complexType name="tBalShareDtoListResponse"> 
+        <xs:sequence> 
+          <xs:element name="BalShareID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="MSISDN"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="CeilLimit"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Priority"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:long"> 
+                <xs:maxInclusive value="1"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="EffDate" type="xs:date"/>  
+          <xs:element name="ExpDate"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:long"> 
+                <xs:maxInclusive value="10"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PaymentForce"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="1"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="DailyCeilLimit" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="BalShareDtoListResponse" type="ns:tBalShareDtoListResponse"/>  
+      <xs:complexType name="tQueryAcctItemTypeBO"> 
+        <xs:sequence/> 
+      </xs:complexType>  
+      <xs:element name="QueryAcctItemTypeBO" type="ns:tQueryAcctItemTypeBO"/>  
+      <xs:complexType name="tQueryAcctItemTypeBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="AcctItemTypeDtoList" nillable="true" type="ns:tAcctItemTypeDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QueryAcctItemTypeBOResponse" type="ns:tQueryAcctItemTypeBOResponse"/>  
+      <xs:complexType name="tAcctItemTypeDtoListResponse"> 
+        <xs:sequence> 
+          <xs:element name="AcctItemTypeID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctItemTypeName"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="ParentID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="6"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AcctItemTypeDtoListResponse" type="ns:tAcctItemTypeDtoListResponse"/>  
+      <xs:complexType name="tDisputeBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Comment" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="256"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="DisputeItemExDtoList" type="ns:tDisputeItemExDtoList"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeBO" type="ns:tDisputeBO"/>  
+      <xs:complexType name="tDisputeItemExDtoList"> 
+        <xs:sequence> 
+          <xs:element name="AcctItemID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeItemExDtoList" type="ns:tDisputeItemExDtoList"/>  
+      <xs:complexType name="tDisputeBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="DisputeExDto" nillable="true" type="ns:tDisputeExDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeBOResponse" type="ns:tDisputeBOResponse"/>  
+      <xs:complexType name="tDisputeExDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="DisputeID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeExDtoResponse" type="ns:tDisputeExDtoResponse"/>  
+      <xs:complexType name="tQryAcctBookBO"> 
+        <xs:sequence> 
+          <xs:element name="AccountCode"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctBookType" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="1"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BeginDate" nillable="true" type="xs:date"/>  
+          <xs:element name="EndDate" nillable="true" type="xs:date"/>  
+          <xs:element name="LastRecordCount" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="6"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QryAcctBookBO" type="ns:tQryAcctBookBO"/>  
+      <xs:complexType name="tQryAcctBookBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="AcctBookExDtoList" nillable="true" type="ns:tAcctBookExDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QryAcctBookBOResponse" type="ns:tQryAcctBookBOResponse"/>  
+      <xs:complexType name="tAcctBookExDtoListResponse"> 
+        <xs:sequence> 
+          <xs:element name="AcctBookID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PreBalance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctBookType"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="1"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="CreatedDate" nillable="true" type="xs:date"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AcctBookExDtoListResponse" type="ns:tAcctBookExDtoListResponse"/>  
+      <xs:complexType name="tDisputeProcessBO"> 
+        <xs:sequence> 
+          <xs:element name="DisputeID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="ProcessResult"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="1"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeProcessBO" type="ns:tDisputeProcessBO"/>  
+      <xs:complexType name="tDisputeProcessBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="DisputeExDto" nillable="true" type="ns:tDisputeExDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="DisputeProcessBOResponse" type="ns:tDisputeProcessBOResponse"/>  
+      <xs:complexType name="tModifyBalBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BalID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctResID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="9"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AddBalance" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="ExpDate" nillable="true" type="xs:date"/>  
+          <xs:element name="AddDays"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:long"> 
+                <xs:maxInclusive value="3"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="ModifyBalBO" type="ns:tModifyBalBO"/>  
+      <xs:complexType name="tPaymentBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Amount"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BillNbr" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="SN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentBO" type="ns:tPaymentBO"/>  
+      <xs:complexType name="tPaymentBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="PaymentDto" nillable="true" type="ns:tPaymentDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentBOResponse" type="ns:tPaymentBOResponse"/>  
+      <xs:complexType name="tPaymentDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="PaymentID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentDtoResponse" type="ns:tPaymentDtoResponse"/>  
+      <xs:complexType name="tQryOweAcctItemBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BillID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BillNbr" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="9"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QryOweAcctItemBO" type="ns:tQryOweAcctItemBO"/>  
+      <xs:complexType name="tQryOweAcctItemBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="OweAcctItemDto" nillable="true" type="ns:tOweAcctItemDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QryOweAcctItemBOResponse" type="ns:tQryOweAcctItemBOResponse"/>  
+      <xs:complexType name="tOweAcctItemDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="SumCharge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="DepositChange"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="GrossBal"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctItemExDtoList" nillable="true" type="ns:tAcctItemExDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="OweAcctItemDtoResponse" type="ns:tOweAcctItemDtoResponse"/>  
+      <xs:complexType name="tAcctItemExDtoListResponse"> 
+        <xs:sequence> 
+          <xs:element name="AcctItemID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BillingCycleID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="6"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="CycleBeginDate" nillable="true" type="xs:date"/>  
+          <xs:element name="CycleEndDate" nillable="true" type="xs:date"/>  
+          <xs:element name="AcctItemTypeID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="6"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctItemTypeName"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="SubsID" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="9"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AcctItemExDtoListResponse" type="ns:tAcctItemExDtoListResponse"/>  
+      <xs:complexType name="tPaymentReverseBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PaymentID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Amount" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="BillNbr" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="SN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="ReverseSN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentReverseBO" type="ns:tPaymentReverseBO"/>  
+      <xs:complexType name="tPaymentReverseBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="PaymentReverseDto" nillable="true" type="ns:tPaymentReverseDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentReverseBOResponse" type="ns:tPaymentReverseBOResponse"/>  
+      <xs:complexType name="tPaymentReverseDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="PaymentID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Balance"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PaymentDesc" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="20"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="PaymentReverseDtoResponse" type="ns:tPaymentReverseDtoResponse"/>  
+      <xs:complexType name="tAdjustPrepareBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="PartyCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Comment" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="256"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AdjustPrepareItemExDtoList" type="ns:tAdjustPrepareItemExDtoList"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AdjustPrepareBO" type="ns:tAdjustPrepareBO"/>  
+      <xs:complexType name="tAdjustPrepareItemExDtoList"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctItemTypeID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AcctItemTypeName" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AdjustPrepareItemExDtoList" type="ns:tAdjustPrepareItemExDtoList"/>  
+      <xs:complexType name="tAdjustPrepareBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="AdjustPrepareDto" nillable="true" type="ns:tAdjustPrepareDtoResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AdjustPrepareBOResponse" type="ns:tAdjustPrepareBOResponse"/>  
+      <xs:complexType name="tAdjustPrepareDtoResponse"> 
+        <xs:sequence> 
+          <xs:element name="AdjustPrepareID"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="Charge"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="12"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="AdjustPrepareDtoResponse" type="ns:tAdjustPrepareDtoResponse"/>  
+      <xs:complexType name="tMakeBillBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="MakeBillBO" type="ns:tMakeBillBO"/>  
+      <xs:complexType name="tQueryAcctBalBO"> 
+        <xs:sequence> 
+          <xs:element name="MSISDN" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="30"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element>  
+          <xs:element name="AccountCode" nillable="true"> 
+            <xs:simpleType> 
+              <xs:restriction base="xs:string"> 
+                <xs:maxLength value="60"/> 
+              </xs:restriction> 
+            </xs:simpleType> 
+          </xs:element> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QueryAcctBalBO" type="ns:tQueryAcctBalBO"/>  
+      <xs:complexType name="tQueryAcctBalBOResponse"> 
+        <xs:sequence> 
+          <xs:element name="BalDtoList" nillable="true" type="ns:tBalDtoListResponse"/> 
+        </xs:sequence> 
+      </xs:complexType>  
+      <xs:element name="QueryAcctBalBOResponse" type="ns:tQueryAcctBalBOResponse"/> 
+    </xs:schema> 
+  </wsdl:types>  
+  <wsdl:message name="BalTransferRequest"> 
+    <wsdl:part name="parameters" element="ns:BalTransferBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="BalTransferResponse"> 
+    <wsdl:part name="parameters" element="ns:BalTransferBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="ModifyBalReturnAllBalRequest"> 
+    <wsdl:part name="parameters" element="ns:ModifyBalReturnAllBalBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="ModifyBalReturnAllBalResponse"> 
+    <wsdl:part name="parameters" element="ns:ModifyBalReturnAllBalBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="QueryAcctItemTypeRequest"> 
+    <wsdl:part name="parameters" element="ns:QueryAcctItemTypeBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="QueryAcctItemTypeResponse"> 
+    <wsdl:part name="parameters" element="ns:QueryAcctItemTypeBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="DisputeRequest"> 
+    <wsdl:part name="parameters" element="ns:DisputeBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="DisputeResponse"> 
+    <wsdl:part name="parameters" element="ns:DisputeBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="QryAcctBookRequest"> 
+    <wsdl:part name="parameters" element="ns:QryAcctBookBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="QryAcctBookResponse"> 
+    <wsdl:part name="parameters" element="ns:QryAcctBookBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="DisputeProcessRequest"> 
+    <wsdl:part name="parameters" element="ns:DisputeProcessBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="DisputeProcessResponse"> 
+    <wsdl:part name="parameters" element="ns:DisputeProcessBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="ModifyBalRequest"> 
+    <wsdl:part name="parameters" element="ns:ModifyBalBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="PaymentRequest"> 
+    <wsdl:part name="parameters" element="ns:PaymentBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="PaymentResponse"> 
+    <wsdl:part name="parameters" element="ns:PaymentBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="QryOweAcctItemRequest"> 
+    <wsdl:part name="parameters" element="ns:QryOweAcctItemBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="QryOweAcctItemResponse"> 
+    <wsdl:part name="parameters" element="ns:QryOweAcctItemBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="PaymentReverseRequest"> 
+    <wsdl:part name="parameters" element="ns:PaymentReverseBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="PaymentReverseResponse"> 
+    <wsdl:part name="parameters" element="ns:PaymentReverseBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="AdjustPrepareRequest"> 
+    <wsdl:part name="parameters" element="ns:AdjustPrepareBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="AdjustPrepareResponse"> 
+    <wsdl:part name="parameters" element="ns:AdjustPrepareBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:message name="MakeBillRequest"> 
+    <wsdl:part name="parameters" element="ns:MakeBillBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="QueryAcctBalRequest"> 
+    <wsdl:part name="parameters" element="ns:QueryAcctBalBO"/> 
+  </wsdl:message>  
+  <wsdl:message name="QueryAcctBalResponse"> 
+    <wsdl:part name="parameters" element="ns:QueryAcctBalBOResponse"/> 
+  </wsdl:message>  
+  <wsdl:portType name="AccountServicePortType"> 
+    <wsdl:operation name="BalTransfer"> 
+      <wsdl:input message="tns:BalTransferRequest" wsaw:Action="urn:BalTransferBO"/>  
+      <wsdl:output message="tns:BalTransferResponse" wsaw:Action="urn:BalTransferBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="ModifyBalReturnAllBal"> 
+      <wsdl:input message="tns:ModifyBalReturnAllBalRequest" wsaw:Action="urn:ModifyBalReturnAllBalBO"/>  
+      <wsdl:output message="tns:ModifyBalReturnAllBalResponse" wsaw:Action="urn:ModifyBalReturnAllBalBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctItemType"> 
+      <wsdl:input message="tns:QueryAcctItemTypeRequest" wsaw:Action="urn:QueryAcctItemTypeBO"/>  
+      <wsdl:output message="tns:QueryAcctItemTypeResponse" wsaw:Action="urn:QueryAcctItemTypeBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="Dispute"> 
+      <wsdl:input message="tns:DisputeRequest" wsaw:Action="urn:DisputeBO"/>  
+      <wsdl:output message="tns:DisputeResponse" wsaw:Action="urn:DisputeBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryAcctBook"> 
+      <wsdl:input message="tns:QryAcctBookRequest" wsaw:Action="urn:QryAcctBookBO"/>  
+      <wsdl:output message="tns:QryAcctBookResponse" wsaw:Action="urn:QryAcctBookBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="DisputeProcess"> 
+      <wsdl:input message="tns:DisputeProcessRequest" wsaw:Action="urn:DisputeProcessBO"/>  
+      <wsdl:output message="tns:DisputeProcessResponse" wsaw:Action="urn:DisputeProcessBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="ModifyBal"> 
+      <wsdl:input message="tns:ModifyBalRequest" wsaw:Action="urn:ModifyBalBO"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="Payment"> 
+      <wsdl:input message="tns:PaymentRequest" wsaw:Action="urn:PaymentBO"/>  
+      <wsdl:output message="tns:PaymentResponse" wsaw:Action="urn:PaymentBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryOweAcctItem"> 
+      <wsdl:input message="tns:QryOweAcctItemRequest" wsaw:Action="urn:QryOweAcctItemBO"/>  
+      <wsdl:output message="tns:QryOweAcctItemResponse" wsaw:Action="urn:QryOweAcctItemBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="PaymentReverse"> 
+      <wsdl:input message="tns:PaymentReverseRequest" wsaw:Action="urn:PaymentReverseBO"/>  
+      <wsdl:output message="tns:PaymentReverseResponse" wsaw:Action="urn:PaymentReverseBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="AdjustPrepare"> 
+      <wsdl:input message="tns:AdjustPrepareRequest" wsaw:Action="urn:AdjustPrepareBO"/>  
+      <wsdl:output message="tns:AdjustPrepareResponse" wsaw:Action="urn:AdjustPrepareBOResponse"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="MakeBill"> 
+      <wsdl:input message="tns:MakeBillRequest" wsaw:Action="urn:MakeBillBO"/> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctBal"> 
+      <wsdl:input message="tns:QueryAcctBalRequest" wsaw:Action="urn:QueryAcctBalBO"/>  
+      <wsdl:output message="tns:QueryAcctBalResponse" wsaw:Action="urn:QueryAcctBalBOResponse"/> 
+    </wsdl:operation> 
+  </wsdl:portType>  
+  <wsdl:binding name="AccountServiceSoap11Binding" type="tns:AccountServicePortType"> 
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>  
+    <wsdl:operation name="ModifyBal"> 
+      <soap:operation soapAction="urn:ModifyBal" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="PaymentReverse"> 
+      <soap:operation soapAction="urn:PaymentReverse" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctItemType"> 
+      <soap:operation soapAction="urn:QueryAcctItemType" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="Dispute"> 
+      <soap:operation soapAction="urn:Dispute" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="DisputeProcess"> 
+      <soap:operation soapAction="urn:DisputeProcess" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryOweAcctItem"> 
+      <soap:operation soapAction="urn:QryOweAcctItem" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="BalTransfer"> 
+      <soap:operation soapAction="urn:BalTransfer" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="ModifyBalReturnAllBal"> 
+      <soap:operation soapAction="urn:ModifyBalReturnAllBal" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="AdjustPrepare"> 
+      <soap:operation soapAction="urn:AdjustPrepare" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="MakeBill"> 
+      <soap:operation soapAction="urn:MakeBill" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="Payment"> 
+      <soap:operation soapAction="urn:Payment" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctBal"> 
+      <soap:operation soapAction="urn:QueryAcctBal" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryAcctBook"> 
+      <soap:operation soapAction="urn:QryAcctBook" style="document"/>  
+      <wsdl:input> 
+        <soap:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:binding name="AccountServiceSoap12Binding" type="tns:AccountServicePortType"> 
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>  
+    <wsdl:operation name="ModifyBal"> 
+      <soap12:operation soapAction="urn:ModifyBal" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="PaymentReverse"> 
+      <soap12:operation soapAction="urn:PaymentReverse" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctItemType"> 
+      <soap12:operation soapAction="urn:QueryAcctItemType" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="Dispute"> 
+      <soap12:operation soapAction="urn:Dispute" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="DisputeProcess"> 
+      <soap12:operation soapAction="urn:DisputeProcess" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryOweAcctItem"> 
+      <soap12:operation soapAction="urn:QryOweAcctItem" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="BalTransfer"> 
+      <soap12:operation soapAction="urn:BalTransfer" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="ModifyBalReturnAllBal"> 
+      <soap12:operation soapAction="urn:ModifyBalReturnAllBal" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="AdjustPrepare"> 
+      <soap12:operation soapAction="urn:AdjustPrepare" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="MakeBill"> 
+      <soap12:operation soapAction="urn:MakeBill" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="Payment"> 
+      <soap12:operation soapAction="urn:Payment" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctBal"> 
+      <soap12:operation soapAction="urn:QueryAcctBal" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryAcctBook"> 
+      <soap12:operation soapAction="urn:QryAcctBook" style="document"/>  
+      <wsdl:input> 
+        <soap12:body use="literal"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <soap12:body use="literal"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:binding name="AccountServiceHttpBinding" type="tns:AccountServicePortType"> 
+    <http:binding verb="POST"/>  
+    <wsdl:operation name="ModifyBal"> 
+      <http:operation location="ModifyBal"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="PaymentReverse"> 
+      <http:operation location="PaymentReverse"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctItemType"> 
+      <http:operation location="QueryAcctItemType"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="Dispute"> 
+      <http:operation location="Dispute"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="DisputeProcess"> 
+      <http:operation location="DisputeProcess"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryOweAcctItem"> 
+      <http:operation location="QryOweAcctItem"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="BalTransfer"> 
+      <http:operation location="BalTransfer"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="ModifyBalReturnAllBal"> 
+      <http:operation location="ModifyBalReturnAllBal"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="AdjustPrepare"> 
+      <http:operation location="AdjustPrepare"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="MakeBill"> 
+      <http:operation location="MakeBill"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input> 
+    </wsdl:operation>  
+    <wsdl:operation name="Payment"> 
+      <http:operation location="Payment"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QueryAcctBal"> 
+      <http:operation location="QueryAcctBal"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation>  
+    <wsdl:operation name="QryAcctBook"> 
+      <http:operation location="QryAcctBook"/>  
+      <wsdl:input> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:input>  
+      <wsdl:output> 
+        <mime:content type="text/xml" part="parameters"/> 
+      </wsdl:output> 
+    </wsdl:operation> 
+  </wsdl:binding>  
+  <wsdl:service name="AccountService"> 
+    <wsdl:port name="AccountServiceHttpSoap11Endpoint" binding="tns:AccountServiceSoap11Binding"> 
+      <soap:address location="http://localhost:8080/services/AccountService.AccountServiceHttpSoap11Endpoint/"/> 
+    </wsdl:port>  
+    <wsdl:port name="AccountServiceHttpSoap12Endpoint" binding="tns:AccountServiceSoap12Binding"> 
+      <soap12:address location="http://localhost:8080/services/AccountService.AccountServiceHttpSoap12Endpoint/"/> 
+    </wsdl:port>  
+    <wsdl:port name="AccountServiceHttpEndpoint" binding="tns:AccountServiceHttpBinding"> 
+      <http:address location="http://localhost:8080/services/AccountService.AccountServiceHttpEndpoint/"/> 
+    </wsdl:port> 
+  </wsdl:service> 
+</wsdl:definitions>

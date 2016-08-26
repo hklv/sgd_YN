@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="LIST PHS UPPINFO" message="MML" seq="91" id="40e3d856-98a9-449e-97d0-e53739805960">
+    <comments><![CDATA[订购个性化资费计划鉴权]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-15 09:30:02</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>LIST PHS UPPINFO</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="9b076b7e-0d46-4509-9e72-fb2e1d689395">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="8a79f4eb-e6c9-44db-ad59-a73dd06e1ac4">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="UPPCODE" part="Business" id="f815fff7-b410-48d0-b5c4-1c4cc4fd0a6e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="80b72c98-84b8-4532-9af4-685218659f7f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="dddee0f9-a92b-4c48-b72b-43c3cf5e5489">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="17deb395-bcd1-4808-8e8e-81c9d31c912f">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="false" name="ATTR" part="Business" id="7f2a6d4f-7ffc-493d-9b56-88057cc4b2d8">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="RESULT" part="Business" id="2eab062d-ebfc-4aeb-9308-bfa25049367b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_ListPhsUppInfo" site="S" id="5bc8e2b2-ce01-4bb7-ba25-2efb54fab0a0">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-15 09:35:20</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.UPPCODE = $req.UPPCODE</request>
+            <request>$s.ATTR = $req.ATTR</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+            <response>$resp.ATTR = $s.ATTR</response>
+            <response>$resp.RESULT = $s.RESULT</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

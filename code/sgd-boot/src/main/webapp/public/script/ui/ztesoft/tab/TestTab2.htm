@@ -1,0 +1,243 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="Cvbs.css"/>
+	
+		<link rel="stylesheet" href="style/en_US/ZTEsoftTabs.css"/>
+		<script language="JavaScript" src="ZTEsoftTabs.js">
+		</script>		
+	</head>
+	<body>
+	<div style="background-color:#E1F1FD;">
+		<table width="100%" border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td >
+					<input type="button"  onclick="deleteAllTab();" value="Delete All Tab" >
+					<input type="button"  onclick="getSeletedTabId()" value="Get Seleted Tab Id" >
+					<input type="button"  onclick="addNewTab();" value="Add Tab" >
+					<input type="button"  onclick="deleteTabById()" value="Delete Tab By Id" >
+					<input type="button"  onclick="modTabName()" value="Mod TabName" >
+					<input type="button"  onclick="modWidth()" value="调整宽度" >
+					<input type="button"  onclick="selectTabByIndex()" value="根据index设置tab选中" >
+					<input type="button"  onclick="selectTabById()" value="根据id设置tab选中" >
+					<input type="button"  onclick="setTabContent()" value="设置选中tab的内容" >
+					<input type="button"  onclick="setTabContentById()" value="根据id设置tab的内容" >
+					<input type="button"  onclick="setTabEnabled(false)" value="禁用当前选中的tab" >
+					<input type="button"  onclick="setTabEnabled(true)" value="启用当前选中的tab" >
+					<input type="button"  onclick="setTabEnabledById(false)" value="根据Id禁用tab" >
+					<input type="button"  onclick="setTabEnabledById(true)" value="根据Id启用tab" >
+					<input type="button"  onclick="addTabWithIframe()" value="增加带关闭按钮的iframe" >
+					<input type="button"  onclick="modifyTabsMode()" value="切换tab显示模式" >
+					<input type="button"  onclick="testMemory()" value="测试内存释放" >
+					
+			</td>
+			</tr>
+		</table>			
+	</div>
+	<div id="testDiv0" style="width:76%;height:400px;float:left;background-color:#E1F1FD;">
+				<div id="TestTabs" style="height:100%">
+					<ul>
+						<li id='tab1Id'><a>tab1trrrrrrrrrrr</a></li>
+						<li id='tab2Id'><span>tab222222222222222222222222</span></li>
+						<li id='tab3Id'><span>tab333333333333333333333</span></li>
+						<li id='tab4Id'><span>tab4444444444444444444444444</span></li>
+						<li id='tab5Id'><span>tab555555555555555</span></li>
+						<li id='tab6Id'><span>tab66666666666666666666666</span></li>
+						<li id='tab7Id'><span>tab7777</span></li>
+						<li id='tab8Id'><span>tab888888888888888</span></li>
+						<li id='tab9Id'><span>tab99999999999999999</span></li>
+					</ul>
+					
+					<div >
+						<div style="width:100%;border:1px solid black;">
+							<table  width=100%>
+								<tr>
+									<td width="50%">fdfdff</td>
+									<td width="50%">fdafd afdaffvv  fddfdada</td>
+								</tr>
+							</table> 
+						</div>
+						
+						<div style="width:100%;border:1px solid black;">
+							<table  width=100%>
+								<tr>
+									<td width="50%"><input type="text" id="txt0"/></td>
+									<td width="50%">
+										
+										<input type="text" id="txt1"/>
+									</td>
+								</tr>
+							</table> 
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>																														
+					</div>
+				</div>
+	</div>
+	<div  id="testDiv1" style="width:20%;height:400px;border:1px solid black">
+		textee eeeeee eeeeee eeeeeeeeeeeeeeeeee eeeeeee eeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeee
+		rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+		
+	</div>
+	
+	<textarea id="trLog" width="100%" style="height:160px" multiLine="true"></textarea>
+		
+	
+
+										
+	<script>
+		var tab = new ZTEsoftTabs(document.getElementById("TestTabs"),true);
+		tab.setTabPagesMode(0);
+		var i = 3;
+	//	tab.tabsArray[0].setOnTabClick(testTab1);
+	//	tab.tabsArray[0].setOnTabClick(testTab2);
+	//	tab.tabsArray[1].setOnTabClick(testTab3);
+	//	tab.tabsArray[1].setOnTabDelete(deleteTab1);
+		function testTab1()
+		{
+			alert(" first clicked event of tab1 happened ");
+		}
+		function testTab2()
+		{
+			alert(" second clicked event of tab1 happened ");
+		}
+		function testTab3()
+		{
+			alert(" clicked event of tab2 happened ");
+		}
+		
+		function deleteTab1()
+		{
+			return false;
+		}
+		
+		function deleteAllTab()
+		{
+			//document.getElementById("td1").style.display="none";
+			tab.deleteAllTabs();		
+		}
+		
+		function deleteTabById()
+		{
+			tab.deleteTabById("tab3Id");
+		}
+		function getSeletedTabId()
+		{
+			alert(tab.getSeletedTabId());
+		}
+			
+		function addNewTab()
+		{
+			var subTab = tab.insertTab("subTabdddddddddddddddddddddddddddddddddd"+i,null,"tab"+i+"Id");
+			//subTab.modifyTabName("subTabdddddddddddddddddddddddddddddddddd"+i);
+			subTab.setTabContent("subTab"+i+"content content");
+			i++;			
+		}
+		
+		function modTabName()
+		{
+			
+			tab.selectedTab.modifyTabName("test11");
+			//或者
+
+			//tab.modifyTabName(1,"test");						
+		}
+		function modWidth()
+		{		
+			if(testDiv1.style.display=="")
+			{
+				testDiv1.style.display = "none";
+				testDiv0.style.width = "100%";
+			}
+			else
+			{
+				testDiv0.style.width = "76%";
+				testDiv1.style.display = "";
+			}
+			tab.setTabPages();
+		}
+		function selectTabByIndex()
+		{
+			tab.setTabSelected(1);			
+		}
+		function selectTabById()
+		{
+			tab.setTabSelectedById("tab1Id");			
+		}
+		function setTabContent()
+		{
+			var html = "set tabContent";
+			tab.selectedTab.setTabContent(html);
+		}
+		function setTabContentById()
+		{
+			var html = "set tabContent by id";
+			tab.setTabContentById("tab2Id",html);
+			tab.setTabSelectedById("tab2Id");			
+		}
+		function setTabEnabled(flag)
+		{
+			tab.selectedTab.setEnabled(flag);
+		}
+		function setTabEnabledById(flag)
+		{
+			tab.getTabById("tab2Id").setEnabled(flag);	
+		}
+		function addTabWithIframe()
+		{
+			var tabNum = tab.tabsArray.length-1;	
+			
+			var 	strURL = "testIframe.htm";
+		
+			var strHtml = "<div class=\"detail\">" +
+										"<iframe id=\"doc_card\" src='"+strURL+"' frameborder=\"0\" width=\"100%\" scrolling=\"NO\" height=\"100%\">" +
+									  "</iframe>" +
+										"</div>";	  		
+							
+		  
+			var lstId = "testIframeWithCloseId"
+			var subTab = tab.insertTab("test iframe with close",550,lstId);
+			subTab.setTabContent(strHtml); 
+		}
+		function writeLog(log)
+		{
+			trLog.value = trLog.value+"\r\n"+log;	
+		}
+		function modifyTabsMode()
+		{
+			if(tab.tabPagesMode==0)
+			{
+				tab.setTabPagesMode(1);
+			}
+			else
+			{
+				tab.setTabPagesMode(0);
+			}
+		}
+		function testMemory()
+		{
+			for(var k=0;k<100;k++)
+			{
+				for(var j=0;j<10;j++)
+				{
+					addNewTab();
+				}
+				deleteAllTab();
+			}
+		}
+	</script>
+	</body>
+</html>

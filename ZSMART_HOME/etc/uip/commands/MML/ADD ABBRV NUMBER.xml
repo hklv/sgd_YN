@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ADD ABBRV NUMBER" message="MML" seq="61" id="2073a5cb-d696-4b62-8569-db35e674b473">
+    <comments><![CDATA[增加缩位拨号号码]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-08-17 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ADD ABBRV NUMBER</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="f7f2b869-5c90-4c0b-9476-8e83dc2f96f3">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="55c13fa3-d51f-4fb3-8688-2160d786fb8e">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="SHORTNO" part="Business" id="11175805-7a40-46fe-8174-e0f4971e8185">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="S" requred="true" name="ABBRVNUM" part="Business" id="71622579-f20a-4957-ab8c-e2c15cb89ac6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="T" requred="false" name="EFFDATE" part="Business" id="67614d6a-8a3f-47c6-8cea-170ca3480725">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="6" direction="req" fieldType="N" dataType="T" requred="false" name="EXPDATE" part="Business" id="42fa084d-1635-44dc-8d31-769a4094d5dc">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="7" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="5163843e-3dc0-485c-ab23-6d093ac77a3d">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="8" direction="resp" fieldType="N" dataType="S" requred="false" name="DESC" part="Business" id="dd76bd04-05b3-4180-926d-34c4fa9d5e85">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_AddAbbrvNbr" site="S" id="48971470-53dc-424f-a424-fc3d317253fa">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-08-17 00:00:00</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.SHORTNO = $req.SHORTNO</request>
+            <request>$s.ABBRVNUM = $req.ABBRVNUM</request>
+            <request>$s.EFFDATE = $req.EFFDATE</request>
+            <request>$s.EXPDATE = $req.EXPDATE</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

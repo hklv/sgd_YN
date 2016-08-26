@@ -1,0 +1,152 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<html>
+
+<head>
+
+<title></title>
+<!-- css empty -->
+
+<script>
+function cancel() {
+	window.parent.tab.deleteTabById(window.parent.tab.getSeletedTabId());
+}
+</script>
+</head>
+<body>
+		<div style="height:500px;">
+			<div>
+				<div class="layout_title">
+					<table cellpadding=0 cellspacing=0>
+						<tr>
+							<td class="formHead"><div><span>Transmission System Information</span></div></td>              				
+						</tr>
+						<tr>
+							<td class="line"></td>
+						</tr>
+					</table>
+				</div>				
+				<div class="layout_detail">
+					<table width="100%" border=0 cellpadding=0 cellspacing=0>
+						<tr>
+							<td class="img1"></td>
+							<td class="bkg"></td>
+							<td class="img2"></td>
+						</tr>
+						<tr>
+							<td class="bkg"></td>
+							<td class="bkgPadding">
+								<table border=0 cellpadding=0 cellspacing=0>
+									<tr>
+										<th id="oss_style_th4_1"></th>
+										<th id="oss_style_th4_2"></th>
+										<th id="oss_style_th4_3"></th>
+										<th id="oss_style_th4_4"></th>						
+									</tr>
+									<form name="ResObject">
+										<tr>
+<input type='hidden' name='MODIFY_DATE' value=''><input type='hidden' name='ORG_ID' value=''><input type='hidden' name='STAFF_ID' value=''><input type='hidden' name='STAFF_JOB_ID' value=''></tr>
+<tr>
+<td class='fieldName'>&nbsp;&nbsp;Area<font color='red'>*</font></td>
+<td colspan=1>
+<select  name='AREA_ID'  class='select' desc='Area' allownull='false'  value=''>
+<option value='1'>Area1</option>
+<option value='2'>Area2</option>
+<option value='3'>CS</option>
+<option value='4'>TEST_AREA</option>
+</select>
+</td>
+<td class='fieldName'>&nbsp;&nbsp;System No.<font color='red'>*</font></td>
+<td colspan=1>
+<input class='text' type='text' name='SYS_NO' desc='System No.' datatype='string' allownull='false' max=80  value=''>
+</td>
+</tr>
+<tr>
+<td class='fieldName'>&nbsp;&nbsp;System Name<font color='red'>*</font></td>
+<td colspan=1>
+<input class='text' type='text' name='SYS_NAME' desc='System Name' datatype='string' allownull='false' max=80  value=''>
+</td>
+<td class='fieldName'>&nbsp;&nbsp;System Capacity</td>
+<td colspan=1>
+<select  name='SYS_CAP'  class='select' desc='System Capacity' allownull='true'  value=''>
+<option value='100'>STM-64</option>
+<option value='101'>STM-16</option>
+<option value='102'>STM-4</option>
+<option value='103'>STM-1</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class='fieldName'>&nbsp;&nbsp;System Type<font color='red'>*</font></td>
+<td colspan=1>
+<select  name='SYS_TYPE'  class='select' desc='System Type' allownull='false'  value=''>
+<option value='2'>SDH</option>
+<option value='3'>DWDM</option>
+</select>
+</td>
+<td class='fieldName'>&nbsp;&nbsp;System Topology<font color='red'>*</font></td>
+<td colspan=1>
+<select  name='SYS_TOPO'  class='select' desc='System Topology' allownull='false'  value=''>
+<option value='1'>Mesh</option>
+<option value='2'>Ring</option>
+<option value='3'>Tree</option>
+<option value='4'>Chain</option>
+<option value='5'>Star</option>
+<option value='6'>Bus</option>
+<option value='Z'>Other</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class='fieldName'>&nbsp;&nbsp;System Level<font color='red'>*</font></td>
+<td colspan=1>
+<select  name='SYS_LEVEL'  class='select' desc='System Level' allownull='false'  value=''>
+<option value='1'>Core</option>
+<option value='2'>Tandem</option>
+<option value='3'>Access</option>
+</select>
+</td>
+<td class='fieldName'>&nbsp;&nbsp;Work Date<font color='red'>*</font></td>
+<td colspan=1 id='WORK_DATE'>
+
+</td>
+</tr>
+<tr>
+<td class='fieldName'>&nbsp;&nbsp;Remarks<font color='red'>*</font></td>
+<td colspan=1>
+<input class='text' type='text' name='NOTES' desc='Remarks' datatype='string' allownull='false' max=400  value=''>
+</td>
+</tr>
+
+							    </form>
+								</table>
+							</td>
+							<td class="bkg"></td>
+      			</tr>
+   					<tr>
+    					<td class="img3"></td>
+    					<td class="bkg"></td>
+    					<td class="img4"></td>
+    				</tr>
+					</table>
+				</div>				
+			</div>
+			
+			<div>
+				<table width="100%" border=0 cellpadding=0 cellspacing=0>	
+					<tr>
+						<td height="10"></td>
+					</tr>		 
+					<tr>
+						<td class="okCancelButton" align="right">
+							<input type="button" class="button" name="btnCal" id="btnCal" onclick="cancel()" value="Close"/>
+						</td>
+					</tr>
+			  </table>				 
+			</div>	
+		</div>		
+</body>
+</html>
+
+ 

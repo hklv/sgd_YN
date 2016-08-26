@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="HBHB" message="MML" seq="3" id="a1524946-0108-490a-be08-8d06b8b30919">
+    <comments><![CDATA[COMMENTS]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-02-13 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>HBHB</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="5b8f57b8-1b04-43c4-b9d5-4abbe7ebd2bc"/>
+    </fields>
+    <bindings/>
+  </command>
+</zsmart>

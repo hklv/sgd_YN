@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="Bind" message="USSD" seq="41" id="e0f17e8c-f356-4514-ba7c-1588b95ca241">
+    <comments><![CDATA[Bind]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admin</modifier>
+    <modifyDate>2012-03-20 00:00:00</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>0x00000065</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="2" direction="both" fieldType="N" dataType="M" requred="true" name="SystemId" part="Body" id="1e80bbd3-d558-4c3a-9b6b-39131c0ae05d">
+        <extension>
+          <length>16</length>
+          <align>R</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="M" requred="true" name="Password" part="Body" id="33b08cfd-cc51-4ab7-b32f-22a54c168558">
+        <extension>
+          <length>9</length>
+          <align>R</align>
+        </extension>
+      </field>
+      <field seq="4" direction="req" fieldType="N" dataType="M" requred="true" name="SystemType" part="Body" id="089c3958-df25-4619-9d8e-665a0f4b9a66">
+        <extension>
+          <length>13</length>
+          <align>R</align>
+        </extension>
+      </field>
+      <field seq="5" direction="req" fieldType="N" dataType="I" requred="true" name="InterfaceVersion" part="Body" id="e5b5925f-90ff-4fc0-a13f-6b723f0096bc">
+        <extension>
+          <length>1</length>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="UipLogin" site="S" id="c546b19c-8c47-4d7e-ab82-28e339e3f04e">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admin</modifier>
+        <modifyDate>2012-06-18 00:00:00</modifyDate>
+        <serviceFlow/>
+        <script>
+          <invoke>
+            <request>$s.command = $req.v.command</request>
+            <request>$s.AdapterName = $req.v.adapter</request>
+            <request>$s.UserName = $req.SystemId</request>
+            <request>$s.Password = $req.Password</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.v.command = $s.command</response>
+            <response>$resp.CommandStatus = UssdCommandStatus( $resp.v.resultCode )</response>
+            <response>$resp.SystemId = $s.UserName</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>

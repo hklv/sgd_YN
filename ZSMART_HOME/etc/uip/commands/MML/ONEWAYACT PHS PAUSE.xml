@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zsmart>
+  <command name="ONEWAYACT PHS PAUSE" message="MML" seq="95" id="5a29d62c-9632-43b3-b4f4-388d26c8414b">
+    <comments><![CDATA[强制单向复机]]></comments>
+    <state>A</state>
+    <version>1</version>
+    <modifier>admIN</modifier>
+    <modifyDate>2012-11-15 15:34:40</modifyDate>
+    <extension>
+      <commandKey>
+        <requestKey>ONEWAYACT PHS PAUSE</requestKey>
+      </commandKey>
+    </extension>
+    <fields>
+      <field seq="1" direction="both" fieldType="C" dataType="S" requred="true" name="COMMAND" part="Business" id="daea8a83-868d-4caf-a204-a40441f1f9bf">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="2" direction="req" fieldType="N" dataType="S" requred="true" name="DN" part="Business" id="5c038e1f-6318-4535-b838-967266de714b">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="3" direction="req" fieldType="N" dataType="S" requred="true" name="PWD" part="Business" id="35f4fda5-04e4-4b4a-827e-46a8af86feb8">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="4" direction="resp" fieldType="N" dataType="S" requred="true" name="RETN" part="Business" id="f32a05e2-7d2a-49a9-b1ce-3445dddb9d63">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+      <field seq="5" direction="resp" fieldType="N" dataType="S" requred="true" name="DESC" part="Business" id="47eefad1-dcb6-41fc-8ee2-7d546fcb18d6">
+        <extension>
+          <align>L</align>
+        </extension>
+      </field>
+    </fields>
+    <bindings>
+      <binding service="MML_UserStateManager" site="S" id="94ec828a-4ec5-44f1-beaa-c9c90d756f1e">
+        <state>A</state>
+        <version>1</version>
+        <modifier>admIN</modifier>
+        <modifyDate>2012-11-15 15:36:23</modifyDate>
+        <serviceFlow>
+          <node eventType="B" service="GetPrefixAccNbrService"/>
+        </serviceFlow>
+        <script>
+          <invoke>
+            <request>$s.PWD = $req.PWD</request>
+            <request>$s.MSISDN = $req.DN</request>
+            <request>$s.COMMAND = $req.COMMAND</request>
+          </invoke>
+          <exception/>
+          <finally>
+            <response>$resp.RETN = MMLCode( $resp.v.resultCode )</response>
+            <response>$resp.DESC = MMLDesc( $resp.v.resultCode )</response>
+          </finally>
+        </script>
+      </binding>
+    </bindings>
+  </command>
+</zsmart>
